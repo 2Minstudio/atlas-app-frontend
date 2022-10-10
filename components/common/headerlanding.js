@@ -3,7 +3,7 @@ import React from "react";
 
 import styles from "../../styles/Home.module.css";
 
-const Header = () => {
+const Headerlanding = () => {
   return (
     <header>
       
@@ -15,12 +15,7 @@ const Header = () => {
           </a>
 
           <p class="pt-3 ms-md-auto pe-4 text-success">
-            <ul class="nav">
-              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"> Take Eligibility Test </a></li>
-              <li class="nav-item"><a class="nav-link" href="#"> Enquire Now </a></li>
-              <li class="nav-item"><a class="nav-link" href="#"> Login </a></li>
-              <li class="nav-item"><a class="nav-link" href="#"> Sign Up </a></li>
-            </ul>
+            Community &nbsp; &nbsp; Siddanth 
           </p>
 
         </div>
