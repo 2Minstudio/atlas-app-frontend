@@ -4,7 +4,7 @@ export default function Banner() {
 <div class="container-fluid bannerBg pb-5 mb-5">
 <div class="container">
 <div class="row row-cols-1 row-cols-md-2 mb-3 ">
-  <div class="col mt-4 pb-5">
+  <div class="col-lg-5 col-md-5 col-sm-6 mt-4 pb-5">
     <h1>
     <b>Start To Earn ,</b> <br />
       Before Finishing <br />
@@ -38,10 +38,11 @@ export default function Banner() {
         </button>
       </a>
     </div>
-  </div></div>
-  <div class="col pt-5">
+  </div>
+  </div>
+  <div class="col-lg-7 col-md-7 col-sm-6 pt-5">
   <div class="row">
-    
+    <img class="image-fluid negative20 align-bottom" height="100%" width="100%" src="image/bg/headerimageright.png"></img>
   </div>
   </div>
 </div>

@@ -41,20 +41,20 @@ export default function Home() {
                 </div>
                 <div className="col">
                   <div class="row text-success">
-                    <div class="col text-center">
-                      <h1>
-                        <FontAwesomeIcon class="Aicon" icon={faUserPlus} />
-                      </h1>
-                      <p>
+                    <div class="col text-center pt-0">
+                      <span class='bg-success rounded rounded-circle py-3 px-2'>
+                        <FontAwesomeIcon class="Aicon text-white fa-2x" icon={faUserPlus} />
+                      </span>
+                      <p class="pt-4">
                         {" "}
                         Live Training with <br></br>Atlas Chiropractors
                       </p>
                     </div>
-                    <div class="col text-center">
-                      <h1>
-                        <FontAwesomeIcon class="Aicon fa-2x" icon={faVideo} />
-                      </h1>
-                      <p>
+                    <div class="col text-center pt-0">
+                    <span class='bg-success rounded rounded-circle py-3 px-2'>
+                        <FontAwesomeIcon class="Aicon text-white fa-2x" icon={faVideo} />
+                      </span>
+                      <p class="pt-4">
                         {" "}
                         400 Hours of Course + <br></br>Paid Internship of 6
                         Months
@@ -63,23 +63,23 @@ export default function Home() {
                   </div>
 
                   <div class="row text-success">
-                    <div class="col text-center">
-                      <h1>
-                        <FontAwesomeIcon class="Aicon fa-2x" icon={faStar} />
-                      </h1>
-                      <p>
+                    <div class="col text-center pt-5">
+                      <span class='bg-success rounded rounded-circle py-3 px-2'>
+                        <FontAwesomeIcon class="Aicon text-white fa-2x" icon={faStar} />
+                      </span>
+                      <p class="pt-4">
                         {" "}
                         Become a Certified <br></br> Chiropractor in India
                       </p>
                     </div>
-                    <div class="col text-center">
-                      <h1>
+                    <div class="col text-center pt-5">
+                      <span class='bg-success rounded rounded-circle py-3 px-2'>
                         <FontAwesomeIcon
-                          class="Aicon fa-2x"
+                          class="Aicon text-white fa-2x"
                           icon={faSuitcaseMedical}
                         />
-                      </h1>
-                      <p>
+                      </span>
+                      <p class="pt-4">
                         {" "}
                         Get Placed with Atlas <br></br>Chiropractic & Wellness
                         Care
@@ -243,6 +243,48 @@ Course Duration & Syllabus
                             
                           <p>Chiropractors are expected to grow 17% from 2022 to 2034</p>
                           </div></div></div></div>
+
+                          <div class="container-fluid my-5 py-5 girlBg">
+            <div className="container">
+              <div class="row p-5">
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 mt-5 pt-5">
+                  <h2 class="text-success">
+                    <b>Start Earning as a Certified Chiropractor in 12 Months</b>
+                  </h2>
+                  
+                  <div class="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4">
+      <div class="col">
+        <button
+          type="button"
+          class="w-100 btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Take the Eligibility Test
+        </button>
+      </div>
+    
+    <div class="col">
+      <a href="tel:+91 9606704304">
+        <button
+          type="button"
+          class=" btn btn-lg btn-outline-success rounded-pill"
+        >
+          Inquire Now
+        </button>
+      </a>
+    </div>
+  </div>
+                </div>
+                <div className="col">
+                  <div class="row text-success">
+                    <div class="col text-center pt-0">
+
+                      </div>
+                      </div></div></div>
+            </div>
+          </div>
+                          
         </main>
       </div>
     </Layout>

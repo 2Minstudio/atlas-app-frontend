@@ -6,6 +6,11 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 /**addtl CSS **/
+.myLogoLmp{
+  width: 120px;
+  margin-bottom: 35px;
+
+}
 .myLogoLp {
   width: 120px;
   margin-bottom: 35px;
@@ -20,6 +25,9 @@
   vertical-align: bottom !important;
 }
 
+.negative20{
+  margin-top: -20%;
+  }
 .align-mdl {
   margin-top:20% !important;
 }
@@ -40,16 +48,33 @@
   background-repeat: no-repeat;
 }
 
+.girlBg{
+  background-image:url("/image/bg/Lastfold.png");
+  background-position:top right;
+  background-repeat:no-repeat;
+}
+
 .Aicon{
   width:25px;
   height:25px;
   margin:15px 10px;
 }
 
+.Auser{
+  width:25px;
+  height:25px;
+  margin:15px 0 15px 10px;
+}
+
 .Aicon5x{
   width:125px;
   height:125px;
   margin:15px 10px;
+}
+.Indicator{
+margin-top:30px;
+margin-left:-5px;
+
 }
 
 :root {
@@ -75,7 +100,6 @@
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
   --bs-font-sans-serif:'Montserrat', sans-serif;
-  
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
@@ -6397,7 +6421,7 @@ textarea.form-control-lg {
 }
 
 .shadow {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25) !important;
 }
 
 .shadow-sm {

@@ -9,9 +9,9 @@ export default function Home() {
           <main className={styles.main}>
           <div class="container-fluid">
             <div class="container">
-                <div class="row">  
+                <div class="row align-items-center">  
 
-                <div class="col p-5 mb-5">
+                <div class="col-12 col-sm-12 col-md-6 mb-5 pt-5">
                 
                 <img class="img-fluid myLogoLp" src="image/logo.png"></img><b class="text-success">Academy</b>
                 
@@ -33,7 +33,7 @@ export default function Home() {
 <p class="small-text-14 mt-0"><a href="#">Back to Login</a></p>
 </div>
             </div>
-            <div class="col">
+            <div class="col-12 col-sm-12 col-md-6">
             <img class="img-fluid" src="image/landingpg/forgot.png"></img>
             </div>
             </div>

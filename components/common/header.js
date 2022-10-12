@@ -3,9 +3,10 @@ import React from "react";
 
 import styles from "../../styles/Home.module.css";
 
+
 const Header = () => {
   return (
-    <header>
+    <header class="bg-light pb-1">
       
   <div class="container pt-5">
      
@@ -18,8 +19,8 @@ const Header = () => {
             <ul class="nav">
               <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"> Take Eligibility Test </a></li>
               <li class="nav-item"><a class="nav-link" href="#"> Enquire Now </a></li>
-              <li class="nav-item"><a class="nav-link" href="#"> Login </a></li>
-              <li class="nav-item"><a class="nav-link" href="#"> Sign Up </a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><button class="btn px-4 btn-md btn-outline-success rounded-pill"> Login </button></a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><button class="btn px-4 btn-md btn-success rounded-pill"> Sign Up </button></a></li>
             </ul>
           </p>
 

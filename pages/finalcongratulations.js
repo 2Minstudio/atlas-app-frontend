@@ -26,14 +26,14 @@ export default function Home() {
         <main className={styles.main}>
           <div class="container-fluid bg-light p-5">
             <div className="container  rounded rounded-10">
-              <div class="row bg-white rounded-10">
-                <div class="col p-5 ">
+              <div class="row bg-white rounded-10 align-items-center">
+                <div class="col-12 col-sm-12 col-md-6 p-5 ">
                   
                   <div class="row">
                   <FontAwesomeIcon class="Aicon5x text-warning my-4" icon={faThumbsUp} />
                   </div>
                 </div>
-                <div class="col p-5">
+                <div class="col-12 col-sm-12 col-md-6 p-5">
                   <div class="rounded-10">
                     <div class="row justify-content-center">
                     <h2 class="py-4">Congratulations, You are one step ahead in becoming a Chiropractor.</h2>

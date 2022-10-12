@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Footer from "./footer";
-import Header from "./header";
+import Headerlanding from "./headerlanding";
 
 export default function ({ children }) {
   return (
@@ -11,7 +11,7 @@ export default function ({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-        <Header/>
+        <Headerlanding/>
         <main>{children}</main>
         
       </body>

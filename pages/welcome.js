@@ -11,14 +11,14 @@ export default function Home() {
             <div class="container">
                 <div class="row">  
 
-                <div class="col p-5 mb-5">
+                <div class="col-12 col-sm-12 col-md-6 py-5 mb-5">
                 
                 <img class="img-fluid myLogoLp" src="image/logo.png"></img><b class="text-success">Academy</b>
                 
                 
 <h2 class="mb-2 mt-5">Welcome Back!!</h2>
 <h4 class="mb-5">Please sign in to your account</h4>
-<form>
+<form class="pe-5">
 <div class="mb-3">
   <input type="email" class="form-control border-0 border-bottom border-dark rounded-0" id="exampleFormControlInput1" placeholder="Email or Phone Number"></input>
 </div>
@@ -47,7 +47,7 @@ export default function Home() {
 <p class="small-text-14 mt-0">New on our platform? <a href="#">Create an account</a></p>
 </div>
             </div>
-            <div class="col">
+            <div class="col-12 col-sm-12 col-md-6">
             <img class="img-fluid" src="image/landingpg/welcome.png"></img>
             </div>
             </div>

@@ -26,8 +26,8 @@ export default function Home() {
         <main className={styles.main}>
           <div class="container-fluid bg-light p-5">
             <div className="container  rounded rounded-10">
-              <div class="row bg-white rounded-10">
-                <div class="col p-5 ">
+              <div class="row bg-white rounded-10 align-items-center">
+                <div class="col-12 p-5 ">
                   <div class="row border-bottom border-dark mb-5">
                     <div class="col">
                       <p>Chiropractor Course Eligibility Test</p>
@@ -43,7 +43,7 @@ export default function Home() {
                     <p>1. Here is the 1st question to answer</p>
                   </div>
                   <div class="row">
-                    <div class="col-3">
+                    <div class="col-12 col-sm-6 col-md-3">
                       <div class="form-check">
                         <input
                           class="form-check-input"

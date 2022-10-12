@@ -2,7 +2,6 @@ import Image from "next/image";
 import Banner from "../../components/common/banner";
 import Layout from "../../components/common/layout";
 import styles from "../../styles/Home.module.css";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserPlus,
@@ -17,6 +16,7 @@ import {
   faLinkedin,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+
 import LayoutC from "../../components/common/layoutC";
 export default function Home() {
   return (
@@ -24,10 +24,10 @@ export default function Home() {
       <div className={styles}>
         <main className={styles.main}>
           
-          <div class="container-fluid bg-light p-5">
+          <div class="container-fluid bg-light py-5">
             <div className="container  rounded rounded-10">
               <div class="row">
-                <div class="col p-5 bg-white rounded-10">
+                <div class="col-12 col-sm-12 col-md-6 p-5 bg-white rounded-10">
 <h2 class="py-5">Choose Your Payment method</h2>
 <div class="row">
 <div class="form-check pb-4">
@@ -59,11 +59,11 @@ export default function Home() {
 </div>
 
                 </div>
-                <div class="col p-5">
+                <div class="col-12 col-sm-12 col-md-6 p-5">
                     <div class="rounded-10">
                    <p class="text-center pt-5 pb-3">Billing Details</p> 
                    <div class="row justify-content-center mb-3 ">
-                    <button class="btn bg-success  rounded-10 col-8 p-5 mb-5"> Eligibility Test </button> 
+                    <button class="btn btn-lg border shadow-sm border-opacity-10 rounded-10 col-8 p-5 mb-5"> Eligibility Test </button> 
                     </div>
                    <div class="row mb-4 justify-content-center px-5">
                     <div class="col-6 ">

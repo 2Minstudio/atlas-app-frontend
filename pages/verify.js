@@ -10,7 +10,7 @@ export default function Home() {
           <div class="container-fluid">
             <div class="container">
               <div class="row align-middle">
-                <div class="col p-5 mb-5">
+                <div class="col-12 col-sm-12 col-md-6 py-5 mb-5">
                   <img class="img-fluid myLogoLp" src="image/logo.png"></img>
                   <b class="text-success">Academy</b>
 <div class="row">
@@ -25,7 +25,7 @@ export default function Home() {
                   </div>
                   </div>
                 </div>
-                <div class="col">
+                <div class="col-12 col-sm-12 col-md-6 align-items-center">
                   <img class="img-fluid" src="image/landingpg/register.png"></img>
                 </div>
               </div>
