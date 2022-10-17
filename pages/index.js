@@ -113,7 +113,11 @@ export default function Home() {
               <div class="container">
                 <div class="row  mb-3">
                   <div class="col-sm-12 col-md-4">
-                    <Image class="img-fluid" alt="Doctor Image" src="image/doctorImage.png" />
+                    <Image
+                      class="img-fluid"
+                      alt="Doctor Image"
+                      src="image/doctorImage.png"
+                    />
                   </div>
                   <div class="col-sm-12 col-md-8">
                     <h2 class="text-success pt-5">
@@ -121,9 +125,9 @@ export default function Home() {
                     </h2>
                     <p>Director of Atlas Chiropractic & Wellness</p>
                     <p class="pb-4">
-                    &quot;Being one of the few licensed and certified Chiropractors
-                      in India is a privilege and a responsibility that I take
-                      very seriously.
+                      &quot;Being one of the few licensed and certified
+                      Chiropractors in India is a privilege and a responsibility
+                      that I take very seriously.
                       <br></br>
                       <br></br>
                       My dream was unique - I wanted to bring my talents to
@@ -135,7 +139,8 @@ export default function Home() {
                         <div class="row pb-4 pb-md-0">
                           <div class="col-3">
                             <Image
-                              class="img-fluid" alt="chiropractor-image"
+                              class="img-fluid"
+                              alt="chiropractor-image"
                               src="image/Top chiroprator.png"
                             />
                           </div>
@@ -149,7 +154,11 @@ export default function Home() {
                       <div class="col-sm-12 col-md-6">
                         <div class="row">
                           <div class="col-3">
-                            <Image class="img-fluid" alt="Member Image" src="image/member.png" />
+                            <Image
+                              class="img-fluid"
+                              alt="Member Image"
+                              src="image/member.png"
+                            />
                           </div>
                           <div class="col-9">
                             <p>
@@ -173,7 +182,11 @@ export default function Home() {
             <div class="container text-center">
               <div class="row">
                 <div class="col">
-                  <Image class="img-fluid p-5" alt="Doctors-image" src="image/Ellipse 754.png"></Image>
+                  <Image
+                    class="img-fluid p-5"
+                    alt="Doctors-image"
+                    src="image/Ellipse 754.png"
+                  ></Image>
 
                   <h3>
                     <b> Name of the Doctor</b>
@@ -182,7 +195,11 @@ export default function Home() {
                   <p>Description</p>
                 </div>
                 <div class="col">
-                  <Image class="img-fluid p-5" alt="Doctors-image" src="image/Ellipse 754.png"></Image>
+                  <Image
+                    class="img-fluid p-5"
+                    alt="Doctors-image"
+                    src="image/Ellipse 754.png"
+                  ></Image>
 
                   <h3>
                     <b> Name of the Doctor</b>
@@ -191,7 +208,11 @@ export default function Home() {
                   <p>Description</p>
                 </div>
                 <div class="col">
-                  <Image class="img-fluid p-5" alt="Doctors-image" src="image/Ellipse 754.png"></Image>
+                  <Image
+                    class="img-fluid p-5"
+                    alt="Doctors-image"
+                    src="image/Ellipse 754.png"
+                  ></Image>
 
                   <h3>
                     <b> Name of the Doctor</b>
@@ -216,8 +237,14 @@ export default function Home() {
                   >
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <Image alt="Carousel" src="..." class="d-block w-100" alt=""></Image>
+                        <Image
+                          alt="Carousel"
+                          src="..."
+                          class="d-block w-100"
+                          alt=""
+                        ></Image>
                       </div>
+                      git add .
                     </div>
                     <button
                       class="carousel-control-prev"
