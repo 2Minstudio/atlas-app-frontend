@@ -63,7 +63,7 @@ export default function Home() {
                           id="flexRadioDefault1"
                         ></input>
                         <label class="form-check-label" for="flexRadioDefault1">
-                        Option 2
+                          Option 2
                         </label>
                       </div>
                     </div>
@@ -93,13 +93,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-
-
-                  
-
-                 
                 </div>
-                
               </div>
             </div>
           </div>

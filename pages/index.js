@@ -10,13 +10,7 @@ import {
   faStar,
   faSuitcaseMedical,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-  faLinkedin,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+
 export default function Home() {
   return (
     <Layout>
@@ -241,7 +235,6 @@ export default function Home() {
                           alt="Carousel"
                           src="..."
                           class="d-block w-100"
-                          alt=""
                         ></Image>
                       </div>
                       git add .

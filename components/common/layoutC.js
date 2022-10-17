@@ -1,8 +1,7 @@
 import Head from "next/head";
-import Footer from "./footer";
 import Headerlanding from "./headerlanding";
 
-export default function ({ children }) {
+export default function LayoutC({ children }) {
   return (
     <html>
       <Head>
@@ -11,9 +10,8 @@ export default function ({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-        <Headerlanding/>
+        <Headerlanding />
         <main>{children}</main>
-        
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -13,7 +14,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <a
         href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank" rel="noreferrer"
+        target="_blank"
         rel="noopener noreferrer"
       ></a>
 
@@ -35,54 +36,76 @@ export default function Footer() {
             </span>
           </div>
           <div class="col text-end text-success d-none d-md-block">
-            <a href="https://www.facebook.com/atlaschiroindia/" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.facebook.com/atlaschiroindia/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FontAwesomeIcon class="Aicon" icon={faFacebook} />
             </a>
-            <a href="https://twitter.com/atlaschiroindia" target="_blank" rel="noreferrer">
+            <a
+              href="https://twitter.com/atlaschiroindia"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FontAwesomeIcon class="Aicon" icon={faTwitter} />
             </a>
             <a
               href="https://www.instagram.com/atlaschiroindia/?hl=en"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               <FontAwesomeIcon class="Aicon" icon={faInstagram} />
             </a>
             <a
               href="https://www.linkedin.com/company/atlas-chiropractic-wellness/"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               <FontAwesomeIcon class="Aicon" icon={faLinkedin} />
             </a>
             <a
               href="https://www.youtube.com/channel/UCqOyB_s3MiK3zyH6WhRgJFQ"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               <FontAwesomeIcon class="Aicon" icon={faYoutube} />
             </a>
           </div>
 
           <div class="col text-end text-success d-block d-md-none text-center">
-            <a href="https://www.facebook.com/atlaschiroindia/" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.facebook.com/atlaschiroindia/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FontAwesomeIcon class="Aicon" icon={faFacebook} />
             </a>
-            <a href="https://twitter.com/atlaschiroindia" target="_blank" rel="noreferrer">
+            <a
+              href="https://twitter.com/atlaschiroindia"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FontAwesomeIcon class="Aicon" icon={faTwitter} />
             </a>
             <a
               href="https://www.instagram.com/atlaschiroindia/?hl=en"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               <FontAwesomeIcon class="Aicon" icon={faInstagram} />
             </a>
             <a
               href="https://www.linkedin.com/company/atlas-chiropractic-wellness/"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               <FontAwesomeIcon class="Aicon" icon={faLinkedin} />
             </a>
             <a
               href="https://www.youtube.com/channel/UCqOyB_s3MiK3zyH6WhRgJFQ"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               <FontAwesomeIcon class="Aicon" icon={faYoutube} />
             </a>
