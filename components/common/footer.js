@@ -12,12 +12,6 @@ import styles from "../../styles/Home.module.css";
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      ></a>
-
       <div class="container p-5 my-5">
         <div class="row row-cols-1 row-cols-md-2">
           <div class="col d-none d-md-block">
@@ -25,7 +19,7 @@ export default function Footer() {
               {" "}
               <Image width="100px" alt="Logo" src="/image/logo.png" />{" "}
               <span class="small-text-14 align-bottom">
-                Copyright © 2020. All rights reserved. Made in India
+                Copyright © 2022. All rights reserved. Made in India
               </span>
             </p>
           </div>
