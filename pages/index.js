@@ -110,7 +110,9 @@ export default function Home() {
                     <Image
                       class="img-fluid"
                       alt="Doctor Image"
-                      src="image/doctorImage.png"
+                      src="/image/doctorImage.png"
+                      width={100}
+                      height={100}
                     />
                   </div>
                   <div class="col-sm-12 col-md-8">
@@ -135,7 +137,9 @@ export default function Home() {
                             <Image
                               class="img-fluid"
                               alt="chiropractor-image"
-                              src="image/Top chiroprator.png"
+                              src="/image/Top chiroprator.png"
+                              width={100}
+                              height={100}
                             />
                           </div>
                           <div class="col-9 pt-4">
@@ -151,7 +155,9 @@ export default function Home() {
                             <Image
                               class="img-fluid"
                               alt="Member Image"
-                              src="image/member.png"
+                              src="/image/member.png"
+                              width={100}
+                              height={100}
                             />
                           </div>
                           <div class="col-9">
@@ -179,7 +185,9 @@ export default function Home() {
                   <Image
                     class="img-fluid p-5"
                     alt="Doctors-image"
-                    src="image/Ellipse 754.png"
+                    src="/image/Ellipse 754.png"
+                    width={100}
+                    height={100}
                   ></Image>
 
                   <h3>
@@ -192,7 +200,9 @@ export default function Home() {
                   <Image
                     class="img-fluid p-5"
                     alt="Doctors-image"
-                    src="image/Ellipse 754.png"
+                    src="/image/Ellipse 754.png"
+                    width={100}
+                    height={100}
                   ></Image>
 
                   <h3>
@@ -205,7 +215,9 @@ export default function Home() {
                   <Image
                     class="img-fluid p-5"
                     alt="Doctors-image"
-                    src="image/Ellipse 754.png"
+                    src="/image/Ellipse 754.png"
+                    width={100}
+                    height={100}
                   ></Image>
 
                   <h3>
@@ -233,11 +245,9 @@ export default function Home() {
                       <div class="carousel-item active">
                         <Image
                           alt="Carousel"
-                          src="..."
                           class="d-block w-100"
                         ></Image>
                       </div>
-                      git add .
                     </div>
                     <button
                       class="carousel-control-prev"

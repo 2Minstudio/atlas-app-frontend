@@ -14,6 +14,7 @@ const Header = () => {
           >
             <Image
               width="150px"
+              height={100}
               class="ps-5 myLogo"
               alt="Logo"
               src="/image/logo.png"

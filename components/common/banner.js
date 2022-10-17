@@ -45,7 +45,7 @@ export default function Banner() {
                 height="100%"
                 width="100%"
                 alt="Banner Image"
-                src="image/bg/headerimageright.png"
+                src="/image/bg/headerimageright.png"
               ></Image>
             </div>
           </div>

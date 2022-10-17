@@ -17,6 +17,7 @@ const Headerlanding = () => {
               <Image
                 width="150px"
                 alt="Logo"
+                height={100}
                 className="ps-5 myLogo"
                 src="/image/logo.png"
               />{" "}

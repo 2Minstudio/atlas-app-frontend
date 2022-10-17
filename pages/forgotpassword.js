@@ -13,7 +13,7 @@ export default function Home() {
 
                 <div class="col-12 col-sm-12 col-md-6 mb-5 pt-5">
                 
-                <Image class="Img-fluid myLogoLp" alt="logo" src="/image/logo.png"></Image><b class="text-success">Academy</b>
+                <Image height={100} width={100} class="Img-fluid myLogoLp" alt="logo" src="/image/logo.png"></Image><b class="text-success">Academy</b>
                 
                 
 <h2 class="mb-5 mt-5">Forgot Password?</h2>
