@@ -13,7 +13,7 @@ export default function Home() {
 
                 <div class="col-12 col-sm-12 col-md-6 py-5 mb-5">
                 
-                <img class="img-fluid myLogoLp" src="image/logo.png"></img><b class="text-success">Academy</b>
+                <Image class="img-fluid myLogoLp" alt="Logo" src="image/logo.png"></Image><b class="text-success">Academy</b>
                 
                 
 <h2 class="mb-2 mt-5">Welcome Back!!</h2>
@@ -48,7 +48,7 @@ export default function Home() {
 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-6">
-            <img class="img-fluid" src="image/landingpg/welcome.png"></img>
+            <Image class="img-fluid" alt="Welcome Image" src="image/landingpg/welcome.png"></Image>
             </div>
             </div>
             </div>

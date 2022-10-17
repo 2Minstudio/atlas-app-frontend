@@ -13,11 +13,11 @@ export default function Home() {
 
                 <div class="col-12 col-sm-12 col-md-6 mb-5 pt-5">
                 
-                <img class="img-fluid myLogoLp" src="image/logo.png"></img><b class="text-success">Academy</b>
+                <Image class="Img-fluid myLogoLp" alt="logo" src="image/logo.png"></Image><b class="text-success">Academy</b>
                 
                 
 <h2 class="mb-5 mt-5">Forgot Password?</h2>
-<h4 class="mb-5">Enter your email or phone number and we'll send you instructions to reset your password.</h4>
+<h4 class="mb-5">Enter your email or phone number and we&apos;ll send you instructions to reset your password.</h4>
 <form>
 <div class="mb-3">
   <input type="email" class="form-control border-0 border-bottom border-dark rounded-0" id="exampleFormControlInput1" placeholder="Email or Phone Number"></input>
@@ -34,7 +34,7 @@ export default function Home() {
 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-6">
-            <img class="img-fluid" src="image/landingpg/forgot.png"></img>
+            <Image class="Img-fluid" alt="forgot-image" src="image/landingpg/forgot.png"></Image>
             </div>
             </div>
             </div>

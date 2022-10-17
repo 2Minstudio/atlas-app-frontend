@@ -14,8 +14,8 @@ const Headerlanding = () => {
               href="index.html"
               className="d-flex align-items-center text-dark text-decoration-none"
             >
-              <img
-                width="150px"
+              <Image
+                width="150px" alt="Logo"
                 className="ps-5 myLogo"
                 src="/image/logo.png"
               />{" "}

@@ -13,7 +13,7 @@ export default function Home() {
 
                 <div class="col-12 col-sm-12 col-md-6 mb-5 pt-5">
                 
-                <img class="img-fluid myLogoLp" src="image/logo.png"></img><b class="text-success">Academy</b>
+                <Image class="img-fluid myLogoLp" alt="CLogo"  src="image/logo.png"></Image><b class="text-success">Academy</b>
                 
                 
 <h2 class="mb-5 mt-5">Check for OTP</h2>
@@ -41,7 +41,7 @@ export default function Home() {
 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-6">
-            <img class="img-fluid" src="image/landingpg/forgot.png"></img>
+            <Image class="img-fluid" alt="Forgot Image"  src="image/landingpg/forgot.png"></Image>
             </div>
             </div>
             </div>

@@ -42,7 +42,7 @@ export default function Banner() {
   </div>
   <div class="col-lg-7 col-md-7 col-sm-6 pt-5">
   <div class="row">
-    <img class="image-fluid negative20 align-bottom" height="100%" width="100%" src="image/bg/headerimageright.png"></img>
+    <Image class="image-fluid negative20 align-bottom" height="100%" width="100%" alt="Banner Image" src="image/bg/headerimageright.png"></Image>
   </div>
   </div>
 </div>

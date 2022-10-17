@@ -11,7 +11,7 @@ export default function Home() {
             <div class="container">
               <div class="row align-middle">
                 <div class="col-12 col-sm-12 col-md-6 py-5 mb-5">
-                  <img class="img-fluid myLogoLp" src="image/logo.png"></img>
+                  <Image class="img-fluid myLogoLp" alt="Logo"  src="image/logo.png"></Image>
                   <b class="text-success">Academy</b>
 <div class="row">
                   <h2 class="mb-5 mt-5">Verify your email</h2>
@@ -20,13 +20,13 @@ export default function Home() {
                   </h4>
                   <div class="row">
                     <p class="mt-0">
-                      Didn't receive an email? <a href="#">Resend</a>
+                      Didn&apos;t receive an email? <a href="#">Resend</a>
                     </p>
                   </div>
                   </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-6 align-items-center">
-                  <img class="img-fluid" src="image/landingpg/register.png"></img>
+                  <Image class="img-fluid" alt="Regidter Image"  src="image/landingpg/register.png"></Image>
                 </div>
               </div>
             </div>

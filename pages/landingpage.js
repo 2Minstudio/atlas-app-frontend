@@ -74,10 +74,10 @@ export default function Home() {
                   </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6">
-                  <img
-                    class="img-fluid"
+                  <Image
+                    class="img-fluid" alt="Register Image"
                     src="image/landingpg/register.png"
-                  ></img>
+                  ></Image>
                 </div>
               </div>
             </div>
