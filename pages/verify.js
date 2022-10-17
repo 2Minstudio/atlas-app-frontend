@@ -11,7 +11,7 @@ export default function Home() {
             <div class="container">
               <div class="row align-middle">
                 <div class="col-12 col-sm-12 col-md-6 py-5 mb-5">
-                  <Image class="img-fluid myLogoLp" alt="Logo"  src="image/logo.png"></Image>
+                  <Image class="img-fluid myLogoLp" alt="Logo"  src="/image/logo.png"></Image>
                   <b class="text-success">Academy</b>
 <div class="row">
                   <h2 class="mb-5 mt-5">Verify your email</h2>
