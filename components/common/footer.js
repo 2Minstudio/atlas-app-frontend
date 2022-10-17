@@ -17,14 +17,14 @@ export default function Footer() {
           <div class="col d-none d-md-block">
             <p>
               {" "}
-              <Image width="100px" alt="Logo" src="/image/logo.png" />{" "}
+              <Image width={100} height={100} alt="Logo" src="/image/logo.png" />{" "}
               <span class="small-text-14 align-bottom">
                 Copyright © 2022. All rights reserved. Made in India
               </span>
             </p>
           </div>
           <div class="col d-block d-md-none text-center">
-            <Image width="100px" alt="Logo" src="/image/logo.png" />{" "}
+            <Image width={100} height={100} alt="Logo" src="/image/logo.png" />{" "}
             <span class="small-text-14 align-bottom">
               <p> Copyright © 2020. All rights reserved. Made in India</p>
             </span>
