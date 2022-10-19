@@ -527,6 +527,11 @@
     "es-abstract" "^1.19.2"
     "es-shim-unscopables" "^1.0.0"
 
+"asap@~1.0.0":
+  "integrity" "sha512-Ej9qjcXY+8Tuy1cNqiwNMwFRXOy9UwgTeMA8LxreodygIPV48lx8PU1ecFxb5ZeU1DpMKxiq6vGLTxcitWZPbA=="
+  "resolved" "https://registry.npmjs.org/asap/-/asap-1.0.0.tgz"
+  "version" "1.0.0"
+
 "ast-types-flow@^0.0.7":
   "integrity" "sha512-eBvWn1lvIApYMhzQMsu9ciLfkBY499mFZlNqG+/9WR7PVlroQw0vG30cOQQbaKz3sCEc44TAOu2ykzqXSNnwag=="
   "resolved" "https://registry.npmjs.org/ast-types-flow/-/ast-types-flow-0.0.7.tgz"
@@ -558,6 +563,13 @@
   "integrity" "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="
   "resolved" "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
   "version" "1.0.2"
+
+"barrage@~1.0.0":
+  "integrity" "sha512-alvrHAJzg70wDtzXXhEY09m+vxHKn3DveFjaDDtb9E+aYxJpmhYN5RJGRWN3b+BdgaxdNdorLsql5w+/c93jQg=="
+  "resolved" "https://registry.npmjs.org/barrage/-/barrage-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "promise" "~3.2.0"
 
 "binary-extensions@^2.0.0":
   "integrity" "sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA=="
@@ -1227,6 +1239,15 @@
     "call-bind" "^1.0.2"
     "get-intrinsic" "^1.1.1"
 
+"github-basic@~2.1.0":
+  "integrity" "sha512-9lRpiCgsvsuWdT0qSL8DKqX5dkP7AwgWMNhJ2ecAuyHXPuZA3qcurohHrt9NACweQbLZCmUzPdVXlMjRmiA3eg=="
+  "resolved" "https://registry.npmjs.org/github-basic/-/github-basic-2.1.1.tgz"
+  "version" "2.1.1"
+  dependencies:
+    "barrage" "~1.0.0"
+    "parse-links" "0.1.0"
+    "promise" "~4.0.0"
+
 "glob-parent@^5.1.2":
   "integrity" "sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow=="
   "resolved" "https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz"
@@ -1677,6 +1698,11 @@
   "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
   "version" "2.1.2"
 
+"ms@~0.6.2":
+  "integrity" "sha512-/pc3eh7TWorTtbvXg8je4GvrvEqCfH7PA3P7iW01yL2E53FKixzgMBaQi0NOPbMJqY34cBSvR0tZtmlTkdUG4A=="
+  "resolved" "https://registry.npmjs.org/ms/-/ms-0.6.2.tgz"
+  "version" "0.6.2"
+
 "ms@2.0.0":
   "integrity" "sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A=="
   "resolved" "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz"
@@ -1848,6 +1874,11 @@
     "json-parse-even-better-errors" "^2.3.0"
     "lines-and-columns" "^1.1.6"
 
+"parse-links@0.1.0":
+  "integrity" "sha512-vBVMrMveTu5gcqCmnhfCe/3njkVCozl6VtsCripdKpbgckC4785QgV/rFBSbsXOdSwpXnvQT6jeF/X0hKIvRxQ=="
+  "resolved" "https://registry.npmjs.org/parse-links/-/parse-links-0.1.0.tgz"
+  "version" "0.1.0"
+
 "path-exists@^4.0.0":
   "integrity" "sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w=="
   "resolved" "https://registry.npmjs.org/path-exists/-/path-exists-4.0.0.tgz"
@@ -1947,6 +1978,18 @@
   "resolved" "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz"
   "version" "1.2.1"
 
+"promise@~3.2.0":
+  "integrity" "sha512-Lkzs59qN06ZJAtCf9DT+ALIg/1V6iYQmrjrD+eq2V/xU74J/1JPIcgEj8fJOVKcOg7BdiIz+egzF8I3V3mlngQ=="
+  "resolved" "https://registry.npmjs.org/promise/-/promise-3.2.0.tgz"
+  "version" "3.2.0"
+
+"promise@~4.0.0":
+  "integrity" "sha512-yDlmTCe2bKIP1ib1Hl8UmrZirf7hzgaSvNcue+BDBpHiD435RE9bjMOivggLzQKnaUQB/e9q8MDXRrGR4xjb2Q=="
+  "resolved" "https://registry.npmjs.org/promise/-/promise-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "asap" "~1.0.0"
+
 "prop-types@^15.8.1":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
@@ -1955,6 +1998,15 @@
     "loose-envify" "^1.4.0"
     "object-assign" "^4.1.1"
     "react-is" "^16.13.1"
+
+"pull-request@^3.0.0":
+  "integrity" "sha512-cp7312DW6fzydvjopcHQ0ZdGqYdnZ7nznjykkvcAhegdKV6RPVfNi7HxlXS5q0Q2uwL/AE9ZHBPUW8q9Sq+VCg=="
+  "resolved" "https://registry.npmjs.org/pull-request/-/pull-request-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "github-basic" "~2.1.0"
+    "ms" "~0.6.2"
+    "promise" "~4.0.0"
 
 "punycode@^2.1.0":
   "integrity" "sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A=="
