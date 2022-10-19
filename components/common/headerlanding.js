@@ -27,13 +27,13 @@ const Headerlanding = () => {
             </a>
 
             <p className="pt-3 ms-md-auto pe-4 text-success">
-              Community &nbsp; &nbsp; <span class="text-dark">Siddanth</span>{" "}
+              Community &nbsp; &nbsp; <span className="text-dark">Siddanth</span>{" "}
               <FontAwesomeIcon
-                class="Auser text-primary position-relative"
+                className="Auser text-primary position-relative"
                 icon={faCircleUser}
               />
-              <span class="Indicator position-absolute translate-left p-1 bg-success border border-light rounded-circle">
-                <span class="visually-hidden">New alerts</span>
+              <span className="Indicator position-absolute translate-left p-1 bg-success border border-light rounded-circle">
+                <span className="visually-hidden">New alerts</span>
               </span>
             </p>
           </div>

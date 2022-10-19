@@ -23,12 +23,12 @@ export default function Home() {
     <LayoutC>
       <div className={styles}>
         <main className={styles.main}>
-          <div class="container-fluid bg-light p-5">
+          <div className="container-fluid bg-light p-5">
             <div className="container  rounded rounded-10">
-              <div class="row bg-white rounded-10 align-items-center">
-                <div class="col-12 col-sm-12 col-md-6 p-5 ">
-                  <h2 class="py-5">Hi Siddanth</h2>
-                  <div class="row">
+              <div className="row bg-white rounded-10 align-items-center">
+                <div className="col-12 col-sm-12 col-md-6 p-5 ">
+                  <h2 className="py-5">Hi Siddanth</h2>
+                  <div className="row">
                     <p>
                       Congratulations<br></br>
                       The Eligibility test is all yours. Get qualified and
@@ -36,10 +36,10 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-6 p-5">
-                  <div class="rounded-10">
-                    <div class="row justify-content-center">
-                      <button class="btn bg-success rounded-10 col-8 col-md-4 mb-5 text-white ">
+                <div className="col-12 col-sm-12 col-md-6 p-5">
+                  <div className="rounded-10">
+                    <div className="row justify-content-center">
+                      <button className="btn bg-success rounded-10 col-8 col-md-4 mb-5 text-white ">
                         {" "}
                         Take the Test{" "}
                       </button>

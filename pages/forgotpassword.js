@@ -7,20 +7,20 @@ export default function Home() {
       <layoutB>
         <div className={styles}>
           <main className={styles.main}>
-          <div class="container-fluid">
-            <div class="container">
-                <div class="row align-items-center">  
+          <div className="container-fluid">
+            <div className="container">
+                <div className="row align-items-center">  
 
-                <div class="col-12 col-sm-12 col-md-6 mb-5 pt-5">
+                <div className="col-12 col-sm-12 col-md-6 mb-5 pt-5">
                 
-                <Image height={100} width={100} class="Img-fluid myLogoLp" alt="logo" src="/image/logo.png"></Image><b class="text-success">Academy</b>
+                <Image height={100} width={100} className="Img-fluid myLogoLp" alt="logo" src="/image/logo.png"></Image><b className="text-success">Academy</b>
                 
                 
-<h2 class="mb-5 mt-5">Forgot Password?</h2>
-<h4 class="mb-5">Enter your email or phone number and we&apos;ll send you instructions to reset your password.</h4>
+<h2 className="mb-5 mt-5">Forgot Password?</h2>
+<h4 className="mb-5">Enter your email or phone number and we&apos;ll send you instructions to reset your password.</h4>
 <form>
-<div class="mb-3">
-  <input type="email" class="form-control border-0 border-bottom border-dark rounded-0" id="exampleFormControlInput1" placeholder="Email or Phone Number"></input>
+<div className="mb-3">
+  <input type="email" className="form-control border-0 border-bottom border-dark rounded-0" id="exampleFormControlInput1" placeholder="Email or Phone Number"></input>
 </div>
 
 
@@ -28,13 +28,13 @@ export default function Home() {
 
 </form>
 
-<div class="row text-center justify-content-center">
-<button class="btn btn-success rounded-pill mt-5 col-5 align-middle my-5"> Send Reset Link</button>
-<p class="small-text-14 mt-0"><a href="#">Back to Login</a></p>
+<div className="row text-center justify-content-center">
+<button className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5"> Send Reset Link</button>
+<p className="small-text-14 mt-0"><a href="#">Back to Login</a></p>
 </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-6">
-            <Image class="Img-fluid" alt="forgot-image" src="image/landingpg/forgot.png"></Image>
+            <div className="col-12 col-sm-12 col-md-6">
+            <Image className="Img-fluid" alt="forgot-image" src="image/landingpg/forgot.png"></Image>
             </div>
             </div>
             </div>

@@ -24,70 +24,70 @@ export default function Home() {
     <LayoutC>
       <div className={styles}>
         <main className={styles.main}>
-          <div class="container-fluid bg-light p-5">
+          <div className="container-fluid bg-light p-5">
             <div className="container  rounded rounded-10">
-              <div class="row bg-white rounded-10 align-items-center">
-                <div class="col-12 p-5 ">
-                  <div class="row border-bottom border-dark mb-5">
-                    <div class="col">
+              <div className="row bg-white rounded-10 align-items-center">
+                <div className="col-12 p-5 ">
+                  <div className="row border-bottom border-dark mb-5">
+                    <div className="col">
                       <p>Chiropractor Course Eligibility Test</p>
                     </div>
-                    <div class="col text-center">
-                      <p class="pb-0 mb-0">10 : 45 </p>
+                    <div className="col text-center">
+                      <p className="pb-0 mb-0">10 : 45 </p>
                       <p>
-                        <span class="small-text-12">Remaining Time</span>
+                        <span className="small-text-12">Remaining Time</span>
                       </p>
                     </div>
                   </div>
-                  <div class="row">
+                  <div className="row">
                     <p>1. Here is the 1st question to answer</p>
                   </div>
-                  <div class="row">
-                    <div class="col-12 col-sm-6 col-md-3">
-                      <div class="form-check">
+                  <div className="row">
+                    <div className="col-12 col-sm-6 col-md-3">
+                      <div className="form-check">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="radio"
                           name="flexRadioDefault"
                           id="flexRadioDefault1"
                         ></input>
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <label className="form-check-label" for="flexRadioDefault1">
                           Option 1
                         </label>
                       </div>
-                      <div class="form-check">
+                      <div className="form-check">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="radio"
                           name="flexRadioDefault"
                           id="flexRadioDefault1"
                         ></input>
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <label className="form-check-label" for="flexRadioDefault1">
                           Option 2
                         </label>
                       </div>
                     </div>
-                    <div class="col">
-                      <div class="form-check">
+                    <div className="col">
+                      <div className="form-check">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="radio"
                           name="flexRadioDefault"
                           id="flexRadioDefault2"
                           checked
                         ></input>
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <label className="form-check-label" for="flexRadioDefault2">
                           Option 3
                         </label>
                       </div>
-                      <div class="form-check">
+                      <div className="form-check">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="radio"
                           name="flexRadioDefault"
                           id="flexRadioDefault1"
                         ></input>
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <label className="form-check-label" for="flexRadioDefault1">
                           Option 4
                         </label>
                       </div>

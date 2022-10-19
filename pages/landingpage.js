@@ -7,75 +7,75 @@ export default function Home() {
     <layoutB>
       <div className={styles}>
         <main className={styles.main}>
-          <div class="container-fluid">
-            <div class="container">
-              <div class="row align-items-center">
-                <div class="col-12 col-sm-6 col-md-6 py-5">
-                  <h2 class="mb-5">
+          <div className="container-fluid">
+            <div className="container">
+              <div className="row align-items-center">
+                <div className="col-12 col-sm-6 col-md-6 py-5">
+                  <h2 className="mb-5">
                     Get 6 Months of Paid Internship After Finishing The Course.
                   </h2>
-                  <h4 class="mb-5">Signup & Get Started!</h4>
+                  <h4 className="mb-5">Signup & Get Started!</h4>
                   <form>
-                    <div class="mb-3">
+                    <div className="mb-3">
                       <input
                         type="email"
-                        class="form-control border-0 border-bottom border-dark rounded-0"
+                        className="form-control border-0 border-bottom border-dark rounded-0"
                         id="exampleFormControlInput1"
                         placeholder="Siddanth"
                       ></input>
                     </div>
-                    <div class="mb-3">
+                    <div className="mb-3">
                       <input
                         type="email"
-                        class="form-control border-0 border-bottom border-dark rounded-0 mt-4"
+                        className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
                         id="exampleFormControlInput1"
                         placeholder="Email"
                       ></input>
                     </div>
-                    <div class="mb-3">
+                    <div className="mb-3">
                       <input
                         type="email"
-                        class="form-control border-0 border-bottom border-dark rounded-0 mt-4"
+                        className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
                         id="exampleFormControlInput1"
                         placeholder="Phone Number"
                       ></input>
                     </div>
-                    <div class="mb-3">
+                    <div className="mb-3">
                       <input
                         type="email"
-                        class="form-control border-0 border-bottom border-dark rounded-0 mt-4"
+                        className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
                         id="exampleFormControlInput1"
                         placeholder="Password"
                       ></input>
                     </div>
 
-                    <div class="form-check small-text-14 mt-5">
+                    <div className="form-check small-text-14 mt-5">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value=""
                         id="flexCheckDefault"
                       ></input>
-                      <label class="form-check-label" for="flexCheckDefault">
+                      <label className="form-check-label" for="flexCheckDefault">
                         I agree to <a href="#">privacy policy</a> &{" "}
                         <a href="#">terms conditions</a>
                       </label>
                     </div>
                   </form>
 
-                  <div class="row text-center justify-content-center">
-                    <button class="btn btn-success rounded-pill mt-5 col-5 align-middle my-5">
+                  <div className="row text-center justify-content-center">
+                    <button className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5">
                       {" "}
                       Signup
                     </button>
-                    <p class="small-text-14 mt-0">
+                    <p className="small-text-14 mt-0">
                       Already have an account? Sign in instead
                     </p>
                   </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-6">
+                <div className="col-12 col-sm-6 col-md-6">
                   <Image
-                    class="img-fluid" alt="Register Image"
+                    className="img-fluid" alt="Register Image"
                     src="image/landingpg/register.png"
                   ></Image>
                 </div>

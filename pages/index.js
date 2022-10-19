@@ -17,9 +17,9 @@ export default function Home() {
       <div className={styles}>
         <main className={styles.main}>
           <Banner></Banner>
-          <div class="container-fluid pt-5 pb-5">
+          <div className="container-fluid pt-5 pb-5">
             <div className="container pt-5 pb-5 mt-5 mb-5 whyjoinBg">
-              <div class="row pt-5">
+              <div className="row pt-5">
                 <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                   <h2>
                     <b>Why join Atlas chiropractic course?</b>
@@ -34,27 +34,27 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="col">
-                  <div class="row text-success">
-                    <div class="col text-center pt-0">
-                      <span class="bg-success rounded rounded-circle py-3 px-2">
+                  <div className="row text-success">
+                    <div className="col text-center pt-0">
+                      <span className="bg-success rounded rounded-circle py-3 px-2">
                         <FontAwesomeIcon
-                          class="Aicon text-white fa-2x"
+                          className="Aicon text-white fa-2x"
                           icon={faUserPlus}
                         />
                       </span>
-                      <p class="pt-4">
+                      <p className="pt-4">
                         {" "}
                         Live Training with <br></br>Atlas Chiropractors
                       </p>
                     </div>
-                    <div class="col text-center pt-0">
-                      <span class="bg-success rounded rounded-circle py-3 px-2">
+                    <div className="col text-center pt-0">
+                      <span className="bg-success rounded rounded-circle py-3 px-2">
                         <FontAwesomeIcon
-                          class="Aicon text-white fa-2x"
+                          className="Aicon text-white fa-2x"
                           icon={faVideo}
                         />
                       </span>
-                      <p class="pt-4">
+                      <p className="pt-4">
                         {" "}
                         400 Hours of Course + <br></br>Paid Internship of 6
                         Months
@@ -62,27 +62,27 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div class="row text-success">
-                    <div class="col text-center pt-5">
-                      <span class="bg-success rounded rounded-circle py-3 px-2">
+                  <div className="row text-success">
+                    <div className="col text-center pt-5">
+                      <span className="bg-success rounded rounded-circle py-3 px-2">
                         <FontAwesomeIcon
-                          class="Aicon text-white fa-2x"
+                          className="Aicon text-white fa-2x"
                           icon={faStar}
                         />
                       </span>
-                      <p class="pt-4">
+                      <p className="pt-4">
                         {" "}
                         Become a Certified <br></br> Chiropractor in India
                       </p>
                     </div>
-                    <div class="col text-center pt-5">
-                      <span class="bg-success rounded rounded-circle py-3 px-2">
+                    <div className="col text-center pt-5">
+                      <span className="bg-success rounded rounded-circle py-3 px-2">
                         <FontAwesomeIcon
-                          class="Aicon text-white fa-2x"
+                          className="Aicon text-white fa-2x"
                           icon={faSuitcaseMedical}
                         />
                       </span>
-                      <p class="pt-4">
+                      <p className="pt-4">
                         {" "}
                         Get Placed with Atlas <br></br>Chiropractic & Wellness
                         Care
@@ -93,34 +93,34 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div class="container-fluid">
-            <div class="container pt-5 pb-5">
-              <div class="col text-center">
+          <div className="container-fluid">
+            <div className="container pt-5 pb-5">
+              <div className="col text-center">
                 <h2>
                   <b>Learn From One Of The Few Licensed Chiropractors</b>
                 </h2>
               </div>
             </div>
           </div>
-          <div class="container-fluid">
-            <div class="content-block-3">
-              <div class="container">
-                <div class="row  mb-3">
-                  <div class="col-sm-12 col-md-4">
+          <div className="container-fluid">
+            <div className="content-block-3">
+              <div className="container">
+                <div className="row  mb-3">
+                  <div className="col-sm-12 col-md-4">
                     <Image
-                      class="img-fluid"
+                      className="img-fluid"
                       alt="Doctor Image"
                       src="/image/doctorImage.png"
                       width={100}
                       height={100}
                     />
                   </div>
-                  <div class="col-sm-12 col-md-8">
-                    <h2 class="text-success pt-5">
+                  <div className="col-sm-12 col-md-8">
+                    <h2 className="text-success pt-5">
                       <b>Meet Dr. Prathap Addageethala</b>
                     </h2>
                     <p>Director of Atlas Chiropractic & Wellness</p>
-                    <p class="pb-4">
+                    <p className="pb-4">
                       &quot;Being one of the few licensed and certified
                       Chiropractors in India is a privilege and a responsibility
                       that I take very seriously.
@@ -130,41 +130,41 @@ export default function Home() {
                       India, Where Chiropractic was largely unheard of unless
                       you watched the TV sitcom Two and a Half Men&quot;
                     </p>
-                    <div class="row">
-                      <div class="col-sm-12 col-md-6">
-                        <div class="row pb-4 pb-md-0">
-                          <div class="col-3">
+                    <div className="row">
+                      <div className="col-sm-12 col-md-6">
+                        <div className="row pb-4 pb-md-0">
+                          <div className="col-3">
                             <Image
-                              class="img-fluid"
+                              className="img-fluid"
                               alt="chiropractor-image"
                               src="/image/Top chiroprator.png"
                               width={100}
                               height={100}
                             />
                           </div>
-                          <div class="col-9 pt-4">
+                          <div className="col-9 pt-4">
                             <p>
                               <small>Top Chiropractor in India</small>
                             </p>
                           </div>
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6">
-                        <div class="row">
-                          <div class="col-3">
+                      <div className="col-sm-12 col-md-6">
+                        <div className="row">
+                          <div className="col-3">
                             <Image
-                              class="img-fluid"
+                              className="img-fluid"
                               alt="Member Image"
                               src="/image/member.png"
                               width={100}
                               height={100}
                             />
                           </div>
-                          <div class="col-9">
+                          <div className="col-9">
                             <p>
                               <small>
                                 Member of the IACD<br></br>
-                                <span class="small-text-12">
+                                <span className="small-text-12">
                                   (Indian Association of Chiropractic Doctors)
                                 </span>
                               </small>
@@ -178,12 +178,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div class="container-fluid pt-5 pb-5 mb-5">
-            <div class="container text-center">
-              <div class="row">
-                <div class="col">
+          <div className="container-fluid pt-5 pb-5 mb-5">
+            <div className="container text-center">
+              <div className="row">
+                <div className="col">
                   <Image
-                    class="img-fluid p-5"
+                    className="img-fluid p-5"
                     alt="Doctors-image"
                     src="/image/Ellipse 754.png"
                     width={100}
@@ -196,9 +196,9 @@ export default function Home() {
                   <p>Qualification</p>
                   <p>Description</p>
                 </div>
-                <div class="col">
+                <div className="col">
                   <Image
-                    class="img-fluid p-5"
+                    className="img-fluid p-5"
                     alt="Doctors-image"
                     src="/image/Ellipse 754.png"
                     width={100}
@@ -211,9 +211,9 @@ export default function Home() {
                   <p>Qualification</p>
                   <p>Description</p>
                 </div>
-                <div class="col">
+                <div className="col">
                   <Image
-                    class="img-fluid p-5"
+                    className="img-fluid p-5"
                     alt="Doctors-image"
                     src="/image/Ellipse 754.png"
                     width={100}
@@ -230,48 +230,48 @@ export default function Home() {
             </div>
           </div>
 
-          <div class="container-fluid pt-5 pb-5 mb-5">
-            <div class="container text-center">
-              <div class="row">
-                <div class="col-lg-4 col-md-6">Course Duration & Syllabus</div>
+          <div className="container-fluid pt-5 pb-5 mb-5">
+            <div className="container text-center">
+              <div className="row">
+                <div className="col-lg-4 col-md-6">Course Duration & Syllabus</div>
 
-                <div class="col-lg-6 col-md-6">
+                <div className="col-lg-6 col-md-6">
                   <div
                     id="carouselExampleFade"
-                    class="carousel slide carousel-fade"
+                    className="carousel slide carousel-fade"
                     data-bs-ride="carousel"
                   >
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
+                    <div className="carousel-inner">
+                      <div className="carousel-item active">
                         <Image
                           alt="Carousel"
-                          class="d-block w-100"
+                          className="d-block w-100"
                         ></Image>
                       </div>
                     </div>
                     <button
-                      class="carousel-control-prev"
+                      className="carousel-control-prev"
                       type="button"
                       data-bs-target="#carouselExampleFade"
                       data-bs-slide="prev"
                     >
                       <span
-                        class="carousel-control-prev-icon"
+                        className="carousel-control-prev-icon"
                         aria-hidden="true"
                       ></span>
-                      <span class="visually-hidden">Previous</span>
+                      <span className="visually-hidden">Previous</span>
                     </button>
                     <button
-                      class="carousel-control-next"
+                      className="carousel-control-next"
                       type="button"
                       data-bs-target="#carouselExampleFade"
                       data-bs-slide="next"
                     >
                       <span
-                        class="carousel-control-next-icon"
+                        className="carousel-control-next-icon"
                         aria-hidden="true"
                       ></span>
-                      <span class="visually-hidden">Next</span>
+                      <span className="visually-hidden">Next</span>
                     </button>
                   </div>
                 </div>
@@ -279,19 +279,19 @@ export default function Home() {
             </div>
           </div>
 
-          <div class="container-fluid pt-5 pb-5 mb-5">
-            <div class="container text-center text-success">
-              <div class="row">
-                <div class="col">
+          <div className="container-fluid pt-5 pb-5 mb-5">
+            <div className="container text-center text-success">
+              <div className="row">
+                <div className="col">
                   <p>
                     Estimated salary for chiropractor will increase 42% in 5
                     years{" "}
                   </p>
                 </div>
-                <div class="col">
+                <div className="col">
                   <p>Receive a salary of Rs 50,000 - 60,000 per month</p>
                 </div>
-                <div class="col">
+                <div className="col">
                   <p>
                     Chiropractors are expected to grow 17% from 2022 to 2034
                   </p>
@@ -300,21 +300,21 @@ export default function Home() {
             </div>
           </div>
 
-          <div class="container-fluid my-5 py-5 girlBg">
+          <div className="container-fluid my-5 py-5 girlBg">
             <div className="container">
-              <div class="row p-5">
+              <div className="row p-5">
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 mt-5 pt-5">
-                  <h2 class="text-success">
+                  <h2 className="text-success">
                     <b>
                       Start Earning as a Certified Chiropractor in 12 Months
                     </b>
                   </h2>
 
-                  <div class="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4">
-                    <div class="col">
+                  <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4">
+                    <div className="col">
                       <button
                         type="button"
-                        class="w-100 btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
+                        className="w-100 btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
                       >
@@ -322,11 +322,11 @@ export default function Home() {
                       </button>
                     </div>
 
-                    <div class="col">
+                    <div className="col">
                       <a href="tel:+91 9606704304">
                         <button
                           type="button"
-                          class=" btn btn-lg btn-outline-success rounded-pill"
+                          className=" btn btn-lg btn-outline-success rounded-pill"
                         >
                           Inquire Now
                         </button>
@@ -335,8 +335,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="col">
-                  <div class="row text-success">
-                    <div class="col text-center pt-0"></div>
+                  <div className="row text-success">
+                    <div className="col text-center pt-0"></div>
                   </div>
                 </div>
               </div>
