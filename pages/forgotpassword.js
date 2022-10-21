@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Banner from "../components/common/banner";
+
 import Layout from "../components/common/layout";
 import styles from "../styles/Home.module.css";
 export default function Home() {
@@ -13,7 +13,9 @@ export default function Home() {
 
                 <div className="col-12 col-sm-12 col-md-6 mb-5 pt-5">
                 
-                <Image height={100} width={100} className="Img-fluid myLogoLp" alt="logo" src="/image/logo.png"></Image><b className="text-success">Academy</b>
+                <Image width="120"
+                height="65" className="Img-fluid myLogoLp" alt="logo" src="/image/logo.png"></Image>
+                <b className="text-success">Academy</b>
                 
                 
 <h2 className="mb-5 mt-5">Forgot Password?</h2>
@@ -34,7 +36,7 @@ export default function Home() {
 </div>
             </div>
             <div className="col-12 col-sm-12 col-md-6">
-            <Image className="Img-fluid" alt="forgot-image" src="image/landingpg/forgot.png"></Image>
+            <Image width="796" height="1095" className="Img-fluid" alt="forgot-image" src="/image/landingpg/forgot.png"></Image>
             </div>
             </div>
             </div>

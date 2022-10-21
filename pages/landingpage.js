@@ -74,9 +74,9 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-6">
-                  <Image
+                  <Image width="797" height="1080"
                     className="img-fluid" alt="Register Image"
-                    src="image/landingpg/register.png"
+                    src="/image/landingpg/register.png"
                   ></Image>
                 </div>
               </div>

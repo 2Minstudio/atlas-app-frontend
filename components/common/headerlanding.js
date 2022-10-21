@@ -14,13 +14,14 @@ const Headerlanding = () => {
               href="index.html"
               className="d-flex align-items-center text-dark text-decoration-none"
             >
+              <span className="ps-5">
               <Image
-                width="150px"
+                width="120"
+                height="65"
                 alt="Logo"
-                height={100}
-                className="ps-5 myLogo"
                 src="/image/logo.png"
               />{" "}
+              </span>
               <span className="pt-4 text-success">
                 <b>Academy</b>
               </span>

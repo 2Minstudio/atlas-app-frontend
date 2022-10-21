@@ -15,7 +15,6 @@ const Header = () => {
 <Image
               width="120"
               height="65"
-              
               alt="Logo"
               src="/image/logo.png"
             />
@@ -27,7 +26,7 @@ const Header = () => {
           </a>
 
           <p className="pt-3 ms-md-auto pe-4 text-success">
-            <ul className="nav">
+            <ul className="nav align-items-center">
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="#">
                   {" "}

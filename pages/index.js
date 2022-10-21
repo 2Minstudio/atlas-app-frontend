@@ -2,7 +2,7 @@ import Image from "next/image";
 import Banner from "../components/common/banner";
 import Layout from "../components/common/layout";
 import styles from "../styles/Home.module.css";
-
+import DemoCarousel from "../components/common/carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserPlus,
@@ -111,8 +111,8 @@ export default function Home() {
                       className="img-fluid"
                       alt="Doctor Image"
                       src="/image/doctorImage.png"
-                      width={100}
-                      height={100}
+                      height="512"
+                      width="354"
                     />
                   </div>
                   <div className="col-sm-12 col-md-8">
@@ -138,8 +138,8 @@ export default function Home() {
                               className="img-fluid"
                               alt="chiropractor-image"
                               src="/image/Top chiroprator.png"
-                              width={100}
-                              height={100}
+                              height="512"
+                              width="512"
                             />
                           </div>
                           <div className="col-9 pt-4">
@@ -156,8 +156,8 @@ export default function Home() {
                               className="img-fluid"
                               alt="Member Image"
                               src="/image/member.png"
-                              width={100}
-                              height={100}
+                              height="512"
+                              width="512"
                             />
                           </div>
                           <div className="col-9">
@@ -186,8 +186,8 @@ export default function Home() {
                     className="img-fluid p-5"
                     alt="Doctors-image"
                     src="/image/Ellipse 754.png"
-                    width={100}
-                    height={100}
+                    height="512"
+                    width="512"
                   ></Image>
 
                   <h3>
@@ -201,8 +201,8 @@ export default function Home() {
                     className="img-fluid p-5"
                     alt="Doctors-image"
                     src="/image/Ellipse 754.png"
-                    width={100}
-                    height={100}
+                    height="512"
+                    width="512"
                   ></Image>
 
                   <h3>
@@ -216,8 +216,8 @@ export default function Home() {
                     className="img-fluid p-5"
                     alt="Doctors-image"
                     src="/image/Ellipse 754.png"
-                    width={100}
-                    height={100}
+                    height="512"
+                    width="512"
                   ></Image>
 
                   <h3>
@@ -232,48 +232,13 @@ export default function Home() {
 
           <div className="container-fluid pt-5 pb-5 mb-5">
             <div className="container text-center">
-              <div className="row">
-                <div className="col-lg-4 col-md-6">Course Duration & Syllabus</div>
-
-                <div className="col-lg-6 col-md-6">
-                  <div
-                    id="carouselExampleFade"
-                    className="carousel slide carousel-fade"
-                    data-bs-ride="carousel"
-                  >
-                    <div className="carousel-inner">
-                      <div className="carousel-item active">
-                        <Image
-                          alt="Carousel"
-                          className="d-block w-100"
-                        ></Image>
-                      </div>
-                    </div>
-                    <button
-                      className="carousel-control-prev"
-                      type="button"
-                      data-bs-target="#carouselExampleFade"
-                      data-bs-slide="prev"
-                    >
-                      <span
-                        className="carousel-control-prev-icon"
-                        aria-hidden="true"
-                      ></span>
-                      <span className="visually-hidden">Previous</span>
-                    </button>
-                    <button
-                      className="carousel-control-next"
-                      type="button"
-                      data-bs-target="#carouselExampleFade"
-                      data-bs-slide="next"
-                    >
-                      <span
-                        className="carousel-control-next-icon"
-                        aria-hidden="true"
-                      ></span>
-                      <span className="visually-hidden">Next</span>
-                    </button>
+              <div className="row  align-items-center">
+                <div className="col-lg-4 col-md-4 col-sm-12">
+                  <h2>Course <br></br>Duration & <br></br>Syllabus</h2>
                   </div>
+
+                <div className="col-lg-8 col-md-8 col-sm-12">
+                  <DemoCarousel></DemoCarousel>
                 </div>
               </div>
             </div>
@@ -282,19 +247,19 @@ export default function Home() {
           <div className="container-fluid pt-5 pb-5 mb-5">
             <div className="container text-center text-success">
               <div className="row">
-                <div className="col">
-                  <p>
+                <div className="col ">
+                  <h3>
                     Estimated salary for chiropractor will increase 42% in 5
                     years{" "}
-                  </p>
+                  </h3>
                 </div>
                 <div className="col">
-                  <p>Receive a salary of Rs 50,000 - 60,000 per month</p>
+                  <h3>Receive a salary of Rs 50,000 - 60,000 per month</h3>
                 </div>
                 <div className="col">
-                  <p>
+                  <h3>
                     Chiropractors are expected to grow 17% from 2022 to 2034
-                  </p>
+                  </h3>
                 </div>
               </div>
             </div>

@@ -13,7 +13,8 @@ export default function Home() {
 
                 <div className="col-12 col-sm-12 col-md-6 mb-5 pt-5">
                 
-                <Image height={100} width={100} className="img-fluid myLogoLp" alt="CLogo"  src="/image/logo.png"></Image><b className="text-success">Academy</b>
+                <Image width="120"
+                height="65" className="img-fluid myLogoLp" alt="CLogo"  src="/image/logo.png"></Image><b className="text-success">Academy</b>
                 
                 
 <h2 className="mb-5 mt-5">Check for OTP</h2>
@@ -41,7 +42,7 @@ export default function Home() {
 </div>
             </div>
             <div className="col-12 col-sm-12 col-md-6">
-            <Image className="img-fluid" alt="Forgot Image"  src="image/landingpg/forgot.png"></Image>
+            <Image  width="796" height="1075" className="img-fluid" alt="Forgot Image"  src="/image/landingpg/forgot.png"></Image>
             </div>
             </div>
             </div>

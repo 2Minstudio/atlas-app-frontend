@@ -15,21 +15,21 @@ export default function Footer() {
       <div className="container p-5 my-5">
         <div className="row row-cols-1 row-cols-md-2">
           <div className="col d-none d-md-block">
-            <p>
+            <p className="align-items-center">
               {" "}
-              <Image width={100} height={100} alt="Logo" src="/image/logo.png" />{" "}
-              <span className="small-text-14 align-bottom">
+              <Image className="mt-2" width="120" height="65" alt="Logo" src="/image/logo.png"/>{" "}
+              <span className="small-text-14">
                 Copyright © 2022. All rights reserved. Made in India
               </span>
             </p>
           </div>
           <div className="col d-block d-md-none text-center">
-            <Image width={100} height={100} alt="Logo" src="/image/logo.png" />{" "}
+            <Image width="120" height="65" alt="Logo" src="/image/logo.png" />{" "}
             <span className="small-text-14 align-bottom">
               <p> Copyright © 2020. All rights reserved. Made in India</p>
             </span>
           </div>
-          <div className="col text-end text-success d-none d-md-block">
+          <div className="col text-end text-success d-none d-md-block align-items-center mt-2">
             <a
               href="https://www.facebook.com/atlaschiroindia/"
               target="_blank"
@@ -67,7 +67,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="col text-end text-success d-block d-md-none text-center">
+          <div className="col text-end text-success d-block d-md-none text-center align-items-center">
             <a
               href="https://www.facebook.com/atlaschiroindia/"
               target="_blank"
