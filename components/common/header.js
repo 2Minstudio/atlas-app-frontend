@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-
+import Hamburger from "./hambuger";
 import styles from "../../styles/Home.module.css";
 
 const Header = () => {
@@ -26,6 +26,7 @@ const Header = () => {
           </a>
 
           <p className="pt-3 ms-md-auto pe-4 text-success">
+            <Hamburger></Hamburger>
             <ul className="nav align-items-center">
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="#">

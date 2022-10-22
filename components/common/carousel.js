@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -8,11 +9,11 @@ class DemoCarousel extends Component {
         return (
             <Carousel>
                 <div>
-                    <img src="/image/carousel/1.jpg" />
+                    <Image width="500" height="250" alt="doctor image" src="/image/carousel/1.jpg" />
                     {/* <p className="legend">Legend 1</p> */}
                 </div>
                 <div>
-                    <img src="/image/carousel/2.jpg" />
+                    <Image width="500" height="250" alt="chiropractor image" src="/image/carousel/2.jpg" />
                     {/* <p className="legend">Legend 2</p> */}
                 </div>
                 
