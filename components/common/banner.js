@@ -4,7 +4,7 @@ export default function Banner() {
     <div className="container-fluid bannerBg pb-5 mb-5">
       <div className="container">
         <div className="row row-cols-1 row-cols-md-2 mb-3 ">
-          <div className="col-lg-5 col-md-5 col-sm-6 mt-4 pb-5">
+          <div className="col-lg-6 col-md-6 col-sm-12 mt-4 pb-5">
             <h1>
               <b>Start To Earn ,</b> <br />
               Before Finishing <br />
@@ -20,8 +20,7 @@ export default function Banner() {
                   type="button"
                   className="w-100 btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
                   data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
+                  data-bs-target="#exampleModal">
                   Take the Eligibility Test
                 </button>
               </div>
@@ -30,23 +29,22 @@ export default function Banner() {
                 <a href="tel:+91 9606704304">
                   <button
                     type="button"
-                    className=" btn btn-lg btn-outline-success rounded-pill"
-                  >
+                    className=" btn btn-lg btn-outline-success rounded-pill">
                     Inquire Now
                   </button>
                 </a>
               </div>
             </div>
           </div>
-          <div className="col-lg-7 col-md-7 col-sm-6 pt-5">
-            <div className="row">
-              <Image
-                className="image-fluid negative20 align-bottom"
+          <div className="col-lg-6 col-md-6 col-sm-12 pt-5">
+            <div className="row align-baseline">
+              {/* <Image
+                className="image-fluid"
                 height="515"
                 width="713"
                 alt="Banner Image"
                 src="/image/bg/headerimageright.png"
-              ></Image>
+              ></Image> */}
             </div>
           </div>
         </div>
