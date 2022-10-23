@@ -9,7 +9,6 @@
 .myLogoLmp{
   width: 120px;
   margin-bottom: 35px;
-
 }
 .myLogoLp {
   width: 120px;
@@ -30,6 +29,24 @@
   }
 .align-mdl {
   margin-top:20% !important;
+}
+
+/*Menu bar*/
+@media (min-width: 200px) and (max-width: 991px){ 
+.mdOpen{
+display:block 
+}
+.mdClose{
+display:none; 
+}
+}
+@media (min-width: 992px){ 
+  .mdOpen{
+    display:none; 
+  }
+  .mdClose{
+display:block;
+  }
 }
 
  /** bg **/

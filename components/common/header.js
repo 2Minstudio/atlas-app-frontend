@@ -26,21 +26,22 @@ const Header = () => {
           </a>
 
           <p className="pt-3 ms-md-auto pe-4 text-success">
-            <Hamburger></Hamburger>
+            
             <ul className="nav align-items-center">
-              <li className="nav-item">
+            
+              <li className="nav-item mdClose">
                 <a className="nav-link active" aria-current="page" href="#">
                   {" "}
                   Take Eligibility Test{" "}
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item mdClose">
                 <a className="nav-link" href="#">
                   {" "}
                   Enquire Now{" "}
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item mdClose">
                 <a className="nav-link" href="#">
                   <button className="btn px-4 btn-md btn-outline-success rounded-pill">
                     {" "}
@@ -48,7 +49,7 @@ const Header = () => {
                   </button>
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item mdClose">
                 <a className="nav-link" href="#">
                   <button className="btn px-4 btn-md btn-success rounded-pill">
                     {" "}
@@ -56,6 +57,10 @@ const Header = () => {
                   </button>
                 </a>
               </li>
+              <li className="nav-item mdOpen">
+              <Hamburger></Hamburger>
+              </li>
+              
             </ul>
           </p>
         </div>

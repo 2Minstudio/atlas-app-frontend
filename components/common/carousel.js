@@ -7,15 +7,16 @@ import { Carousel } from 'react-responsive-carousel';
 class DemoCarousel extends Component {
     render() {
         return (
-            <Carousel>
+            <Carousel showThumbs={false}>
                 <div>
-                    <Image width="500" height="250" alt="doctor image" src="/image/carousel/1.jpg" />
+                    <Image width="768" height="274" alt="doctor image" src="/image/carousel/1.jpg" />
                     {/* <p className="legend">Legend 1</p> */}
                 </div>
                 <div>
-                    <Image width="500" height="250" alt="chiropractor image" src="/image/carousel/2.jpg" />
+                    <Image width="768" height="274" alt="chiropractor image" src="/image/carousel/2.jpg" />
                     {/* <p className="legend">Legend 2</p> */}
                 </div>
+                
                 
             </Carousel>
         );
