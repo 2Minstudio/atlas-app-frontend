@@ -49,16 +49,24 @@ display:block;
   }
 }
 
- /** bg **/
-.bannerBg{
-  background-image:url("/image/bg/header-image.png");
-  background-position:center;
-  background-size:cover;
-  background-repeat: no-repeat;
-  height:650px;
-  position: relative;
-}
 
+/** XL **/
+@media (min-width: 1401px) and (max-width: 991px){ 
+  .bannerBg{
+    background-image:url("/image/bg/header-image.png");
+    background-position:center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:650px;
+    position: relative;
+  }
+  
+}
+/** LG **/
+@media (min-width: 1401px) and (max-width: 991px){ 
+
+}
+ /** bg **/
 .whyjoinBg{
   background-image:url("/image/bg/2ndfoldBG.png");
   background-position:right;
