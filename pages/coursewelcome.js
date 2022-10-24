@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Banner from "../components/common/banner";
-import LayoutC from "../components/common/LayoutUser";
+import LayoutC from "../components/common/layoutUser";
 import styles from "../styles/Home.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
