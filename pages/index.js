@@ -279,7 +279,8 @@ export default function Home() {
 
                   <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4">
                     <div className="col">
-                    <a class="nav-link active" aria-current="page" href="/coursetest">
+                    <Link  href="/coursetest">
+                    <a class="nav-link active" aria-current="page">
                       <button
                         type="button"
                         className="w-100 btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
@@ -289,6 +290,7 @@ export default function Home() {
                         Take the Eligibility Test
                       </button>
                       </a>
+                      </Link>
                     </div>
 
                     <div className="col">

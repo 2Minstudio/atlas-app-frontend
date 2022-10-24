@@ -1,24 +1,7 @@
-import Image from "next/image";
-import Banner from "../../components/common/banner";
-import Layout from "../../components/common/layout";
 import styles from "../../styles/Home.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserPlus,
-  faVideo,
-  faStar,
-  faSuitcaseMedical,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-  faLinkedin,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+import LayoutC from "../../components/common/layoutUser";
 
-import LayoutC from "../../components/common/layoutC";
-export default function Home() {
+export default function Payment() {
   return (
     <LayoutC>
       <div className={styles}>
@@ -36,7 +19,10 @@ export default function Home() {
                         name="flexRadioDefault"
                         id="flexRadioDefault1"
                       ></input>
-                      <label className="form-check-label" for="flexRadioDefault1">
+                      <label
+                        className="form-check-label"
+                        for="flexRadioDefault1"
+                      >
                         Credit Card
                       </label>
                     </div>
@@ -48,7 +34,10 @@ export default function Home() {
                         id="flexRadioDefault2"
                         checked
                       ></input>
-                      <label className="form-check-label" for="flexRadioDefault2">
+                      <label
+                        className="form-check-label"
+                        for="flexRadioDefault2"
+                      >
                         UPI
                       </label>
                     </div>
@@ -59,7 +48,10 @@ export default function Home() {
                         name="flexRadioDefault"
                         id="flexRadioDefault1"
                       ></input>
-                      <label className="form-check-label" for="flexRadioDefault1">
+                      <label
+                        className="form-check-label"
+                        for="flexRadioDefault1"
+                      >
                         Net banking
                       </label>
                     </div>

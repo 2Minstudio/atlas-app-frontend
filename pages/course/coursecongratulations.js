@@ -17,7 +17,7 @@ import {
   faLinkedin,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import LayoutC from "../../components/common/layoutC";
+import LayoutC from "../../components/common/layoutUser";
 export default function Home() {
   return (
     <LayoutC>

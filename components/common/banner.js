@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 export default function Banner() {
   return (
     <div className="container-fluid bannerBg pb-5 mb-5">
@@ -16,22 +17,29 @@ export default function Banner() {
             </h5>
             <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4">
               <div className="col">
-              <a class="nav-link active" aria-current="page" href="/coursetest">
-                <button
-                  type="button"
-                  className="w-100 btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal">
-                  Take the Eligibility Test
-                </button>
-                </a>
+                <Link href="/coursetest">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                  >
+                    <button
+                      type="button"
+                      className="w-100 btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      Take the Eligibility Test
+                    </button>
+                  </a>
+                </Link>
               </div>
 
               <div className="col">
                 <a href="tel:+91 9606704304">
                   <button
                     type="button"
-                    className=" btn btn-lg btn-outline-success rounded-pill">
+                    className=" btn btn-lg btn-outline-success rounded-pill"
+                  >
                     Inquire Now
                   </button>
                 </a>
@@ -49,31 +57,31 @@ export default function Banner() {
               ></Image> */}
 
               <div className="col-12">
-              <Image
-                className="image-fluid"
-                height="289"
-                width="700"
-                alt="Banner Image"
-                src="/image/header/card1.png"
-              ></Image>
+                <Image
+                  className="image-fluid"
+                  height="289"
+                  width="700"
+                  alt="Banner Image"
+                  src="/image/header/card1.png"
+                ></Image>
               </div>
               <div className="col-12">
-              <Image
-                className="image-fluid"
-                height="241"
-                width="700"
-                alt="Banner Image"
-                src="/image/header/card3.png"
-              ></Image> 
+                <Image
+                  className="image-fluid"
+                  height="241"
+                  width="700"
+                  alt="Banner Image"
+                  src="/image/header/card3.png"
+                ></Image>
               </div>
               <div className="col-12">
-              <Image
-                className="image-fluid"
-                height="226"
-                width="700"
-                alt="Banner Image"
-                src="/image/header/card2.png"
-              ></Image>
+                <Image
+                  className="image-fluid"
+                  height="226"
+                  width="700"
+                  alt="Banner Image"
+                  src="/image/header/card2.png"
+                ></Image>
               </div>
             </div>
           </div>
