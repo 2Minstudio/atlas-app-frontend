@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Banner from "../components/common/banner";
-import Layout from "../components/common/layout";
 import styles from "../styles/Home.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,7 +17,7 @@ import {
   faLinkedin,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import LayoutC from "../components/common/layoutC";
+import LayoutC from "../components/common/layoutUser";
 export default function Home() {
   return (
     <LayoutC>
