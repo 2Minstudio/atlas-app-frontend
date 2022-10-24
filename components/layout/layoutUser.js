@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Headerlanding from "./headerlanding";
+import Headerlanding from "../common/headerlanding";
 
-export default function LayoutB({ children }) {
+export default function LayoutUser({ children }) {
   return (
     <html>
       <Head>
@@ -10,6 +10,7 @@ export default function LayoutB({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
+        <Headerlanding />
         <main>{children}</main>
       </body>
     </html>

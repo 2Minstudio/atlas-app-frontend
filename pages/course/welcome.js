@@ -1,7 +1,5 @@
-import Image from "next/image";
-import Banner from "../components/common/banner";
-import LayoutC from "../components/common/layoutUser";
-import styles from "../styles/Home.module.css";
+import LayoutUser from "../../components/layout/layoutUser";
+import styles from "../../styles/Home.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,16 +8,9 @@ import {
   faStar,
   faSuitcaseMedical,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-  faLinkedin,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
-export default function Home() {
+export default function CourseWelcome() {
   return (
-    <LayoutC>
+    <LayoutUser>
       <div className={styles}>
         <main className={styles.main}>
           <div className="container-fluid bg-light p-5">
@@ -115,6 +106,6 @@ export default function Home() {
           </div>
         </main>
       </div>
-    </LayoutC>
+    </LayoutUser>
   );
 }

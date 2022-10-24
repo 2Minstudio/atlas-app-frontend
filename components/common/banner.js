@@ -17,7 +17,7 @@ export default function Banner() {
             </h5>
             <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4">
               <div className="col">
-                <Link href="/coursetest">
+                <Link href="/course/test">
                   <a
                     class="nav-link active"
                     aria-current="page"

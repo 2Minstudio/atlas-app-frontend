@@ -1,17 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import Banner from "../components/common/banner";
-import LayoutB from "../components/common/layoutGuest";
+import Logo from "../components/common/logo/logo";
+import LayoutGuest from "../components/layout/layoutGuest";
 import styles from "../styles/Home.module.css";
-export default function Home() {
+export default function Register() {
   return (
-    <LayoutB>
+    <LayoutGuest>
       <div className={styles}>
         <main className={styles.main}>
           <div className="container-fluid">
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-12 col-sm-6 col-md-6 py-5">
+                  <Logo align="left"/>
                   <h2 className="mb-5">
                     Get 6 Months of Paid Internship After Finishing The Course.
                   </h2>
@@ -68,7 +69,7 @@ export default function Home() {
                   </form>
 
                   <div className="row text-center justify-content-center">
-                    <Link href={'/coursetest'}>
+                    <Link href={"/course/test"}>
                       <button className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5">
                         {" "}
                         Signup
@@ -96,6 +97,6 @@ export default function Home() {
           </div>
         </main>
       </div>
-    </LayoutB>
+    </LayoutGuest>
   );
 }

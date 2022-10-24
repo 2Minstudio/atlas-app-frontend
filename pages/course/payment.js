@@ -1,9 +1,9 @@
 import styles from "../../styles/Home.module.css";
-import LayoutC from "../../components/common/layoutUser";
+import LayoutUser from "../../components/layout/layoutUser";
 
 export default function Payment() {
   return (
-    <LayoutC>
+    <LayoutUser>
       <div className={styles}>
         <main className={styles.main}>
           <div className="container-fluid bg-light py-5">
@@ -109,6 +109,6 @@ export default function Payment() {
           </div>
         </main>
       </div>
-    </LayoutC>
+    </LayoutUser>
   );
 }

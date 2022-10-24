@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import LayoutB from "../components/common/layoutGuest";
+import LayoutGuest from "../components/layout/layoutGuest";
 import styles from "../styles/Home.module.css";
-export default function Home() {
+export default function ForgotPassword() {
   return (
-    <LayoutB>
+    <LayoutGuest>
       <div className={styles}>
         <main className={styles.main}>
           <div className="container-fluid">
@@ -62,6 +62,6 @@ export default function Home() {
           </div>
         </main>
       </div>
-    </LayoutB>
+    </LayoutGuest>
   );
 }

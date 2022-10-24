@@ -1,29 +1,12 @@
 import Image from "next/image";
-import Banner from "../components/common/banner";
-import Layout from "../components/common/layout";
-import styles from "../styles/Home.module.css";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserPlus,
-  faVideo,
-  faStar,
-  faSuitcaseMedical,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-  faLinkedin,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
-import LayoutC from "../components/common/layoutUser";
+import Banner from "../../components/common/banner";
+import styles from "../../styles/Home.module.css";
+import LayoutUser from "../../components/layout/layoutUser";
 import Link from "next/link";
 
-export default function Home() {
+export default function CourseTest() {
   return (
-    <LayoutC>
+    <LayoutUser>
       <div className={styles}>
         <main className={styles.main}>
           <div className="container-fluid bg-light p-5">
@@ -122,6 +105,6 @@ export default function Home() {
           </div>
         </main>
       </div>
-    </LayoutC>
+    </LayoutUser>
   );
 }

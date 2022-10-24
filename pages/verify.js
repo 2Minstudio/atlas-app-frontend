@@ -1,10 +1,9 @@
 import Image from "next/image";
-import Banner from "../components/common/banner";
-import Layout from "../components/common/layout";
+import LayoutGuest from "../components/layout/layoutGuest";
 import styles from "../styles/Home.module.css";
-export default function Home() {
+export default function Verify() {
   return (
-    <layoutB>
+    <LayoutGuest>
       <div className={styles}>
         <main className={styles.main}>
           <div className="container-fluid">
@@ -45,6 +44,6 @@ export default function Home() {
           </div>
         </main>
       </div>
-    </layoutB>
+    </LayoutGuest>
   );
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Banner from "../components/common/banner";
-import Layout from "../components/common/layout";
+import Layout from "../components/layout/layout";
 import styles from "../styles/Home.module.css";
 import DemoCarousel from "../components/common/carousel";
 
@@ -236,8 +236,10 @@ export default function Home() {
             <div className="container text-center">
               <div className="row  align-items-center">
                 <div className="col-lg-4 col-md-4 col-sm-12">
-                  <h2>Course <br></br>Duration & <br></br>Syllabus</h2>
-                  </div>
+                  <h2>
+                    Course <br></br>Duration & <br></br>Syllabus
+                  </h2>
+                </div>
 
                 <div className="col-lg-8 col-md-8 col-sm-12">
                   <DemoCarousel></DemoCarousel>
@@ -279,17 +281,17 @@ export default function Home() {
 
                   <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4">
                     <div className="col">
-                    <Link  href="/coursetest">
-                    <a class="nav-link active" aria-current="page">
-                      <button
-                        type="button"
-                        className="w-100 btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                      >
-                        Take the Eligibility Test
-                      </button>
-                      </a>
+                      <Link href="/course/test">
+                        <a class="nav-link active" aria-current="page">
+                          <button
+                            type="button"
+                            className="w-100 btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                          >
+                            Take the Eligibility Test
+                          </button>
+                        </a>
                       </Link>
                     </div>
 

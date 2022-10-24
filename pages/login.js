@@ -1,25 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import Banner from "../components/common/banner";
-import LayoutB from "../components/common/layoutGuest";
+import Logo from "../components/common/logo/logo";
+import LayoutGuest from "../components/layout/layoutGuest";
 import styles from "../styles/Home.module.css";
-export default function Home() {
+export default function Login() {
   return (
-    <LayoutB>
+    <LayoutGuest>
       <div className={styles}>
         <main className={styles.main}>
           <div className="container-fluid">
             <div className="container">
               <div className="row">
                 <div className="col-12 col-sm-12 col-md-6 py-5 mb-5">
-                  <Image
-                    className="img-fluid myLogoLp"
-                    width={100}
-                    height={100}
-                    alt="Logo"
-                    src="/image/logo.png"
-                  ></Image>
-                  <b className="text-success">Academy</b>
+                  <Logo />
 
                   <h2 className="mb-2 mt-5">Welcome Back!!</h2>
                   <h4 className="mb-5">Please sign in to your account</h4>
@@ -69,11 +62,11 @@ export default function Home() {
                   </form>
 
                   <div className="row text-center justify-content-center">
-                    <Link href={'/coursetest'}>
-                    <button className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5">
-                      {" "}
-                      Signin
-                    </button>
+                    <Link href={"/course/test"}>
+                      <button className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5">
+                        {" "}
+                        Signin
+                      </button>
                     </Link>
                     <p className="small-text-14 mt-0">
                       New on our platform?{" "}
@@ -97,6 +90,6 @@ export default function Home() {
           </div>
         </main>
       </div>
-    </LayoutB>
+    </LayoutGuest>
   );
 }
