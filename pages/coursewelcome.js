@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Banner from "../components/common/banner";
-import Layout from "../components/common/layout";
+import LayoutUser from "../components/common/LayoutUser";
 import styles from "../styles/Home.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,10 +17,9 @@ import {
   faLinkedin,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import LayoutC from "../components/common/layoutC";
 export default function Home() {
   return (
-    <LayoutC>
+    <LayoutUser>
       <div className={styles}>
         <main className={styles.main}>
           <div className="container-fluid bg-light p-5">
@@ -116,6 +115,6 @@ export default function Home() {
           </div>
         </main>
       </div>
-    </LayoutC>
+    </LayoutUser>
   );
 }

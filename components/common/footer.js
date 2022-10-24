@@ -35,35 +35,35 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon className="Aicon" icon={faFacebook} />
+              <FontAwesomeIcon className="AiconSocial" icon={faFacebook} />
             </a>
             <a
               href="https://twitter.com/atlaschiroindia"
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon className="Aicon" icon={faTwitter} />
+              <FontAwesomeIcon className="AiconSocial" icon={faTwitter} />
             </a>
             <a
               href="https://www.instagram.com/atlaschiroindia/?hl=en"
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon className="Aicon" icon={faInstagram} />
+              <FontAwesomeIcon className="AiconSocial" icon={faInstagram} />
             </a>
             <a
               href="https://www.linkedin.com/company/atlas-chiropractic-wellness/"
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon className="Aicon" icon={faLinkedin} />
+              <FontAwesomeIcon className="AiconSocial" icon={faLinkedin} />
             </a>
             <a
               href="https://www.youtube.com/channel/UCqOyB_s3MiK3zyH6WhRgJFQ"
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon className="Aicon" icon={faYoutube} />
+              <FontAwesomeIcon className="AiconSocial" icon={faYoutube} />
             </a>
           </div>
 
@@ -73,35 +73,35 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon className="Aicon" icon={faFacebook} />
+              <FontAwesomeIcon className="AiconSocial" icon={faFacebook} />
             </a>
             <a
               href="https://twitter.com/atlaschiroindia"
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon className="Aicon" icon={faTwitter} />
+              <FontAwesomeIcon className="AiconSocial" icon={faTwitter} />
             </a>
             <a
               href="https://www.instagram.com/atlaschiroindia/?hl=en"
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon className="Aicon" icon={faInstagram} />
+              <FontAwesomeIcon className="AiconSocial" icon={faInstagram} />
             </a>
             <a
               href="https://www.linkedin.com/company/atlas-chiropractic-wellness/"
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon className="Aicon" icon={faLinkedin} />
+              <FontAwesomeIcon className="AiconSocial" icon={faLinkedin} />
             </a>
             <a
               href="https://www.youtube.com/channel/UCqOyB_s3MiK3zyH6WhRgJFQ"
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon className="Aicon" icon={faYoutube} />
+              <FontAwesomeIcon className="AiconSocial" icon={faYoutube} />
             </a>
           </div>
         </div>

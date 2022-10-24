@@ -50,8 +50,8 @@ display:block;
 }
 
 
-/** XL **/
-@media (min-width: 1401px) and (max-width: 991px){ 
+/** XL Desktop**/
+@media (min-width: 1401px){ 
   .bannerBg{
     background-image:url("/image/bg/header-image.png");
     background-position:center;
@@ -60,12 +60,6 @@ display:block;
     height:650px;
     position: relative;
   }
-  
-}
-/** LG **/
-@media (min-width: 1401px) and (max-width: 991px){ 
-
-}
  /** bg **/
 .whyjoinBg{
   background-image:url("/image/bg/2ndfoldBG.png");
@@ -73,14 +67,111 @@ display:block;
   background-size:contain;
   background-repeat: no-repeat;
 }
-
 .girlBg{
   background-image:url("/image/bg/Lastfold.png");
   background-position:top right;
   background-repeat:no-repeat;
 }
 
+}
+/** LG Desktop**/
+@media (min-width: 1200px) and (max-width: 1400px){ 
+  .bannerBg{
+    background-image:url("/image/bg/header-image-lg.png");
+    background-position:center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:650px;
+    position: relative;
+  }
+/** bg **/
+.whyjoinBg{
+  background-image:url("/image/bg/2ndfoldBG.png");
+  background-position:right;
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+.girlBg{
+  background-image:url("/image/bg/Lastfold.png");
+  background-position:top right;
+  background-repeat:no-repeat;
+}
+
+}
+
+/** MD Desktop **/
+@media (min-width: 992px) and (max-width: 1199px){ 
+  .bannerBg{
+    background-image:url("/image/bg/header-image-md.png");
+    background-position:center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:650px;
+    position: relative;
+  }
+/** bg **/
+.whyjoinBg{
+  background-image:url("/image/bg/2ndfoldBG.png");
+  background-position:right;
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+.girlBg{
+  background-image:url("/image/bg/Lastfold.png");
+  background-position:top right;
+  background-repeat:no-repeat;
+}
+
+}
+
+/** SM Tab **/
+@media (min-width: 768px) and (max-width: 991px){ 
+  .bannerBg{
+    background-image:url("/image/bg/header-image-sm.png");
+    background-position:center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:650px;
+    position: relative;
+  }
+  /** bg **/
+.whyjoinBg{
+  background-image:url("/image/bg/2ndfoldBG.png");
+  background-position:right;
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+.girlBg{
+  background-image:url("/image/bg/Lastfold-repeat-bg.png");
+  background-position:top right;
+  background-repeat:repeat;
+}
+
+}
+ /**Mobile-view **/
+ @media (min-width: 250px) and (max-width: 767px){ 
+ /** bg **/
+.whyjoinBg{
+  background-image:url("/image/bg/2ndfoldBG-sm.png");
+  background-position:right;
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+.girlBg{
+  background-image:url("/image/bg/Lastfold-repeat-bg.png");
+  background-position:top right;
+  background-repeat:repeat;
+}
+
+ }
+
 .Aicon{
+  width:25px;
+  height:25px;
+  
+}
+
+.AiconSocial{
   width:25px;
   height:25px;
   margin:15px 10px;

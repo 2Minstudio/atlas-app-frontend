@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import Banner from "../components/common/banner";
 import Layout from "../components/common/layout";
 import styles from "../styles/Home.module.css";
 import DemoCarousel from "../components/common/carousel";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserPlus,
@@ -36,7 +38,7 @@ export default function Home() {
                 <div className="col">
                   <div className="row text-success">
                     <div className="col text-center pt-0">
-                      <span className="bg-success rounded rounded-circle py-3 px-2">
+                      <span className="bg-success rounded rounded-circle p-3">
                         <FontAwesomeIcon
                           className="Aicon text-white fa-2x"
                           icon={faUserPlus}
@@ -48,7 +50,7 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="col text-center pt-0">
-                      <span className="bg-success rounded rounded-circle py-3 px-2">
+                      <span className="bg-success rounded rounded-circle p-3">
                         <FontAwesomeIcon
                           className="Aicon text-white fa-2x"
                           icon={faVideo}
@@ -64,7 +66,7 @@ export default function Home() {
 
                   <div className="row text-success">
                     <div className="col text-center pt-5">
-                      <span className="bg-success rounded rounded-circle py-3 px-2">
+                      <span className="bg-success rounded rounded-circle p-3">
                         <FontAwesomeIcon
                           className="Aicon text-white fa-2x"
                           icon={faStar}
@@ -76,7 +78,7 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="col text-center pt-5">
-                      <span className="bg-success rounded rounded-circle py-3 px-2">
+                      <span className="bg-success rounded rounded-circle p-3">
                         <FontAwesomeIcon
                           className="Aicon text-white fa-2x"
                           icon={faSuitcaseMedical}
@@ -265,10 +267,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="container-fluid my-5 py-5 girlBg">
+          <div className="container-fluid my-5 girlBg">
             <div className="container">
               <div className="row p-5">
-                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 mt-5 pt-5">
+                <div className="col-xl-6 col-lg-7 col-md-12 col-sm-12 mt-5 pt-5">
                   <h2 className="text-success">
                     <b>
                       Start Earning as a Certified Chiropractor in 12 Months
@@ -277,6 +279,7 @@ export default function Home() {
 
                   <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4">
                     <div className="col">
+                    <a class="nav-link active" aria-current="page" href="/coursetest">
                       <button
                         type="button"
                         className="w-100 btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
@@ -285,6 +288,7 @@ export default function Home() {
                       >
                         Take the Eligibility Test
                       </button>
+                      </a>
                     </div>
 
                     <div className="col">

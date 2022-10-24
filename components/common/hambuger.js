@@ -8,7 +8,7 @@ var styles = {
       position: 'relative',
       width: '36px',
       height: '30px',
-      right: '36px',
+      right: '0',
       top: '0px'
     },
     bmBurgerBars: {
