@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import Banner from "../components/common/banner";
-import Layout from "../components/common/layout";
+import LayoutB from "../components/common/layoutGuest";
 import styles from "../styles/Home.module.css";
 export default function Home() {
   return (
-    <layoutB>
+    <LayoutB>
       <div className={styles}>
         <main className={styles.main}>
           <div className="container-fluid">
@@ -56,7 +57,10 @@ export default function Home() {
                         value=""
                         id="flexCheckDefault"
                       ></input>
-                      <label className="form-check-label" for="flexCheckDefault">
+                      <label
+                        className="form-check-label"
+                        for="flexCheckDefault"
+                      >
                         I agree to <a href="#">privacy policy</a> &{" "}
                         <a href="#">terms conditions</a>
                       </label>
@@ -64,18 +68,26 @@ export default function Home() {
                   </form>
 
                   <div className="row text-center justify-content-center">
-                    <button className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5">
-                      {" "}
-                      Signup
-                    </button>
+                    <Link href={'/coursetest'}>
+                      <button className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5">
+                        {" "}
+                        Signup
+                      </button>
+                    </Link>
                     <p className="small-text-14 mt-0">
-                      Already have an account? Sign in instead
+                      Already have an account?{" "}
+                      <Link href={"/login"}>
+                        <a>Sign in instead</a>
+                      </Link>
                     </p>
                   </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-6">
-                  <Image width="797" height="1080"
-                    className="img-fluid" alt="Register Image"
+                  <Image
+                    width="797"
+                    height="1080"
+                    className="img-fluid"
+                    alt="Register Image"
                     src="/image/landingpg/register.png"
                   ></Image>
                 </div>
@@ -84,6 +96,6 @@ export default function Home() {
           </div>
         </main>
       </div>
-    </layoutB>
+    </LayoutB>
   );
 }

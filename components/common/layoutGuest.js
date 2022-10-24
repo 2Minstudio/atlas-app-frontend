@@ -10,7 +10,6 @@ export default function LayoutB({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-        <Headerlanding />
         <main>{children}</main>
       </body>
     </html>

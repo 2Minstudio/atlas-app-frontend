@@ -18,7 +18,9 @@ import {
   faLinkedin,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import LayoutC from "../components/common/layoutC";
+import LayoutC from "../components/common/layoutUser";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <LayoutC>
@@ -51,7 +53,10 @@ export default function Home() {
                           name="flexRadioDefault"
                           id="flexRadioDefault1"
                         ></input>
-                        <label className="form-check-label" for="flexRadioDefault1">
+                        <label
+                          className="form-check-label"
+                          for="flexRadioDefault1"
+                        >
                           Option 1
                         </label>
                       </div>
@@ -62,7 +67,10 @@ export default function Home() {
                           name="flexRadioDefault"
                           id="flexRadioDefault1"
                         ></input>
-                        <label className="form-check-label" for="flexRadioDefault1">
+                        <label
+                          className="form-check-label"
+                          for="flexRadioDefault1"
+                        >
                           Option 2
                         </label>
                       </div>
@@ -76,7 +84,10 @@ export default function Home() {
                           id="flexRadioDefault2"
                           checked
                         ></input>
-                        <label className="form-check-label" for="flexRadioDefault2">
+                        <label
+                          className="form-check-label"
+                          for="flexRadioDefault2"
+                        >
                           Option 3
                         </label>
                       </div>
@@ -87,11 +98,23 @@ export default function Home() {
                           name="flexRadioDefault"
                           id="flexRadioDefault1"
                         ></input>
-                        <label className="form-check-label" for="flexRadioDefault1">
+                        <label
+                          className="form-check-label"
+                          for="flexRadioDefault1"
+                        >
                           Option 4
                         </label>
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col">
+                    <Link href={"/finalcongratulations"}>
+                      <button className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5">
+                        Submit
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
