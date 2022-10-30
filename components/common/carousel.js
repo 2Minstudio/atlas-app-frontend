@@ -4,6 +4,21 @@ import ReactDOM from 'react-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
+var style ={
+    controlArrow :{
+        top: 0,
+        color:'#fff',
+        fontSize:'20px',
+        bottom: '0',
+        marginTop: '12.5%',
+        padding:'5px',
+        borderRadius: '50%',
+        height:'35px',
+        width:'35px',
+        backgroundColor:'#000',
+        position:'absolute',
+    },
+}
 class DemoCarousel extends Component {
     render() {
         return (

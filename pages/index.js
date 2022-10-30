@@ -20,8 +20,8 @@ export default function Home() {
         <main className={styles.main}>
           <Banner></Banner>
           <div className="container-fluid pt-5 pb-5">
-            <div className="container pt-5 pb-5 mt-5 mb-5 whyjoinBg">
-              <div className="row pt-5">
+            <div className="container pt-5 pb-5 mt-5 mb-5 whyjoinBg rounded-5">
+              <div className="row align-items-center p-3">
                 <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                   <h2>
                     <b>Why join Atlas chiropractic course?</b>
@@ -37,26 +37,26 @@ export default function Home() {
                 </div>
                 <div className="col">
                   <div className="row text-success">
-                    <div className="col text-center pt-0">
-                      <span className="bg-success rounded rounded-circle p-3">
+                    <div className="col-12 col-sm-6 text-center pt-5">
+                      <span className="bg-success rounded rounded-circle AiconHolderbg">
                         <FontAwesomeIcon
-                          className="Aicon text-white fa-2x"
+                          className="Aicon text-white"
                           icon={faUserPlus}
                         />
                       </span>
-                      <p className="pt-4">
+                      <p className="pt-5">
                         {" "}
                         Live Training with <br></br>Atlas Chiropractors
                       </p>
                     </div>
-                    <div className="col text-center pt-0">
-                      <span className="bg-success rounded rounded-circle p-3">
+                    <div className="col-12 col-sm-6 text-center pt-5">
+                      <span className="bg-success rounded rounded-circle AiconHolderbg">
                         <FontAwesomeIcon
-                          className="Aicon text-white fa-2x"
+                          className="Aicon text-white"
                           icon={faVideo}
                         />
                       </span>
-                      <p className="pt-4">
+                      <p className="pt-5">
                         {" "}
                         400 Hours of Course + <br></br>Paid Internship of 6
                         Months
@@ -65,26 +65,26 @@ export default function Home() {
                   </div>
 
                   <div className="row text-success">
-                    <div className="col text-center pt-5">
-                      <span className="bg-success rounded rounded-circle p-3">
+                    <div className="col-12 col-sm-6 text-center pt-5">
+                      <span className="bg-success rounded rounded-circle AiconHolderbg">
                         <FontAwesomeIcon
-                          className="Aicon text-white fa-2x"
+                          className="Aicon text-white"
                           icon={faStar}
                         />
                       </span>
-                      <p className="pt-4">
+                      <p className="pt-5">
                         {" "}
                         Become a Certified <br></br> Chiropractor in India
                       </p>
                     </div>
-                    <div className="col text-center pt-5">
-                      <span className="bg-success rounded rounded-circle p-3">
+                    <div className="col-12 col-sm-6 text-center pt-5">
+                      <span className="bg-success rounded rounded-circle AiconHolderbg">
                         <FontAwesomeIcon
-                          className="Aicon text-white fa-2x"
+                          className="Aicon text-white"
                           icon={faSuitcaseMedical}
                         />
                       </span>
-                      <p className="pt-4">
+                      <p className="pt-5">
                         {" "}
                         Get Placed with Atlas <br></br>Chiropractic & Wellness
                         Care
@@ -95,13 +95,15 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="container-fluid">
-            <div className="container pt-5 pb-5">
-              <div className="col text-center">
+          <div className="container-fluid pt-5 pb-5">
+            <div className="container pb-5 mb-5">
+              <div className="row justify-content-center">
+              <div className="text-center col-sm-12 col-md-10 col-lg-8 col-xl-7">
                 <h2>
                   <b>Learn From One Of The Few Licensed Chiropractors</b>
                 </h2>
               </div>
+            </div>
             </div>
           </div>
           <div className="container-fluid">
@@ -135,13 +137,13 @@ export default function Home() {
                     <div className="row">
                       <div className="col-sm-12 col-md-6">
                         <div className="row pb-4 pb-md-0">
-                          <div className="col-3">
+                          <div className="col-3 col-sm-3 col-md-12 col-lg-3">
                             <Image
-                              className="img-fluid"
+                              className="img-fluid Chiro-icon"
                               alt="chiropractor-image"
                               src="/image/Top chiroprator.png"
-                              height="512"
-                              width="512"
+                              height="150"
+                              width="150"
                             />
                           </div>
                           <div className="col-9 pt-4">
@@ -153,13 +155,13 @@ export default function Home() {
                       </div>
                       <div className="col-sm-12 col-md-6">
                         <div className="row">
-                          <div className="col-3">
+                          <div className="col-3 col-sm-3 col-md-12 col-lg-3">
                             <Image
-                              className="img-fluid"
+                              className="img-fluid Chiro-icon"
                               alt="Member Image"
                               src="/image/member.png"
-                              height="512"
-                              width="512"
+                              height="150"
+                              width="150"
                             />
                           </div>
                           <div className="col-9">
@@ -181,48 +183,48 @@ export default function Home() {
             </div>
           </div>
           <div className="container-fluid pt-5 pb-5 mb-5">
-            <div className="container text-center">
+            <div className="container mb-5 text-center">
               <div className="row">
-                <div className="col">
+                <div className="col-12 col-sm-12 col-md-4 pt-5">
                   <Image
-                    className="img-fluid p-5"
+                    className="img-fluid rounded-circle"
                     alt="Doctors-image"
                     src="/image/Ellipse 754.png"
-                    height="512"
-                    width="512"
+                    height="250"
+                    width="250"
                   ></Image>
 
-                  <h3>
+<h3 className="mt-5">
                     <b> Name of the Doctor</b>
                   </h3>
                   <p>Qualification</p>
                   <p>Description</p>
                 </div>
-                <div className="col">
+                <div className="col-12 col-sm-12 col-md-4 pt-5">
                   <Image
-                    className="img-fluid p-5"
+                    className="img-fluid rounded-circle"
                     alt="Doctors-image"
                     src="/image/Ellipse 754.png"
-                    height="512"
-                    width="512"
+                    height="250"
+                    width="250"
                   ></Image>
 
-                  <h3>
+<h3 className="mt-5">
                     <b> Name of the Doctor</b>
                   </h3>
                   <p>Qualification</p>
                   <p>Description</p>
                 </div>
-                <div className="col">
+                <div className="col-12 col-sm-12 col-md-4 pt-5">
                   <Image
-                    className="img-fluid p-5"
+                    className="img-fluid rounded-circle"
                     alt="Doctors-image"
                     src="/image/Ellipse 754.png"
-                    height="512"
-                    width="512"
+                    height="250"
+                    width="250"
                   ></Image>
 
-                  <h3>
+                  <h3 className="mt-5">
                     <b> Name of the Doctor</b>
                   </h3>
                   <p>Qualification</p>
@@ -232,10 +234,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="container-fluid pt-5 pb-5 mb-5">
+          <div className="container-fluid">
             <div className="container text-center">
               <div className="row  align-items-center">
-                <div className="col-lg-4 col-md-4 col-sm-12">
+                <div className="col-lg-4 col-md-4 col-sm-12 p-3">
                   <h2>
                     Course <br></br>Duration & <br></br>Syllabus
                   </h2>
@@ -248,19 +250,19 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="container-fluid pt-5 pb-5 mb-5">
-            <div className="container text-center text-success">
+          <div className="container-fluid pt-5">
+            <div className="container py-5 text-center text-success">
               <div className="row">
-                <div className="col ">
+                <div className="col-12 col-sm-12 col-md-4 p-4">
                   <h3>
                     Estimated salary for chiropractor will increase 42% in 5
                     years{" "}
                   </h3>
                 </div>
-                <div className="col">
+                <div className="col-12 col-sm-12 col-md-4 p-4">
                   <h3>Receive a salary of Rs 50,000 - 60,000 per month</h3>
                 </div>
-                <div className="col">
+                <div className="col-12 col-sm-12 col-md-4 p-3">
                   <h3>
                     Chiropractors are expected to grow 17% from 2022 to 2034
                   </h3>
@@ -271,21 +273,22 @@ export default function Home() {
 
           <div className="container-fluid my-5 girlBg">
             <div className="container">
-              <div className="row p-5">
-                <div className="col-xl-6 col-lg-7 col-md-12 col-sm-12 mt-5 pt-5">
+              <div className="row py-5">
+                <div className="col-xl-6 col-lg-8 col-md-12 col-sm-12 mt-5 pt-5">
                   <h2 className="text-success">
                     <b>
                       Start Earning as a Certified Chiropractor in 12 Months
                     </b>
                   </h2>
 
-                  <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4">
-                    <div className="col">
+                  <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4 align-items-center">
+                    <div className="col-12 col-sm-12 col-md-6 text-left">
+                    <div className="row">
                       <Link href="/course/test">
                         <a class="nav-link active" aria-current="page">
                           <button
                             type="button"
-                            className="w-100 btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
+                            className="btn btn-lg btn-success mb-3 rounded-pill"
                             data-bs-toggle="modal"
                             data-bs-target="#exampleModal"
                           >
@@ -293,9 +296,11 @@ export default function Home() {
                           </button>
                         </a>
                       </Link>
+                      </div>
                     </div>
 
-                    <div className="col">
+                    <div className="col-12 col-sm-12 col-md-6 text-left">
+                      <div className="row">
                       <a href="tel:+91 9606704304">
                         <button
                           type="button"
@@ -304,6 +309,7 @@ export default function Home() {
                           Inquire Now
                         </button>
                       </a>
+                      </div>
                     </div>
                   </div>
                 </div>
