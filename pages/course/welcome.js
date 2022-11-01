@@ -1,3 +1,4 @@
+import React from "react";
 import LayoutUser from "../../components/layout/layoutUser";
 import styles from "../../styles/Home.module.css";
 
@@ -8,106 +9,125 @@ import {
   faStar,
   faSuitcaseMedical,
 } from "@fortawesome/free-solid-svg-icons";
-export default function CourseWelcome() {
-  return (
-    <LayoutUser>
-      <div className={styles}>
-        <main className={styles.main}>
-          <div className="container-fluid bg-light p-2 p-sm-3 p-md-5">
-            <div className="container bg-white rounded rounded-10">
-              <div className="row">
-                <div className="col-12 col-sm-12 col-md-6 p-3 p-sm-4 p-md-5">
-                  <h2 className="text-success py-3">Welcome Siddanth </h2>
-                  <p className="pb-5">
-                    Take the Qualification test to unlock{" "}
-                    <b>the chiropractor course</b>
-                  </p>
-                  <ul className="list-unstyled">
-                    <li className="mb-5 position-relative">
-                      <span className="bg-success rounded rounded-circle AiconHolderbg">
-                        <FontAwesomeIcon
-                          className="Aicon text-white fa-2x"
-                          icon={faUserPlus}
-                        />
-                      </span>{" "}
-                      <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">Get An Invite & Buy The Chiropractor Course</p>
-                    </li>
-                    <li className="mb-5 position-relative">
-                      <span className="bg-success rounded rounded-circle AiconHolderbg">
-                        <FontAwesomeIcon
-                          className="Aicon text-white fa-2x"
-                          icon={faVideo}
-                        />
-                      </span>{" "}
-                      <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">Unlock 400hrs of Study Material</p>
-                    </li>
-                    <li className="mb-5 position-relative">
-                      <span className="bg-success rounded rounded-circle AiconHolderbg">
-                        <FontAwesomeIcon
-                          className="Aicon text-white fa-2x"
-                          icon={faStar}
-                        />
-                      </span>{" "}
-                      <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">Get Live Hands-on Training{" "}</p>
-                    </li>
-                    <li className="mb-5 position-relative">
-                      <span className="bg-success rounded rounded-circle AiconHolderbg">
-                        <FontAwesomeIcon
-                          className="Aicon text-white fa-2x"
-                          icon={faSuitcaseMedical}
-                        />
-                      </span>{" "}
-                      <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">6 Months of Paid Internship</p>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-12 col-sm-12 col-md-6 p-2 p-sm-4 p-md-5">
-                  <div className="row align-items-center whyjoinBg h-100">
-                  <div className="rounded-10">
-                    <p className="text-center py-5">
-                      Cost of the Eligibility Test
+import { getUser } from "../../helpers/helper";
+
+class CourseWelcome extends React.Component {
+  static async getInitialProps(ctx) {
+    const user = getUser(ctx);
+    console.log(user, "user");
+    return { user: user };
+  }
+  render() {
+    return (
+      <LayoutUser>
+        <div className={styles}>
+          <main className={styles.main}>
+            <div className="container-fluid bg-light p-2 p-sm-3 p-md-5">
+              <div className="container bg-white rounded rounded-10">
+                <div className="row">
+                  <div className="col-12 col-sm-12 col-md-6 p-3 p-sm-4 p-md-5">
+                    <h2 className="text-success py-3">Welcome Siddanth </h2>
+                    <p className="pb-5">
+                      Take the Qualification test to unlock{" "}
+                      <b>the chiropractor course</b>
                     </p>
-                    <div className="row mb-4">
-                      <div className="col-6 text-center">
-                        <p className="text-success">
-                          {" "}
-                          <b>Rs 2000</b>
+                    <ul className="list-unstyled">
+                      <li className="mb-5 position-relative">
+                        <span className="bg-success rounded rounded-circle AiconHolderbg">
+                          <FontAwesomeIcon
+                            className="Aicon text-white fa-2x"
+                            icon={faUserPlus}
+                          />
+                        </span>{" "}
+                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">
+                          Get An Invite & Buy The Chiropractor Course
                         </p>
-                        <p>
-                          <del>Rs 3500</del>
+                      </li>
+                      <li className="mb-5 position-relative">
+                        <span className="bg-success rounded rounded-circle AiconHolderbg">
+                          <FontAwesomeIcon
+                            className="Aicon text-white fa-2x"
+                            icon={faVideo}
+                          />
+                        </span>{" "}
+                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">
+                          Unlock 400hrs of Study Material
                         </p>
-                      </div>
-                      <div className="col-6 text-center">
-                        <p>
-                          {" "}
-                          35% Off<br></br>
-                          <span className="small-text-12">
-                            + Applicable taxes
-                          </span>
+                      </li>
+                      <li className="mb-5 position-relative">
+                        <span className="bg-success rounded rounded-circle AiconHolderbg">
+                          <FontAwesomeIcon
+                            className="Aicon text-white fa-2x"
+                            icon={faStar}
+                          />
+                        </span>{" "}
+                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">
+                          Get Live Hands-on Training{" "}
                         </p>
-                        <p></p>
-                      </div>
-                    </div>
-                    <div className="row justify-content-center mb-3 mt-5">
-                      <button className="btn btn-success rounded-pill col-10 col-sm-8 col-lg-6 col-xl-5">
-                        {" "}
-                        Take Eligibility Test{" "}
-                      </button>
-                    </div>
-                    <div className="row justify-content-center pb-5">
-                      <button className="btn-outline-success btn rounded-pill col-10 col-sm-8 col-lg-6 col-xl-5">
-                        {" "}
-                        Try Sample Test{" "}
-                      </button>
-                    </div>
+                      </li>
+                      <li className="mb-5 position-relative">
+                        <span className="bg-success rounded rounded-circle AiconHolderbg">
+                          <FontAwesomeIcon
+                            className="Aicon text-white fa-2x"
+                            icon={faSuitcaseMedical}
+                          />
+                        </span>{" "}
+                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">
+                          6 Months of Paid Internship
+                        </p>
+                      </li>
+                    </ul>
                   </div>
+                  <div className="col-12 col-sm-12 col-md-6 p-2 p-sm-4 p-md-5">
+                    <div className="row align-items-center whyjoinBg h-100">
+                      <div className="rounded-10">
+                        <p className="text-center py-5">
+                          Cost of the Eligibility Test
+                        </p>
+                        <div className="row mb-4">
+                          <div className="col-6 text-center">
+                            <p className="text-success">
+                              {" "}
+                              <b>Rs 2000</b>
+                            </p>
+                            <p>
+                              <del>Rs 3500</del>
+                            </p>
+                          </div>
+                          <div className="col-6 text-center">
+                            <p>
+                              {" "}
+                              35% Off<br></br>
+                              <span className="small-text-12">
+                                + Applicable taxes
+                              </span>
+                            </p>
+                            <p></p>
+                          </div>
+                        </div>
+                        <div className="row justify-content-center mb-3 mt-5">
+                          <button className="btn btn-success rounded-pill col-10 col-sm-8 col-lg-6 col-xl-5">
+                            {" "}
+                            Take Eligibility Test{" "}
+                          </button>
+                        </div>
+                        <div className="row justify-content-center pb-5">
+                          <button className="btn-outline-success btn rounded-pill col-10 col-sm-8 col-lg-6 col-xl-5">
+                            {" "}
+                            Try Sample Test{" "}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </main>
-      </div>
-    </LayoutUser>
-  );
+          </main>
+        </div>
+      </LayoutUser>
+    );
+  }
 }
+
+export default CourseWelcome;

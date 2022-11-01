@@ -21,7 +21,7 @@ export default function Payment() {
                       ></input>
                       <label
                         className="form-check-label"
-                        for="flexRadioDefault1"
+                        htmlFor="flexRadioDefault1"
                       >
                         Credit Card
                       </label>
@@ -36,7 +36,7 @@ export default function Payment() {
                       ></input>
                       <label
                         className="form-check-label"
-                        for="flexRadioDefault2"
+                        htmlFor="flexRadioDefault2"
                       >
                         UPI
                       </label>
@@ -50,7 +50,7 @@ export default function Payment() {
                       ></input>
                       <label
                         className="form-check-label"
-                        for="flexRadioDefault1"
+                        htmlFor="flexRadioDefault1"
                       >
                         Net banking
                       </label>

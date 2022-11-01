@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   let resp = {};
   await axios({
     method: "post",
-    url: `${process.env.API_URL}/api/login/`,
+    url: `${process.env.API_URL}/api/register/`,
     data: { username: body.email, password: body.password },
   })
     .then((response) => {

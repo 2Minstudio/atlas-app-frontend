@@ -38,7 +38,7 @@ export default function CourseTest() {
                         ></input>
                         <label
                           className="form-check-label"
-                          for="flexRadioDefault1"
+                          htmlFor="flexRadioDefault1"
                         >
                           Option 1
                         </label>
@@ -52,7 +52,7 @@ export default function CourseTest() {
                         ></input>
                         <label
                           className="form-check-label"
-                          for="flexRadioDefault1"
+                          htmlFor="flexRadioDefault1"
                         >
                           Option 2
                         </label>
@@ -69,7 +69,7 @@ export default function CourseTest() {
                         ></input>
                         <label
                           className="form-check-label"
-                          for="flexRadioDefault2"
+                          htmlFor="flexRadioDefault2"
                         >
                           Option 3
                         </label>
@@ -83,7 +83,7 @@ export default function CourseTest() {
                         ></input>
                         <label
                           className="form-check-label"
-                          for="flexRadioDefault1"
+                          htmlFor="flexRadioDefault1"
                         >
                           Option 4
                         </label>
