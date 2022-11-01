@@ -10,7 +10,7 @@ export default function Login() {
         <main className={styles.main}>
           <div className="container-fluid">
             <div className="container">
-              <div className="row">
+              <div className="row align-items-center">
                 <div className="col-12 col-sm-12 col-md-6 py-5 mb-5">
                   <Logo />
 
@@ -63,7 +63,7 @@ export default function Login() {
 
                   <div className="row text-center justify-content-center">
                     <Link href={"/course/test"}>
-                      <button className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5">
+                      <button className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5">
                         {" "}
                         Signin
                       </button>
@@ -76,7 +76,7 @@ export default function Login() {
                     </p>
                   </div>
                 </div>
-                <div className="col-12 col-sm-12 col-md-6">
+                <div className="col-12 col-sm-12 col-md-6 d-none d-md-block">
                   <Image
                     className="img-fluid"
                     width={797}

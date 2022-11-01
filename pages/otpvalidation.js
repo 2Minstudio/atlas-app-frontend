@@ -74,7 +74,7 @@ export default function OtpValidation() {
                     </p>
                   </div>
                 </div>
-                <div className="col-12 col-sm-12 col-md-6">
+                <div className="col-12 col-sm-12 col-md-6 d-none d-md-block">
                   <Image
                     width="796"
                     height="1075"

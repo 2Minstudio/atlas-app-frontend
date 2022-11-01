@@ -94,7 +94,7 @@ export default function CourseTest() {
                 <div className="row text-center justify-content-center">
                   <div className="col">
                     <Link href={"/finalcongratulations"}>
-                      <button className="btn btn-success rounded-pill mt-5 col-3 align-middle my-5">
+                      <button className="btn btn-success rounded-pill mt-5 col-5 col-sm-4 col-md-3 align-middle my-5">
                         Submit
                       </button>
                     </Link>

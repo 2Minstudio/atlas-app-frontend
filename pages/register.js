@@ -11,9 +11,9 @@ export default function Register() {
           <div className="container-fluid">
             <div className="container">
               <div className="row align-items-center">
-                <div className="col-12 col-sm-6 col-md-6 py-5">
+                <div className="col-12 col-sm-12 col-md-6 py-5">
                   <Logo align="left"/>
-                  <h2 className="mb-5">
+                  <h2 className="my-5">
                     Get 6 Months of Paid Internship After Finishing The Course.
                   </h2>
                   <h4 className="mb-5">Signup & Get Started!</h4>
@@ -70,7 +70,7 @@ export default function Register() {
 
                   <div className="row text-center justify-content-center">
                     <Link href={"/course/test"}>
-                      <button className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5">
+                      <button className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5">
                         {" "}
                         Signup
                       </button>
@@ -83,7 +83,7 @@ export default function Register() {
                     </p>
                   </div>
                 </div>
-                <div className="col-12 col-sm-6 col-md-6">
+                <div className="col-12 col-sm-12 col-md-6 d-none d-md-block">
                   <Image
                     width="797"
                     height="1080"

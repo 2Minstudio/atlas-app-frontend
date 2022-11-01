@@ -37,7 +37,7 @@ export default function ForgotPassword() {
                   </form>
 
                   <div className="row text-center justify-content-center">
-                    <button className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5">
+                    <button className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5">
                       {" "}
                       Send Reset Link
                     </button>
@@ -48,7 +48,7 @@ export default function ForgotPassword() {
                     </p>
                   </div>
                 </div>
-                <div className="col-12 col-sm-12 col-md-6">
+                <div className="col-12 col-sm-12 col-md-6 d-none d-md-block">
                   <Image
                     width="796"
                     height="1095"

@@ -8,10 +8,10 @@ export default function FinalCongratulations() {
     <LayoutUser>
       <div className={styles}>
         <main className={styles.main}>
-          <div className="container-fluid bg-light p-5">
+          <div className="container-fluid bg-light p-4 p-sm-5">
             <div className="container  rounded rounded-10">
               <div className="row bg-white rounded-10 align-items-center">
-                <div className="col-12 col-sm-12 col-md-6 p-5 ">
+                <div className="col-12 col-sm-12 col-md-4 col-lg-4 p-5">
                   <div className="row">
                     <FontAwesomeIcon
                       className="Aicon5x text-warning my-4"
@@ -19,7 +19,7 @@ export default function FinalCongratulations() {
                     />
                   </div>
                 </div>
-                <div className="col-12 col-sm-12 col-md-6 p-5">
+                <div className="col-12 col-sm-12 col-md-8 col-lg-8 p-3 p-sm-5">
                   <div className="rounded-10">
                     <div className="row justify-content-center">
                       <h2 className="py-4">
