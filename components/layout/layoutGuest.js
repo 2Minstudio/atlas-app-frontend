@@ -1,5 +1,5 @@
 import Head from "next/head";
-import {config} from "../../config/config";
+import { config } from "../../config/config";
 
 export default function LayoutGuest({ children }) {
   return (
