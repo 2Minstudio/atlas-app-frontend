@@ -56,30 +56,34 @@ export default function Payment() {
                       </label>
                     </div>
                   </div>
-                  <div className="row pt-5">
+                  <div className="row pt-5 align-items-center">
                     <div className="col">
+                    <div className="row ">
                       <button className="btn btn-success rounded-pill">
                         Place Order
                       </button>
+                      </div>
                     </div>
                     <div className="col">
-                      <p>
+                      <div className="row ">
+                      <p className="mb-0 text-center">
                         <a href="#"> Go back </a>{" "}
                       </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="col-12 col-sm-12 col-md-6 p-5">
+                <div className="col-12 col-sm-12 col-md-6 p-4 p-sm-5 p-md-1 p-lg-5">
                   <div className="rounded-10">
                     <p className="text-center pt-5 pb-3">Billing Details</p>
                     <div className="row justify-content-center mb-3 ">
-                      <button className="btn btn-lg border shadow-sm border-opacity-10 rounded-10 col-8 p-5 mb-5">
+                      <button className="btn btn-lg border shadow-sm border-opacity-10 rounded-10 col-10 col-sm-8 p-5 mb-5">
                         {" "}
                         Eligibility Test{" "}
                       </button>
                     </div>
                     <div className="row mb-4 justify-content-center px-5">
-                      <div className="col-6 ">
+                      <div className="col-6">
                         <p> 1 x Test Session</p>
                       </div>
                       <div className="col-6 text-end">

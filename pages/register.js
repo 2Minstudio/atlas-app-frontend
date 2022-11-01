@@ -26,7 +26,7 @@ class Register extends React.Component {
     } = event;
 
     const is_agreed = agree && agree.checked;
-    if(!is_agreed){
+    if (!is_agreed) {
       //raise error for registrations
     }
     // Get data from the form.
@@ -90,7 +90,7 @@ class Register extends React.Component {
                           type="text"
                           className="form-control border-0 border-bottom border-dark rounded-0"
                           id="name"
-                          placeholder="Your name"
+                          placeholder="First name"
                         />
                       </div>
                       <div className="mb-3">
@@ -141,7 +141,7 @@ class Register extends React.Component {
                       <div className="row text-center justify-content-center">
                         <button
                           type="submit"
-                          className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5"
+                          className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5"
                         >
                           {" "}
                           Signup
@@ -156,7 +156,7 @@ class Register extends React.Component {
                       </div>
                     </form>
                   </div>
-                  <div className="col-12 col-sm-6 col-md-6">
+                  <div className="col-12 col-sm-12 col-md-6 d-none d-md-block">
                     <Image
                       width="797"
                       height="1080"

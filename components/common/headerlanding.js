@@ -16,7 +16,7 @@ const Headerlanding = () => {
               
               className="d-flex align-items-center text-dark text-decoration-none"
             >
-              <span className="ps-5">
+              <span className="ps-0 ps-sm-5">
               <Image
                 width="120"
                 height="65"
@@ -29,7 +29,7 @@ const Headerlanding = () => {
               </span>
             </a>
             </Link>
-            <p className="pt-3 ms-md-auto pe-4 text-success">
+            <p className="pt-3 ms-md-auto pe-0 pe-sm-0 pe-md-4 text-success">
               Community &nbsp; &nbsp; <span className="text-dark">Siddanth</span>{" "}
               <FontAwesomeIcon
                 className="Auser text-primary position-relative"

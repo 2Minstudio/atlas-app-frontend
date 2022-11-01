@@ -8,13 +8,13 @@ export default function Verify() {
         <main className={styles.main}>
           <div className="container-fluid">
             <div className="container">
-              <div className="row align-middle">
-                <div className="col-12 col-sm-12 col-md-6 py-5 mb-5">
+              <div className="row align-items-center">
+                <div className="col-12 col-sm-12 col-md-6 mb-5 pt-5">
                   <Image
                     className="img-fluid myLogoLp"
                     alt="Logo"
-                    width={100}
-                    height={100}
+                    width="120"
+                    height="65"
                     src="/image/logo.png"
                   ></Image>
                   <b className="text-success">Academy</b>
@@ -32,11 +32,13 @@ export default function Verify() {
                     </div>
                   </div>
                 </div>
-                <div className="col-12 col-sm-12 col-md-6 align-items-center">
+                <div className="col-12 col-sm-12 col-md-6 col-md-6 d-none d-md-block">
                   <Image
+                    width="797"
+                    height="1080"
                     className="img-fluid"
-                    alt="Regidter Image"
-                    src="image/landingpg/register.png"
+                    alt="Register Image"
+                    src="/image/landingpg/register.png"
                   ></Image>
                 </div>
               </div>

@@ -65,7 +65,7 @@ class Login extends React.Component {
           <main className={styles.main}>
             <div className="container-fluid">
               <div className="container">
-                <div className="row">
+                <div className="row align-items-center">
                   <div className="col-12 col-sm-12 col-md-6 py-5 mb-5">
                     <Logo />
 
@@ -127,7 +127,7 @@ class Login extends React.Component {
                       <div className="row text-center justify-content-center">
                         <button
                           type="submit"
-                          className="btn btn-success rounded-pill mt-5 col-5 align-middle my-5"
+                          className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5"
                         >
                           {" "}
                           Signin
@@ -142,7 +142,7 @@ class Login extends React.Component {
                       </div>
                     </form>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-6">
+                  <div className="col-12 col-sm-12 col-md-6 d-none d-md-bloc">
                     <Image
                       className="img-fluid"
                       width={797}

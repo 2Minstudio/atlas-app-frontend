@@ -8,7 +8,7 @@ export default function Home() {
           <div className="container-fluid bg-light p-5">
             <div className="container  rounded rounded-10">
               <div className="row bg-white rounded-10 align-items-center">
-                <div className="col-12 col-sm-12 col-md-6 p-5 ">
+                <div className="col-12 col-sm-12 col-md-6 p-4 px-sm-5 ">
                   <h2 className="py-5">Hi Siddanth</h2>
                   <div className="row">
                     <p>
@@ -18,14 +18,16 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="col-12 col-sm-12 col-md-6 p-5">
-                  <div className="rounded-10">
+                <div className="col-12 col-sm-12 col-md-6 pb-5 pb-sm-5 pb-md-0">
+                  <div className="row align-items-center">
+                  <div className="rounded-10 sm-pb-5">
                     <div className="row justify-content-center">
-                      <button className="btn bg-success rounded-10 col-8 col-md-4 mb-5 text-white ">
+                      <button className="btn bg-success rounded-10 col-8 col-sm-6 col-md-6 text-white ">
                         {" "}
                         Take the Test{" "}
                       </button>
                     </div>
+                  </div>
                   </div>
                 </div>
               </div>
