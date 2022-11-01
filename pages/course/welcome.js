@@ -13,56 +13,57 @@ export default function CourseWelcome() {
     <LayoutUser>
       <div className={styles}>
         <main className={styles.main}>
-          <div className="container-fluid bg-light p-5">
+          <div className="container-fluid bg-light p-2 p-sm-3 p-md-5">
             <div className="container bg-white rounded rounded-10">
               <div className="row">
-                <div className="col-12 col-sm-12 col-md-6 py-5 px-5">
-                  <h2 className="text-success pb-3">Welcome Siddanth </h2>
-                  <p className="pb-4">
+                <div className="col-12 col-sm-12 col-md-6 p-3 p-sm-4 p-md-5">
+                  <h2 className="text-success py-3">Welcome Siddanth </h2>
+                  <p className="pb-5">
                     Take the Qualification test to unlock{" "}
                     <b>the chiropractor course</b>
                   </p>
                   <ul className="list-unstyled">
-                    <li className="pb-4">
-                      <span className="bg-success rounded rounded-circle py-3 px-2">
+                    <li className="mb-5 position-relative">
+                      <span className="bg-success rounded rounded-circle AiconHolderbg">
                         <FontAwesomeIcon
                           className="Aicon text-white fa-2x"
                           icon={faUserPlus}
                         />
                       </span>{" "}
-                      Get An Invite & Buy The Chiropractor Course
+                      <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">Get An Invite & Buy The Chiropractor Course</p>
                     </li>
-                    <li className="pb-4">
-                      <span className="bg-success rounded rounded-circle py-3 px-2">
+                    <li className="mb-5 position-relative">
+                      <span className="bg-success rounded rounded-circle AiconHolderbg">
                         <FontAwesomeIcon
                           className="Aicon text-white fa-2x"
                           icon={faVideo}
                         />
                       </span>{" "}
-                      Unlock 400hrs of Study Material
+                      <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">Unlock 400hrs of Study Material</p>
                     </li>
-                    <li className="pb-4">
-                      <span className="bg-success rounded rounded-circle py-3 px-2">
+                    <li className="mb-5 position-relative">
+                      <span className="bg-success rounded rounded-circle AiconHolderbg">
                         <FontAwesomeIcon
                           className="Aicon text-white fa-2x"
                           icon={faStar}
                         />
                       </span>{" "}
-                      Get Live Hands-on Training{" "}
+                      <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">Get Live Hands-on Training{" "}</p>
                     </li>
-                    <li className="pb-4">
-                      <span className="bg-success rounded rounded-circle py-3 px-2">
+                    <li className="mb-5 position-relative">
+                      <span className="bg-success rounded rounded-circle AiconHolderbg">
                         <FontAwesomeIcon
                           className="Aicon text-white fa-2x"
                           icon={faSuitcaseMedical}
                         />
                       </span>{" "}
-                      6 Months of Paid Internship
+                      <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">6 Months of Paid Internship</p>
                     </li>
                   </ul>
                 </div>
-                <div className="col-12 col-sm-12 col-md-6 py-5 px-5">
-                  <div className="whyjoinBg rounded-10">
+                <div className="col-12 col-sm-12 col-md-6 p-2 p-sm-4 p-md-5">
+                  <div className="row align-items-center whyjoinBg h-100">
+                  <div className="rounded-10">
                     <p className="text-center py-5">
                       Cost of the Eligibility Test
                     </p>
@@ -88,17 +89,18 @@ export default function CourseWelcome() {
                       </div>
                     </div>
                     <div className="row justify-content-center mb-3 mt-5">
-                      <button className="btn btn-success rounded-pill col-10 col-sm-4">
+                      <button className="btn btn-success rounded-pill col-10 col-sm-8 col-lg-6 col-xl-5">
                         {" "}
                         Take Eligibility Test{" "}
                       </button>
                     </div>
                     <div className="row justify-content-center pb-5">
-                      <button className="btn-outline-success btn rounded-pill col-10 col-sm-4">
+                      <button className="btn-outline-success btn rounded-pill col-10 col-sm-8 col-lg-6 col-xl-5">
                         {" "}
                         Try Sample Test{" "}
                       </button>
                     </div>
+                  </div>
                   </div>
                 </div>
               </div>
