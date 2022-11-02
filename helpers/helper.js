@@ -4,9 +4,9 @@ import cookies from "next-cookies";
 
 const isLoggedin = (ctx) => {
   const { atlastoken } = cookies(ctx);
-  if (atlastoken) {
-    return atlastoken;
-  }
+  console.log('is logged in',atlastoken);
+  if (atlastoken) return atlastoken;
+
   return false;
 };
 
@@ -20,9 +20,7 @@ const getUser = (ctx) => {
           Authorization: `Token ${token}`,
         },
       })
-      .then((response) => {
-
-      })
+      .then((response) => {})
       .catch((error) => {
         // handle error
         console.log(error);

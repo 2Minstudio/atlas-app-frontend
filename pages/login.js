@@ -6,10 +6,19 @@ import Logo from "../components/common/logo/logo";
 import LayoutGuest from "../components/layout/layoutGuest";
 import styles from "../styles/Home.module.css";
 import { isLoggedin } from "../helpers/helper";
+import Toast from "react-bootstrap/Toast";
+import Alert from "react-bootstrap/Alert";
+import { withCookies, Cookies } from "react-cookie";
+
 
 class Login extends React.Component {
+  state = {
+    error: {},
+    token: this.props.cookies?.get("atlastoken") || ""
+  };
   static async getInitialProps(ctx) {
     const token = isLoggedin(ctx);
+    console.log(token, "get tplem");
     if (token) {
       ctx.res.writeHead(302, {
         Location: "/course/welcome",
@@ -17,7 +26,22 @@ class Login extends React.Component {
       });
       ctx.res.end();
     }
-    return { token: token };
+    return { ...ctx, token: token };
+  }
+
+  componentDidMount() {
+    console.log(this.props,this.state, document.cookie);
+    const { token } = this.props;
+    
+    // const token = isLoggedin(ctx);
+    console.log(token, "token on comp");
+    // if (token) {
+    //   ctx.res.writeHead(302, {
+    //     Location: "/course/welcome",
+    //     "Content-Type": "text/html; charset=utf-8",
+    //   });
+    //   ctx.res.end();
+    // }
   }
 
   handleSubmit = async (event) => {
@@ -39,26 +63,23 @@ class Login extends React.Component {
       },
     };
 
-    // Send the form data to our forms API on Vercel and get a response.
     const response = await fetch("/api/login", options);
-
-    // Get the response data from server as JSON.
-    // If server returns the name submitted, that means the form works.
     const result = await response.json();
-    console.log(result);
+
     if (!result.state) {
-      console.log(result.data);
-      result.data.each((i) => {
-        console.log("error", i);
+      const error = {};
+      Object.keys(result.data).map((key) => {
+        // console.log("error", key, result.data[key][0]);
+        error[key] = result.data[key][0];
       });
+      this.setState({ error: error });
     } else {
-      //redirect to dashbaord
-      this.props.router.push("/course/payment");
+      this.props.router.push("/course/welcome");
     }
-    // alert(`Is this your full name: ${result.data}`);
   };
 
   render() {
+    const { error } = this.state;
     return (
       <LayoutGuest>
         <div className={styles}>
@@ -71,6 +92,11 @@ class Login extends React.Component {
 
                     <h2 className="mb-2 mt-5">Welcome Back!!</h2>
                     <h4 className="mb-5">Please sign in to your account</h4>
+                    {error?.non_field_errors && (
+                      <Alert variant="danger" className="error alert">
+                        {error.non_field_errors}
+                      </Alert>
+                    )}
                     <form
                       className="pe-5"
                       action="/api/login"
@@ -86,6 +112,11 @@ class Login extends React.Component {
                           placeholder="Email or Phone Number"
                           required
                         ></input>
+                        {error?.email && (
+                          <Alert variant="danger" className="error alert">
+                            {error.email}
+                          </Alert>
+                        )}
                       </div>
                       <div className="mb-3">
                         <input
@@ -96,6 +127,11 @@ class Login extends React.Component {
                           placeholder="Password"
                           required
                         ></input>
+                        {error?.password && (
+                          <Alert variant="danger" className="error alert">
+                            {error.password}
+                          </Alert>
+                        )}
                       </div>
 
                       <div className="form-check small-text-14 mt-5">
@@ -142,7 +178,7 @@ class Login extends React.Component {
                       </div>
                     </form>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-6 d-none d-md-bloc">
+                  <div className="col-12 col-sm-12 col-md-6 d-none d-md-block">
                     <Image
                       className="img-fluid"
                       width={797}
@@ -161,4 +197,4 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(Login);
+export default withCookies(withRouter(Login));

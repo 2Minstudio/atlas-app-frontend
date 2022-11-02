@@ -1,11 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { withRouter } from "next/router";
 import Logo from "../components/common/logo/logo";
 import LayoutGuest from "../components/layout/layoutGuest";
 import styles from "../styles/Home.module.css";
 import { isLoggedin } from "../helpers/helper";
+import Alert from 'react-bootstrap/Alert';
 class Register extends React.Component {
+  state = {
+    error: {},
+  };
   static async getInitialProps(ctx) {
     const token = isLoggedin(ctx);
     if (token) {
@@ -22,19 +27,22 @@ class Register extends React.Component {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
     const {
-      target: { agree, name, email, phone_number, password },
+      target: { agree, first_name, email, phone_number, password },
     } = event;
 
     const is_agreed = agree && agree.checked;
     if (!is_agreed) {
       //raise error for registrations
+      alert("Please agree to proceed further");
+      return;
     }
     // Get data from the form.
     const data = {
-      name: name.value,
+      first_name: first_name.value,
       email: email.value,
       phone_number: phone_number.value,
       password: password.value,
+
     };
     // Form the request for sending data to the server.
     const options = {
@@ -53,18 +61,20 @@ class Register extends React.Component {
     const result = await response.json();
     console.log(result);
     if (!result.state) {
-      console.log(result.data);
-      result.data.each((i) => {
-        console.log("error", i);
+      const error = {};
+      Object.keys(result.data).map((key) => {
+        // console.log("error", key, result.data[key][0]);
+        error[key] = result.data[key][0];
       });
+      this.setState({ error: error });
     } else {
-      //redirect to dashbaord
       this.props.router.push("/course/payment");
     }
     // alert(`Is this your full name: ${result.data}`);
   };
 
   render() {
+    const { error } = this.state;
     return (
       <LayoutGuest>
         <div className={styles}>
@@ -79,6 +89,7 @@ class Register extends React.Component {
                       Course.
                     </h2>
                     <h4 className="mb-5">Signup & Get Started!</h4>
+                    {error?.non_field_errors && <Alert variant="danger" className='error alert'>{error.non_field_errors}</Alert>}
                     <form
                       action="/api/register"
                       method="post"
@@ -86,12 +97,14 @@ class Register extends React.Component {
                     >
                       <div className="mb-3">
                         <input
-                          name="name"
+                          name="first_name"
                           type="text"
                           className="form-control border-0 border-bottom border-dark rounded-0"
-                          id="name"
+                          id="first_name"
                           placeholder="First name"
+                          required
                         />
+                        {error?.first_name && <Alert variant="danger" className='error alert'>{error.first_name}</Alert>}
                       </div>
                       <div className="mb-3">
                         <input
@@ -100,7 +113,9 @@ class Register extends React.Component {
                           className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
                           id="email"
                           placeholder="Email"
+                          required
                         />
+                        {error?.email && <Alert variant="danger" className='error alert'>{error.email}</Alert>}
                       </div>
                       <div className="mb-3">
                         <input
@@ -109,7 +124,9 @@ class Register extends React.Component {
                           className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
                           id="phone_number"
                           placeholder="Phone Number"
+                          required
                         ></input>
+                        {error?.phone_number && <Alert variant="danger" className='error alert'>{error.phone_number}</Alert>}
                       </div>
                       <div className="mb-3">
                         <input
@@ -118,7 +135,9 @@ class Register extends React.Component {
                           className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
                           id="password"
                           placeholder="Password"
+                          required
                         ></input>
+                        {error?.password && <Alert variant="danger" className='error alert'>{error.password}</Alert>}
                       </div>
 
                       <div className="form-check small-text-14 mt-5">
@@ -175,4 +194,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+export default withRouter(Register);
