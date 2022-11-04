@@ -1,31 +1,49 @@
-// import Cookies from 'cookies';
 import axios from "axios";
-import cookies from "next-cookies";
+import cookie from "cookie";
 
-const isLoggedin = (ctx) => {
-  const { atlastoken } = cookies(ctx);
-  console.log('is logged in',atlastoken);
+const isLoggedin = async (ctx) => {
+  const { req, res } = ctx;
+  const cookies =
+    req && req?.headers.cookies ? req.headers.cookies : req.cookies;
+  console.log(cookies, "cookes?");
+  // const cookies = new Cookies(req, res);
+  // const atlastoken = cookies.get("atlastoken");
+  const { atlastoken = false } = cookies;
+  console.log("is logged in", atlastoken);
   if (atlastoken) return atlastoken;
-
   return false;
 };
 
-const getUser = (ctx) => {
+const getUser = async  (ctx) => {
+  // const cookies = new Cookies(req, res);
   const token = isLoggedin(ctx);
+  const { req, res } = ctx;
+  console.log(token, "token?");
   if (token) {
     const url = `${process.env.API_URL}/api/user/`;
-    axios
+    await axios
       .get(url, {
         headers: {
           Authorization: `Token ${token}`,
+          "Content-Type": "application/json",
         },
       })
-      .then((response) => {})
+      .then((response) => {
+        console.log(response);
+      })
       .catch((error) => {
         // handle error
-        console.log(error);
+        if (error.response.status == 401) {
+          cookies.set("atlastoken", "");
+          console.log("clear cookie");
+          console.log("error ?", error.response.status);
+        }
       });
   }
-};
+}
 
-export { isLoggedin, getUser };
+const isClientLoggedin = (props)=>{
+  const { cookies } = props;
+    const token = cookies.get("atlastoken");
+}
+export { isLoggedin, getUser, isClientLoggedin };

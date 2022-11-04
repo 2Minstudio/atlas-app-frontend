@@ -98,12 +98,12 @@ export default function Home() {
           <div className="container-fluid pt-5 pb-5">
             <div className="container pb-5 mb-5">
               <div className="row justify-content-center">
-              <div className="text-center col-sm-12 col-md-10 col-lg-8 col-xl-7">
-                <h2>
-                  <b>Learn From One Of The Few Licensed Chiropractors</b>
-                </h2>
+                <div className="text-center col-sm-12 col-md-10 col-lg-8 col-xl-7">
+                  <h2>
+                    <b>Learn From One Of The Few Licensed Chiropractors</b>
+                  </h2>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           <div className="container-fluid">
@@ -194,7 +194,7 @@ export default function Home() {
                     width="250"
                   ></Image>
 
-<h3 className="mt-5">
+                  <h3 className="mt-5">
                     <b> Name of the Doctor</b>
                   </h3>
                   <p>Qualification</p>
@@ -209,7 +209,7 @@ export default function Home() {
                     width="250"
                   ></Image>
 
-<h3 className="mt-5">
+                  <h3 className="mt-5">
                     <b> Name of the Doctor</b>
                   </h3>
                   <p>Qualification</p>
@@ -283,32 +283,32 @@ export default function Home() {
 
                   <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4 align-items-center">
                     <div className="col-12 col-sm-12 col-md-6 text-left">
-                    <div className="row">
-                      <Link href="/course/test">
-                        <a class="nav-link active" aria-current="page">
-                          <button
-                            type="button"
-                            className="btn btn-lg btn-success mb-3 rounded-pill"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                          >
-                            Take the Eligibility Test
-                          </button>
-                        </a>
-                      </Link>
+                      <div className="row">
+                        <Link href="/course/test">
+                          <a className="nav-link active" aria-current="page">
+                            <button
+                              type="button"
+                              className="btn btn-lg btn-success mb-3 rounded-pill"
+                              data-bs-toggle="modal"
+                              data-bs-target="#exampleModal"
+                            >
+                              Take the Eligibility Test
+                            </button>
+                          </a>
+                        </Link>
                       </div>
                     </div>
 
                     <div className="col-12 col-sm-12 col-md-6 text-left">
                       <div className="row">
-                      <a href="tel:+91 9606704304">
-                        <button
-                          type="button"
-                          className=" btn btn-lg btn-outline-success rounded-pill"
-                        >
-                          Inquire Now
-                        </button>
-                      </a>
+                        <a href="tel:+91 9606704304">
+                          <button
+                            type="button"
+                            className=" btn btn-lg btn-outline-success rounded-pill"
+                          >
+                            Inquire Now
+                          </button>
+                        </a>
                       </div>
                     </div>
                   </div>

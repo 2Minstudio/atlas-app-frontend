@@ -17,37 +17,34 @@ export default function Banner() {
             </h5>
             <div className="row row-cols-md-2 mt-5 align-items-center">
               <div className="col-12 col-sm-12 col-md-6 text-left">
-                <div class="row">
-                <Link href="/course/test">
-                  <a
-                    class="nav-link active"
-                    aria-current="page"
-                  >
-                    <button
-                      type="button"
-                      className="btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                    >
-                      Take the Eligibility Test
-                    </button>
-                  </a>
-                </Link>
-              </div>
+                <div className="row">
+                  <Link href="/course/test">
+                    <a className="nav-link active" aria-current="page">
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                      >
+                        Take the Eligibility Test
+                      </button>
+                    </a>
+                  </Link>
+                </div>
               </div>
 
               <div className="col-12 col-sm-12 col-md-6 text-left">
-              <div class="row">
-                <a href="tel:+91 9606704304">
-                  <button
-                    type="button"
-                    className="btn btn-lg btn-outline-success mb-sm-0 mb-3 rounded-pill"
-                  >
-                    Inquire Now
-                  </button>
-                </a>
+                <div className="row">
+                  <a href="tel:+91 9606704304">
+                    <button
+                      type="button"
+                      className="btn btn-lg btn-outline-success mb-sm-0 mb-3 rounded-pill"
+                    >
+                      Inquire Now
+                    </button>
+                  </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           <div className="d-xxl-none d-xl-none d-lg-none d-md-none d-sm-block col-sm-12 pt-5">

@@ -2,6 +2,7 @@ import React from "react";
 import LayoutUser from "../../components/layout/layoutUser";
 import styles from "../../styles/Home.module.css";
 
+import Router, { withRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserPlus,
@@ -10,12 +11,32 @@ import {
   faSuitcaseMedical,
 } from "@fortawesome/free-solid-svg-icons";
 import { getUser } from "../../helpers/helper";
+import { withCookies } from "react-cookie";
+import { isLoggedin, isClientLoggedin } from "../../helpers/helper";
 
 class CourseWelcome extends React.Component {
-  static async getInitialProps(ctx) {
-    const user = getUser(ctx);
+  async getInitialProps(ctx) {
+    const token = await isLoggedin(ctx);
+    if (!token) {
+      if (ctx.res) {
+        ctx.res.writeHead(302, {
+          Location: "/",
+          "Content-Type": "text/html; charset=utf-8",
+        });
+        ctx.res.end();
+      } else {
+        Router.push("/");
+      }
+    }
+    const user = await getUser(ctx);
     console.log(user, "user");
     return { user: user };
+  }
+  componentDidMount(){
+    const token = isClientLoggedin(this.props);
+    if (!token) {
+      Router.push("/");
+    }
   }
   render() {
     return (
@@ -130,4 +151,4 @@ class CourseWelcome extends React.Component {
   }
 }
 
-export default CourseWelcome;
+export default withCookies(withRouter(CourseWelcome));

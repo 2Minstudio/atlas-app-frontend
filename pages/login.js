@@ -1,47 +1,40 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { withRouter } from "next/router";
+import Router, { withRouter } from "next/router";
 import Logo from "../components/common/logo/logo";
 import LayoutGuest from "../components/layout/layoutGuest";
 import styles from "../styles/Home.module.css";
-import { isLoggedin } from "../helpers/helper";
+import { isLoggedin, isClientLoggedin } from "../helpers/helper";
 import Toast from "react-bootstrap/Toast";
 import Alert from "react-bootstrap/Alert";
-import { withCookies, Cookies } from "react-cookie";
-
+import { withCookies } from "react-cookie";
 
 class Login extends React.Component {
   state = {
     error: {},
-    token: this.props.cookies?.get("atlastoken") || ""
   };
-  static async getInitialProps(ctx) {
-    const token = isLoggedin(ctx);
-    console.log(token, "get tplem");
+  async getInitialProps(ctx) {
+    const token = await isLoggedin(ctx);
     if (token) {
-      ctx.res.writeHead(302, {
-        Location: "/course/welcome",
-        "Content-Type": "text/html; charset=utf-8",
-      });
-      ctx.res.end();
+      if (ctx.res) {
+        ctx.res.writeHead(302, {
+          Location: "/course/welcome",
+          "Content-Type": "text/html; charset=utf-8",
+        });
+        ctx.res.end();
+      } else {
+        Router.push("/course/welcome");
+      }
     }
-    return { ...ctx, token: token };
+    return { token: token };
   }
 
   componentDidMount() {
-    console.log(this.props,this.state, document.cookie);
-    const { token } = this.props;
-    
-    // const token = isLoggedin(ctx);
-    console.log(token, "token on comp");
-    // if (token) {
-    //   ctx.res.writeHead(302, {
-    //     Location: "/course/welcome",
-    //     "Content-Type": "text/html; charset=utf-8",
-    //   });
-    //   ctx.res.end();
-    // }
+    const token = isClientLoggedin(this.props);
+    if (token) {
+      Router.push("/course/welcome");
+    }
   }
 
   handleSubmit = async (event) => {

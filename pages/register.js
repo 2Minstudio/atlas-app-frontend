@@ -1,26 +1,39 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { withRouter } from "next/router";
+import Router, { withRouter } from "next/router";
 import Logo from "../components/common/logo/logo";
 import LayoutGuest from "../components/layout/layoutGuest";
 import styles from "../styles/Home.module.css";
 import { isLoggedin } from "../helpers/helper";
-import Alert from 'react-bootstrap/Alert';
+import Alert from "react-bootstrap/Alert";
+import { withCookies } from "react-cookie";
 class Register extends React.Component {
   state = {
     error: {},
   };
-  static async getInitialProps(ctx) {
-    const token = isLoggedin(ctx);
+  async getInitialProps(ctx) {
+    const token = await isLoggedin(ctx);
     if (token) {
-      ctx.res.writeHead(302, {
-        Location: "/course/welcome",
-        "Content-Type": "text/html; charset=utf-8",
-      });
-      ctx.res.end();
+      if (ctx.res) {
+        ctx.res.writeHead(302, {
+          Location: "/course/welcome",
+          "Content-Type": "text/html; charset=utf-8",
+        });
+        ctx.res.end();
+      } else {
+        Router.push("/course/welcome");
+      }
     }
     return { token: token };
+  }
+
+  componentDidMount() {
+    const { cookies } = this.props;
+    const token = cookies.get("atlastoken");
+    if (token) {
+      Router.push("/course/welcome");
+    }
   }
 
   handleSubmit = async (event) => {
@@ -42,7 +55,6 @@ class Register extends React.Component {
       email: email.value,
       phone_number: phone_number.value,
       password: password.value,
-
     };
     // Form the request for sending data to the server.
     const options = {
@@ -89,7 +101,11 @@ class Register extends React.Component {
                       Course.
                     </h2>
                     <h4 className="mb-5">Signup & Get Started!</h4>
-                    {error?.non_field_errors && <Alert variant="danger" className='error alert'>{error.non_field_errors}</Alert>}
+                    {error?.non_field_errors && (
+                      <Alert variant="danger" className="error alert">
+                        {error.non_field_errors}
+                      </Alert>
+                    )}
                     <form
                       action="/api/register"
                       method="post"
@@ -104,7 +120,11 @@ class Register extends React.Component {
                           placeholder="First name"
                           required
                         />
-                        {error?.first_name && <Alert variant="danger" className='error alert'>{error.first_name}</Alert>}
+                        {error?.first_name && (
+                          <Alert variant="danger" className="error alert">
+                            {error.first_name}
+                          </Alert>
+                        )}
                       </div>
                       <div className="mb-3">
                         <input
@@ -115,7 +135,11 @@ class Register extends React.Component {
                           placeholder="Email"
                           required
                         />
-                        {error?.email && <Alert variant="danger" className='error alert'>{error.email}</Alert>}
+                        {error?.email && (
+                          <Alert variant="danger" className="error alert">
+                            {error.email}
+                          </Alert>
+                        )}
                       </div>
                       <div className="mb-3">
                         <input
@@ -126,7 +150,11 @@ class Register extends React.Component {
                           placeholder="Phone Number"
                           required
                         ></input>
-                        {error?.phone_number && <Alert variant="danger" className='error alert'>{error.phone_number}</Alert>}
+                        {error?.phone_number && (
+                          <Alert variant="danger" className="error alert">
+                            {error.phone_number}
+                          </Alert>
+                        )}
                       </div>
                       <div className="mb-3">
                         <input
@@ -137,7 +165,11 @@ class Register extends React.Component {
                           placeholder="Password"
                           required
                         ></input>
-                        {error?.password && <Alert variant="danger" className='error alert'>{error.password}</Alert>}
+                        {error?.password && (
+                          <Alert variant="danger" className="error alert">
+                            {error.password}
+                          </Alert>
+                        )}
                       </div>
 
                       <div className="form-check small-text-14 mt-5">
@@ -194,4 +226,4 @@ class Register extends React.Component {
   }
 }
 
-export default withRouter(Register);
+export default withCookies(withRouter(Register));

@@ -1,10 +1,8 @@
 import axios from "axios";
-import Cookies from "cookies";
+import cookie from "cookie";
 
 export default async function handler(req, res) {
   let state = false;
-  const cookies = new Cookies(req, res);
-
   const body = req.body;
   if (!body.email || !body.password) {
     return res
@@ -16,13 +14,24 @@ export default async function handler(req, res) {
   await axios({
     method: "post",
     url: `${process.env.API_URL}/api/login/`,
-    data: { username: body.email, password: body.password },
+    data: {
+      username: body.email,
+      password: body.password,
+    },
   })
     .then((response) => {
       const { token, expiry } = response.data;
       state = true;
-      // document.cookie = `atlastoken=${token}; path=/; `; //expires=${expiry}
-      cookies.set("atlastoken", token);
+      res.setHeader(
+        "Set-Cookie",
+        cookie.serialize("atlastoken", token, {
+          // httpOnly: true,
+          secure: process.env.NODE_ENV !== "development",
+          // sameSite: "strict",
+          maxAge: 3600,
+          path: "/",
+        })
+      );
       resp = response.data;
     })
     .catch((error) => {
@@ -30,7 +39,5 @@ export default async function handler(req, res) {
         resp = error.response.data;
       }
     });
-  // Found the name.
-  // Sends a HTTP success code
   res.status(200).json({ state: state, data: resp });
 }
