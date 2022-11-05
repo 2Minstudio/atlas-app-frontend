@@ -4,7 +4,8 @@ import Banner from "../components/common/banner";
 import Layout from "../components/layout/layout";
 import styles from "../styles/Home.module.css";
 import DemoCarousel from "../components/common/carousel";
-
+import InquerySection from '../components/home/inquerysection';
+import Highlightinfo from '../components/home/highlightinfo';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserPlus,
@@ -18,7 +19,7 @@ export default function Home() {
     <Layout>
       <div className={styles}>
         <main className={styles.main}>
-          <Banner></Banner>
+          <Banner />
           <div className="container-fluid pt-5 pb-5">
             <div className="container pt-5 pb-5 mt-5 mb-5 whyjoinBg rounded-5">
               <div className="row align-items-center p-3">
@@ -250,77 +251,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="container-fluid pt-5">
-            <div className="container py-5 text-center text-success">
-              <div className="row">
-                <div className="col-12 col-sm-12 col-md-4 p-4">
-                  <h3>
-                    Estimated salary for chiropractor will increase 42% in 5
-                    years{" "}
-                  </h3>
-                </div>
-                <div className="col-12 col-sm-12 col-md-4 p-4">
-                  <h3>Receive a salary of Rs 50,000 - 60,000 per month</h3>
-                </div>
-                <div className="col-12 col-sm-12 col-md-4 p-3">
-                  <h3>
-                    Chiropractors are expected to grow 17% from 2022 to 2034
-                  </h3>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Highlightinfo/>
 
-          <div className="container-fluid my-5 girlBg">
-            <div className="container">
-              <div className="row py-5">
-                <div className="col-xl-6 col-lg-8 col-md-12 col-sm-12 mt-5 pt-5">
-                  <h2 className="text-success">
-                    <b>
-                      Start Earning as a Certified Chiropractor in 12 Months
-                    </b>
-                  </h2>
-
-                  <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4 align-items-center">
-                    <div className="col-12 col-sm-12 col-md-6 text-left">
-                      <div className="row">
-                        <Link href="/course/test">
-                          <a className="nav-link active" aria-current="page">
-                            <button
-                              type="button"
-                              className="btn btn-lg btn-success mb-3 rounded-pill"
-                              data-bs-toggle="modal"
-                              data-bs-target="#exampleModal"
-                            >
-                              Take the Eligibility Test
-                            </button>
-                          </a>
-                        </Link>
-                      </div>
-                    </div>
-
-                    <div className="col-12 col-sm-12 col-md-6 text-left">
-                      <div className="row">
-                        <a href="tel:+91 9606704304">
-                          <button
-                            type="button"
-                            className=" btn btn-lg btn-outline-success rounded-pill"
-                          >
-                            Inquire Now
-                          </button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="row text-success">
-                    <div className="col text-center pt-0"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <InquerySection/>
         </main>
       </div>
     </Layout>
