@@ -15,6 +15,7 @@ import { withCookies } from "react-cookie";
 import { isLoggedin, isClientLoggedin } from "../../helpers/helper";
 
 class CourseWelcome extends React.Component {
+
   async getInitialProps(ctx) {
     const token = await isLoggedin(ctx);
     if (!token) {
@@ -32,12 +33,14 @@ class CourseWelcome extends React.Component {
     console.log(user, "user");
     return { user: user };
   }
-  componentDidMount(){
+
+  componentDidMount() {
     const token = isClientLoggedin(this.props);
     if (!token) {
       Router.push("/");
     }
   }
+
   render() {
     return (
       <LayoutUser>
