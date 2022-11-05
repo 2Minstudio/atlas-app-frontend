@@ -22,7 +22,7 @@ export default function Home() {
                   <div className="row align-items-center">
                   <div className="rounded-10 sm-pb-5">
                     <div className="row justify-content-center">
-                      <button className="btn bg-success rounded-10 col-8 col-sm-6 col-md-6 text-white ">
+                      <button className="btn btn-success rounded-10 col-8 col-sm-6 col-md-6 text-white ">
                         {" "}
                         Take the Test{" "}
                       </button>

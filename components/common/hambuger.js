@@ -1,4 +1,4 @@
-import { push as Menu } from 'react-burger-menu'
+import { fallDown as Menu } from 'react-burger-menu'
 import React from 'react';
 import { auto } from '@popperjs/core';
 import { isAbsoluteUrl } from 'next/dist/shared/lib/utils';
@@ -20,7 +20,10 @@ var styles = {
     },
     bmCrossButton: {
       height: '24px',
-      width: '24px'
+      width: '24px',
+      position: 'absolute',
+      marginTop:'85px',
+      left:'220px',
     },
     bmCross: {
       background: '#bdc3c7'
@@ -30,20 +33,25 @@ var styles = {
       height: '100%',
       right: '0%',
       width: '50%',
+      minWidth:'280px',
       top:'0',
     },
     bmMenu: {
-      background: '#373a47',
-      padding: '2.5em 1.5em 0',
+      background: '#fff',
+      padding: '2em 1.5em',
       fontSize: '1.15em',
-      height:'100%',
+      height:'auto',
+      minHeight:'265px',
+      border: '1px solid #ddd',
+      position: 'absolute',
+      marginTop:'75px',
     },
     bmMorphShape: {
       fill: '#373a47'
     },
     bmItemList: {
       color: '#b8b7ad',
-      padding: '0.8em'
+      padding: '0'
     },
     bmItem: {
       display: 'inline-block'
@@ -86,25 +94,27 @@ class Hamburger extends React.Component {
                 Enquire Now{" "}
               </a></Link>
             </li>
-            <li className="nav-item">
+            <li>
+            <div class="d-grid gap-2 d-sm-block d-md-flex justify-content-md-end">
             <Link href={"login"}>
                   <a className="nav-link">
-                <button className="btn px-4 btn-md btn-outline-success rounded-pill">
+                <button className="btn col-12 col-sm-12 btn-outline-success rounded-pill">
                   {" "}
                   Login{" "}
                 </button>
               </a>
               </Link>
-            </li>
-            <li className="nav-item">
+            
+            
             <Link href={"register"}>
                   <a className="nav-link" href="#">
-                <button className="btn px-4 btn-md btn-success rounded-pill">
+                <button className="btn col-12 col-sm-12 btn-success rounded-pill">
                   {" "}
                   Sign Up{" "}
                 </button>
               </a>
               </Link>
+              </div>
             </li>
             </ul>
       </Menu>

@@ -236,15 +236,15 @@ export default function Home() {
 
           <div className="container-fluid">
             <div className="container text-center">
-              <div className="row  align-items-center">
-                <div className="col-lg-4 col-md-4 col-sm-12 p-3">
+              <div className="row align-items-center justify-content-center">
+                <div className="col-lg-7 col-md-8 col-sm-12 p-3">
                   <h2>
-                    Course <br></br>Duration & <br></br>Syllabus
-                  </h2>
-                </div>
-
-                <div className="col-lg-8 col-md-8 col-sm-12">
-                  <DemoCarousel></DemoCarousel>
+                  Course Duration & Syllabus </h2>
+                  <p class="text-center mt-5">The course is broken down into three parts, <br>
+                  </br>1. Online lectures, <br>
+                  </br>2.  In-person technique training and <br>
+                  </br>3. Clinical internship, each lasting six months (24 weeks). </p>
+                <button class="btn btn-success rounded-10 mt-4"> Download Syllabus Brouchure </button>
                 </div>
               </div>
             </div>
