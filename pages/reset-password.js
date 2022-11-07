@@ -75,7 +75,11 @@ class ResetPassword extends React.Component {
   }
   render() {
     const { error, istokenvalid, showinfo } = this.state;
-    console.log(error, typeof error, 'error');
+    console.log(error, typeof error, "error");
+
+    Object.keys(error).map((err) => {
+      console.log("error", error[err]);
+    });
     return (
       <LayoutGuest>
         <div className={styles}>
@@ -98,9 +102,13 @@ class ResetPassword extends React.Component {
                       <>
                         {error &&
                           Object.keys(error).map((err) => {
-                            <Alert variant="danger" className="error alert">
-                              {error[err]}
-                            </Alert>
+                            return (
+                              <>
+                                <Alert variant="danger" className="error alert">
+                                  {error[err]}
+                                </Alert>
+                              </>
+                            );
                           })}
                         <h4 className="mb-5">
                           Enter your new password to update your account.

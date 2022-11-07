@@ -13,7 +13,7 @@ class Register extends React.Component {
     error: {},
   };
   async getInitialProps(ctx) {
-    const token = await isLoggedin(ctx);
+    const token = await isLoggedin(ctx.req);
     if (token) {
       if (ctx.res) {
         ctx.res.writeHead(302, {

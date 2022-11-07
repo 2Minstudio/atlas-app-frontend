@@ -15,28 +15,24 @@ import { withCookies } from "react-cookie";
 import { isLoggedin, isClientLoggedin } from "../../helpers/helper";
 
 class CourseWelcome extends React.Component {
-
-  async getInitialProps(ctx) {
-    const token = await isLoggedin(ctx);
-    if (!token) {
-      if (ctx.res) {
-        ctx.res.writeHead(302, {
-          Location: "/",
-          "Content-Type": "text/html; charset=utf-8",
-        });
-        ctx.res.end();
-      } else {
-        Router.push("/");
-      }
-    }
-    const user = await getUser(ctx);
-    console.log(user, "user");
-    return { user: user };
-  }
-
-  componentDidMount() {
+  state = {
+    user: {},
+  };
+  async componentDidMount() {
     const token = isClientLoggedin(this.props);
-    if (!token) {
+    if (token) {
+      const { state, data } = await getUser(token);
+      if (state) {
+        this.setState({ user: data });
+      }
+      console.log(state, "resp");
+      // .then((resp) => {
+      //   console.log(resp, "resp");
+      // })
+      // .catch((error) => {
+      //   console.log(error, "error");
+      // });
+    } else {
       Router.push("/");
     }
   }
@@ -153,5 +149,18 @@ class CourseWelcome extends React.Component {
     );
   }
 }
+CourseWelcome.getInitialProps = async (ctx) => {
+  const token = await isLoggedin(ctx.req);
+  if (!token) {
+    if (ctx.res) {
+      ctx.res.writeHead(302, {
+        Location: "/",
+        "Content-Type": "text/html; charset=utf-8",
+      });
+      ctx.res.end();
+    }
+  }
 
+  return { token };
+};
 export default withCookies(withRouter(CourseWelcome));

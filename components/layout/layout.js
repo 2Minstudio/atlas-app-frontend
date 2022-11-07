@@ -2,7 +2,7 @@ import Head from "next/head";
 import Footer from "../common/footer";
 import Header from "../common/header";
 
-export default function Layout({ children }) {
+export default function Layout({ children, user={} }) {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ export default function Layout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-        <Header />
+        <Header user={user}/>
         <main>{children}</main>
         <Footer />
       </body>

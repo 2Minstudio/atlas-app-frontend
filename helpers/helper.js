@@ -1,50 +1,45 @@
 import axios from "axios";
 import cookie from "cookie";
 
-const isLoggedin = async (ctx) => {
-  const { req, res } = ctx;
+const isLoggedin = async (req) => {
   const cookies =
-    req && req?.headers.cookies ? req.headers.cookies : req.cookies;
-  console.log(cookies, "cookes?");
-  // const cookies = new Cookies(req, res);
-  // const atlastoken = cookies.get("atlastoken");
-  const { atlastoken = false } = cookies;
-  console.log("is logged in", atlastoken);
-  if (atlastoken) return atlastoken;
+    req && req?.headers.cookies ? req.headers.cookies : req?.cookies;
+  if (cookies) {
+    const { atlastoken = false } = cookies && cookies;
+    if (atlastoken) return atlastoken;
+  }
   return false;
 };
 
-const getUser = async (ctx) => {
-  // const cookies = new Cookies(req, res);
-  const token = isLoggedin(ctx);
-  const { req, res } = ctx;
-  console.log(token, "token?");
+const getUser = async (token) => {
+  // const token = await isLoggedin(ctx.req);
+
   if (!token) return {};
-  const url = `${process.env.API_URL}/api/user/`;
   return await axios
-    .get(url, {
-      headers: {
-        Authorization: `Token ${token}`,
-        "Content-Type": "application/json",
-      },
+    .post("/api/userbytoken", {
+      data: { token: token },
     })
     .then((response) => {
-      return response.data;
+      const { data } = response;
+      console.log(data, "it is data");
+      return data;
     })
     .catch((error) => {
       // handle error
-      if (error.response.status == 401) {
-        cookies.set("atlastoken", "");
-        console.log("clear cookie");
-        console.log("error ?", error.response.status);
-        return {};
-      }
+      const {
+        response: { data },
+      } = error;
+      console.log(data, "response error");
+      return data;
     });
 };
 
 const isClientLoggedin = (props) => {
   const { cookies } = props;
+
   const token = cookies.get("atlastoken");
+  console.log(cookies, token, "client cookies");
+  return token;
 };
 
 const verifyToken = async (token) => {
@@ -78,4 +73,8 @@ const verifyToken = async (token) => {
     });
 };
 
-export { isLoggedin, getUser, isClientLoggedin, verifyToken };
+const Logout = async () => {
+  console.log("logout");
+};
+
+export { isLoggedin, getUser, isClientLoggedin, verifyToken, Logout };

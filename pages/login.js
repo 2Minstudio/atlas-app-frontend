@@ -71,10 +71,14 @@ class Login extends React.Component {
                     <h2 className="mb-2 mt-5">Welcome Back!!</h2>
                     <h4 className="mb-5">Please sign in to your account</h4>
                     {error &&
-                      error.map((err) => {
-                        <Alert variant="danger" className="error alert">
-                          {err}
-                        </Alert>;
+                      Object.keys(error).map((err) => {
+                        return (
+                          <>
+                            <Alert variant="danger" className="error alert">
+                              {error[err]}
+                            </Alert>
+                          </>
+                        );
                       })}
                     <form
                       className="pe-5"
@@ -177,7 +181,7 @@ class Login extends React.Component {
 }
 
 Login.getInitialProps = async (ctx) => {
-  const token = await isLoggedin(ctx);
+  const token = await isLoggedin(ctx.req);
   if (token) {
     if (ctx.res) {
       ctx.res.writeHead(302, {

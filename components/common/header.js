@@ -4,13 +4,15 @@ import React from "react";
 import Hamburger from "./hambuger";
 import styles from "../../styles/Home.module.css";
 import Logo from "./logo/logo";
+import { Logout } from "../../helpers/helper";
 
-const Header = () => {
+const Header = (props) => {
+  const { user = {} } = props;
   return (
     <header className="bg-light pb-1">
       <div className="container pt-5">
         <div className="d-flex flex-column flex-sm-row align-items-center pb-2 mb-4 border p-2 border-opacity-10 rounded-pill shadow-sm bg-white">
-          <Logo/>
+          <Logo />
           <p className="pt-3 ms-sm-auto pe-4 text-success">
             <ul className="nav align-items-center">
               <li className="nav-item mdClose">
@@ -25,25 +27,43 @@ const Header = () => {
                   <a className="nav-link"> Enquire Now </a>
                 </Link>
               </li>
-              <li className="nav-item mdClose">
-                <Link href={"login"}>
-                  <a className="nav-link">
-                    <button className="btn px-4 btn-md btn-outline-success rounded-pill">
-                      Login
-                    </button>
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item mdClose">
-                <Link href={"register"}>
-                  <a className="nav-link" href="#">
-                    <button className="btn px-4 btn-md btn-success rounded-pill">
-                      {" "}
-                      Sign Up{" "}
-                    </button>
-                  </a>
-                </Link>
-              </li>
+              {Object.keys(user).length == 0 && (
+                <>
+                  <li className="nav-item mdClose">
+                    <Link href={"login"}>
+                      <a className="nav-link">
+                        <button className="btn px-4 btn-md btn-outline-success rounded-pill">
+                          Login
+                        </button>
+                      </a>
+                    </Link>
+                  </li>
+                  <li className="nav-item mdClose">
+                    <Link href={"register"}>
+                      <a className="nav-link" href="#">
+                        <button className="btn px-4 btn-md btn-success rounded-pill">
+                          {" "}
+                          Sign Up{" "}
+                        </button>
+                      </a>
+                    </Link>
+                  </li>
+                </>
+              )}
+              {Object.keys(user).length > 0 && (
+                <>
+                  <li>
+                    <Link href={"/profile"}>
+                      <a className="nav-link">{user.first_name}</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={"#"}>
+                      <a  onClick={Logout} className="nav-link">Logout</a>
+                    </Link>
+                  </li>
+                </>
+              )}
               <li className="nav-item mdOpen">
                 <Hamburger></Hamburger>
               </li>
