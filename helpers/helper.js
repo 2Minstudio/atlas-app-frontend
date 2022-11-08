@@ -15,13 +15,13 @@ const getUser = async (token) => {
   // const token = await isLoggedin(ctx.req);
 
   if (!token) return {};
-  return await axios
+  return axios
     .post("/api/userbytoken", {
-      data: { token: token },
+      token: token,
     })
     .then((response) => {
       const { data } = response;
-      console.log(data, "it is data");
+      // console.log(data, "it is data");
       return data;
     })
     .catch((error) => {
@@ -29,7 +29,7 @@ const getUser = async (token) => {
       const {
         response: { data },
       } = error;
-      console.log(data, "response error");
+      // console.log(data, "response error");
       return data;
     });
 };
@@ -38,7 +38,7 @@ const isClientLoggedin = (props) => {
   const { cookies } = props;
 
   const token = cookies.get("atlastoken");
-  console.log(cookies, token, "client cookies");
+  // console.log(cookies, token, "client cookies");
   return token;
 };
 

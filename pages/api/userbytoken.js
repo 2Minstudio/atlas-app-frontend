@@ -3,7 +3,7 @@ import Cookies from "cookies";
 
 export default async function handler(req, res) {
   let state = false;
-  
+
   const {
     body: { token },
   } = req;
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   if (!token) {
     return res
       .status(400)
-      .json({ state: state, data: ["Your token is not valid"] });
+      .json({ state: state, data: ["Your token missing!"] });
   }
 
   let resp = {};
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     },
   })
     .then((response) => {
-      console.log(response, "userbytoken response");
+      // console.log(response, "userbytoken response");
       const {
         data: { id, first_name },
       } = response;
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     })
     .catch((error) => {
       // handle error
-      console.log(error, "userbytoken error");
+      // console.log(error, "userbytoken error");
       if (error.response) {
         resp = error.response.data;
       }

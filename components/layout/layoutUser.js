@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Headerlanding from "../common/headerlanding";
 
-export default function LayoutUser({ children }) {
+export default function LayoutUser({ children, user={} }) {
+  console.log("Layout user",user);
   return (
     <>
       <Head>
@@ -10,7 +11,7 @@ export default function LayoutUser({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-        <Headerlanding />
+        <Headerlanding user={user}/>
         <main>{children}</main>
       </body>
     </>

@@ -21,9 +21,12 @@ class CourseWelcome extends React.Component {
   async componentDidMount() {
     const token = isClientLoggedin(this.props);
     if (token) {
-      const { state, data } = await getUser(token);
+      const {
+        state,
+        data: { user },
+      } = await getUser(token);
       if (state) {
-        this.setState({ user: data });
+        this.setState({ user: user });
       }
       console.log(state, "resp");
       // .then((resp) => {
@@ -38,8 +41,9 @@ class CourseWelcome extends React.Component {
   }
 
   render() {
+    const { user } = this.state;
     return (
-      <LayoutUser>
+      <LayoutUser user={user}>
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-light p-2 p-sm-3 p-md-5">

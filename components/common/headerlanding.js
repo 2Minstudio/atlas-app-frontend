@@ -4,29 +4,23 @@ import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCircleUser } from "@fortawesome/free-solid-svg-icons";
-import { getUser, isLoggedin } from "../../helpers/helper";
 
 class Headerlanding extends React.Component {
   state = {
     user: {},
   };
-  async componentDidMount() {
-    const { token } = this.props;
-    if (token) {
-      const user = await getUser(token);
-      this.setState({ user });
+  componentDidMount() {
+    const { user } = this.props;
+    this.setState({ user });
+  }
+  componentWillReceiveProps(nextProps, prevState) {
+    const { user } = this.props;
+    if (nextProps.user !== user) {
+      this.setState({ user: nextProps.user });
     }
   }
-  // const [user, setUser] = useState({});
-  // useEffect(() => {
-  //   const user = getUser(token);
-  //   setUser(user);
-  //   return user;
-  // });
   render() {
-    const {
-      user: { first_name = "" },
-    } = this.state;
+    const { user:{first_name} } = this.state;
 
     return (
       <div className="bg-light">
@@ -66,10 +60,5 @@ class Headerlanding extends React.Component {
     );
   }
 }
-
-Headerlanding.getInitialProps = async (ctx) => {
-  const token = isLoggedin();
-  return { token };
-};
 
 export default Headerlanding;
