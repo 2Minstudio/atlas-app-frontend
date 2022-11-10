@@ -10,9 +10,9 @@ import {
   faStar,
   faSuitcaseMedical,
 } from "@fortawesome/free-solid-svg-icons";
-import { getUser } from "../../helpers/helper";
+
 import { withCookies } from "react-cookie";
-import { isLoggedin, isClientLoggedin } from "../../helpers/helper";
+import { isLoggedin, isClientLoggedin, getUser } from "../../helpers/helper";
 
 class CourseWelcome extends React.Component {
   state = {
@@ -28,13 +28,6 @@ class CourseWelcome extends React.Component {
       if (state) {
         this.setState({ user: user });
       }
-      console.log(state, "resp");
-      // .then((resp) => {
-      //   console.log(resp, "resp");
-      // })
-      // .catch((error) => {
-      //   console.log(error, "error");
-      // });
     } else {
       Router.push("/");
     }

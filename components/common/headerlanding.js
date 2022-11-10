@@ -13,11 +13,12 @@ class Headerlanding extends React.Component {
     const { user } = this.props;
     this.setState({ user });
   }
-  componentWillReceiveProps(nextProps, prevState) {
+  static getDerivedStateFromProps(nextProps, prevState) {
     const { user } = this.props;
     if (nextProps.user !== user) {
-      this.setState({ user: nextProps.user });
+      return ({ user: nextProps.user })
     }
+    return null
   }
   render() {
     const { user:{first_name} } = this.state;
