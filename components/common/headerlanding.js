@@ -14,7 +14,7 @@ class Headerlanding extends React.Component {
     this.setState({ user });
   }
   static getDerivedStateFromProps(nextProps, prevState) {
-    const { user } = this.props;
+    const { user } = prevState;
     if (nextProps.user !== user) {
       return ({ user: nextProps.user })
     }
