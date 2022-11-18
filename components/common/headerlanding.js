@@ -16,12 +16,14 @@ class Headerlanding extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const { user } = prevState;
     if (nextProps.user !== user) {
-      return ({ user: nextProps.user })
+      return { user: nextProps.user };
     }
-    return null
+    return null;
   }
   render() {
-    const { user:{first_name} } = this.state;
+    const {
+      user: { first_name },
+    } = this.state;
 
     return (
       <div className="bg-light">
@@ -46,8 +48,6 @@ class Headerlanding extends React.Component {
               <p className="pt-3 ms-md-auto pe-0 pe-sm-0 pe-md-4 text-success">
                 Community &nbsp; &nbsp;{" "}
                 <span className="text-dark">{first_name}</span>{" "}
-
-                
                 <FontAwesomeIcon
                   className="Auser text-primary position-relative"
                   icon={faCircleUser}
@@ -56,7 +56,9 @@ class Headerlanding extends React.Component {
                   <span className="visually-hidden">New alerts</span>
                 </span>
                 <Link href={"#"}>
-                  <a  onClick={Logout} className="nav-link">Logout</a>
+                  <a onClick={() => Logout()} className="nav-link">
+                    Logout
+                  </a>
                 </Link>
               </p>
             </div>
