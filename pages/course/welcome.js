@@ -15,32 +15,35 @@ import { withCookies } from "react-cookie";
 import { isLoggedin, isClientLoggedin } from "../../helpers/helper";
 
 class CourseWelcome extends React.Component {
-  async getInitialProps(ctx) {
-    const token = await isLoggedin(ctx);
-    if (!token) {
-      if (ctx.res) {
-        ctx.res.writeHead(302, {
-          Location: "/",
-          "Content-Type": "text/html; charset=utf-8",
-        });
-        ctx.res.end();
-      } else {
-        Router.push("/");
-      }
-    }
-    const user = await getUser(ctx);
-    console.log(user, "user");
-    return { user: user };
-  }
-  componentDidMount(){
+  state = {
+    user: {},
+  };
+  async componentDidMount() {
     const token = isClientLoggedin(this.props);
-    if (!token) {
+    if (token) {
+      const {
+        state,
+        data: { user },
+      } = await getUser(token);
+      if (state) {
+        this.setState({ user: user });
+      }
+      console.log(state, "resp");
+      // .then((resp) => {
+      //   console.log(resp, "resp");
+      // })
+      // .catch((error) => {
+      //   console.log(error, "error");
+      // });
+    } else {
       Router.push("/");
     }
   }
+
   render() {
+    const { user } = this.state;
     return (
-      <LayoutUser>
+      <LayoutUser user={user}>
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-light p-2 p-sm-3 p-md-5">
@@ -150,5 +153,18 @@ class CourseWelcome extends React.Component {
     );
   }
 }
+CourseWelcome.getInitialProps = async (ctx) => {
+  const token = await isLoggedin(ctx.req);
+  if (!token) {
+    if (ctx.res) {
+      ctx.res.writeHead(302, {
+        Location: "/",
+        "Content-Type": "text/html; charset=utf-8",
+      });
+      ctx.res.end();
+    }
+  }
 
+  return { token };
+};
 export default withCookies(withRouter(CourseWelcome));

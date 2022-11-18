@@ -14,21 +14,6 @@ class Login extends React.Component {
   state = {
     error: {},
   };
-  async getInitialProps(ctx) {
-    const token = await isLoggedin(ctx);
-    if (token) {
-      if (ctx.res) {
-        ctx.res.writeHead(302, {
-          Location: "/course/welcome",
-          "Content-Type": "text/html; charset=utf-8",
-        });
-        ctx.res.end();
-      } else {
-        Router.push("/course/welcome");
-      }
-    }
-    return { token: token };
-  }
 
   componentDidMount() {
     const token = isClientLoggedin(this.props);
@@ -85,11 +70,16 @@ class Login extends React.Component {
 
                     <h2 className="mb-2 mt-5">Welcome Back!!</h2>
                     <h4 className="mb-5">Please sign in to your account</h4>
-                    {error?.non_field_errors && (
-                      <Alert variant="danger" className="error alert">
-                        {error.non_field_errors}
-                      </Alert>
-                    )}
+                    {error &&
+                      Object.keys(error).map((err) => {
+                        return (
+                          <>
+                            <Alert variant="danger" className="error alert">
+                              {error[err]}
+                            </Alert>
+                          </>
+                        );
+                      })}
                     <form
                       className="pe-5"
                       action="/api/login"
@@ -190,4 +180,19 @@ class Login extends React.Component {
   }
 }
 
+Login.getInitialProps = async (ctx) => {
+  const token = await isLoggedin(ctx.req);
+  if (token) {
+    if (ctx.res) {
+      ctx.res.writeHead(302, {
+        Location: "/course/welcome",
+        "Content-Type": "text/html; charset=utf-8",
+      });
+      ctx.res.end();
+    } else {
+      Router.push("/course/welcome");
+    }
+  }
+  return { token: token };
+};
 export default withCookies(withRouter(Login));

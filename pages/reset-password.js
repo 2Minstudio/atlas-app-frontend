@@ -5,21 +5,44 @@ import LayoutGuest from "../components/layout/layoutGuest";
 import styles from "../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
+import { verifyToken } from "../helpers/helper";
+import Alert from "react-bootstrap/Alert";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
-class ForgotPassword extends React.Component {
+class ResetPassword extends React.Component {
   state = {
     error: {},
     showinfo: false,
-    email: "",
+    istokenvalid: false,
   };
+
   handleSubmit = async (event) => {
     event.preventDefault();
-    const {
-      email: { value: email },
-    } = event.target;
+    const { error } = this.state;
 
+    const {
+      confirm_password: { value: confirm_password },
+      new_password: { value: new_password },
+    } = event.target;
+    console.log(
+      confirm_password,
+      new_password,
+      "confirm_password != new_password"
+    );
+    if (confirm_password != new_password) {
+      this.setState({
+        error: {
+          ...error,
+          validation: "Password and confirm password doesn't match!",
+        },
+      });
+      console.log("error page");
+      return false;
+    }
+    const { token } = this.state;
     const data = {
-      email: email,
+      new_password: new_password,
+      token: token,
     };
 
     const options = {
@@ -30,22 +53,33 @@ class ForgotPassword extends React.Component {
       },
     };
 
-    const response = await fetch("/api/forgotpassword", options);
+    const response = await fetch("/api/resetpassword", options);
     const result = await response.json();
     if (!result.state) {
       const error = {};
       Object.keys(result.data).map((key) => {
-        // console.log("error", key, result.data[key][0]);
         error[key] = result.data[key][0];
       });
       this.setState({ error: error });
     } else {
-      // this.props.router.push("/forgotpassword-info");
-      this.setState({ showinfo: true, email });
+      this.setState({ showinfo: true });
     }
   };
+
+  componentDidMount() {
+    const { token, istokenvalid } = this.props;
+    this.setState({
+      token,
+      istokenvalid,
+    });
+  }
   render() {
-    const { error, showinfo } = this.state;
+    const { error, istokenvalid, showinfo } = this.state;
+    console.log(error, typeof error, "error");
+
+    Object.keys(error).map((err) => {
+      console.log("error", error[err]);
+    });
     return (
       <LayoutGuest>
         <div className={styles}>
@@ -63,22 +97,41 @@ class ForgotPassword extends React.Component {
                     ></Image>
                     <b className="text-success">Academy</b>
 
-                    <h2 className="mb-5 mt-5">Forgot Password?</h2>
-                    {!showinfo && (
+                    <h2 className="mb-5 mt-5">Reset Password</h2>
+                    {istokenvalid && !showinfo && (
                       <>
+                        {error &&
+                          Object.keys(error).map((err) => {
+                            return (
+                              <>
+                                <Alert variant="danger" className="error alert">
+                                  {error[err]}
+                                </Alert>
+                              </>
+                            );
+                          })}
                         <h4 className="mb-5">
-                          Enter your email and we&apos;ll send you instructions
-                          to reset your password.
+                          Enter your new password to update your account.
                         </h4>
                         <form method="post" onSubmit={this.handleSubmit}>
                           <div className="mb-3">
                             <input
-                              name="email"
+                              name="new_password"
                               required
-                              type="email"
+                              type="password"
                               className="form-control border-0 border-bottom border-dark rounded-0"
                               id="exampleFormControlInput1"
-                              placeholder="Email"
+                              placeholder="New Password"
+                            />
+                          </div>
+                          <div className="mb-3">
+                            <input
+                              name="confirm_password"
+                              required
+                              type="password"
+                              className="form-control border-0 border-bottom border-dark rounded-0"
+                              id="exampleFormControlInput2"
+                              placeholder="Confirm Password"
                             />
                           </div>
 
@@ -87,7 +140,7 @@ class ForgotPassword extends React.Component {
                               type="submit"
                               className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5"
                             >
-                              Send Reset Link
+                              Update Password
                             </button>
                             <p className="small-text-14 mt-0">
                               <Link href={"login"}>
@@ -98,10 +151,21 @@ class ForgotPassword extends React.Component {
                         </form>
                       </>
                     )}
+                    {!istokenvalid && (
+                      <>
+                        Sorry! Your token is not valid,{" "}
+                        <Link href={"/login"}>
+                          <a>click here to Login</a>
+                        </Link>
+                        <br />
+                      </>
+                    )}
                     {showinfo && (
                       <>
-                        We have sent you instructions to reset your password.<br/>
-                        check Your email for reset password link.
+                        Your password has been Updated,
+                        <Link href={"/login"}>
+                          <a>click here to Login</a>
+                        </Link>
                       </>
                     )}
                   </div>
@@ -124,4 +188,13 @@ class ForgotPassword extends React.Component {
   }
 }
 
-export default withCookies(withRouter(ForgotPassword));
+ResetPassword.getInitialProps = async (ctx) => {
+  const {
+    query: { token },
+  } = ctx;
+  const tokenisvalid = await verifyToken(token);
+  console.log(token, tokenisvalid, "tokenisvalid");
+  return { token: token, istokenvalid: tokenisvalid };
+};
+
+export default withCookies(withRouter(ResetPassword));
