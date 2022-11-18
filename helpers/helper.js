@@ -75,6 +75,7 @@ const verifyToken = async (token) => {
 
 const Logout = async () => {
   console.log("logout");
+  cookie.remove('atlastoken');
 };
 
 export { isLoggedin, getUser, isClientLoggedin, verifyToken, Logout };
