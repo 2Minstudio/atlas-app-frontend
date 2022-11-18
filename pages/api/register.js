@@ -30,7 +30,7 @@ export default async function handler(req, res) {
           // secure: process.env.NODE_ENV !== "development",
           // sameSite: "strict",
           // maxAge: 3600,
-          // path: "/",
+          path: "/",
         })
       );
       resp = response.data;
