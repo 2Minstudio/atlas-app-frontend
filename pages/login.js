@@ -91,7 +91,7 @@ class Login extends React.Component {
                           name="email"
                           className="form-control border-0 border-bottom border-dark rounded-0"
                           id="email"
-                          placeholder="Email or Phone Number"
+                          placeholder="Email"
                           required
                         ></input>
                         {error?.email && (

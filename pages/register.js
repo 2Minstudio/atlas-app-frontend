@@ -135,9 +135,10 @@ class Register extends React.Component {
                           placeholder="Email"
                           required
                         />
-                        {error?.email && (
+                        {(error?.email || error?.username) && (
                           <Alert variant="danger" className="error alert">
                             {error.email}
+                            {error.username}
                           </Alert>
                         )}
                       </div>
