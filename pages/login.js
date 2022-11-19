@@ -43,11 +43,10 @@ class Login extends React.Component {
 
     const response = await fetch("/api/login", options);
     const result = await response.json();
-
+    console.log("Login", result);
     if (!result.state) {
       const error = {};
       Object.keys(result.data).map((key) => {
-        // console.log("error", key, result.data[key][0]);
         error[key] = result.data[key][0];
       });
       this.setState({ error: error });
@@ -92,7 +91,7 @@ class Login extends React.Component {
                           name="email"
                           className="form-control border-0 border-bottom border-dark rounded-0"
                           id="email"
-                          placeholder="Email or Phone Number"
+                          placeholder="Email"
                           required
                         ></input>
                         {error?.email && (

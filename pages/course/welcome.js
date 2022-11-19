@@ -10,9 +10,9 @@ import {
   faStar,
   faSuitcaseMedical,
 } from "@fortawesome/free-solid-svg-icons";
-import { getUser } from "../../helpers/helper";
+
 import { withCookies } from "react-cookie";
-import { isLoggedin, isClientLoggedin } from "../../helpers/helper";
+import { isLoggedin, isClientLoggedin, getUser } from "../../helpers/helper";
 
 class CourseWelcome extends React.Component {
   state = {
@@ -28,13 +28,6 @@ class CourseWelcome extends React.Component {
       if (state) {
         this.setState({ user: user });
       }
-      console.log(state, "resp");
-      // .then((resp) => {
-      //   console.log(resp, "resp");
-      // })
-      // .catch((error) => {
-      //   console.log(error, "error");
-      // });
     } else {
       Router.push("/");
     }
@@ -42,6 +35,7 @@ class CourseWelcome extends React.Component {
 
   render() {
     const { user } = this.state;
+    const{ first_name } = user;
     return (
       <LayoutUser user={user}>
         <div className={styles}>
@@ -50,7 +44,7 @@ class CourseWelcome extends React.Component {
               <div className="container bg-white rounded rounded-10">
                 <div className="row">
                   <div className="col-12 col-sm-12 col-md-6 p-3 p-sm-4 p-md-5">
-                    <h2 className="text-success py-3">Welcome Siddanth </h2>
+                    <h2 className="text-success py-3">Welcome {first_name} </h2>
                     <p className="pb-5">
                       Take the Qualification test to unlock{" "}
                       <b>the chiropractor course</b>

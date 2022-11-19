@@ -59,7 +59,9 @@ const Header = (props) => {
                   </li>
                   <li>
                     <Link href={"#"}>
-                      <a  onClick={Logout} className="nav-link">Logout</a>
+                      <a onClick={() => Logout()} className="nav-link">
+                        Logout
+                      </a>
                     </Link>
                   </li>
                 </>

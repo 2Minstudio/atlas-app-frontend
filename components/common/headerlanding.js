@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCircleUser } from "@fortawesome/free-solid-svg-icons";
-
+import { Logout } from "../../helpers/helper";
 class Headerlanding extends React.Component {
   state = {
     user: {},
@@ -13,14 +13,17 @@ class Headerlanding extends React.Component {
     const { user } = this.props;
     this.setState({ user });
   }
-  componentWillReceiveProps(nextProps, prevState) {
-    const { user } = this.props;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { user } = prevState;
     if (nextProps.user !== user) {
-      this.setState({ user: nextProps.user });
+      return { user: nextProps.user };
     }
+    return null;
   }
   render() {
-    const { user:{first_name} } = this.state;
+    const {
+      user: { first_name },
+    } = this.state;
 
     return (
       <div className="bg-light">
@@ -52,6 +55,11 @@ class Headerlanding extends React.Component {
                 <span className="Indicator position-absolute translate-left p-1 bg-success border border-light rounded-circle">
                   <span className="visually-hidden">New alerts</span>
                 </span>
+                <Link href={"#"}>
+                  <a onClick={() => Logout()} className="nav-link">
+                    Logout
+                  </a>
+                </Link>
               </p>
             </div>
           </div>

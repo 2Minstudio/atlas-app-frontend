@@ -80,7 +80,7 @@ class Register extends React.Component {
       });
       this.setState({ error: error });
     } else {
-      this.props.router.push("/course/payment");
+      this.props.router.push("/course/welcome");
     }
     // alert(`Is this your full name: ${result.data}`);
   };
@@ -135,9 +135,10 @@ class Register extends React.Component {
                           placeholder="Email"
                           required
                         />
-                        {error?.email && (
+                        {(error?.email || error?.username) && (
                           <Alert variant="danger" className="error alert">
                             {error.email}
+                            {error.username}
                           </Alert>
                         )}
                       </div>

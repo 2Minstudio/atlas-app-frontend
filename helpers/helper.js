@@ -1,5 +1,7 @@
 import axios from "axios";
 import cookie from "cookie";
+import { redirect } from "next/dist/server/api-utils";
+import Router from 'next/router'
 
 const isLoggedin = async (req) => {
   const cookies =
@@ -74,7 +76,27 @@ const verifyToken = async (token) => {
 };
 
 const Logout = async () => {
-  console.log("logout");
+  const url = `/api/logout`;
+  console.log("logout", url);
+  await axios({
+    method: "get",
+    url: url,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      const {
+        data: { state },
+      } = response;
+      // redirect(301,'/');
+      Router.push('/');
+    })
+    .catch((error) => {
+      // handle error
+      console.log("error ?", error);
+      return false;
+    });
 };
 
 export { isLoggedin, getUser, isClientLoggedin, verifyToken, Logout };
