@@ -5,6 +5,7 @@ import LayoutGuest from "../components/layout/layoutGuest";
 import styles from "../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
+import Alert from "react-bootstrap/Alert";
 
 class ForgotPassword extends React.Component {
   state = {
@@ -80,6 +81,11 @@ class ForgotPassword extends React.Component {
                               id="exampleFormControlInput1"
                               placeholder="Email"
                             />
+                            {error?.email && (
+                          <Alert variant="danger" className="error alert">
+                            {error.email}
+                          </Alert>
+                        )}
                           </div>
 
                           <div className="row text-center justify-content-center">
@@ -89,21 +95,24 @@ class ForgotPassword extends React.Component {
                             >
                               Send Reset Link
                             </button>
-                            <p className="small-text-14 mt-0">
-                              <Link href={"login"}>
-                                <a>Back to Login</a>
-                              </Link>
-                            </p>
                           </div>
                         </form>
                       </>
                     )}
                     {showinfo && (
                       <>
-                        We have sent you instructions to reset your password.<br/>
+                        We have sent you instructions to reset your password.
+                        <br />
                         check Your email for reset password link.
                       </>
                     )}
+                    <div className="row text-center justify-content-center">
+                      <p className="small-text-14 mt-0">
+                        <Link href={"login"}>
+                          <a>Back to Login</a>
+                        </Link>
+                      </p>
+                    </div>
                   </div>
                   <div className="col-12 col-sm-12 col-md-6 d-none d-md-block">
                     <Image
