@@ -37,7 +37,7 @@ class ForgotPassword extends React.Component {
       const error = {};
       Object.keys(result.data).map((key) => {
         // console.log("error", key, result.data[key][0]);
-        error[key] = result.data[key][0];
+        error[key] = result.data[key];
       });
       this.setState({ error: error });
     } else {

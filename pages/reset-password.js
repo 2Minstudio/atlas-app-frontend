@@ -58,7 +58,7 @@ class ResetPassword extends React.Component {
     if (!result.state) {
       const error = {};
       Object.keys(result.data).map((key) => {
-        error[key] = result.data[key][0];
+      error[key] = result.data[key];
       });
       this.setState({ error: error });
     } else {
