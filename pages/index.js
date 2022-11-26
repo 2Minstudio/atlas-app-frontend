@@ -264,11 +264,11 @@ class Home extends React.Component {
                 <div className="col-lg-7 col-md-8 col-sm-12 p-3">
                   <h2>
                   Course Duration & Syllabus </h2>
-                  <p class="text-center mt-5">The course is broken down into three parts, <br>
+                  <p className="text-center mt-5">The course is broken down into three parts, <br>
                   </br>1. Online lectures, <br>
                   </br>2.  In-person technique training and <br>
                   </br>3. Clinical internship, each lasting six months (24 weeks). </p>
-                <button class="btn btn-success rounded-10 mt-4"> Download Syllabus Brouchure </button>
+                <button className="btn btn-success rounded-10 mt-4"> Download Syllabus Brouchure </button>
                 </div>
               </div>
             </div>

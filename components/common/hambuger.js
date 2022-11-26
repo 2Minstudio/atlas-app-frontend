@@ -95,7 +95,7 @@ class Hamburger extends React.Component {
               </a></Link>
             </li>
             <li>
-            <div class="d-grid gap-2 d-sm-block d-md-flex justify-content-md-end">
+            <div className="d-grid gap-2 d-sm-block d-md-flex justify-content-md-end">
             <Link href={"login"}>
                   <a className="nav-link">
                 <button className="btn col-12 col-sm-12 btn-outline-success rounded-pill">
