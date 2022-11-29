@@ -1,7 +1,7 @@
 import axios from "axios";
 import cookie from "cookie";
 import { redirect } from "next/dist/server/api-utils";
-import Router from 'next/router'
+import Router from "next/router";
 
 const isLoggedin = async (req) => {
   const cookies =
@@ -90,7 +90,7 @@ const Logout = async () => {
         data: { state },
       } = response;
       // redirect(301,'/');
-      Router.push('/');
+      Router.push("/");
     })
     .catch((error) => {
       // handle error
@@ -99,4 +99,68 @@ const Logout = async () => {
     });
 };
 
-export { isLoggedin, getUser, isClientLoggedin, verifyToken, Logout };
+const resendCode = async (email) => {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/resend-code/`;
+  const data = {
+    email: email,
+  };
+
+  return await axios({
+    method: "post",
+    url: url,
+    data: data,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      const {
+        data: { status },
+      } = response;
+      return status == "success";
+    })
+    .catch((error) => {
+      // handle error
+      if (error.response.status == 401) {
+        console.log("error ?", error.response.status);
+      }
+      return false;
+    });
+};
+
+const verifyCode = async (code, email) => {
+  // const url = `/api/verify`;
+  console.log(code, email);
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/verify-email/`;
+  const data = {
+    code: code,
+    email: email,
+  };
+
+  return await axios({
+    method: "post",
+    url: url,
+    data: data,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      const {
+        data: { status, message },
+      } = response;
+      return { status, message };
+    })
+    .catch((error) => {
+      return error?.response?.data;
+    });
+};
+export {
+  isLoggedin,
+  getUser,
+  isClientLoggedin,
+  verifyToken,
+  Logout,
+  resendCode,
+  verifyCode,
+};

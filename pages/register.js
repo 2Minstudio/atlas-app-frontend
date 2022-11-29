@@ -71,7 +71,6 @@ class Register extends React.Component {
     // Get the response data from server as JSON.
     // If server returns the name submitted, that means the form works.
     const result = await response.json();
-    console.log(result);
     if (!result.state) {
       const error = {};
       Object.keys(result.data).map((key) => {
@@ -80,7 +79,7 @@ class Register extends React.Component {
       });
       this.setState({ error: error });
     } else {
-      this.props.router.push("/course/welcome");
+      this.props.router.push(`/verify?email=${email.value}`);
     }
     // alert(`Is this your full name: ${result.data}`);
   };
