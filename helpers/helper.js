@@ -100,7 +100,7 @@ const Logout = async () => {
 };
 
 const resendCode = async (email) => {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/resend-code/`;
+  const url = `/api/resendcode/`;
   const data = {
     email: email,
   };
@@ -115,22 +115,16 @@ const resendCode = async (email) => {
   })
     .then((response) => {
       const {
-        data: { status },
+        data: { state },
       } = response;
-      return status == "success";
+      return state;
     })
     .catch((error) => {
-      // handle error
-      if (error.response.status == 401) {
-        console.log("error ?", error.response.status);
-      }
       return false;
     });
 };
 
 const verifyCode = async (code, email) => {
-  // const url = `/api/verify`;
-  console.log(code, email);
   const url = `${process.env.NEXT_PUBLIC_API_URL}/api/verify-email/`;
   const data = {
     code: code,

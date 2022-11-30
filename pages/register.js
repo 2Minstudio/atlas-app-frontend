@@ -12,21 +12,6 @@ class Register extends React.Component {
   state = {
     error: {},
   };
-  async getInitialProps(ctx) {
-    const token = await isLoggedin(ctx.req);
-    if (token) {
-      if (ctx.res) {
-        ctx.res.writeHead(302, {
-          Location: "/course/welcome",
-          "Content-Type": "text/html; charset=utf-8",
-        });
-        ctx.res.end();
-      } else {
-        Router.push("/course/welcome");
-      }
-    }
-    return { token: token };
-  }
 
   componentDidMount() {
     const { cookies } = this.props;
@@ -79,7 +64,7 @@ class Register extends React.Component {
       });
       this.setState({ error: error });
     } else {
-      this.props.router.push(`/verify?email=${email.value}`);
+      this.props.router.push(`/verify?email=${encodeURI(email.value)}`);
     }
     // alert(`Is this your full name: ${result.data}`);
   };
@@ -225,5 +210,21 @@ class Register extends React.Component {
     );
   }
 }
+
+Register.getInitialProps = async (ctx) => {
+  const token = await isLoggedin(ctx.req);
+  if (token) {
+    if (ctx.res) {
+      ctx.res.writeHead(302, {
+        Location: "/course/welcome",
+        "Content-Type": "text/html; charset=utf-8",
+      });
+      ctx.res.end();
+    } else {
+      Router.push("/course/welcome");
+    }
+  }
+  return { token: token };
+};
 
 export default withCookies(withRouter(Register));

@@ -11,10 +11,12 @@ import {
   isClientLoggedin,
 } from "../helpers/helper";
 import Link from "next/link";
+import Alert from "react-bootstrap/Alert";
 
 class Verify extends React.Component {
   state = {
     error: {},
+    resent: false,
   };
   getEmailandCode = () => {
     const {
@@ -27,7 +29,8 @@ class Verify extends React.Component {
 
   resendEmail = async () => {
     const { email, code } = this.getEmailandCode();
-    resendCode(email);
+    const rest = resendCode(email);
+    this.setState({ resent: rest });
   };
 
   componentDidMount() {
@@ -44,6 +47,7 @@ class Verify extends React.Component {
   render() {
     const { email, code } = this.getEmailandCode();
     const { verifystatus = {} } = this.props;
+    const { resent } = this.state;
 
     return (
       <LayoutGuest>
@@ -61,6 +65,7 @@ class Verify extends React.Component {
                       src="/image/logo.png"
                     ></Image>
                     <b className="text-success">Academy</b>
+                    {resent && <Alert>Verification email resent</Alert>}
                     <div className="row">
                       <h2 className="mb-5 mt-5">Verify your email</h2>
                       {!code && (
