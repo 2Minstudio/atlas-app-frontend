@@ -21,18 +21,18 @@ export default async function handler(req, res) {
     },
   })
     .then((response) => {
-      const { token, expiry } = response.data;
+      // const { token, expiry } = response.data;
       state = true;
-      res.setHeader(
-        "Set-Cookie",
-        cookie.serialize("atlastoken", token, {
-          // httpOnly: true,
-          // secure: process.env.NODE_ENV !== "development",
-          // sameSite: "strict",
-          // maxAge: 3600,
-          path: "/",
-        })
-      );
+      // res.setHeader(
+      //   "Set-Cookie",
+      //   cookie.serialize("atlastoken", token, {
+      //     // httpOnly: true,
+      //     // secure: process.env.NODE_ENV !== "development",
+      //     // sameSite: "strict",
+      //     // maxAge: 3600,
+      //     path: "/",
+      //   })
+      // );
       resp = response.data;
     })
     .catch((error) => {

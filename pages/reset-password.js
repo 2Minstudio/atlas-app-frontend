@@ -193,7 +193,7 @@ ResetPassword.getInitialProps = async (ctx) => {
     query: { token },
   } = ctx;
   const tokenisvalid = await verifyToken(token);
-  console.log(token, tokenisvalid, "tokenisvalid");
+
   return { token: token, istokenvalid: tokenisvalid };
 };
 
