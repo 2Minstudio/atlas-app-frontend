@@ -51,10 +51,12 @@ class ForgotPassword extends React.Component {
       <LayoutGuest>
         <div className={styles}>
           <main className={styles.main}>
-            <div className="container-fluid">
-              <div className="container">
-                <div className="row align-items-center">
-                  <div className="col-12 col-sm-12 col-md-6 mb-5 pt-5">
+          <div className="container-fluid ">
+              <div className="row winheight">
+              <div className="col-12 col-sm-12 col-md-6 d-flex align-items-center">
+                <div className="container-sm">
+                <div className="align-items-center">
+                  <div className="col-12 col-sm-12 col-md-10 col-lg-8 pt-5 mb-5 mx-auto">
                     <Image
                       width="120"
                       height="65"
@@ -114,17 +116,25 @@ class ForgotPassword extends React.Component {
                       </p>
                     </div>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-6 d-none d-md-block">
-                    <Image
-                      width="796"
-                      height="1095"
-                      className="Img-fluid"
-                      alt="forgot-image"
-                      src="/image/landingpg/forgot.png"
-                    ></Image>
-                  </div>
+                  
+                  </div> {/* End container 1 */}
+                </div>{/* End row 1 */}
+              </div>{/* End col 1 */}
+              <div className="col-12 col-sm-12 col-md-6 greyGrad d-flex align-items-end">
+                <div className="container-sm">
+                <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 col-xxl-9 d-none d-md-block mx-auto">
+                      <Image
+                        className="img-fluid"
+                        width={2786}
+                        height={3660}
+                        alt="Welcome Image"
+                        src="/image/healthcare-workers-prevent-virus-insurance-medicine-concept-smiling-attractive-female-doctor-nurse-blue-scrubs-pointing-fingers-left-show-patients-advertisement-important-info.png"
+                      ></Image>
+                    </div>
                 </div>
               </div>
+              {/* End container 2 */}
+            </div>{/* End col 2 */}
             </div>
           </main>
         </div>

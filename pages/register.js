@@ -75,10 +75,12 @@ class Register extends React.Component {
       <LayoutGuest>
         <div className={styles}>
           <main className={styles.main}>
-            <div className="container-fluid">
-              <div className="container">
+          <div className="container-fluid">
+              <div className="row winheight">
+              <div className="col-12 col-sm-12 col-md-6 d-flex align-items-center">
+                <div className="container-sm">
                 <div className="row align-items-center">
-                  <div className="col-12 col-sm-6 col-md-6 py-5">
+                  <div className="col-12 col-sm-12 col-md-10 col-lg-8 pt-5 mb-0 mx-auto">
                     <Logo align="left" />
                     <h2 className="mb-5">
                       Get 6 Months of Paid Internship After Finishing The
@@ -192,17 +194,24 @@ class Register extends React.Component {
                       </div>
                     </form>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-6 d-none d-md-block">
-                    <Image
-                      width="797"
-                      height="1080"
-                      className="img-fluid"
-                      alt="Register Image"
-                      src="/image/landingpg/register.png"
-                    ></Image>
-                  </div>
+                  </div> {/* End container 1 */}
+                </div>{/* End row 1 */}
+              </div>{/* End col 1 */}
+              <div className="col-12 col-sm-12 col-md-6 greyGrad d-flex align-items-center">
+                <div className="container-sm">
+                <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 col-xxl-12 d-none d-md-block mx-auto">
+                      <Image
+                        className="img-fluid"
+                        width={2663}
+                        height={2333}
+                        alt="Welcome Image"
+                        src="/image/happy-young-woman-sitting-floor-using-laptop-gray-wall.png"
+                      ></Image>
+                    </div>
                 </div>
               </div>
+              {/* End container 2 */}
+            </div>{/* End col 2 */}
             </div>
           </main>
         </div>

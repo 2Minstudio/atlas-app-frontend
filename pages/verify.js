@@ -53,10 +53,12 @@ class Verify extends React.Component {
       <LayoutGuest>
         <div className={styles}>
           <main className={styles.main}>
-            <div className="container-fluid">
-              <div className="container">
+          <div className="container-fluid">
+              <div className="row winheight">
+              <div className="col-12 col-sm-12 col-md-6 d-flex align-items-center">
+                <div className="container-sm">
                 <div className="row align-items-center">
-                  <div className="col-12 col-sm-12 col-md-6 mb-5 pt-5">
+                  <div className="col-12 col-sm-12 col-md-6 mb-5 pt-5 mx-auto">
                     <Image
                       className="img-fluid myLogoLp"
                       alt="Logo"
@@ -103,17 +105,25 @@ class Verify extends React.Component {
                       )}
                     </div>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-6 col-md-6 d-none d-md-block">
-                    <Image
-                      width="797"
-                      height="1080"
-                      className="img-fluid"
-                      alt="Register Image"
-                      src="/image/landingpg/register.png"
-                    ></Image>
-                  </div>
+                 
+                  </div> {/* End container 1 */}
+                </div>{/* End row 1 */}
+              </div>{/* End col 1 */}
+              <div className="col-12 col-sm-12 col-md-6 greyGrad d-flex align-items-center">
+                <div className="container-sm">
+                <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 col-xxl-12 d-none d-md-block mx-auto">
+                      <Image
+                        className="img-fluid"
+                        width={2663}
+                        height={2333}
+                        alt="Welcome Image"
+                        src="/image/happy-young-woman-sitting-floor-using-laptop-gray-wall.png"
+                      ></Image>
+                    </div>
                 </div>
               </div>
+              {/* End container 2 */}
+            </div>{/* End col 2 */}
             </div>
           </main>
         </div>

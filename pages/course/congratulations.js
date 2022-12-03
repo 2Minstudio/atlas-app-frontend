@@ -30,7 +30,7 @@ class Congratulations extends React.Component {
       <LayoutUser user={user}>
         <div className={styles}>
           <main className={styles.main}>
-            <div className="container-fluid bg-light p-5">
+            <div className="container-fluid bg-light p-5 winheight70">
               <div className="container  rounded rounded-10">
                 <div className="row bg-white rounded-10 align-items-center">
                   <div className="col-12 col-sm-12 col-md-6 p-4 px-sm-5 ">
