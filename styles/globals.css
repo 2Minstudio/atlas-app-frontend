@@ -6,6 +6,24 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 /**addtl CSS **/
+.winheight{
+  min-height: 100vh;
+}
+.winheight75{
+  min-height: 75vh;
+}
+.winheight70{
+  min-height: 70vh;
+}
+.winheight57{
+  min-height: 57vh;
+}
+.winheight50{
+  min-height: 50vh;
+}
+.winheight25{
+  min-height: 25vh;
+}
 .Chiro-icon{
   max-width: 100px;
 }
@@ -39,6 +57,11 @@
 
 .dash-min-h-400{
   min-height: 400px;
+}
+.greyGrad{
+  background-image: linear-gradient(#dedfde, #f2f2f2);
+  background-position: center center;
+    background-size: cover;
 }
 
 /*Menu bar*/

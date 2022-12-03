@@ -7,10 +7,12 @@ export default function OtpValidation() {
     <LayoutGuest>
       <div className={styles}>
         <main className={styles.main}>
-          <div className="container-fluid">
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col-12 col-sm-12 col-md-6 mb-5 pt-5">
+        <div className="container-fluid">
+              <div className="row winheight">
+              <div className="col-12 col-sm-12 col-md-6 d-flex align-items-center">
+                <div className="container-sm winheight">
+                  <div className="row align-items-center">
+                <div className="col-12 col-sm-12 col-md-10 col-lg-8 pt-5 mb-0 mx-auto">
                   <Logo />
 
                   <h2 className="mb-5 mt-5">Check for OTP</h2>
@@ -22,7 +24,7 @@ export default function OtpValidation() {
                     <small>******0789</small>
                   </p>
                   <form className="align-items-center text-center">
-                    <div className="mt-5 mb-3">
+                    <div className="mt-5 mb-2">
                       <h5 className="text-success text-center pb-3">
                         <small>Type your 6 digit security code</small>
                       </h5>
@@ -74,19 +76,28 @@ export default function OtpValidation() {
                   </form>
 
                   <h2 className="mb-5 mt-5">Check for OTP</h2>
-                </div>
-                <div className="col-12 col-sm-12 col-md-6 d-none d-md-block">
-                  <Image
-                    width="796"
-                    height="1075"
-                    className="img-fluid"
-                    alt="Forgot Image"
-                    src="/image/landingpg/forgot.png"
-                  ></Image>
-                </div>
-              </div>
-            </div>
-          </div>
+                  </div>
+                   
+                  
+                   </div> {/* End container 1 */}
+                   </div>{/* End row 1 */}
+                 </div>{/* End col 1 */}
+                 <div className="col-12 col-sm-12 col-md-6 greyGrad d-flex align-items-end">
+                   <div className="container-sm">
+                   <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 col-xxl-7 d-none d-md-block mx-auto">
+                         <Image
+                           className="img-fluid"
+                           width={797}
+                           height={1393}
+                           alt="Welcome Image"
+                           src="/image/healthcare-workers-prevent-virus-insurance-medicine-concept-cheerful-smiling-beautiful-doctor-fe.png"
+                         ></Image>
+                       </div>
+                   </div>
+                 </div>
+                 {/* End container 2 */}
+               </div>{/* End col 2 */}
+               </div>
         </main>
       </div>
     </LayoutGuest>
