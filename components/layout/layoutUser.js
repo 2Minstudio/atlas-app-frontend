@@ -3,7 +3,6 @@ import Headerlanding from "../common/headerlanding";
 import { config } from "../../config/config";
 
 export default function LayoutUser({ children, user = {} }) {
-  console.log("Layout user", user);
   return (
     <>
       <Head>

@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Hamburger from "./hambuger";
-import styles from "../../styles/Home.module.css";
 import Logo from "./logo/logo";
 import { Logout } from "../../helpers/helper";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 const Header = (props) => {
   const { user = {} } = props;
@@ -16,7 +16,7 @@ const Header = (props) => {
           <p className="pt-3 ms-sm-auto pe-4 text-success">
             <ul className="nav align-items-center">
               <li className="nav-item mdClose">
-                <Link href={"/course/test"}>
+                <Link href={"/register"}>
                   <a className="nav-link active" aria-current="page">
                     Take Eligibility Test
                   </a>
@@ -42,8 +42,7 @@ const Header = (props) => {
                     <Link href={"register"}>
                       <a className="nav-link" href="#">
                         <button className="btn px-4 btn-md btn-success rounded-pill">
-                          {" "}
-                          Sign Up{" "}
+                          Sign Up
                         </button>
                       </a>
                     </Link>
@@ -54,7 +53,13 @@ const Header = (props) => {
                 <>
                   <li>
                     <Link href={"/profile"}>
-                      <a className="nav-link">{user.first_name}</a>
+                      <a className="nav-link">
+                        <FontAwesomeIcon
+                          className="Auser text-primary position-relative"
+                          icon={faCircleUser}
+                        />
+                        {user.first_name}
+                      </a>
                     </Link>
                   </li>
                   <li>
@@ -67,7 +72,7 @@ const Header = (props) => {
                 </>
               )}
               <li className="nav-item mdOpen">
-                <Hamburger></Hamburger>
+                <Hamburger />
               </li>
             </ul>
           </p>

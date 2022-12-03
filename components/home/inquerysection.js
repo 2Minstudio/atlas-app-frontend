@@ -11,7 +11,7 @@ const InquerySection = () => (
           <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4 align-items-center">
             <div className="col-12 col-sm-12 col-md-6 text-left">
               <div className="row">
-                <Link href="/course/test">
+                <Link href="/register">
                   <a className="nav-link active" aria-current="page">
                     <button
                       type="button"
