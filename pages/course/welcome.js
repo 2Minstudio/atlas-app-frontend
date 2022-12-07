@@ -120,7 +120,6 @@ class CourseWelcome extends React.Component {
                                 + Applicable taxes
                               </span>
                             </p>
-                            <p></p>
                           </div>
                         </div>
                         <div className="row justify-content-center mb-3 mt-5">

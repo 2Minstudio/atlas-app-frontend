@@ -13,7 +13,7 @@ const Header = (props) => {
       <div className="container pt-5">
         <div className="d-flex flex-column flex-sm-row align-items-center pb-2 mb-4 border p-2 border-opacity-10 rounded-pill shadow-sm bg-white">
           <Logo />
-          <p className="pt-3 ms-sm-auto pe-4 text-success">
+          <div className="pt-3 ms-sm-auto pe-4 text-success">
             <ul className="nav align-items-center">
               <li className="nav-item mdClose">
                 <Link href={"/register"}>
@@ -75,7 +75,7 @@ const Header = (props) => {
                 <Hamburger />
               </li>
             </ul>
-          </p>
+          </div>
         </div>
       </div>
     </header>
