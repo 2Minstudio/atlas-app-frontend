@@ -18,7 +18,7 @@ export default function Banner() {
             <div className="row row-cols-md-2 mt-5 align-items-center">
               <div className="col-12 col-sm-7 col-md-12 col-lg-7 col-xl-7 col-xxl-6 text-left">
                 <div className="row">
-                  <Link href="/login">
+                  <Link href="/register">
                     <a className="nav-link active" aria-current="page">
                       <button
                         type="button"

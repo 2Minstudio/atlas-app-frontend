@@ -20,21 +20,35 @@ import React from "react";
 
 class Home extends React.Component {
   state = {
-    user:{}
+    user: {},
   };
-  componentDidMount() {
+  async componentDidMount() {
     const token = isClientLoggedin(this.props);
     if (token) {
-      getUser(token)
-        .then((resp) => {
-          // this.setState({user});
-          console.log(resp, "resp");
-        })
-        .catch((error) => {
-          console.log(error, "error");
-        });
+      const {
+        state,
+        data: { user },
+      } = await getUser(token);
+      if (state) {
+        this.setState({ user: user });
+      }
     }
   }
+
+  downloadPdf = () => {
+    // using Java Script method to get PDF file
+    fetch("document/syllabus.pdf").then((response) => {
+      response.blob().then((blob) => {
+        // Creating new object of PDF file
+        const fileURL = window.URL.createObjectURL(blob);
+        // Setting various property values
+        let alink = document.createElement("a");
+        alink.href = fileURL;
+        alink.download = "Atlas-College-of-Chiropractic-Syllabus.pdf";
+        alink.click();
+      });
+    });
+  };
 
   render() {
     const { user } = this.state;
@@ -262,13 +276,20 @@ class Home extends React.Component {
               <div className="container text-center">
                 <div className="row align-items-center justify-content-center">
                   <div className="col-lg-7 col-md-8 col-sm-12 p-3">
-                  <h2>
-                  Course Duration & Syllabus </h2>
-                  <p className="text-center mt-5">The course is broken down into three parts, <br>
-                  </br>1. Online lectures, <br>
-                  </br>2.  In-person technique training and <br>
-                  </br>3. Clinical internship, each lasting six months (24 weeks). </p>
-                <button className="btn btn-success rounded-10 mt-4"> Download Syllabus Brouchure </button>
+                    <h2>Course Duration & Syllabus </h2>
+                    <p className="text-center mt-5">
+                      The course is broken down into three parts, <br></br>1.
+                      Online lectures, <br></br>2. In-person technique training
+                      and <br></br>3. Clinical internship, each lasting six
+                      months (24 weeks).{" "}
+                    </p>
+                    <button
+                      className="btn btn-success rounded-10 mt-4"
+                      onClick={() => this.downloadPdf()}
+                    >
+                      {" "}
+                      Download Syllabus Brouchure{" "}
+                    </button>
                   </div>
                 </div>
               </div>

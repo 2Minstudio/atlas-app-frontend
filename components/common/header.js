@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Hamburger from "./hambuger";
-import styles from "../../styles/Home.module.css";
 import Logo from "./logo/logo";
 import { Logout } from "../../helpers/helper";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 const Header = (props) => {
   const { user = {} } = props;

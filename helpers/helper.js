@@ -77,6 +77,7 @@ const verifyToken = async (token) => {
 
 const Logout = async () => {
   const url = `/api/logout`;
+
   console.log("logout", url);
   await axios({
     method: "get",
@@ -89,8 +90,15 @@ const Logout = async () => {
       const {
         data: { state },
       } = response;
+      console.log("route push", Router.pathname);
+      if(Router.pathname == '/')
+        Router.push("/login");
+      else
+        Router.push("/");
       // redirect(301,'/');
-      Router.push("/");
+      // Router.push("/");
+
+      // router.push("/");
     })
     .catch((error) => {
       // handle error

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import LayoutUser from "../../components/layout/layoutUser";
 import styles from "../../styles/Home.module.css";
-
+import Link from "next/link";
 import Router, { withRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -36,7 +36,7 @@ class CourseWelcome extends React.Component {
 
   render() {
     const { user } = this.state;
-    const{ first_name } = user;
+    const { first_name } = user;
     return (
       <LayoutUser user={user}>
         <div className={styles}>
@@ -124,16 +124,13 @@ class CourseWelcome extends React.Component {
                                 + Applicable taxes
                               </span>
                             </p>
-                            <p></p>
                           </div>
                         </div>
                         <div className="row justify-content-center mb-3 mt-5">
-                        <Link href="/test">
-                        
-                          <button className="btn btn-success rounded-pill col-10 col-sm-8 col-lg-6 col-xl-5">
-                            {" "}
-                            Take Eligibility Test{" "}
-                          </button>
+                          <Link href={"/register"}>
+                            <button className="btn btn-success rounded-pill col-10 col-sm-8 col-lg-6 col-xl-5">
+                              Take Eligibility Test
+                            </button>
                           </Link>
                         </div>
                         <div className="row justify-content-center pb-5">
