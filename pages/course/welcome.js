@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import LayoutUser from "../../components/layout/layoutUser";
 import styles from "../../styles/Home.module.css";
 
@@ -99,9 +100,12 @@ class CourseWelcome extends React.Component {
                   <div className="col-12 col-sm-12 col-md-6 p-2 p-sm-4 p-md-5">
                     <div className="row align-items-center whyjoinBg h-100">
                       <div className="rounded-10">
+                      
                         <p className="text-center py-5">
                           Cost of the Eligibility Test
                         </p>
+                        
+                        
                         <div className="row mb-4">
                           <div className="col-6 text-center">
                             <p className="text-success">
@@ -124,10 +128,13 @@ class CourseWelcome extends React.Component {
                           </div>
                         </div>
                         <div className="row justify-content-center mb-3 mt-5">
+                        <Link href="/test">
+                        
                           <button className="btn btn-success rounded-pill col-10 col-sm-8 col-lg-6 col-xl-5">
                             {" "}
                             Take Eligibility Test{" "}
                           </button>
+                          </Link>
                         </div>
                         <div className="row justify-content-center pb-5">
                           <button className="btn-outline-success btn rounded-pill col-10 col-sm-8 col-lg-6 col-xl-5">

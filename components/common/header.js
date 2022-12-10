@@ -9,71 +9,39 @@ import { Logout } from "../../helpers/helper";
 const Header = (props) => {
   const { user = {} } = props;
   return (
-    <header className="bg-light pb-1">
+    <header class= " header bg-light pb-1">
       <div className="container pt-5">
-        <div className="d-flex flex-column flex-sm-row align-items-center pb-2 mb-4 border p-2 border-opacity-10 rounded-pill shadow-sm bg-white">
-          <Logo />
-          <p className="pt-3 ms-sm-auto pe-4 text-success">
-            <ul className="nav align-items-center">
-              <li className="nav-item mdClose">
-                <Link href={"/course/test"}>
-                  <a className="nav-link active" aria-current="page">
-                    Take Eligibility Test
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item mdClose">
-                <Link href={"tel:+916382143394"}>
-                  <a className="nav-link"> Enquire Now </a>
-                </Link>
-              </li>
-              {Object.keys(user).length == 0 && (
-                <>
-                  <li className="nav-item mdClose">
-                    <Link href={"login"}>
-                      <a className="nav-link">
-                        <button className="btn px-4 btn-md btn-outline-success rounded-pill">
+        <div className="d-flex d-flex justify-content-between align-items-center pb-2 mb-4 border p-2 border-opacity-10 rounded-pill shadow-sm bg-white">
+        <Logo />       
+<nav class="navigation pe-3">
+
+<input type="checkbox" className="toggle-menu"></input>
+<div className="hamburger"></div>
+<ul class="nav-menu">
+<li class="nav-item">
+<Link href={"/course/test"}>
+<a class="nav-link active" aria-current="page"> Take Eligibility Test </a>
+</Link>
+</li>
+<li class="nav-item">
+<a href="#" class="nav-link"> Enquire Now  </a>
+</li>
+<li class="nav-item">
+<a href="#" class="nav-link"> <button className="btn px-4 btn-md btn-outline-success rounded-pill">
                           Login
-                        </button>
-                      </a>
-                    </Link>
-                  </li>
-                  <li className="nav-item mdClose">
-                    <Link href={"register"}>
-                      <a className="nav-link" href="#">
-                        <button className="btn px-4 btn-md btn-success rounded-pill">
+                        </button> </a>
+</li>
+<li class="nav-item">
+<a href="#" class="nav-link">  <button className="btn px-4 btn-md btn-success rounded-pill">
                           {" "}
                           Sign Up{" "}
-                        </button>
-                      </a>
-                    </Link>
-                  </li>
-                </>
-              )}
-              {Object.keys(user).length > 0 && (
-                <>
-                  <li>
-                    <Link href={"/profile"}>
-                      <a className="nav-link">{user.first_name}</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={"#"}>
-                      <a onClick={() => Logout()} className="nav-link">
-                        Logout
-                      </a>
-                    </Link>
-                  </li>
-                </>
-              )}
-              <li className="nav-item mdOpen">
-                <Hamburger></Hamburger>
-              </li>
-            </ul>
-          </p>
-        </div>
-      </div>
-    </header>
+                        </button> </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
   );
 };
 

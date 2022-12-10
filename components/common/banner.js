@@ -16,7 +16,7 @@ export default function Banner() {
               Learn from the Licensed <br></br>Chiropractor in India.
             </h5>
             <div className="row row-cols-md-2 mt-5 align-items-center">
-              <div className="col-12 col-sm-12 col-md-6 text-left">
+              <div className="col-12 col-sm-7 col-md-12 col-lg-7 col-xl-7 col-xxl-6 text-left">
                 <div className="row">
                   <Link href="/login">
                     <a className="nav-link active" aria-current="page">
@@ -33,7 +33,7 @@ export default function Banner() {
                 </div>
               </div>
 
-              <div className="col-12 col-sm-12 col-md-6 text-left">
+              <div className="col-12 col-sm-5 col-md-12 col-lg-5 col-xl-5 col-xxl-6 text-left">
                 <div className="row">
                   <a href="tel:+91 9606704304">
                     <button
