@@ -92,19 +92,19 @@ class Home extends React.Component {
                   <div className="row">
                     <p>Welcome Siddanth</p>
                     <div className="col-5">
-                      <div class="card bg-dashboard border-0">
-                        <div class="card-body dash-min-h-400">
-                        <h5 class="card-title text-block ">
+                      <div className="card bg-dashboard border-0">
+                        <div className="card-body dash-min-h-400">
+                          <h5 className="card-title text-block ">
                             Dannie Edwwards{" "}
-                            <span class="badge bg-primary text-end align-right">
+                            <span className="badge bg-primary text-end align-right">
                               400 Hrs
                             </span>
                           </h5>
-                          <h6 class="card-subtitle mb-2 text-muted">
+                          <h6 className="card-subtitle mb-2 text-muted">
                             @dannyedwwards
                           </h6>
-                          <p class="card-text"></p>
-                          <div class="card-link bg-grey p-3 text-center rounded-25">
+                          <p className="card-text"></p>
+                          <div className="card-link bg-grey p-3 text-center rounded-25">
                             Chiropractor for begineers
                           </div>
                         </div>
@@ -191,11 +191,14 @@ class Home extends React.Component {
                         </div>
                       </div>
 
-
                       <div className="row align-items-center mt-5">
                         <div className="col">
-                        <h5>INR 6,00,000<br></br>
-                        <small className="text-success small-text-12">EMI Available</small></h5>
+                          <h5>
+                            INR 6,00,000<br></br>
+                            <small className="text-success small-text-12">
+                              EMI Available
+                            </small>
+                          </h5>
                         </div>
                         <div className="col text-center">
                           <h6>Preview Course</h6>
@@ -203,7 +206,9 @@ class Home extends React.Component {
                       </div>
                       <div className="row text-end mt-4">
                         <div className="col">
-                        <button className="btn btn-outline-success rounded-pill col-3">Enquire Now</button>
+                          <button className="btn btn-outline-success rounded-pill col-3">
+                            Enquire Now
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -211,8 +216,12 @@ class Home extends React.Component {
                   <div className="row">
                     <h5 className="pt-4">Community</h5>
                     <div className="col mt-4">
-                    <button className="btn btn-success rounded-pill p-3 me-3">Ask A Question</button>
-                    <button className="btn btn-success rounded-pill p-3">Go to community</button>
+                      <button className="btn btn-success rounded-pill p-3 me-3">
+                        Ask A Question
+                      </button>
+                      <button className="btn btn-success rounded-pill p-3">
+                        Go to community
+                      </button>
                     </div>
                   </div>
                 </div>
