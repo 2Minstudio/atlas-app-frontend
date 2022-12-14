@@ -17,17 +17,15 @@ export default function Footer() {
           <div className="col d-none d-md-block">
             <p className="align-items-center">
               {" "}
+              <div className="">
               <Image className="mt-2" width="120" height="65" alt="Logo" src="/image/logo.png"/>{" "}
-              <span className="small-text-14">
-                Copyright © 2022. All rights reserved. Made in India
-              </span>
+              </div>
             </p>
           </div>
           <div className="col d-block d-md-none text-center">
+           
             <Image width="120" height="65" alt="Logo" src="/image/logo.png" />{" "}
-            <span className="small-text-14 align-bottom">
-              <p> Copyright © 2020. All rights reserved. Made in India</p>
-            </span>
+            
           </div>
           <div className="col text-end text-success d-none d-md-block align-items-center mt-2">
             <a
@@ -105,6 +103,11 @@ export default function Footer() {
             </a>
           </div>
         </div>
+        <div className="row pt-1 g-0">
+              <span className="small-text-14 text-center text-md-start">
+                Copyright © 2022. All rights reserved. Made in India
+              </span>
+              </div>
       </div>
     </footer>
   );

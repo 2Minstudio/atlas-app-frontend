@@ -8,35 +8,25 @@ const InquerySection = () => (
             <b>Start Earning as a Certified Chiropractor in 12 Months</b>
           </h2>
 
-          <div className="row row-cols-md-2 mt-5 pt-sm-2 pt-md-4 align-items-center">
-            <div className="col-12 col-sm-12 col-md-6 text-left">
-              <div className="row">
-                <Link href="/register">
-                  <a className="nav-link active" aria-current="page">
-                    <button
-                      type="button"
-                      className="btn btn-lg btn-success mb-3 rounded-pill"
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                    >
-                      Take the Eligibility Test
-                    </button>
-                  </a>
-                </Link>
-              </div>
-            </div>
-
-            <div className="col-12 col-sm-12 col-md-6 text-left">
-              <div className="row">
-                <a href="tel:+91 9606704304">
-                  <button
-                    type="button"
-                    className=" btn btn-lg btn-outline-success rounded-pill"
-                  >
-                    Inquire Now
+          <div className="row mt-5 pt-sm-2 pt-md-4 align-items-center">
+            <div class="d-grid gap-2 d-sm-flex justify-content-lg-start">
+              <Link href="/register">
+                <a className="nav-link p-0 active" aria-current="page">
+                  <button class="btn btn-lg btn-success rounded-pill" type="button" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal" >
+                    Take the Eligibility Test
                   </button>
                 </a>
-              </div>
+              </Link>
+              <a
+                className="nav-link p-0 active"
+                aria-current="page"
+                href="tel:+91 9606704304"
+              >
+                <button class="btn btn-lg btn-outline-success rounded-pill" type="button">
+                  Inquire Now
+                </button>
+              </a>
             </div>
           </div>
         </div>
