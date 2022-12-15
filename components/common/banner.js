@@ -12,40 +12,20 @@ export default function Banner() {
               The Chiropractor <br />
               Course
             </h1>
-            <h5 className="my-5 text-success">
+            <h4 className="my-5 text-success">
               Learn from the Licensed <br></br>Chiropractor in India.
-            </h5>
-            <div className="row row-cols-md-2 mt-5 align-items-center">
-              <div className="col-12 col-sm-7 col-md-12 col-lg-7 col-xl-7 col-xxl-6 text-left">
-                <div className="row">
-                  <Link href="/register">
-                    <a className="nav-link active" aria-current="page">
-                      <button
-                        type="button"
-                        className="btn btn-lg btn-success mb-sm-0 mb-3 rounded-pill"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                      >
-                        Take the Eligibility Test
-                      </button>
-                    </a>
-                  </Link>
-                </div>
-              </div>
+            </h4>
 
-              <div className="col-12 col-sm-5 col-md-12 col-lg-5 col-xl-5 col-xxl-6 text-left">
-                <div className="row">
-                  <a href="tel:+91 9606704304">
-                    <button
-                      type="button"
-                      className="btn btn-lg btn-outline-success mb-sm-0 mb-3 rounded-pill"
-                    >
-                      Inquire Now
-                    </button>
-                  </a>
-                </div>
-              </div>
-            </div>
+            <div class="d-grid gap-2 d-lg-flex justify-content-lg-start">
+            <Link href="/register">
+                    <a className="nav-link p-0 active" aria-current="page">
+  <button class="btn btn-lg btn-success rounded-pill" type="button">Take the Eligibility Test</button>
+  </a></Link>
+  <a className="nav-link p-0 active" aria-current="page" href="tel:+91 9606704304">
+  <button class="btn btn-lg btn-outline-success rounded-pill" type="button">Inquire Now</button>
+  </a>
+</div>
+            
           </div>
           <div className="d-xxl-none d-xl-none d-lg-none d-md-none d-sm-block col-sm-12 pt-5">
             <div className="row">
