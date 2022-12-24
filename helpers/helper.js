@@ -2,7 +2,7 @@ import axios from "axios";
 import cookie from "cookie";
 import { redirect } from "next/dist/server/api-utils";
 import Router from "next/router";
-
+// import Cookies
 const isLoggedin = async (req) => {
   const cookies =
     req && req?.headers.cookies ? req.headers.cookies : req?.cookies;
@@ -13,28 +13,7 @@ const isLoggedin = async (req) => {
   return false;
 };
 
-const getUser = async (token) => {
-  // const token = await isLoggedin(ctx.req);
 
-  if (!token) return {};
-  return axios
-    .post("/api/userbytoken", {
-      token: token,
-    })
-    .then((response) => {
-      const { data } = response;
-      // console.log(data, "it is data");
-      return data;
-    })
-    .catch((error) => {
-      // handle error
-      const {
-        response: { data },
-      } = error;
-      // console.log(data, "response error");
-      return data;
-    });
-};
 
 const isClientLoggedin = (props) => {
   const { cookies } = props;
@@ -104,6 +83,34 @@ const Logout = async () => {
       // handle error
       console.log("error ?", error);
       return false;
+    });
+};
+
+const getUser = async (token) => {
+  // const token = await isLoggedin(ctx.req);
+
+  if (!token) return {};
+  return axios
+    .post("/api/userbytoken", {
+      token: token,
+    })
+    .then((response) => {
+      const { data } = response;
+      if(data?.data?.action == "force_logout"){
+        console.log("Logout ?", data?.data?.action);
+        // Logout();
+      }
+      // console.log(data, "it is data");
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      if(data)
+      // console.log(data, "response error");
+      return data;
     });
 };
 
