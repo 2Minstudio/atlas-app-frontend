@@ -14,6 +14,7 @@ const InquerySection = () => (
                 href="/register"
                 className="nav-link p-0 active"
                 aria-current="page"
+                legacyBehavior
               >
                 <button
                   class="btn btn-lg btn-success rounded-pill"

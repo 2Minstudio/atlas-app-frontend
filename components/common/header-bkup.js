@@ -16,36 +16,34 @@ const Header = (props) => {
           <p className="pt-3 ms-sm-auto pe-4 text-success">
             <ul className="nav align-items-center">
               <li className="nav-item mdClose">
-                <Link href={"/course/test"}>
-                  <a className="nav-link active" aria-current="page">
-                    Take Eligibility Test
-                  </a>
+                <Link
+                  href={"/course/test"}
+                  className="nav-link active"
+                  aria-current="page"
+                >
+                  Take Eligibility Test
                 </Link>
               </li>
               <li className="nav-item mdClose">
-                <Link href={"tel:+916382143394"}>
-                  <a className="nav-link"> Enquire Now </a>
+                <Link href={"tel:+916382143394"} className="nav-link">
+                  Enquire Now
                 </Link>
               </li>
               {Object.keys(user).length == 0 && (
                 <>
                   <li className="nav-item mdClose">
-                    <Link href={"login"}>
-                      <a className="nav-link">
-                        <button className="btn px-4 btn-md btn-outline-success rounded-pill">
-                          Login
-                        </button>
-                      </a>
+                    <Link href={"login"} className="nav-link">
+                      <button className="btn px-4 btn-md btn-outline-success rounded-pill">
+                        Login
+                      </button>
                     </Link>
                   </li>
                   <li className="nav-item mdClose">
-                    <Link href={"register"}>
-                      <a className="nav-link" href="#">
-                        <button className="btn px-4 btn-md btn-success rounded-pill">
-                          {" "}
-                          Sign Up{" "}
-                        </button>
-                      </a>
+                    <Link href={"register"} className="nav-link">
+                      <button className="btn px-4 btn-md btn-success rounded-pill">
+                        {" "}
+                        Sign Up{" "}
+                      </button>
                     </Link>
                   </li>
                 </>
@@ -53,15 +51,17 @@ const Header = (props) => {
               {Object.keys(user).length > 0 && (
                 <>
                   <li>
-                    <Link href={"/profile"}>
-                      <a className="nav-link">{user.first_name}</a>
+                    <Link href={"/profile"} className="nav-link">
+                      {user.first_name}
                     </Link>
                   </li>
                   <li>
-                    <Link href={"#"}>
-                      <a onClick={() => Logout()} className="nav-link">
-                        Logout
-                      </a>
+                    <Link
+                      href={"#"}
+                      onClick={() => Logout()}
+                      className="nav-link"
+                    >
+                      Logout
                     </Link>
                   </li>
                 </>

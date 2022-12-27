@@ -19,35 +19,33 @@ const Header = (props) => {
             <div className="hamburger"></div>
             <ul className="nav-menu">
               <li className="nav-item">
-                <Link href={"/register"}>
-                  <a className="nav-link active" aria-current="page">
-                    Take Eligibility Test
-                  </a>
+                <Link
+                  href={"/register"}
+                  className="nav-link active"
+                  aria-current="page"
+                >
+                  Take Eligibility Test
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href={"#"}>
-                  <a className="nav-link">Enquire Now</a>
+                <Link href={"#"} className="nav-link">
+                  Enquire Now
                 </Link>
               </li>
               {!user?.first_name && (
                 <>
                   <li className="nav-item">
-                    <Link href={"/login"}>
-                      <a className="nav-link">
-                        <button className="btn px-4 btn-md btn-outline-success rounded-pill">
-                          Login
-                        </button>
-                      </a>
+                    <Link href={"/login"} className="nav-link">
+                      <button className="btn px-4 btn-md btn-outline-success rounded-pill">
+                        Login
+                      </button>
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link href={"/register"}>
-                      <a className="nav-link">
-                        <button className="btn px-4 btn-md btn-success rounded-pill">
-                          Sign Up
-                        </button>
-                      </a>
+                    <Link href={"/register"} className="nav-link">
+                      <button className="btn px-4 btn-md btn-success rounded-pill">
+                        Sign Up
+                      </button>
                     </Link>
                   </li>
                 </>
@@ -55,15 +53,17 @@ const Header = (props) => {
               {user?.first_name && (
                 <>
                   <li className="nav-item">
-                    <Link href={"#"}>
-                      <a className="nav-link">{user.first_name}</a>
+                    <Link href={"#"} className="nav-link">
+                      {user.first_name}
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link href={"#"}>
-                      <a onClick={() => Logout()} className="nav-link">
-                        Logout
-                      </a>
+                    <Link
+                      href={"#"}
+                      onClick={() => Logout()}
+                      className="nav-link"
+                    >
+                      Logout
                     </Link>
                   </li>
                 </>

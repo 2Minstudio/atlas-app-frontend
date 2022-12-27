@@ -54,8 +54,8 @@ class Headerlanding extends React.Component {
                 </li>
                 <li className="nav-item">
                   <a href="#" className="nav-link">
-                    <Link href={"#"}>
-                      <a onClick={() => Logout()}>Logout</a>
+                    <Link href={"#"} onClick={() => Logout()}>
+                      Logout
                     </Link>
                   </a>
                 </li>

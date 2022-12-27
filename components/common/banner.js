@@ -17,14 +17,14 @@ export default function Banner() {
             </h4>
 
             <div class="d-grid gap-2 d-lg-flex justify-content-lg-start">
-              <Link href="/register">
+              <Link href="/register" legacyBehavior>
                 {/* <a className="nav-link p-0 active" aria-current="page"> */}
-                  <button
-                    class="btn btn-lg btn-success rounded-pill"
-                    type="button"
-                  >
-                    Take the Eligibility Test
-                  </button>
+                <button
+                  class="btn btn-lg btn-success rounded-pill"
+                  type="button"
+                >
+                  Take the Eligibility Test
+                </button>
                 {/* </a> */}
               </Link>
               <a

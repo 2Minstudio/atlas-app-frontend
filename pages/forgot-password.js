@@ -13,7 +13,7 @@ class ForgotPassword extends React.Component {
     showinfo: false,
     email: "",
   };
-  
+
   componentDidMount() {
     const { cookies } = this.props;
     const token = cookies.get("atlastoken");
@@ -123,9 +123,7 @@ class ForgotPassword extends React.Component {
                         )}
                         <div className="row text-center justify-content-center">
                           <p className="small-text-14 mt-0">
-                            <Link href={"login"}>
-                              <a>Back to Login</a>
-                            </Link>
+                            <Link href={"login"}>Back to Login</Link>
                           </p>
                         </div>
                       </div>
