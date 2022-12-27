@@ -10,20 +10,29 @@ const InquerySection = () => (
 
           <div className="row mt-5 pt-sm-2 pt-md-4 align-items-center">
             <div class="d-grid gap-2 d-sm-flex justify-content-lg-start">
-              <Link href="/register">
-                <a className="nav-link p-0 active" aria-current="page">
-                  <button class="btn btn-lg btn-success rounded-pill" type="button" data-bs-toggle="modal"
-                  data-bs-target="#exampleModal" >
-                    Take the Eligibility Test
-                  </button>
-                </a>
+              <Link
+                href="/register"
+                className="nav-link p-0 active"
+                aria-current="page"
+              >
+                <button
+                  class="btn btn-lg btn-success rounded-pill"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Take the Eligibility Test
+                </button>
               </Link>
               <a
                 className="nav-link p-0 active"
                 aria-current="page"
                 href="tel:+91 9606704304"
               >
-                <button class="btn btn-lg btn-outline-success rounded-pill" type="button">
+                <button
+                  class="btn btn-lg btn-outline-success rounded-pill"
+                  type="button"
+                >
                   Inquire Now
                 </button>
               </a>

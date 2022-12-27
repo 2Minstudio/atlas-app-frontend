@@ -7,4 +7,4 @@ class Users extends React.Component {
   }
 }
 
-export default Adminisions;
+export default Users;
