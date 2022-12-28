@@ -16,11 +16,11 @@ export default function Banner() {
               Learn from the Licensed <br></br>Chiropractor in India.
             </h4>
 
-            <div class="d-grid gap-2 d-lg-flex justify-content-lg-start">
+            <div className="d-grid gap-2 d-lg-flex justify-content-lg-start">
               <Link href="/register" legacyBehavior>
                 {/* <a className="nav-link p-0 active" aria-current="page"> */}
                 <button
-                  class="btn btn-lg btn-success rounded-pill"
+                  className="btn btn-lg btn-success rounded-pill"
                   type="button"
                 >
                   Take the Eligibility Test
@@ -33,7 +33,7 @@ export default function Banner() {
                 href="tel:+91 9606704304"
               >
                 <button
-                  class="btn btn-lg btn-outline-success rounded-pill"
+                  className="btn btn-lg btn-outline-success rounded-pill"
                   type="button"
                 >
                   Inquire Now
