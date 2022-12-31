@@ -3,7 +3,7 @@ import cookie from "cookie";
 
 export default async function handler(req, res) {
   let state = false;
-  const body = req.body;
+  const { body } = req;
   if (!body.email || !body.password) {
     return res
       .status(400)
@@ -20,7 +20,8 @@ export default async function handler(req, res) {
     },
   })
     .then((response) => {
-      const { token, expiry } = response.data;
+      const { token, expiry, created, duration } = response.data;
+      console.log(token, expiry, created, duration);
       state = true;
       res.setHeader(
         "Set-Cookie",
@@ -28,7 +29,7 @@ export default async function handler(req, res) {
           // httpOnly: true,
           // secure: process.env.NODE_ENV !== "development",
           // sameSite: "strict",
-          // maxAge: 3600,
+          maxAge: parseInt(duration),
           path: "/",
         })
       );

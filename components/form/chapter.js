@@ -3,15 +3,15 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { createCourse, getCourse } from "../../helpers/admin";
 
-class CourseForm extends React.Component {
+class ChapterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       create: true,
-      name: "",
-      cost: "",
-      description: "",
-      notes: "",
+      name: "A",
+      cost: "1",
+      description: "c",
+      notes: "2",
       status: "0",
       submited: false,
       image: "",
@@ -152,4 +152,4 @@ class CourseForm extends React.Component {
   }
 }
 
-export default CourseForm;
+export default ChapterForm;

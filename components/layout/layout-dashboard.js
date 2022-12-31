@@ -8,6 +8,7 @@ import Header from "../common/header";
 import { config } from "../../config/config";
 
 export default function LayoutDashboard({ children, user = {} }) {
+  console.log(user,"layout user")
   return (
     <>
       <Head>
@@ -20,8 +21,8 @@ export default function LayoutDashboard({ children, user = {} }) {
         <Container>
           <Row>
             <Col md={3}>
-              <Nav defaultActiveKey="/admin/" className="flex-column">
-                <Nav.Link href="/admin/">Adminisions</Nav.Link>
+              <Nav defaultActiveKey="/admin/admissions" className="flex-column">
+                <Nav.Link href="/admin/admissions">Adminisions</Nav.Link>
                 <Nav.Link href="/admin/courses">Course</Nav.Link>
                 <Nav.Link href="/admin/users">Users</Nav.Link>
               </Nav>

@@ -3,22 +3,19 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { createCourse, getCourse } from "../../helpers/admin";
 
-class CourseForm extends React.Component {
+class ModuleForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       create: true,
       name: "",
-      cost: "",
-      description: "",
-      notes: "",
+      course: "",
+      attend_type: "online",
       status: "0",
       submited: false,
-      image: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleImageChange = this.handleImageChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -28,29 +25,22 @@ class CourseForm extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleImageChange = (event) => {
-    const { name, files } = event.target;
-    this.setState({
-      [name]: files[0],
-    });
-  };
-
   async handleSubmit(event) {
-    const { closeTrigger } = this.props;
+    const { closeTrigger, courseId } = this.props;
     this.setState({ submited: true });
     event.preventDefault();
     event.stopPropagation();
     const { id } = this.props;
 
     if (id) {
-      await updateCourse(this.state).then((resp) => {
+      await updateModule(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
         else console.log(data, "error");
         this.setState({ submited: false });
       });
     } else {
-      await createCourse(this.state).then((resp) => {
+      await createModule(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
         else console.log(data, "error");
@@ -60,10 +50,11 @@ class CourseForm extends React.Component {
   }
 
   async componentDidMount() {
-    const { id } = this.props;
+    const { id, courseId } = this.props;
+    this.setState({ course: courseId });
     if (id) {
       this.setState({ create: false });
-      const { data, state } = await getCourse(id);
+      const { data, state } = await getModule(id);
       if (state) {
         this.setState({ ...data });
       }
@@ -152,4 +143,4 @@ class CourseForm extends React.Component {
   }
 }
 
-export default CourseForm;
+export default ModuleForm;

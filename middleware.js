@@ -1,13 +1,29 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
-import { getUser } from "./helpers/helper";
+
 export async function middleware(request) {
   // Assume a "Cookie:nextjs=fast" header to be present on the incoming request
   // Getting cookies from the request using the `RequestCookies` API
   const cookie = request.cookies.get("atlastoken")?.value;
-//   console.log(cookie); // => 'fast'
-  const user = await getUser(cookie);
-  console.log(user);
+  const url = `${process.env.API_URL}/api/user/`;
+  
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Token ${cookie}`,
+      "Content-Type": "application/json",
+    },
+  };
+  // const userresp = await fetch(url, requestOptions).then((response) => response.json());
+  // const data = await userresp.json();
+    console.log(cookie, url); // => 'fast'
+  // const requestOptions = {}
+  // const response = await fetch(url, requestOptions)
+  //   .then((response) => response.json())
+  //   .then((data) => this.setState({ postId: data.id }));
+
+  // const user = await getUser(cookie);
+  // console.log(user,"user from middleware");
   //   const allCookies = request.cookies.getAll();
   //   console.log(allCookies); // => [{ name: 'nextjs', value: 'fast' }]
 
@@ -30,6 +46,6 @@ export async function middleware(request) {
   return response;
 }
 
-export const config = {
-  matcher: "/admin/:path*",
-};
+// export const config = {
+//   matcher: "/admin/:path*",
+// };

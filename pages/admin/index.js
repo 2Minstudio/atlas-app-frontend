@@ -1,10 +1,17 @@
 import React from "react";
+import { withCookies } from "react-cookie";
+import { withRouter } from "next/router";
 import LayoutDashboard from "../../components/layout/layout-dashboard";
-
-class Adminisions extends React.Component {
+class Admin extends React.Component {
+  async componentDidMount() {
+    const response = await Action();
+    console.log(response);
+    // const {cookies} =this.props;
+    // Router.push("/");
+  }
   render() {
-    return <LayoutDashboard>Adminisions</LayoutDashboard>;
+    return <LayoutDashboard>Choose Action</LayoutDashboard>;
   }
 }
 
-export default Adminisions;
+export default withCookies(withRouter(Admin));
