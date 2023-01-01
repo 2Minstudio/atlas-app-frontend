@@ -1,24 +1,28 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { createCourse, getCourse } from "../../helpers/admin";
+import {
+  createChapter,
+  getChapter,
+  getCourse,
+  updateChapter,
+} from "../../helpers/admin";
 
 class ChapterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       create: true,
-      name: "A",
-      cost: "1",
-      description: "c",
-      notes: "2",
+      content: "",
+      meterial: "",
+      name: "",
       status: "0",
+      video: "",
       submited: false,
-      image: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleImageChange = this.handleImageChange.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -27,7 +31,7 @@ class ChapterForm extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleImageChange = (event) => {
+  handleFileChange = (event) => {
     const { name, files } = event.target;
     this.setState({
       [name]: files[0],
@@ -42,14 +46,14 @@ class ChapterForm extends React.Component {
     const { id } = this.props;
 
     if (id) {
-      await updateCourse(this.state).then((resp) => {
+      await updateChapter(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
         else console.log(data, "error");
         this.setState({ submited: false });
       });
     } else {
-      await createCourse(this.state).then((resp) => {
+      await createChapter(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
         else console.log(data, "error");
@@ -59,10 +63,11 @@ class ChapterForm extends React.Component {
   }
 
   async componentDidMount() {
-    const { id } = this.props;
+    const { id, courseId, moduleId } = this.props;
+    this.setState({ course: courseId, module: moduleId });
     if (id) {
       this.setState({ create: false });
-      const { data, state } = await getCourse(id);
+      const { data, state } = await getChapter(id);
       if (state) {
         this.setState({ ...data });
       }
@@ -71,7 +76,7 @@ class ChapterForm extends React.Component {
   }
 
   render() {
-    const { name, description, image, notes, cost, status, submited, create } =
+    const { content, meterial, name, status, video, submited, create } =
       this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -87,49 +92,34 @@ class ChapterForm extends React.Component {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Description</Form.Label>
+          <Form.Label>Content</Form.Label>
           <Form.Control
             required
             as="textarea"
-            name="description"
+            name="content"
             rows={3}
-            value={description}
+            value={content}
             onChange={this.handleChange}
           />
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Course Image</Form.Label>
+          <Form.Label>Video</Form.Label>
           <Form.Control
             type="file"
-            name="image"
-            // value={image}
-            accept="image/png, image/jpeg"
-            onChange={this.handleImageChange}
+            name="video"
+            accept="video/mp4"
+            onChange={this.handleFileChange}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Notes</Form.Label>
+        <Form.Group controlId="formFile" className="mb-3">
+          <Form.Label>Meterial</Form.Label>
           <Form.Control
-            required
-            as="textarea"
-            name="notes"
-            rows={3}
-            value={notes}
-            onChange={this.handleChange}
+            type="file"
+            name="meterial"
+            // accept="image/png, image/jpeg"
+            onChange={this.handleFileChange}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Cost</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            name="cost"
-            autoFocus
-            value={cost}
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-
         <Form.Group>
           <Form.Label>Status</Form.Label>
           <Form.Select

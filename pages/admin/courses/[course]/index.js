@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import LayoutDashboard from "../../../../components/layout/layout-dashboard";
 import { isClientLoggedin, getUser } from "../../../../helpers/helper";
-import { getCourse, getCourseModules } from "../../../../helpers/admin";
+import { deleteModule, getCourse, getCourseModules } from "../../../../helpers/admin";
 import { withCookies } from "react-cookie";
 import { withRouter } from "next/router";
 import Row from "react-bootstrap/Row";
@@ -81,7 +81,7 @@ class CourseDetail extends React.Component {
 
   delete = async () => {
     const { deleteId, courseid } = this.state;
-    await deleteCourse(deleteId).then(async (resp) => {
+    await deleteModule(deleteId).then(async (resp) => {
       const { state, data } = resp;
       if (state) {
         this.setState({ deleteId: null });
@@ -102,7 +102,6 @@ class CourseDetail extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevState.courseid, this.state.courseid, "Compare");
     if (prevState.courseid !== this.state.courseid) {
       //Perform some operation here
       // this.setState({courseid: someValue});
@@ -113,20 +112,9 @@ class CourseDetail extends React.Component {
   render() {
     const { user, data, modelshow, editId, deleteId, course, courseid } =
       this.state;
-    // this.loadData(courseid);
-    // if (!courseid) {
-    //   const {
-    //     router: {
-    //       query: { course: propcourseid },
-    //     },
-    //   } = this.props;
-    //   this.setState({ courseid: propcourseid }, () => {
-    //     this.loadData(courseid);
-    //   });
-    // }
+
     return (
       <LayoutDashboard user={user}>
-        courseid {courseid}
         <Modal
           size="sm"
           show={deleteId}

@@ -6,7 +6,7 @@ export async function middleware(request) {
   // Getting cookies from the request using the `RequestCookies` API
   const cookie = request.cookies.get("atlastoken")?.value;
   const url = `${process.env.API_URL}/api/user/`;
-  
+
   const requestOptions = {
     method: "GET",
     headers: {
@@ -14,9 +14,22 @@ export async function middleware(request) {
       "Content-Type": "application/json",
     },
   };
+  if (cookie) {
+    const userresp = await fetch(url, requestOptions).then((response) =>
+      response.json()
+    );
+    const usergroups = userresp?.groups;
+    console.log(usergroups, typeof usergroups);
+    console.log("keys",Object.values(usergroups),usergroups[0]);
+    if (!Object.values(usergroups).find((v)=> v == 4)) {
+      request.nextUrl.pathname = "/";
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+    // console.log(cookie, url, userresp?.groups);
+  }
   // const userresp = await fetch(url, requestOptions).then((response) => response.json());
   // const data = await userresp.json();
-    console.log(cookie, url); // => 'fast'
+  // console.log(cookie, url); // => 'fast'
   // const requestOptions = {}
   // const response = await fetch(url, requestOptions)
   //   .then((response) => response.json())
@@ -46,6 +59,6 @@ export async function middleware(request) {
   return response;
 }
 
-// export const config = {
-//   matcher: "/admin/:path*",
-// };
+export const config = {
+  matcher: "/admin/:path*",
+};

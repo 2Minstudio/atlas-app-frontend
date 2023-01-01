@@ -3,10 +3,10 @@ import cookie from "cookie";
 
 export default async function handler(req, res) {
   let state = false;
-  const { name, course, attend_type, status } = req.body;
   let resp = {};
   const {
     cookies: { atlastoken: token },
+    body: { name, course, attend_type, status },
   } = req;
 
   await axios({
@@ -25,7 +25,6 @@ export default async function handler(req, res) {
   })
     .then((response) => {
       const { data } = response;
-
       state = true;
       resp = data;
     })

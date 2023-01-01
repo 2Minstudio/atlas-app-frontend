@@ -4,18 +4,23 @@ import cookie from "cookie";
 export default async function handler(req, res) {
   let state = false;
   let resp = {};
+  // const { name, id, attend_type, status } = req.body;
   const {
     cookies: { atlastoken: token },
-    body,
+    body: { id, name, attend_type, status },
   } = req;
 
   await axios({
     method: "patch",
-    url: `${process.env.API_URL}/api/module/${body.id}/`,
-    body,
+    url: `${process.env.API_URL}/api/module/${id}/`,
+    data: {
+      name,
+      attend_type,
+      status,
+    },
     headers: {
       Authorization: `Token ${token}`,
-      "Content-Type": "multipart/form-data",
+      "Content-Type": "application/json",
     },
   })
     .then((response) => {

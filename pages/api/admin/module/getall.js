@@ -6,12 +6,12 @@ export default async function handler(req, res) {
   let resp = {};
   const {
     cookies: { atlastoken: token },
-    body: {course}
+    body: { course },
   } = req;
 
   await axios({
     method: "get",
-    url: `${process.env.API_URL}/api/module/`,
+    url: `${process.env.API_URL}/api/module/?course=${course}`,
     headers: {
       Authorization: `Token ${token}`,
       "Content-Type": "application/json",

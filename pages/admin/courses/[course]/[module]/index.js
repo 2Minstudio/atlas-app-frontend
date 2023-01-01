@@ -9,6 +9,7 @@ import {
   getCourse,
   getModule,
   getModelChapters,
+  deleteChapter,
 } from "../../../../../helpers/admin";
 import { withCookies } from "react-cookie";
 import { withRouter } from "next/router";
@@ -23,10 +24,26 @@ class ModuleDetails extends React.Component {
     deleteId: null,
     modelshow: false,
     editId: null,
+    courseid: null,
+    moduleid: null
   };
+
+  loadData = async (courseid, moduleid) => {
+    await getCourse(courseid).then(async (courseresp) => {
+      const { data: course } = courseresp;
+      await getModule(moduleid).then(async (moduleresp) => {
+        const { data: module } = moduleresp;
+        await getModelChapters(moduleid).then((resp) => {
+          const { data } = resp;
+          this.setState({ data, module, course });
+        });
+      });
+    });
+  };
+
   async componentDidMount() {
     const token = isClientLoggedin(this.props);
-    console.log("???",this.props?.router);
+    console.log("???", this.props?.router);
     const {
       router: {
         query: { course: courseid, module: moduleid },
@@ -38,15 +55,8 @@ class ModuleDetails extends React.Component {
         data: { user },
       } = await getUser(token);
       if (state) {
-        await getCourse(courseid).then(async (courseresp) => {
-          const { data: course } = courseresp;
-          await getModule(moduleid).then(async (moduleresp) => {
-            const { data: module } = moduleresp;
-            await getModelChapters(moduleid).then((resp) => {
-              const { data } = resp;
-              this.setState({ user, data, module, course, courseid, moduleid });
-            });
-          });
+        this.setState({ user, courseid, moduleid }, async () => {
+          if (courseid) await this.loadData(courseid, moduleid);
         });
       }
     } else {
@@ -58,7 +68,10 @@ class ModuleDetails extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({ modelshow: false, editId: null });
+    const { courseid, moduleid } = this.state;
+    this.setState({ modelshow: false, editId: null }, () => {
+      this.loadData(courseid, moduleid);
+    });
   };
 
   edit = (id) => {
@@ -71,14 +84,35 @@ class ModuleDetails extends React.Component {
 
   delete = async () => {
     const { deleteId } = this.state;
-    await deleteCourse(deleteId).then((resp) => {
+    await deleteChapter(deleteId).then(async (resp) => {
       const { state, data } = resp;
       if (state) {
         this.setState({ deleteId: null });
-        this.render();
+        await this.loadData(courseid);
       }
     });
   };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.router !== prevState.router) {
+      const {
+        router: {
+          query: { course: propcourseid, module: propmoduleid },
+        },
+      } = nextProps;
+      return { courseid: propcourseid, moduleid: propmoduleid };
+    } else return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.courseid !== this.state.courseid &&
+      prevState.moduleid !== this.state.moduleid
+    ) {
+      this.loadData(this.state.courseid, this.state.moduleid);
+    }
+  }
+
   render() {
     const {
       user,
@@ -89,6 +123,7 @@ class ModuleDetails extends React.Component {
       course,
       courseid,
       moduleid,
+      module
     } = this.state;
     return (
       <LayoutDashboard user={user}>
@@ -110,15 +145,17 @@ class ModuleDetails extends React.Component {
           </Modal.Body>
         </Modal>
         <Row>
-          <h1>{course?.name}</h1>
-          <h2>{course?.cost}</h2>
+          <p>Course Information</p>
+          <h2>{course?.name}</h2>
+          <h3>{course?.cost}</h3>
           <h3>{course?.status ? "Publishd" : "Draft"}</h3>
           <p>{course?.description}</p>
           <p>{course?.notes}</p>
         </Row>
         <Row>
-          <h1>{module?.name}</h1>
-          <h2>{module?.attend_type}</h2>
+        <p>Module Information</p>
+          <h2>{module?.name}</h2>
+          <h3>{module?.attend_type}</h3>
           <h3>{course?.status ? "Publishd" : "Draft"}</h3>
         </Row>
         <Row>
@@ -149,7 +186,6 @@ class ModuleDetails extends React.Component {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Type</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -161,7 +197,6 @@ class ModuleDetails extends React.Component {
                   <tr>
                     <td>{d.id}</td>
                     <td>{d.name}</td>
-                    <td>{d.attend_type}</td>
                     <td>{d.status ? "Published" : "Draft"}</td>
                     <td>
                       <Stack direction="horizontal" gap={0}>
@@ -177,7 +212,9 @@ class ModuleDetails extends React.Component {
                           Delete
                         </Button>
                         <div className="vr" />
-                        <Link href={`/admin/courses/${courseid}/${moduleid}/${d.id}`}>
+                        <Link
+                          href={`/admin/courses/${courseid}/${moduleid}/${d.id}`}
+                        >
                           <Button size="sm">View</Button>
                         </Link>
                       </Stack>

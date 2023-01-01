@@ -21,17 +21,18 @@ class ModuleForm extends React.Component {
 
   handleChange(event) {
     const { name, value } = event.target;
+    console.log("Update state", name, value);
     this.setState({ [name]: value });
   }
 
   async handleSubmit(event) {
-    const { closeTrigger, courseId } = this.props;
-    this.setState({ submited: true, courseId });
+    const { closeTrigger, id } = this.props;
+    this.setState({ submited: true });
     event.preventDefault();
     event.stopPropagation();
-    const { id } = this.props;
 
     if (id) {
+      console.log(this.state,'?');
       await updateModule(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();

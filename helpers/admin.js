@@ -216,50 +216,44 @@ const getModule = async (id) => {
 };
 
 const createModule = async (data) => {
-  let formData = new FormData();
-
-  formData.append("name", data.name);
-  formData.append("course", data.course);
-  formData.append("attend_type", data.attend_type);
-  formData.append("status", data.status);
-
   return await axios
-    .post("/api/admin/module/create", formData, {
+    .post("/api/admin/module/create", data, {
       headers: {
-        "Content-Type": "multipart/form-data",
+        // "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
       },
     })
     .then((response) => {
-      const { data } = response;
-      return data;
+      const {
+        data: { data, state },
+      } = response;
+      return { data, status: state };
     })
     .catch((error) => {
       const {
         response: { data },
       } = error;
-      return data;
+      return { data, status: false };
     });
 };
 
 const updateModule = async (data) => {
-  let formData = new FormData();
-  formData.append("id", data.id);
-  formData.append("name", data.name);
-  formData.append("course", data.course);
-  formData.append("attend_type", data.attend_type);
-  formData.append("status", data.status);
   return axios
-    .post("/api/admin/module/update", data)
+    .post("/api/admin/module/update", data, {
+      "Content-Type": "application/json",
+    })
     .then((response) => {
-      const { data } = response;
-      return data;
+      const {
+        data: { data, state },
+      } = response;
+      return { data, status: state };
     })
     .catch((error) => {
       // handle error
       const {
         response: { data },
       } = error;
-      return data;
+      return { data, status: false };
     });
 };
 
@@ -312,6 +306,68 @@ const getChapter = async (id) => {
     });
 };
 
+// const createChapter = async (data) => {
+//   let formData = new FormData();
+
+//   if (data.video) formData.append("video", data.video, data.video.name);
+//   if (data.meterial)
+//     formData.append("meterial", data.meterial, data.meterial.name);
+
+//   formData.append("name", data.name);
+//   formData.append("module", data.module);
+//   formData.append("course", data.course);
+//   formData.append("content", data.content);
+//   formData.append("status", data.status);
+//   // url = "/api/admin/chapter/create";
+//   url = `${process.env.API_URL}/api/chapter/`;
+//   return await axios
+//     .post(url, formData, {
+//       headers: {
+//         "Content-Type": "multipart/form-data",
+//       },
+//     })
+//     .then((response) => {
+//       const { data } = response;
+//       return data;
+//     })
+//     .catch((error) => {
+//       const {
+//         response: { data },
+//       } = error;
+//       return data;
+//     });
+// };
+
+// const updateChapter = async (data) => {
+//   let formData = new FormData();
+//   // formData.append("id", data.id);
+//   const { id } = data;
+//   if (data.video) formData.append("video", data.video, data.video.name);
+//   if (data.meterial)
+//     formData.append("meterial", data.meterial, data.meterial.name);
+
+//   formData.append("name", data.name);
+//   // formData.append("module", data.module);
+//   // formData.append("course", data.course);
+//   formData.append("content", data.content);
+//   formData.append("status", data.status);
+//   // url = "/api/admin/chapter/update";
+//   url = `${process.env.API_URL}/api/chapter/${id}/`;
+//   return axios
+//     .patch(url, data)
+//     .then((response) => {
+//       const { data } = response;
+//       return data;
+//     })
+//     .catch((error) => {
+//       // handle error
+//       const {
+//         response: { data },
+//       } = error;
+//       return data;
+//     });
+// };
+
 const createChapter = async (data) => {
   let formData = new FormData();
 
@@ -324,8 +380,7 @@ const createChapter = async (data) => {
   formData.append("course", data.course);
   formData.append("content", data.content);
   formData.append("status", data.status);
-  // url = "/api/admin/chapter/create";
-  url = `${process.env.API_URL}/api/chapter/`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/chapter/`;
   return await axios
     .post(url, formData, {
       headers: {
@@ -334,13 +389,13 @@ const createChapter = async (data) => {
     })
     .then((response) => {
       const { data } = response;
-      return data;
+      return {data, status: true};
     })
     .catch((error) => {
       const {
         response: { data },
       } = error;
-      return data;
+      return {data, status: false};
     });
 };
 
@@ -353,24 +408,21 @@ const updateChapter = async (data) => {
     formData.append("meterial", data.meterial, data.meterial.name);
 
   formData.append("name", data.name);
-  // formData.append("module", data.module);
-  // formData.append("course", data.course);
   formData.append("content", data.content);
   formData.append("status", data.status);
-  // url = "/api/admin/chapter/update";
-  url = `${process.env.API_URL}/api/chapter/${id}/`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/chapter/${id}/`;
   return axios
     .patch(url, data)
     .then((response) => {
       const { data } = response;
-      return data;
+      return {data, status: true};
     })
     .catch((error) => {
       // handle error
       const {
         response: { data },
       } = error;
-      return data;
+      return {data, status: false};
     });
 };
 
