@@ -1,17 +1,17 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { createCourse, getCourse } from "../../helpers/admin";
+import { createCourse, getCourse, updateCourse } from "../../helpers/admin";
 
 class CourseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       create: true,
-      name: "",
-      cost: "",
-      description: "",
-      notes: "",
+      name: "Test ",
+      cost: "2",
+      description: "test",
+      notes: "22",
       status: "0",
       submited: false,
       image: "",
@@ -23,7 +23,6 @@ class CourseForm extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.name, "event.target");
     const { name, value } = event.target;
     this.setState({ [name]: value });
   }
@@ -53,13 +52,14 @@ class CourseForm extends React.Component {
       await createCourse(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
-        else console.log(data, "error");
+        else console.log(data, "create error");
         this.setState({ submited: false });
       });
     }
   }
 
   async componentDidMount() {
+    console.log(process.env.NEXT_PUBLIC_API_URL);
     const { id } = this.props;
     if (id) {
       this.setState({ create: false });
@@ -69,6 +69,7 @@ class CourseForm extends React.Component {
       }
       console.log("Edit mode ", id, data);
     }
+    console.log(process.env.NEXT_PUBLIC_API_URL);
   }
 
   render() {

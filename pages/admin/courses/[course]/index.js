@@ -13,6 +13,7 @@ import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
 import Link from "next/link";
 import ModuleForm from "../../../../components/form/module";
+import Image from "next/image";
 
 class CourseDetail extends React.Component {
   state = {
@@ -20,7 +21,19 @@ class CourseDetail extends React.Component {
     deleteId: null,
     modelshow: false,
     editId: null,
+    courseid: null,
   };
+
+  loadData = async (courseid) => {
+    await getCourse(courseid).then(async (courseresp) => {
+      const { data: course } = courseresp;
+      await getCourseModules(courseid).then((resp) => {
+        const { data } = resp;
+        this.setState({ data, course });
+      });
+    });
+  };
+
   async componentDidMount() {
     const token = isClientLoggedin(this.props);
 
@@ -29,24 +42,91 @@ class CourseDetail extends React.Component {
         query: { course: courseid },
       },
     } = this.props;
+
     if (token) {
       const {
         state,
         data: { user },
       } = await getUser(token);
       if (state) {
-        const { data: course } = await getCourse(courseid);
-        const { data } = await getCourseModules(courseid);
-        this.setState({ user, data, course });
+        this.setState({ user }, async () => {
+          if (courseid) await this.loadData(courseid);
+        });
       }
     } else {
       Router.push("/");
     }
   }
+
+  handleShow = () => {
+    this.setState({ modelshow: true });
+  };
+
+  handleClose = () => {
+    const { courseid } = this.state;
+    this.setState({ modelshow: false, editId: null }, () => {
+      this.loadData(courseid);
+    });
+  };
+
+  edit = (id) => {
+    this.setState({ editId: id, modelshow: true });
+  };
+
+  deleteConfirm = (id) => {
+    // if (window.confirm("Are you sure to delete this record?")) {
+    this.setState({ deleteId: id });
+    // }
+  };
+
+  delete = async () => {
+    const { deleteId, courseid } = this.state;
+    await deleteCourse(deleteId).then(async (resp) => {
+      const { state, data } = resp;
+      if (state) {
+        this.setState({ deleteId: null });
+        await this.loadData(courseid);
+      }
+    });
+  };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.router !== prevState.router) {
+      const {
+        router: {
+          query: { course: propcourseid },
+        },
+      } = nextProps;
+      return { courseid: propcourseid };
+    } else return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevState.courseid, this.state.courseid, "Compare");
+    if (prevState.courseid !== this.state.courseid) {
+      //Perform some operation here
+      // this.setState({courseid: someValue});
+      this.loadData(this.state.courseid);
+    }
+  }
+
   render() {
-    const { user, data, modelshow, editId, deleteId, course } = this.state;
+    const { user, data, modelshow, editId, deleteId, course, courseid } =
+      this.state;
+    // this.loadData(courseid);
+    // if (!courseid) {
+    //   const {
+    //     router: {
+    //       query: { course: propcourseid },
+    //     },
+    //   } = this.props;
+    //   this.setState({ courseid: propcourseid }, () => {
+    //     this.loadData(courseid);
+    //   });
+    // }
     return (
       <LayoutDashboard user={user}>
+        courseid {courseid}
         <Modal
           size="sm"
           show={deleteId}
@@ -67,7 +147,15 @@ class CourseDetail extends React.Component {
         <Row>
           <h1>{course?.name}</h1>
           <h2>{course?.cost}</h2>
-          <h3>{course?.status ? "Publishd": "Draft"}</h3>
+          {course?.image && (
+            <Image
+              loader={() => course?.image}
+              src={course?.image}
+              width={100}
+              height={100}
+            ></Image>
+          )}
+          <h3>{course?.status ? "Publishd" : "Draft"}</h3>
           <p>{course?.description}</p>
           <p>{course?.notes}</p>
         </Row>
@@ -86,7 +174,11 @@ class CourseDetail extends React.Component {
             <Modal.Title>{editId ? "Edit" : "New"} Module</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <ModuleForm id={editId} closeTrigger={this.handleClose} />
+            <ModuleForm
+              courseId={courseid}
+              id={editId}
+              closeTrigger={this.handleClose}
+            />
           </Modal.Body>
         </Modal>
         <Table responsive="sm">
@@ -122,7 +214,7 @@ class CourseDetail extends React.Component {
                           Delete
                         </Button>
                         <div className="vr" />
-                        <Link href={`/admin/courses/${d.id}`}>
+                        <Link href={`/admin/courses/${courseid}/${d.id}`}>
                           <Button size="sm">View</Button>
                         </Link>
                       </Stack>

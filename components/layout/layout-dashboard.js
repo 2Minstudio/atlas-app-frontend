@@ -8,7 +8,6 @@ import Header from "../common/header";
 import { config } from "../../config/config";
 
 export default function LayoutDashboard({ children, user = {} }) {
-  console.log(user,"layout user")
   return (
     <>
       <Head>

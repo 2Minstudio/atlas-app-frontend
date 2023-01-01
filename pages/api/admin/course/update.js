@@ -9,11 +9,11 @@ export default async function handler(req, res) {
     cookies: { atlastoken: token },
     body,
   } = req;
-
+  const { name, description, cost, notes, status, id } = body;
   await axios({
-    method: "post",
-    url: `${process.env.API_URL}/api/course/${body.id}`,
-    body,
+    method: "patch",
+    url: `${process.env.API_URL}/api/course/${body.id}/`,
+    data: { name, description, cost, notes, status },
     headers: {
       Authorization: `Token ${token}`,
       "Content-Type": "multipart/form-data",

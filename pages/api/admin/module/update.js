@@ -3,7 +3,6 @@ import cookie from "cookie";
 
 export default async function handler(req, res) {
   let state = false;
-  console.log(Object.keys(req), "req?");
   let resp = {};
   const {
     cookies: { atlastoken: token },
@@ -11,8 +10,8 @@ export default async function handler(req, res) {
   } = req;
 
   await axios({
-    method: "post",
-    url: `${process.env.API_URL}/api/module/${body.id}`,
+    method: "patch",
+    url: `${process.env.API_URL}/api/module/${body.id}/`,
     body,
     headers: {
       Authorization: `Token ${token}`,

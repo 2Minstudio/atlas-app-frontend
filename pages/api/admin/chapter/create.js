@@ -11,12 +11,12 @@ export default async function handler(req, res) {
 
   await axios({
     method: "post",
-    url: `${process.env.API_URL}/api/course/`,
+    url: `${process.env.API_URL}/api/chapter/`,
     data: {
       name,
       description,
       note,
-      
+
       cost,
       status,
     },

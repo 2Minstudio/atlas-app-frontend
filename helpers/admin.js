@@ -33,11 +33,44 @@ const getCourse = async (id) => {
     });
 };
 
+// const createCourse = async (data) => {
+//   let formData = new FormData();
+
+//   // console.log(data.image, "data.image,");
+//   const url = `${process.env.NEXT_PUBLIC_API_URL}/api/course/`;
+//   // const url = "/api/admin/course/create"
+//   if (data.image) formData.append("image", data.image, data.image.name);
+
+//   formData.append("name", data.name);
+//   formData.append("description", data.description);
+//   formData.append("cost", data.cost);
+//   formData.append("notes", data.notes);
+//   formData.append("status", data.status);
+
+//   return await axios
+//     .post(url, formData, {
+//       headers: {
+//         "Content-Type": "multipart/form-data",
+//       },
+//     })
+//     .then((response) => {
+//       const { data } = response;
+//       return data;
+//     })
+//     .catch((error) => {
+//       const {
+//         response: { data },
+//       } = error;
+//       return data;
+//     });
+// };
+
 const createCourse = async (data) => {
   let formData = new FormData();
 
   // console.log(data.image, "data.image,");
-
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/course/`;
+  // const url = "/api/admin/course/create"
   if (data.image) formData.append("image", data.image, data.image.name);
 
   formData.append("name", data.name);
@@ -45,46 +78,90 @@ const createCourse = async (data) => {
   formData.append("cost", data.cost);
   formData.append("notes", data.notes);
   formData.append("status", data.status);
+  const options = {
+    method: "POST",
+    body: formData,
+  };
 
-  return await axios
-    .post("/api/admin/course/create", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    })
+  return await fetch(url, options)
     .then((response) => {
-      const { data } = response;
-      return data;
+      console.log(response.status, "response.status");
+      if (response.status >= 400 && response.status < 600) {
+        throw new Error("Bad response from server");
+      }
+      console.log("then", response);
+      return { status: true, data: response };
+    })
+    .then((returnedResponse) => {
+      // Your response to manipulate
+      console.log(returnedResponse, "create success");
+      return { status: true, data: returnedResponse };
     })
     .catch((error) => {
-      const {
-        response: { data },
-      } = error;
-      return data;
+      // Your error is here!
+      console.log(error, "create ");
+      return { status: false, data: error };
     });
 };
+// const updateCourse = async (data) => {
+//   let formData = new FormData();
+//   formData.append("id", data.id);
+//   if (data.image) formData.append("image", data.image, data.image.name);
+//   formData.append("name", data.name);
+//   formData.append("description", data.description);
+//   formData.append("cost", data.cost);
+//   formData.append("notes", data.notes);
+//   formData.append("status", data.status);
+//   const url  = "/api/admin/course/update";
+//   return axios
+//     .post(url, data)
+//     .then((response) => {
+//       const { data } = response;
+//       return data;
+//     })
+//     .catch((error) => {
+//       // handle error
+//       const {
+//         response: { data },
+//       } = error;
+//       return data;
+//     });
+// };
 
 const updateCourse = async (data) => {
   let formData = new FormData();
-  formData.append("id", data.id);
+  // formData.append("id", data.id);
+  const { id } = data;
   if (data.image) formData.append("image", data.image, data.image.name);
   formData.append("name", data.name);
   formData.append("description", data.description);
   formData.append("cost", data.cost);
   formData.append("notes", data.notes);
   formData.append("status", data.status);
-  return axios
-    .post("/api/admin/course/update", data)
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/course/${id}/`;
+  const options = {
+    method: "PATCH",
+    body: formData,
+  };
+
+  return await fetch(url, options)
     .then((response) => {
-      const { data } = response;
-      return data;
+      console.log(response.status, "response.status");
+      if (response.status >= 400 && response.status < 600) {
+        throw new Error("Bad response from server");
+      }
+      console.log("then", response);
+      return { status: true, data: response };
+    })
+    .then((returnedResponse) => {
+      // Your response to manipulate
+      console.log(returnedResponse, "create success");
+      return { status: true, data: returnedResponse };
     })
     .catch((error) => {
-      // handle error
-      const {
-        response: { data },
-      } = error;
-      return data;
+      // Your error is here!
+      console.log(error, "create ");
+      return { status: false, data: error };
     });
 };
 
@@ -247,9 +324,10 @@ const createChapter = async (data) => {
   formData.append("course", data.course);
   formData.append("content", data.content);
   formData.append("status", data.status);
-
+  // url = "/api/admin/chapter/create";
+  url = `${process.env.API_URL}/api/chapter/`;
   return await axios
-    .post("/api/admin/chapter/create", formData, {
+    .post(url, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -268,18 +346,21 @@ const createChapter = async (data) => {
 
 const updateChapter = async (data) => {
   let formData = new FormData();
-  formData.append("id", data.id);
+  // formData.append("id", data.id);
+  const { id } = data;
   if (data.video) formData.append("video", data.video, data.video.name);
   if (data.meterial)
     formData.append("meterial", data.meterial, data.meterial.name);
 
   formData.append("name", data.name);
-  formData.append("module", data.module);
-  formData.append("course", data.course);
+  // formData.append("module", data.module);
+  // formData.append("course", data.course);
   formData.append("content", data.content);
   formData.append("status", data.status);
+  // url = "/api/admin/chapter/update";
+  url = `${process.env.API_URL}/api/chapter/${id}/`;
   return axios
-    .post("/api/admin/chapter/update", data)
+    .patch(url, data)
     .then((response) => {
       const { data } = response;
       return data;

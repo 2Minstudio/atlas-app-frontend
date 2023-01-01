@@ -10,7 +10,7 @@ class Admin extends React.Component {
     // Router.push("/");
   }
   render() {
-    return <LayoutDashboard>Choose Action</LayoutDashboard>;
+    return <LayoutDashboard><h1>Welcome to admin dashboard</h1></LayoutDashboard>;
   }
 }
 

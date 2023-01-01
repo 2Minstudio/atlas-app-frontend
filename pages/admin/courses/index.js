@@ -30,10 +30,10 @@ class Courses extends React.Component {
         state,
         data: { user },
       } = await getUser(token);
-      const resp = await getCourses();
-      const { data } = resp;
       if (state) {
-        this.setState({ user, data });
+        this.setState({ user}, async ()=>{
+          await this.loaddata();
+        });
       }
     } else {
       Router.push("/");
@@ -45,7 +45,9 @@ class Courses extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({ modelshow: false, editId: null });
+    this.setState({ modelshow: false, editId: null },async()=>{
+      await this.loaddata();
+    });
   };
 
   edit = (id) => {
@@ -65,10 +67,16 @@ class Courses extends React.Component {
       const { state, data } = resp;
       if (state) {
         this.setState({ deleteId: null });
-        this.render();
       }
     });
   };
+
+  loaddata = async () => {
+    const { data, state } = await getCourses();
+    if (state) {
+      this.setState({ data });
+    }
+  }
 
   render() {
     const { user, data, modelshow, editId, deleteId } = this.state;
@@ -114,7 +122,7 @@ class Courses extends React.Component {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Description</th>
+              <th>Cost</th>
               <th>Status</th>
               <th>UserActions</th>
             </tr>
@@ -126,7 +134,7 @@ class Courses extends React.Component {
                   <tr>
                     <td>{d.id}</td>
                     <td>{d.name}</td>
-                    <td>{d.description}</td>
+                    <td>{d.cost}</td>
                     <td>{d.status ? "Published" : "Draft"}</td>
                     <td>
                       <Stack direction="horizontal" gap={0}>

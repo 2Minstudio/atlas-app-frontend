@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { createCourse, getCourse } from "../../helpers/admin";
+import { createModule, getModule, updateModule } from "../../helpers/admin";
 
 class ModuleForm extends React.Component {
   constructor(props) {
@@ -20,14 +20,13 @@ class ModuleForm extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.name, "event.target");
     const { name, value } = event.target;
     this.setState({ [name]: value });
   }
 
   async handleSubmit(event) {
     const { closeTrigger, courseId } = this.props;
-    this.setState({ submited: true });
+    this.setState({ submited: true, courseId });
     event.preventDefault();
     event.stopPropagation();
     const { id } = this.props;
@@ -63,8 +62,7 @@ class ModuleForm extends React.Component {
   }
 
   render() {
-    const { name, description, image, notes, cost, status, submited, create } =
-      this.state;
+    const { name, attend_type, status, submited, create } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -78,48 +76,18 @@ class ModuleForm extends React.Component {
             onChange={this.handleChange}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Description</Form.Label>
-          <Form.Control
-            required
-            as="textarea"
-            name="description"
-            rows={3}
-            value={description}
+
+        <Form.Group>
+          <Form.Label>Attend Type</Form.Label>
+          <Form.Select
+            value={attend_type}
             onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Course Image</Form.Label>
-          <Form.Control
-            type="file"
-            name="image"
-            // value={image}
-            accept="image/png, image/jpeg"
-            onChange={this.handleImageChange}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Notes</Form.Label>
-          <Form.Control
-            required
-            as="textarea"
-            name="notes"
-            rows={3}
-            value={notes}
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Cost</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            name="cost"
-            autoFocus
-            value={cost}
-            onChange={this.handleChange}
-          />
+            name="attend_type"
+          >
+            <option>Select</option>
+            <option value="online">Online</option>
+            <option value="offline">Offline</option>
+          </Form.Select>
         </Form.Group>
 
         <Form.Group>

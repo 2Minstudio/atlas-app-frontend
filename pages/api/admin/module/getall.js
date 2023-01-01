@@ -6,6 +6,7 @@ export default async function handler(req, res) {
   let resp = {};
   const {
     cookies: { atlastoken: token },
+    body: {course}
   } = req;
 
   await axios({
