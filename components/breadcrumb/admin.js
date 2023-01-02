@@ -1,7 +1,7 @@
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 function AdminBreadcrumb({ items }) {
-  console.log(items, "items");
+
   return (
     <Breadcrumb>
       <Breadcrumb.Item href="/admin/">Admin</Breadcrumb.Item>
