@@ -25,7 +25,7 @@ class ModuleDetails extends React.Component {
     modelshow: false,
     editId: null,
     courseid: null,
-    moduleid: null
+    moduleid: null,
   };
 
   loadData = async (courseid, moduleid) => {
@@ -83,12 +83,12 @@ class ModuleDetails extends React.Component {
   };
 
   delete = async () => {
-    const { deleteId } = this.state;
+    const { deleteId, courseid, moduleid } = this.state;
     await deleteChapter(deleteId).then(async (resp) => {
       const { state, data } = resp;
       if (state) {
         this.setState({ deleteId: null });
-        await this.loadData(courseid);
+        await this.loadData(courseid, moduleid);
       }
     });
   };
@@ -97,10 +97,10 @@ class ModuleDetails extends React.Component {
     if (nextProps.router !== prevState.router) {
       const {
         router: {
-          query: { course: propcourseid, module: propmoduleid },
+          query: { course: courseid, module: moduleid },
         },
       } = nextProps;
-      return { courseid: propcourseid, moduleid: propmoduleid };
+      return { courseid, moduleid };
     } else return null;
   }
 
@@ -123,7 +123,7 @@ class ModuleDetails extends React.Component {
       course,
       courseid,
       moduleid,
-      module
+      module,
     } = this.state;
     return (
       <LayoutDashboard user={user}>
@@ -153,7 +153,7 @@ class ModuleDetails extends React.Component {
           <p>{course?.notes}</p>
         </Row>
         <Row>
-        <p>Module Information</p>
+          <p>Module Information</p>
           <h2>{module?.name}</h2>
           <h3>{module?.attend_type}</h3>
           <h3>{course?.status ? "Publishd" : "Draft"}</h3>
@@ -170,7 +170,7 @@ class ModuleDetails extends React.Component {
         </Row>
         <Modal size="lg" show={modelshow} onHide={() => this.handleClose()}>
           <Modal.Header closeButton>
-            <Modal.Title>{editId ? "Edit" : "New"} Module</Modal.Title>
+            <Modal.Title>{editId ? "Edit" : "New"} Chapter</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <ChapterForm

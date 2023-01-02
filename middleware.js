@@ -19,13 +19,10 @@ export async function middleware(request) {
       response.json()
     );
     const usergroups = userresp?.groups;
-    console.log(usergroups, typeof usergroups);
-    console.log("keys",Object.values(usergroups),usergroups[0]);
     if (!Object.values(usergroups).find((v)=> v == 4)) {
       request.nextUrl.pathname = "/";
       return NextResponse.redirect(new URL("/", request.url));
     }
-    // console.log(cookie, url, userresp?.groups);
   }
   // const userresp = await fetch(url, requestOptions).then((response) => response.json());
   // const data = await userresp.json();
