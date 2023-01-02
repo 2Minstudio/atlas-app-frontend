@@ -94,10 +94,13 @@ class ChapterDetails extends React.Component {
   }
 
   render() {
-    const { user, chapter } = this.state;
+    const { user, chapter, course, module } = this.state;
     return (
       <LayoutDashboard user={user}>
+
         <h1>{chapter?.name}</h1>
+        <p>Course: {course?.name}</p>
+        <p>Module: {module?.name}</p>
         <p>{chapter?.content}</p>
         <div>
           {chapter?.meterial && (
