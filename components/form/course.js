@@ -8,10 +8,10 @@ class CourseForm extends React.Component {
     super(props);
     this.state = {
       create: true,
-      name: "Test ",
-      cost: "2",
-      description: "test",
-      notes: "22",
+      name: "",
+      cost: "",
+      description: "",
+      notes: "",
       status: "0",
       submited: false,
       image: "",
