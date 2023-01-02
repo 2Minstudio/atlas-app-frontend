@@ -1,5 +1,4 @@
 import React from "react";
-import ReactPlayer from "react-player";
 import LayoutDashboard from "../../../../../../components/layout/layout-dashboard";
 import { getUser, isClientLoggedin } from "../../../../../../helpers/helper";
 import { withCookies } from "react-cookie";
@@ -7,10 +6,8 @@ import { withRouter } from "next/router";
 import {
   getCourse,
   getModule,
-  getCourses,
   getChapter,
 } from "../../../../../../helpers/admin";
-import { Button } from "react-bootstrap";
 import CourseInfo from "../../../../../../components/detail/course";
 import ModuleInfo from "../../../../../../components/detail/module";
 import Row from "react-bootstrap/Row";
