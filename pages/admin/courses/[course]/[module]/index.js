@@ -18,6 +18,8 @@ import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
 import Link from "next/link";
 import ChapterForm from "../../../../../components/form/chapter";
+import CourseInfo from "../../../../../components/detail/course";
+import ModuleInfo from "../../../../../components/detail/module";
 class ModuleDetails extends React.Component {
   state = {
     user: {},
@@ -145,18 +147,16 @@ class ModuleDetails extends React.Component {
           </Modal.Body>
         </Modal>
         <Row>
-          <p>Course Information</p>
-          <h2>{course?.name}</h2>
-          <h3>{course?.cost}</h3>
-          <h3>{course?.status ? "Publishd" : "Draft"}</h3>
-          <p>{course?.description}</p>
-          <p>{course?.notes}</p>
+          <Col>
+            <h2>Course Information</h2>
+            <CourseInfo course={course} showImage={false} />
+          </Col>
         </Row>
         <Row>
-          <p>Module Information</p>
-          <h2>{module?.name}</h2>
-          <h3>{module?.attend_type}</h3>
-          <h3>{course?.status ? "Publishd" : "Draft"}</h3>
+          <Col>
+            <h2>Module Information</h2>
+            <ModuleInfo module={module} />
+          </Col>
         </Row>
         <Row>
           <Col>

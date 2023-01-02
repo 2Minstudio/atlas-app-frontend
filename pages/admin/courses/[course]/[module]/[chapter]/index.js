@@ -11,6 +11,11 @@ import {
   getChapter,
 } from "../../../../../../helpers/admin";
 import { Button } from "react-bootstrap";
+import CourseInfo from "../../../../../../components/detail/course";
+import ModuleInfo from "../../../../../../components/detail/module";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 class ChapterDetails extends React.Component {
   state = {
     user: {},
@@ -97,10 +102,21 @@ class ChapterDetails extends React.Component {
     const { user, chapter, course, module } = this.state;
     return (
       <LayoutDashboard user={user}>
+        <Row>
+          <Col>
+            <h2>Course Information</h2>
+            
+            <CourseInfo course={course} showImage={false} />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2>Module Information</h2>
+            <ModuleInfo module={module} />
+          </Col>
+        </Row>
 
         <h1>{chapter?.name}</h1>
-        <p>Course: {course?.name}</p>
-        <p>Module: {module?.name}</p>
         <p>{chapter?.content}</p>
         <div>
           {chapter?.meterial && (

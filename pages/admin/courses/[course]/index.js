@@ -5,7 +5,11 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import LayoutDashboard from "../../../../components/layout/layout-dashboard";
 import { isClientLoggedin, getUser } from "../../../../helpers/helper";
-import { deleteModule, getCourse, getCourseModules } from "../../../../helpers/admin";
+import {
+  deleteModule,
+  getCourse,
+  getCourseModules,
+} from "../../../../helpers/admin";
 import { withCookies } from "react-cookie";
 import { withRouter } from "next/router";
 import Row from "react-bootstrap/Row";
@@ -14,6 +18,7 @@ import Stack from "react-bootstrap/Stack";
 import Link from "next/link";
 import ModuleForm from "../../../../components/form/module";
 import Image from "next/image";
+import CourseInfo from "../../../../components/detail/course";
 
 class CourseDetail extends React.Component {
   state = {
@@ -133,19 +138,9 @@ class CourseDetail extends React.Component {
           </Modal.Body>
         </Modal>
         <Row>
-          <h1>{course?.name}</h1>
-          <h2>{course?.cost}</h2>
-          {course?.image && (
-            <Image
-              loader={() => course?.image}
-              src={course?.image}
-              width={100}
-              height={100}
-            ></Image>
-          )}
-          <h3>{course?.status ? "Publishd" : "Draft"}</h3>
-          <p>{course?.description}</p>
-          <p>{course?.notes}</p>
+          <Col>
+            <CourseInfo course={course} showImage={true} />
+          </Col>
         </Row>
         <Row>
           <Col>
