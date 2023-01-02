@@ -1,4 +1,5 @@
 import React from "react";
+import ReactPlayer from 'react-player';
 import LayoutDashboard from "../../../../../../components/layout/layout-dashboard";
 import { getUser, isClientLoggedin } from "../../../../../../helpers/helper";
 import { withCookies } from "react-cookie";
@@ -107,8 +108,10 @@ class ChapterDetails extends React.Component {
         </div>
         {chapter?.video && (
           <>
+          Yes {chapter.video}
+          <ReactPlayer className='react-player' url={chapter.video} width="100%" height="100%" controls={true} />
             <video width="320" height="240">
-              <source src={chapter?.video} type="video/mp4" />
+              <source src={chapter.video} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </>
