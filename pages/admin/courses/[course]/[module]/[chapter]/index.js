@@ -15,6 +15,7 @@ import CourseInfo from "../../../../../../components/detail/course";
 import ModuleInfo from "../../../../../../components/detail/module";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import ChapterInfo from "../../../../../../components/detail/chapter";
 
 class ChapterDetails extends React.Component {
   state = {
@@ -105,7 +106,7 @@ class ChapterDetails extends React.Component {
         <Row>
           <Col>
             <h2>Course Information</h2>
-            
+
             <CourseInfo course={course} showImage={false} />
           </Col>
         </Row>
@@ -115,27 +116,12 @@ class ChapterDetails extends React.Component {
             <ModuleInfo module={module} />
           </Col>
         </Row>
-
-        <h1>{chapter?.name}</h1>
-        <p>{chapter?.content}</p>
-        <div>
-          {chapter?.meterial && (
-            <>
-              <Button>Download Material</Button>
-            </>
-          )}
-        </div>
-        {chapter?.video && (
-          <>
-            <ReactPlayer
-              className="react-player"
-              url={chapter.video}
-              width="100%"
-              height="100%"
-              controls={true}
-            />
-          </>
-        )}
+        <Row>
+          <Col>
+            <h2>Chapter Information</h2>
+            <ChapterInfo chapter={chapter} />
+          </Col>
+        </Row>
       </LayoutDashboard>
     );
   }

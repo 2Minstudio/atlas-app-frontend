@@ -1,5 +1,5 @@
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Badge from "react-bootstrap/Badge";
 
 function CourseInfo({ course, showImage = false }) {
   return (
@@ -7,15 +7,15 @@ function CourseInfo({ course, showImage = false }) {
       <Card.Header>
         <Card.Title>
           <h1>{course?.name}</h1>
+          <Badge bg="info">₹ {course?.cost}</Badge>{" "}
+          <Badge variant="primary">
+            {course?.status ? "Publishd" : "Draft"}
+          </Badge>
         </Card.Title>
       </Card.Header>
       {showImage && <Card.Img variant="top" src={course?.image} />}
       <Card.Body>
-        <Card.Subtitle>₹ {course?.cost}</Card.Subtitle>
         <Card.Text>{course?.description}</Card.Text>
-        <Button variant="primary">
-          {course?.status ? "Publishd" : "Draft"}
-        </Button>
       </Card.Body>
     </Card>
   );

@@ -1,5 +1,5 @@
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Badge from "react-bootstrap/Badge";
 
 function ModuleInfo({ module }) {
   return (
@@ -7,13 +7,13 @@ function ModuleInfo({ module }) {
       <Card.Header>
         <Card.Title>
           <h1>{module?.name}</h1>
+          <Badge variant="primary">
+            {module?.status ? "Publishd" : "Draft"}
+          </Badge>
         </Card.Title>
       </Card.Header>
       <Card.Body>
         <Card.Text>{module?.attend_type}</Card.Text>
-        <Button variant="primary">
-          {module?.status ? "Publishd" : "Draft"}
-        </Button>
       </Card.Body>
     </Card>
   );
