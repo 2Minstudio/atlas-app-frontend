@@ -31,7 +31,7 @@ class Courses extends React.Component {
         data: { user },
       } = await getUser(token);
       if (state) {
-        this.setState({ user}, async ()=>{
+        this.setState({ user }, async () => {
           await this.loaddata();
         });
       }
@@ -45,7 +45,7 @@ class Courses extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({ modelshow: false, editId: null },async()=>{
+    this.setState({ modelshow: false, editId: null }, async () => {
       await this.loaddata();
     });
   };
@@ -76,12 +76,14 @@ class Courses extends React.Component {
     if (state) {
       this.setState({ data });
     }
-  }
+  };
 
   render() {
     const { user, data, modelshow, editId, deleteId } = this.state;
+    // const paths = {'/admin/courses':"Courses"}
+    const paths = { "#": "Courses" };
     return (
-      <LayoutDashboard user={user}>
+      <LayoutDashboard user={user} paths={paths}>
         <Modal
           size="sm"
           show={deleteId}
@@ -161,7 +163,7 @@ class Courses extends React.Component {
             })}
           </tbody>
           <tfoot>
-          <Pagination></Pagination>
+            <Pagination></Pagination>
           </tfoot>
         </Table>
       </LayoutDashboard>

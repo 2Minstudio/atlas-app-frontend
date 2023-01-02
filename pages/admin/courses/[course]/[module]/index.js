@@ -127,8 +127,14 @@ class ModuleDetails extends React.Component {
       moduleid,
       module,
     } = this.state;
+    const coursepath = `/admin/courses/${course?.id}`;
+    const paths = {
+      "/admin/courses": "Courses",
+      [coursepath]: course?.name,
+      "#": module?.name,
+    };
     return (
-      <LayoutDashboard user={user}>
+      <LayoutDashboard user={user} paths={paths}>
         <Modal
           size="sm"
           show={deleteId}

@@ -117,9 +117,9 @@ class CourseDetail extends React.Component {
   render() {
     const { user, data, modelshow, editId, deleteId, course, courseid } =
       this.state;
-
+    const paths = { "/admin/courses": "Courses","#": course?.name };
     return (
-      <LayoutDashboard user={user}>
+      <LayoutDashboard user={user} paths={paths}>
         <Modal
           size="sm"
           show={deleteId}

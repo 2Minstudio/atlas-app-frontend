@@ -6,8 +6,9 @@ import Col from "react-bootstrap/Col";
 import Footer from "../common/footer";
 import Header from "../common/header";
 import { config } from "../../config/config";
+import AdminBreadcrumb from "../breadcrumb/admin";
 
-export default function LayoutDashboard({ children, user = {} }) {
+export default function LayoutDashboard({ children, user = {}, paths = {} }) {
   return (
     <>
       <Head>
@@ -27,6 +28,9 @@ export default function LayoutDashboard({ children, user = {} }) {
               </Nav>
             </Col>
             <Col>
+              {Object.keys(paths).length > 0 && (
+                <AdminBreadcrumb items={paths} />
+              )}
               <main>{children}</main>
             </Col>
           </Row>

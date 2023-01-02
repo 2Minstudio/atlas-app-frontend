@@ -98,8 +98,16 @@ class ChapterDetails extends React.Component {
 
   render() {
     const { user, chapter, course, module } = this.state;
+    const coursepath = `/admin/courses/${course?.id}`;
+    const modulepath = `/admin/courses/${course?.id}/${module?.id}`;
+    const paths = {
+      "/admin/courses": "Courses",
+      [coursepath]: course?.name,
+      [modulepath]: module?.name,
+      "#": chapter?.name,
+    };
     return (
-      <LayoutDashboard user={user}>
+      <LayoutDashboard user={user} paths={paths}>
         <Row>
           <Col>
             <h2>Course Information</h2>
