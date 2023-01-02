@@ -31,7 +31,7 @@ function ChapterInfo({ chapter }) {
       <Card.Footer>
         <div>
           {chapter?.meterial && (
-            <a href={chapter?.meterial} target="_blank">
+            <a href={chapter?.meterial} target="_blank" rel="noreferrer">
               <Button>Download Material</Button>
             </a>
           )}
