@@ -3,7 +3,6 @@ import Table from "react-bootstrap/Table";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
 import LayoutDashboard from "../../../components/layout/layout-dashboard";
 import { getCourses, deleteCourse } from "../../../helpers/admin";
 import CourseForm from "../../../components/form/course";
@@ -14,6 +13,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Link from "next/link";
 import Stack from "react-bootstrap/Stack";
+import ConfirmBox from "../../../components/modal/confirm";
 
 class Courses extends React.Component {
   state = {
@@ -21,6 +21,13 @@ class Courses extends React.Component {
     modelshow: false,
     editId: null,
     deleteId: null,
+  };
+
+  loaddata = async () => {
+    const { data, state } = await getCourses();
+    if (state) {
+      this.setState({ data });
+    }
   };
 
   async componentDidMount() {
@@ -51,14 +58,11 @@ class Courses extends React.Component {
   };
 
   edit = (id) => {
-    console.log(id);
     this.setState({ editId: id, modelshow: true });
   };
 
   deleteConfirm = (id) => {
-    // if (window.confirm("Are you sure to delete this record?")) {
     this.setState({ deleteId: id });
-    // }
   };
 
   delete = async () => {
@@ -66,47 +70,35 @@ class Courses extends React.Component {
     await deleteCourse(deleteId).then((resp) => {
       const { state, data } = resp;
       if (state) {
-        this.setState({ deleteId: null });
+        this.setState({ deleteId: null }, async () => {
+          await this.loaddata();
+        });
       }
     });
   };
 
-  loaddata = async () => {
-    const { data, state } = await getCourses();
-    if (state) {
-      this.setState({ data });
-    }
+  closeConfirm = () => {
+    this.setState({ deleteId: null });
   };
 
   render() {
     const { user, data, modelshow, editId, deleteId } = this.state;
-    // const paths = {'/admin/courses':"Courses"}
     const paths = { "#": "Courses" };
     return (
       <LayoutDashboard user={user} paths={paths}>
-        <Modal
-          size="sm"
-          show={deleteId}
-          aria-labelledby="example-modal-sizes-title-sm"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="example-modal-sizes-title-sm">
-              Are you sure want to delete this course?
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Button variant="light">Cancel</Button>
-            <Button variant="danger" onClick={this.delete}>
-              Delete
-            </Button>
-          </Modal.Body>
-        </Modal>
+        <ConfirmBox
+          isShow={deleteId}
+          text={"Are you sure want to delete this Course?"}
+          okayText={"Delete"}
+          okayAction={this.delete}
+          cancelAction={this.closeConfirm}
+        />
         <Row>
           <Col>
             <h2>Courses</h2>
           </Col>
           <Col className="text-end">
-            <Button variant="primary" onClick={() => this.handleShow()}>
+            <Button variant="primary" onClick={this.handleShow}>
               Add New Course
             </Button>
           </Col>

@@ -132,7 +132,8 @@ const updateCourse = async (data) => {
   let formData = new FormData();
   // formData.append("id", data.id);
   const { id } = data;
-  if (data.image) formData.append("image", data.image, data.image.name);
+  if (data.image && typeof data.image != "string")
+    formData.append("image", data.image, data.image.name);
   formData.append("name", data.name);
   formData.append("description", data.description);
   formData.append("cost", data.cost);
@@ -389,13 +390,13 @@ const createChapter = async (data) => {
     })
     .then((response) => {
       const { data } = response;
-      return {data, status: true};
+      return { data, status: true };
     })
     .catch((error) => {
       const {
         response: { data },
       } = error;
-      return {data, status: false};
+      return { data, status: false };
     });
 };
 
@@ -403,8 +404,9 @@ const updateChapter = async (data) => {
   let formData = new FormData();
   // formData.append("id", data.id);
   const { id } = data;
-  if (data.video) formData.append("video", data.video, data.video.name);
-  if (data.meterial)
+  if (data.video && typeof data.video != "string")
+    formData.append("video", data.video, data.video.name);
+  if (data.meterial && typeof data.meterial != "string")
     formData.append("meterial", data.meterial, data.meterial.name);
 
   formData.append("name", data.name);
@@ -415,14 +417,14 @@ const updateChapter = async (data) => {
     .patch(url, data)
     .then((response) => {
       const { data } = response;
-      return {data, status: true};
+      return { data, status: true };
     })
     .catch((error) => {
       // handle error
       const {
         response: { data },
       } = error;
-      return {data, status: false};
+      return { data, status: false };
     });
 };
 

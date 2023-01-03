@@ -1,12 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import {
-  createChapter,
-  getChapter,
-  getCourse,
-  updateChapter,
-} from "../../helpers/admin";
+import { createChapter, getChapter, updateChapter } from "../../helpers/admin";
 
 class ChapterForm extends React.Component {
   constructor(props) {
@@ -24,10 +19,16 @@ class ChapterForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 
   handleChange(event) {
     const { name, value } = event.target;
+    this.setState({ [name]: value });
+  }
+
+  handleCheckbox(event) {
+    const { name, value, checked } = event.target;
     this.setState({ [name]: value });
   }
 
@@ -122,15 +123,25 @@ class ChapterForm extends React.Component {
         </Form.Group>
         <Form.Group>
           <Form.Label>Status</Form.Label>
-          <Form.Select
-            value={status ? "1" : "0"}
-            onChange={this.handleChange}
+
+          <Form.Check
+            checked={status == "1"}
+            inline
+            label="Published"
             name="status"
-          >
-            <option>Select</option>
-            <option value="1">Publish</option>
-            <option value="0">Draft</option>
-          </Form.Select>
+            type={"radio"}
+            value={1}
+            onChange={this.handleCheckbox}
+          />
+          <Form.Check
+            checked={status == "0"}
+            inline
+            label="Draft"
+            name="status"
+            type={"radio"}
+            value={0}
+            onChange={this.handleCheckbox}
+          />
         </Form.Group>
 
         <Button disabled={submited} variant="primary" type="submit">

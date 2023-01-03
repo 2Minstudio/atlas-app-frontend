@@ -7,6 +7,7 @@ class ModuleForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      errors: {},
       create: true,
       name: "",
       course: "",
@@ -17,11 +18,18 @@ class ModuleForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 
   handleChange(event) {
     const { name, value } = event.target;
     console.log("Update state", name, value);
+    this.setState({ [name]: value });
+  }
+
+  handleCheckbox(event) {
+    const { name, value, checked } = event.target;
+    // const setvalue = checked ? value : "";
     this.setState({ [name]: value });
   }
 
@@ -32,7 +40,6 @@ class ModuleForm extends React.Component {
     event.stopPropagation();
 
     if (id) {
-      console.log(this.state,'?');
       await updateModule(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
@@ -93,15 +100,25 @@ class ModuleForm extends React.Component {
 
         <Form.Group>
           <Form.Label>Status</Form.Label>
-          <Form.Select
-            value={status ? "1" : "0"}
-            onChange={this.handleChange}
+
+          <Form.Check
+            checked={status == "1"}
+            inline
+            label="Published"
             name="status"
-          >
-            <option>Select</option>
-            <option value="1">Publish</option>
-            <option value="0">Draft</option>
-          </Form.Select>
+            type={"radio"}
+            value={1}
+            onChange={this.handleCheckbox}
+          />
+          <Form.Check
+            checked={status == "0"}
+            inline
+            label="Draft"
+            name="status"
+            type={"radio"}
+            value={0}
+            onChange={this.handleCheckbox}
+          />
         </Form.Group>
 
         <Button disabled={submited} variant="primary" type="submit">

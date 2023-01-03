@@ -19,6 +19,7 @@ import Link from "next/link";
 import ModuleForm from "../../../../components/form/module";
 import Image from "next/image";
 import CourseInfo from "../../../../components/detail/course";
+import ConfirmBox from "../../../../components/modal/confirm";
 
 class CourseDetail extends React.Component {
   state = {
@@ -79,9 +80,7 @@ class CourseDetail extends React.Component {
   };
 
   deleteConfirm = (id) => {
-    // if (window.confirm("Are you sure to delete this record?")) {
     this.setState({ deleteId: id });
-    // }
   };
 
   delete = async () => {
@@ -108,35 +107,28 @@ class CourseDetail extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.courseid !== this.state.courseid) {
-      //Perform some operation here
-      // this.setState({courseid: someValue});
       this.loadData(this.state.courseid);
     }
   }
 
+  closeConfirm = () => {
+    this.setState({ deleteId: null });
+  };
+
   render() {
     const { user, data, modelshow, editId, deleteId, course, courseid } =
       this.state;
-    const paths = { "/admin/courses": "Courses","#": course?.name };
+    const paths = { "/admin/courses": "Courses", "#": course?.name };
     return (
       <LayoutDashboard user={user} paths={paths}>
-        <Modal
-          size="sm"
-          show={deleteId}
-          aria-labelledby="example-modal-sizes-title-sm"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="example-modal-sizes-title-sm">
-              Are you sure want to delete this model?
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Button variant="light">Cancel</Button>
-            <Button variant="danger" onClick={this.delete}>
-              Delete
-            </Button>
-          </Modal.Body>
-        </Modal>
+        <ConfirmBox
+          isShow={deleteId}
+          text={"Are you sure want to delete this Module?"}
+          okayText={"Delete"}
+          okayAction={this.delete}
+          cancelAction={this.closeConfirm}
+        />
+
         <Row>
           <Col>
             <CourseInfo course={course} showImage={true} />
@@ -147,7 +139,7 @@ class CourseDetail extends React.Component {
             <h2>Modules</h2>
           </Col>
           <Col className="text-end">
-            <Button variant="primary" onClick={() => this.handleShow()}>
+            <Button variant="primary" onClick={this.handleShow}>
               Add New Module
             </Button>
           </Col>

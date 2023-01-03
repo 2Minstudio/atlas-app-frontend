@@ -7,6 +7,7 @@ class CourseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      errors: {},
       create: true,
       name: "",
       cost: "",
@@ -20,10 +21,16 @@ class CourseForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 
   handleChange(event) {
     const { name, value } = event.target;
+    this.setState({ [name]: value });
+  }
+
+  handleCheckbox(event) {
+    const { name, value, checked } = event.target;
     this.setState({ [name]: value });
   }
 
@@ -45,14 +52,20 @@ class CourseForm extends React.Component {
       await updateCourse(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
-        else console.log(data, "error");
+        else {
+          console.log(data, "update error");
+          this.setState({ error: data });
+        }
         this.setState({ submited: false });
       });
     } else {
-      await createCourse(this.state).then((resp) => {
+      await createCourse({}).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
-        else console.log(data, "create error");
+        else {
+          console.log(data, "create error");
+          this.setState({ error: data });
+        }
         this.setState({ submited: false });
       });
     }
@@ -134,15 +147,25 @@ class CourseForm extends React.Component {
 
         <Form.Group>
           <Form.Label>Status</Form.Label>
-          <Form.Select
-            value={status ? "1" : "0"}
-            onChange={this.handleChange}
+
+          <Form.Check
+            checked={status == "1"}
+            inline
+            label="Published"
             name="status"
-          >
-            <option>Select</option>
-            <option value="1">Publish</option>
-            <option value="0">Draft</option>
-          </Form.Select>
+            type={"radio"}
+            value={1}
+            onChange={this.handleCheckbox}
+          />
+          <Form.Check
+            checked={status == "0"}
+            inline
+            label="Draft"
+            name="status"
+            type={"radio"}
+            value={0}
+            onChange={this.handleCheckbox}
+          />
         </Form.Group>
 
         <Button disabled={submited} variant="primary" type="submit">

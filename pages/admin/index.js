@@ -1,16 +1,34 @@
 import React from "react";
 import { withCookies } from "react-cookie";
-import { withRouter } from "next/router";
+import Router, { withRouter } from "next/router";
+import { isClientLoggedin, getUser } from "../../helpers/helper";
 import LayoutDashboard from "../../components/layout/layout-dashboard";
 class Admin extends React.Component {
+  state = {
+    user: {},
+  };
   async componentDidMount() {
-    const response = await Action();
-    console.log(response);
-    // const {cookies} =this.props;
-    // Router.push("/");
+    const token = isClientLoggedin(this.props);
+    if (token) {
+      const {
+        state,
+        data: { user },
+      } = await getUser(token);
+      if (state) {
+        this.setState({ user });
+      }
+    } else {
+      Router.push("/");
+    }
   }
   render() {
-    return <LayoutDashboard><h1>Welcome to admin dashboard</h1></LayoutDashboard>;
+    const { user } = this.state;
+    const paths = {};
+    return (
+      <LayoutDashboard user={user} paths={paths}>
+        <h1>Welcome to admin dashboard</h1>
+      </LayoutDashboard>
+    );
   }
 }
 

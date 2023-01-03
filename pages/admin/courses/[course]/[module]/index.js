@@ -20,6 +20,7 @@ import Link from "next/link";
 import ChapterForm from "../../../../../components/form/chapter";
 import CourseInfo from "../../../../../components/detail/course";
 import ModuleInfo from "../../../../../components/detail/module";
+import ConfirmBox from "../../../../../components/modal/confirm";
 class ModuleDetails extends React.Component {
   state = {
     user: {},
@@ -115,6 +116,10 @@ class ModuleDetails extends React.Component {
     }
   }
 
+  closeConfirm = () => {
+    this.setState({ deleteId: null });
+  };
+
   render() {
     const {
       user,
@@ -135,23 +140,14 @@ class ModuleDetails extends React.Component {
     };
     return (
       <LayoutDashboard user={user} paths={paths}>
-        <Modal
-          size="sm"
-          show={deleteId}
-          aria-labelledby="example-modal-sizes-title-sm"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="example-modal-sizes-title-sm">
-              Are you sure want to delete this model?
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Button variant="light">Cancel</Button>
-            <Button variant="danger" onClick={this.delete}>
-              Delete
-            </Button>
-          </Modal.Body>
-        </Modal>
+        <ConfirmBox
+          isShow={deleteId}
+          text={"Are you sure want to delete this Chapter?"}
+          okayText={"Delete"}
+          okayAction={this.delete}
+          cancelAction={this.closeConfirm}
+        />
+
         <Row>
           <Col>
             <h2>Course Information</h2>
@@ -169,7 +165,7 @@ class ModuleDetails extends React.Component {
             <h2>Chapters</h2>
           </Col>
           <Col className="text-end">
-            <Button variant="primary" onClick={() => this.handleShow()}>
+            <Button variant="primary" onClick={this.handleShow}>
               Add New Chapter
             </Button>
           </Col>
