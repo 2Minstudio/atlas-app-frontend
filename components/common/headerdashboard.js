@@ -1,11 +1,10 @@
-import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import Logodashboard from "./logo/logodashboard";
 import { Logout } from "../../helpers/helper";
-import dashboard from "../../pages/dashboard";
+
 class Headerdashboard extends React.Component {
   state = {
     user: {},
