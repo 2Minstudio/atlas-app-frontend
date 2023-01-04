@@ -79,7 +79,7 @@ class Home extends React.Component {
                   <div class="row">
                         <div className="col-8">
                         <h3 className="py-3">Chiropractor Course</h3>
-                        <img src="image/dashboard/Course-Studying-video.jpg" className="img-fluid"
+                        <image src="image/dashboard/Course-Studying-video.jpg" className="img-fluid"
                               alt="Study course Image"
                               height="840"
                               width="1296"
@@ -101,7 +101,7 @@ class Home extends React.Component {
                       <div className="row">
                         <div className="col-8">
                             <div className="row d-flex align-items-center justify-content-center pt-5">
-                                <div className="col-1"><img src="image/dashboard/student-img.png" className="img-fluid p-1 border rounded-circle border-warning"
+                                <div className="col-1"><image src="image/dashboard/student-img.png" className="img-fluid p-1 border rounded-circle border-warning"
                                 alt="Study Image"
                                 height="100"
                                 width="100"
