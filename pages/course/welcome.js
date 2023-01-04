@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import LayoutUser from "../../components/layout/layoutUser";
 import styles from "../../styles/Home.module.css";
@@ -50,47 +51,51 @@ class CourseWelcome extends React.Component {
                       <b>the chiropractor course</b>
                     </p>
                     <ul className="list-unstyled">
-                      <li className="mb-5 position-relative">
-                        <span className="bg-success rounded rounded-circle AiconHolderbg">
-                          <FontAwesomeIcon
-                            className="Aicon text-white fa-2x"
-                            icon={faUserPlus}
-                          />
-                        </span>{" "}
-                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">
+                      <li className="mb-2 position-relative">
+                      <Image
+                        className="img-fluid"
+                        alt="Doctor Image"
+                        src="/image/Group%20224.svg"
+                        height="70"
+                        width="70"
+                      />
+                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-5">
                           Get An Invite & Buy The Chiropractor Course
                         </p>
                       </li>
-                      <li className="mb-5 position-relative">
-                        <span className="bg-success rounded rounded-circle AiconHolderbg">
-                          <FontAwesomeIcon
-                            className="Aicon text-white fa-2x"
-                            icon={faVideo}
-                          />
-                        </span>{" "}
-                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">
+                      <li className="mb-2 position-relative">
+                      <Image
+                        className="img-fluid"
+                        alt="Doctor Image"
+                        src="/image/Group%20225.svg"
+                        height="70"
+                        width="70"
+                      />
+                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-5">
                           Unlock 400hrs of Study Material
                         </p>
                       </li>
-                      <li className="mb-5 position-relative">
-                        <span className="bg-success rounded rounded-circle AiconHolderbg">
-                          <FontAwesomeIcon
-                            className="Aicon text-white fa-2x"
-                            icon={faStar}
-                          />
-                        </span>{" "}
-                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">
+                      <li className="mb-2 position-relative">
+                      <Image
+                        className="img-fluid"
+                        alt="Doctor Image"
+                        src="/image/Group%20223.svg"
+                        height="70"
+                        width="70"
+                      />
+                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-5">
                           Get Live Hands-on Training{" "}
                         </p>
                       </li>
-                      <li className="mb-5 position-relative">
-                        <span className="bg-success rounded rounded-circle AiconHolderbg">
-                          <FontAwesomeIcon
-                            className="Aicon text-white fa-2x"
-                            icon={faSuitcaseMedical}
-                          />
-                        </span>{" "}
-                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-4">
+                      <li className="mb-2 position-relative">
+                      <Image
+                        className="img-fluid"
+                        alt="Doctor Image"
+                        src="/image/Group%20222.svg"
+                        height="70"
+                        width="70"
+                      />
+                        <p className="position-absolute top-50 start-0 translate-middle-y ps-5 ms-5">
                           6 Months of Paid Internship
                         </p>
                       </li>

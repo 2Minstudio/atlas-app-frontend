@@ -107,12 +107,13 @@
   .hamburger,
   .toggle-menu{
    display: block;
+
   }
   .header{
     padding: 10px 20px;
   }
   .nav-menu{
-    justify-content: start;
+    /*justify-content: start;*/
     flex-direction: column;
     align-items: center;
     position: fixed;
@@ -129,10 +130,7 @@
     width: 100%;
   }
   .nav-menu li a,  .nav-menu li a:hover {
-    width: 100%
-  } 
-  
-  {
+    width: 100%;
     padding:30px;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   }
@@ -201,7 +199,7 @@
 /*Menu bar*/
 @media (min-width: 200px) and (max-width: 991px){ 
 .mdOpen{
-display:block 
+display:block; 
 }
 .mdClose{
 display:none; 
@@ -221,6 +219,18 @@ display:block;
   moz-border-radius: 25px !important;
   webkit-border-radius: 25px !important;
 }
+
+.rounded-top-25{
+  border-top-left-radius: 25px!important;
+  border-top-right-radius: 25px !important;
+}
+
+.rounded-bottom-25{
+  border-bottom-left-radius: 25px!important;
+    border-bottom-right-radius: 25px !important;
+}
+
+
 
 /** XL Desktop**/
 @media (min-width: 1401px){ 
@@ -250,11 +260,14 @@ display:block;
   background-repeat:no-repeat;
 }
 
-.bg-dashboard{
+/* .bg-dashboard{
   background-image:url("/image/dash-imge1.png");
   background-position:top left;
   background-repeat:no-repeat;
-}
+  background-position: center;
+  background-size: cover;
+  width:100%;
+} */
 
 }
 /** LG Desktop**/
@@ -414,6 +427,23 @@ margin-left:-5px;
 
 }
 
+/** Dashboard CSS **/
+
+.dashboard-logo-box {
+  height: 150px;
+  width: 100%;
+}
+.dashboard-menu-box {
+  height: 450px;
+  width: 100%;
+}
+.dashboard-support-box{
+  height:260px;
+  width: 100%;
+}
+
+/** Dashboard CSS **/
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -555,8 +585,8 @@ ul {
 ol,
 ul,
 dl {
-  margin-top: 0;
-  margin-bottom: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
 }
 
 ol ol,
@@ -5255,6 +5285,18 @@ textarea.form-control-lg {
   background-color: #fff;
   border-color: #0d6efd;
 }
+/* rounded out css */
+.menu-rounded-top {
+  border-top-left-radius: 20rem !important;
+  border-top-right-radius: 20rem !important;
+}
+
+/* End rounded out css */
+
+
+
+
+
 .list-group-item + .list-group-item {
   border-top-width: 0;
 }

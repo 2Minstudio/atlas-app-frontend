@@ -11,9 +11,9 @@ const Header = (props) => {
   return (
     <header class= " header bg-light pb-1">
       <div className="container pt-5">
-        <div className="d-flex d-flex justify-content-between align-items-center pb-2 mb-4 border p-2 border-opacity-10 rounded-pill shadow-sm bg-white">
+        <div className="d-flex d-flex justify-content-between align-items-center mb-4 border p-3 border-opacity-10 rounded-pill shadow-sm bg-white">
         <Logo />       
-<nav class="navigation pe-3">
+<nav class="navigation pe-1">
 
 <input type="checkbox" className="toggle-menu"></input>
 <div className="hamburger"></div>

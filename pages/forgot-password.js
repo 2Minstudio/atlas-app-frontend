@@ -6,6 +6,13 @@ import styles from "../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
 import Alert from "react-bootstrap/Alert";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUserPlus,
+  faVideo,
+  faStar,
+  faSuitcaseMedical,
+} from "@fortawesome/free-solid-svg-icons";
 
 class ForgotPassword extends React.Component {
   state = {
@@ -105,7 +112,7 @@ class ForgotPassword extends React.Component {
                               <div className="row text-center justify-content-center">
                                 <button
                                   type="submit"
-                                  className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5"
+                                  className="btn btn-success rounded-pill mt-5 col-8 col-sm-8 col-md-10 col-lg-6 col-xl-5 align-middle my-5"
                                 >
                                   Send Reset Link
                                 </button>
@@ -122,9 +129,9 @@ class ForgotPassword extends React.Component {
                           </>
                         )}
                         <div className="row text-center justify-content-center">
-                          <p className="small-text-14 mt-0">
+                          <p className="small-text mt-5">
                             <Link href={"login"}>
-                              <a>Back to Login</a>
+                              <a> <i class="fas faUserPlus"></i> Back to Login</a>
                             </Link>
                           </p>
                         </div>

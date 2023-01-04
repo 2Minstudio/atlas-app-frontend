@@ -12,9 +12,9 @@ export default function Banner() {
               The Chiropractor <br />
               Course
             </h1>
-            <h4 className="my-5 text-success">
+            <h3 className="my-5 text-success">
               Learn from the Licensed <br></br>Chiropractor in India.
-            </h4>
+            </h3>
 
             <div class="d-grid gap-2 d-lg-flex justify-content-lg-start">
             <Link href="/register">

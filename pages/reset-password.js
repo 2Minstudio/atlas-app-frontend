@@ -8,6 +8,13 @@ import { withCookies } from "react-cookie";
 import { verifyToken } from "../helpers/helper";
 import Alert from "react-bootstrap/Alert";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUserPlus,
+  faVideo,
+  faStar,
+  faSuitcaseMedical,
+} from "@fortawesome/free-solid-svg-icons";
 
 class ResetPassword extends React.Component {
   state = {

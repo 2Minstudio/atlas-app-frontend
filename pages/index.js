@@ -76,25 +76,27 @@ class Home extends React.Component {
                   <div className="col">
                     <div className="row text-success">
                       <div className="col-12 col-sm-6 text-center pt-5">
-                        <span className="bg-success rounded rounded-circle AiconHolderbg">
-                          <FontAwesomeIcon
-                            className="Aicon text-white"
-                            icon={faUserPlus}
-                          />
-                        </span>
-                        <p className="pt-5">
+                        <Image
+                        className="img-fluid"
+                        alt="Doctor Image"
+                        src="/image/Group%20224.svg"
+                        height="75"
+                        width="75"
+                      />
+                        <p className="pt-1">
                           {" "}
                           Live Training with <br></br>Atlas Chiropractors
                         </p>
                       </div>
                       <div className="col-12 col-sm-6 text-center pt-5">
-                        <span className="bg-success rounded rounded-circle AiconHolderbg">
-                          <FontAwesomeIcon
-                            className="Aicon text-white"
-                            icon={faVideo}
-                          />
-                        </span>
-                        <p className="pt-5">
+                        <Image
+                        className="img-fluid"
+                        alt="Doctor Image"
+                        src="/image/Group%20225.svg"
+                        height="75"
+                        width="75"
+                      />
+                        <p className="pt-1">
                           {" "}
                           400 Hours of Course + <br></br>Paid Internship of 6
                           Months
@@ -104,25 +106,27 @@ class Home extends React.Component {
 
                     <div className="row text-success">
                       <div className="col-12 col-sm-6 text-center pt-5">
-                        <span className="bg-success rounded rounded-circle AiconHolderbg">
-                          <FontAwesomeIcon
-                            className="Aicon text-white"
-                            icon={faStar}
-                          />
-                        </span>
-                        <p className="pt-5">
+                       <Image
+                        className="img-fluid"
+                        alt="Doctor Image"
+                        src="/image/Group%20223.svg"
+                        height="75"
+                        width="75"
+                      />
+                        <p className="pt-1">
                           {" "}
                           Become a Certified <br></br> Chiropractor in India
                         </p>
                       </div>
                       <div className="col-12 col-sm-6 text-center pt-5">
-                        <span className="bg-success rounded rounded-circle AiconHolderbg">
-                          <FontAwesomeIcon
-                            className="Aicon text-white"
-                            icon={faSuitcaseMedical}
-                          />
-                        </span>
-                        <p className="pt-5">
+                        <Image
+                        className="img-fluid"
+                        alt="Doctor Image"
+                        src="/image/Group%20222.svg"
+                        height="75"
+                        width="75"
+                      />
+                        <p className="pt-1">
                           {" "}
                           Get Placed with Atlas <br></br>Chiropractic & Wellness
                           Care
@@ -174,17 +178,17 @@ class Home extends React.Component {
                       </p>
                       <div className="row">
                         <div className="col-sm-12 col-md-6">
-                          <div className="row pb-4 pb-md-0">
+                          <div className="row pb-4 pb-md-0 d-flex align-items-center">
                             <div className="col-3 col-sm-3 col-md-12 col-lg-3">
                               <Image
                                 className="img-fluid Chiro-icon"
                                 alt="chiropractor-image"
                                 src="/image/Top chiroprator.png"
-                                height="150"
-                                width="150"
+                                height="120"
+                                width="120"
                               />
                             </div>
-                            <div className="col-9 pt-4">
+                            <div className="col-9">
                               <p>
                                 <small>Top Chiropractor in India</small>
                               </p>
@@ -192,14 +196,14 @@ class Home extends React.Component {
                           </div>
                         </div>
                         <div className="col-sm-12 col-md-6">
-                          <div className="row">
+                          <div className="row d-flex align-items-center">
                             <div className="col-3 col-sm-3 col-md-12 col-lg-3">
                               <Image
                                 className="img-fluid Chiro-icon"
                                 alt="Member Image"
                                 src="/image/member.png"
-                                height="150"
-                                width="150"
+                                height="120"
+                                width="120"
                               />
                             </div>
                             <div className="col-9">
