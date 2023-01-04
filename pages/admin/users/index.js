@@ -1,5 +1,5 @@
 import React from "react";
-import LayoutDashboard from "../../../components/layout/layout-dashboard";
+import LayoutDashboard from "../../../components/layout/layoutAdminDashboard";
 
 class Users extends React.Component {
   render() {

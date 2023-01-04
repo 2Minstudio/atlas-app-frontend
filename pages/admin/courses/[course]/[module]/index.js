@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import LayoutDashboard from "../../../../../components/layout/layout-dashboard";
+import LayoutDashboard from "../../../../../components/layout/layoutAdminDashboard";
 import { isClientLoggedin, getUser } from "../../../../../helpers/helper";
 import {
   getCourse,
