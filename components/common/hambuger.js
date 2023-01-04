@@ -77,35 +77,33 @@ class Hamburger extends React.Component {
       <Menu styles={styles}>
         <ul className="nav align-items-center">
           <li className="nav-item">
-            <Link href={"/register"}>
-              <a className="nav-link active" aria-current="page">
-                Take Eligibility Test
-              </a>
+            <Link
+              href={"/register"}
+              className="nav-link active"
+              aria-current="page"
+            >
+              Take Eligibility Test
             </Link>
           </li>
           <li className="nav-item">
-            <Link href={"tel:+916382143394"}>
-              <a className="nav-link">Enquire Now </a>
+            <Link href={"tel:+916382143394"} className="nav-link">
+              Enquire Now
             </Link>
           </li>
           <li>
             <div className="d-grid gap-2 d-sm-block d-md-flex justify-content-md-end">
-              <Link href={"login"}>
-                <a className="nav-link">
-                  <button className="btn col-12 col-sm-12 btn-outline-success rounded-pill">
-                    {" "}
-                    Login{" "}
-                  </button>
-                </a>
+              <Link href={"login"} className="nav-link">
+                <button className="btn col-12 col-sm-12 btn-outline-success rounded-pill">
+                  {" "}
+                  Login{" "}
+                </button>
               </Link>
 
-              <Link href={"register"}>
-                <a className="nav-link" href="#">
-                  <button className="btn col-12 col-sm-12 btn-success rounded-pill">
-                    {" "}
-                    Sign Up{" "}
-                  </button>
-                </a>
+              <Link href={"register"} className="nav-link">
+                <button className="btn col-12 col-sm-12 btn-success rounded-pill">
+                  {" "}
+                  Sign Up{" "}
+                </button>
               </Link>
             </div>
           </li>

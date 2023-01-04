@@ -16,16 +16,30 @@ export default function Banner() {
               Learn from the Licensed <br></br>Chiropractor in India.
             </h3>
 
-            <div class="d-grid gap-2 d-lg-flex justify-content-lg-start">
-            <Link href="/register">
-                    <a className="nav-link p-0 active" aria-current="page">
-  <button class="btn btn-lg btn-success rounded-pill" type="button">Take the Eligibility Test</button>
-  </a></Link>
-  <a className="nav-link p-0 active" aria-current="page" href="tel:+91 9606704304">
-  <button class="btn btn-lg btn-outline-success rounded-pill" type="button">Inquire Now</button>
-  </a>
-</div>
-            
+            <div className="d-grid gap-2 d-lg-flex justify-content-lg-start">
+              <Link href="/register" legacyBehavior>
+                {/* <a className="nav-link p-0 active" aria-current="page"> */}
+                <button
+                  className="btn btn-lg btn-success rounded-pill"
+                  type="button"
+                >
+                  Take the Eligibility Test
+                </button>
+                {/* </a> */}
+              </Link>
+              <a
+                className="nav-link p-0 active"
+                aria-current="page"
+                href="tel:+91 9606704304"
+              >
+                <button
+                  className="btn btn-lg btn-outline-success rounded-pill"
+                  type="button"
+                >
+                  Inquire Now
+                </button>
+              </a>
+            </div>
           </div>
           <div className="d-xxl-none d-xl-none d-lg-none d-md-none d-sm-block col-sm-12 pt-5">
             <div className="row">

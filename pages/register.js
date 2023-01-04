@@ -75,131 +75,132 @@ class Register extends React.Component {
       <LayoutGuest>
         <div className={styles}>
           <main className={styles.main}>
-          <div className="container-fluid">
+            <div className="container-fluid">
               <div className="row winheight">
-              <div className="col-12 col-sm-12 col-md-6 d-flex align-items-center">
-                <div className="container-sm">
-                <div className="row align-items-center">
-                  <div className="col-12 col-sm-12 col-md-10 col-lg-8 pt-5 mb-0 mx-auto">
-                    <Logo align="left" />
-                    <h2 className="mb-5">
-                      Get 6 Months of Paid Internship After Finishing The
-                      Course.
-                    </h2>
-                    <h4 className="mb-5">Signup & Get Started!</h4>
-                    {error?.non_field_errors && (
-                      <Alert variant="danger" className="error alert">
-                        {error.non_field_errors}
-                      </Alert>
-                    )}
-                    <form
-                      action="/api/register"
-                      method="post"
-                      onSubmit={this.handleSubmit}
-                    >
-                      <div className="mb-3">
-                        <input
-                          name="first_name"
-                          type="text"
-                          className="form-control border-0 border-bottom border-dark rounded-0"
-                          id="first_name"
-                          placeholder="First name"
-                          required
-                        />
-                        {error?.first_name && (
+                <div className="col-12 col-sm-12 col-md-6 d-flex align-items-center">
+                  <div className="container-sm">
+                    <div className="row align-items-center">
+                      <div className="col-12 col-sm-12 col-md-10 col-lg-8 pt-5 mb-0 mx-auto">
+                        <Logo align="left" />
+                        <h2 className="mb-5">
+                          Get 6 Months of Paid Internship After Finishing The
+                          Course.
+                        </h2>
+                        <h4 className="mb-5">Signup & Get Started!</h4>
+                        {error?.non_field_errors && (
                           <Alert variant="danger" className="error alert">
-                            {error.first_name}
+                            {error.non_field_errors}
                           </Alert>
                         )}
-                      </div>
-                      <div className="mb-3">
-                        <input
-                          name="email"
-                          type="email"
-                          className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
-                          id="email"
-                          placeholder="Email"
-                          required
-                        />
-                        {(error?.email || error?.username) && (
-                          <Alert variant="danger" className="error alert">
-                            {error.email}
-                            {error.username}
-                          </Alert>
-                        )}
-                      </div>
-                      <div className="mb-3">
-                        <input
-                          name="phone_number"
-                          type="text"
-                          className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
-                          id="phone_number"
-                          placeholder="Phone Number"
-                          required
-                        ></input>
-                        {error?.phone_number && (
-                          <Alert variant="danger" className="error alert">
-                            {error.phone_number}
-                          </Alert>
-                        )}
-                      </div>
-                      <div className="mb-3">
-                        <input
-                          name="password"
-                          type="password"
-                          className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
-                          id="password"
-                          placeholder="Password"
-                          required
-                        ></input>
-                        {error?.password && (
-                          <Alert variant="danger" className="error alert">
-                            {error.password}
-                          </Alert>
-                        )}
-                      </div>
-
-                      <div className="form-check small-text-14 mt-5">
-                        <input
-                          name="agree"
-                          className="form-check-input"
-                          type="checkbox"
-                          value="yes"
-                          id="flexCheckDefault"
-                        ></input>
-                        <label
-                          className="form-check-label"
-                          htmlFor="flexCheckDefault"
+                        <form
+                          action="/api/register"
+                          method="post"
+                          onSubmit={this.handleSubmit}
                         >
-                          I agree to <a href="#">privacy policy</a> &{" "}
-                          <a href="#">terms conditions</a>
-                        </label>
-                      </div>
+                          <div className="mb-3">
+                            <input
+                              name="first_name"
+                              type="text"
+                              className="form-control border-0 border-bottom border-dark rounded-0"
+                              id="first_name"
+                              placeholder="First name"
+                              required
+                            />
+                            {error?.first_name && (
+                              <Alert variant="danger" className="error alert">
+                                {error.first_name}
+                              </Alert>
+                            )}
+                          </div>
+                          <div className="mb-3">
+                            <input
+                              name="email"
+                              type="email"
+                              className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
+                              id="email"
+                              placeholder="Email"
+                              required
+                            />
+                            {(error?.email || error?.username) && (
+                              <Alert variant="danger" className="error alert">
+                                {error.email}
+                                {error.username}
+                              </Alert>
+                            )}
+                          </div>
+                          <div className="mb-3">
+                            <input
+                              name="phone_number"
+                              type="text"
+                              className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
+                              id="phone_number"
+                              placeholder="Phone Number"
+                              required
+                            ></input>
+                            {error?.phone_number && (
+                              <Alert variant="danger" className="error alert">
+                                {error.phone_number}
+                              </Alert>
+                            )}
+                          </div>
+                          <div className="mb-3">
+                            <input
+                              name="password"
+                              type="password"
+                              className="form-control border-0 border-bottom border-dark rounded-0 mt-4"
+                              id="password"
+                              placeholder="Password"
+                              required
+                            ></input>
+                            {error?.password && (
+                              <Alert variant="danger" className="error alert">
+                                {error.password}
+                              </Alert>
+                            )}
+                          </div>
 
-                      <div className="row text-center justify-content-center">
-                        <button
-                          type="submit"
-                          className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5"
-                        >
-                          {" "}
-                          Signup
-                        </button>
+                          <div className="form-check small-text-14 mt-5">
+                            <input
+                              name="agree"
+                              className="form-check-input"
+                              type="checkbox"
+                              value="yes"
+                              id="flexCheckDefault"
+                            ></input>
+                            <label
+                              className="form-check-label"
+                              htmlFor="flexCheckDefault"
+                            >
+                              I agree to <a href="#">privacy policy</a> &{" "}
+                              <a href="#">terms conditions</a>
+                            </label>
+                          </div>
 
-                        <p className="small-text-14 mt-0">
-                          Already have an account?{" "}
-                          <Link href={"/login"}>
-                            <a>Sign in instead</a>
-                          </Link>
-                        </p>
+                          <div className="row text-center justify-content-center">
+                            <button
+                              type="submit"
+                              className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5"
+                            >
+                              {" "}
+                              Signup
+                            </button>
+
+                            <p className="small-text-14 mt-0">
+                              Already have an account?{" "}
+                              <Link href={"/login"}>Sign in instead</Link>
+                            </p>
+                          </div>
+                        </form>
                       </div>
-                    </form>
+                    </div>{" "}
+                    {/* End container 1 */}
                   </div>
-                  </div> {/* End container 1 */}
-                </div>{/* End row 1 */}
-              </div>{/* End col 1 */}
-              <div className="col-12 col-sm-12 col-md-6 greyGrad d-flex align-items-center">
-                <div className="container-sm">
-                <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 col-xxl-12 d-none d-md-block mx-auto">
+                  {/* End row 1 */}
+                </div>
+                {/* End col 1 */}
+                <div className="col-12 col-sm-12 col-md-6 greyGrad d-flex align-items-center">
+                  <div className="container-sm">
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 col-xxl-12 d-none d-md-block mx-auto">
                       <Image
                         className="img-fluid"
                         width={2663}
@@ -208,10 +209,11 @@ class Register extends React.Component {
                         src="/image/happy-young-woman-sitting-floor-using-laptop-gray-wall.png"
                       ></Image>
                     </div>
+                  </div>
                 </div>
+                {/* End container 2 */}
               </div>
-              {/* End container 2 */}
-            </div>{/* End col 2 */}
+              {/* End col 2 */}
             </div>
           </main>
         </div>

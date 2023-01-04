@@ -2,7 +2,7 @@ import axios from "axios";
 import cookie from "cookie";
 import { redirect } from "next/dist/server/api-utils";
 import Router from "next/router";
-
+// import Cookies
 const isLoggedin = async (req) => {
   const cookies =
     req && req?.headers.cookies ? req.headers.cookies : req?.cookies;
@@ -11,29 +11,6 @@ const isLoggedin = async (req) => {
     if (atlastoken) return atlastoken;
   }
   return false;
-};
-
-const getUser = async (token) => {
-  // const token = await isLoggedin(ctx.req);
-
-  if (!token) return {};
-  return axios
-    .post("/api/userbytoken", {
-      token: token,
-    })
-    .then((response) => {
-      const { data } = response;
-      // console.log(data, "it is data");
-      return data;
-    })
-    .catch((error) => {
-      // handle error
-      const {
-        response: { data },
-      } = error;
-      // console.log(data, "response error");
-      return data;
-    });
 };
 
 const isClientLoggedin = (props) => {
@@ -79,7 +56,7 @@ const Logout = async () => {
   const url = `/api/logout`;
 
   console.log("logout", url);
-  await axios({
+  return await axios({
     method: "get",
     url: url,
     headers: {
@@ -91,10 +68,8 @@ const Logout = async () => {
         data: { state },
       } = response;
       console.log("route push", Router.pathname);
-      if(Router.pathname == '/')
-        Router.push("/login");
-      else
-        Router.push("/");
+      if (Router.pathname == "/") Router.push("/login");
+      else Router.push("/");
       // redirect(301,'/');
       // Router.push("/");
 
@@ -104,6 +79,40 @@ const Logout = async () => {
       // handle error
       console.log("error ?", error);
       return false;
+    });
+};
+
+const getUser = async (token) => {
+  // const token = await isLoggedin(ctx.req);
+
+  if (!token) return {};
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: { token: token },
+    // JSON.stringify({ title: 'React POST Request Example' })
+  };
+
+  return axios
+    .post("/api/userbytoken", {
+      token: token,
+    })
+    .then((response) => {
+      const { data } = response;
+      if (data?.data?.action == "force_logout") {
+        console.log("Logout ?", data?.data?.action);
+        // Logout();
+      }
+      // console.log(data, "it is data");
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+
+      const { response } = error;
+      console.log(error, "error");
+      if (response?.data) return data;
+      return response;
     });
 };
 
