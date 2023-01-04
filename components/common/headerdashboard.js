@@ -57,8 +57,8 @@ class Headerdashboard extends React.Component {
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link">
-                      <Link href={"#"}>
-                        <a onClick={() => Logout()}>Logout</a>
+                      <Link href={"#"} onClick={() => Logout()}>
+                        Logout
                       </Link>
                     </a>
                   </li>

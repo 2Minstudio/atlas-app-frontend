@@ -3,9 +3,9 @@ import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
 import { isClientLoggedin, getUser } from "../helpers/helper";
 import React from "react";
-import LayoutDashboard from "../components/layout/LayoutDashboard";
+import LayoutDashboard from "../components/layout/layoutDashboard";
 
-class Home extends React.Component {
+class DashboardCourseStudy extends React.Component {
   state = {
     user: {},
   };
@@ -161,4 +161,4 @@ class Home extends React.Component {
 //   return { user: false };
 // }
 
-export default withCookies(withRouter(Home));
+export default withCookies(withRouter(DashboardCourseStudy));
