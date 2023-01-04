@@ -275,7 +275,10 @@ class Home extends React.Component {
                         </div>
 
                         <div className="row align-items-center mt-3">
-                          <div className="col-2 col-md-4 col-lg-6 "> &nbsp; </div>
+                          <div className="col-2 col-md-4 col-lg-6 ">
+                            {" "}
+                            &nbsp;{" "}
+                          </div>
                           <div className="col-6 col-md-8 col-lg-6 text-center">
                             <button className="btn btn-lg btn-outline-success rounded-pill ">
                               Enquire Now

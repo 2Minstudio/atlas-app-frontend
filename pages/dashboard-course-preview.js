@@ -46,7 +46,7 @@ class Home extends React.Component {
             <div className="container-fluid bg-grey">
               <div className="container pb-5">
                 <div className="row g-0 ">
-                <div className="col col-md-3 col-lg-2">
+                  <div className="col col-md-3 col-lg-2">
                     <div className="dashboard-menu-box d-flex align-items-center">
                       <ul className="list-group flex-fill">
                         <li className="list-group-item  active"> Home </li>
@@ -73,9 +73,7 @@ class Home extends React.Component {
                     </div>
                   </div>
 
-
                   <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
-                    
                     <div className="row">
                       <p className="pb-4">&nbsp;</p>
                       <div className="col-4">
@@ -98,10 +96,11 @@ class Home extends React.Component {
                             Would you like to have a busier practice? Would you
                             like to see more patients and help more people and
                             make more money in the process? Who wouldn&apos;t?
-                            Unfortunately it&apos;s never as simple as we thought it
-                            would be and we certainly didn&apos;t learn much about
-                            this in school. In this program your will learn how
-                            to double your chiropractic practice
+                            Unfortunately it&apos;s never as simple as we
+                            thought it would be and we certainly didn&apos;t
+                            learn much about this in school. In this program
+                            your will learn how to double your chiropractic
+                            practice
                           </p>
                           <div className="row text-success">
                             <div className="col-12 col-sm-6"></div>
@@ -122,7 +121,7 @@ class Home extends React.Component {
                         <div className="p-2 flex-fill">
                           <div className="row d-flex align-items-center">
                             <div className="col-2 pt-2 g-0">
-                            <Image
+                              <Image
                                 className="img-fluid"
                                 alt="Doctor Image"
                                 src="/image/dashboard/modules.jpg"
@@ -132,13 +131,15 @@ class Home extends React.Component {
                             </div>
                             <div className="col-10">
                               <p className="text-left m-0"> Back Pain</p>
-                              <h6 className="text-black-50">Lesson 4 . 11 min</h6>
+                              <h6 className="text-black-50">
+                                Lesson 4 . 11 min
+                              </h6>
                             </div>
                           </div>
 
                           <div className="row d-flex align-items-center border-bottom border-top">
                             <div className="col-2 pt-2 g-0">
-                            <Image
+                              <Image
                                 className="img-fluid"
                                 alt="Doctor Image"
                                 src="/image/dashboard/modules.jpg"
@@ -147,11 +148,10 @@ class Home extends React.Component {
                               />
                             </div>
                             <div className="col-10">
-                              <p className="text-left  m-0">
-                                {" "}
-                                Skeleton System
-                              </p>
-                              <h6 className="text-black-50">Lesson 4 . 11 min</h6>
+                              <p className="text-left  m-0"> Skeleton System</p>
+                              <h6 className="text-black-50">
+                                Lesson 4 . 11 min
+                              </h6>
                             </div>
                           </div>
 
@@ -166,15 +166,12 @@ class Home extends React.Component {
                               />
                             </div>
                             <div className="col-10">
-                              <p className="text-left m-0">
-                                {" "}
-                                Best Practices
-                              </p>
-                              <h6 className="text-black-50">Lesson 4 . 11 min</h6>
+                              <p className="text-left m-0"> Best Practices</p>
+                              <h6 className="text-black-50">
+                                Lesson 4 . 11 min
+                              </h6>
                             </div>
                           </div>
-
-                          
                         </div>
                       </div>
                       <div className="col col-md-6 col-lg-5">
