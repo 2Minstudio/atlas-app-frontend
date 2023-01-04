@@ -8,7 +8,7 @@ import Header from "../common/header";
 import { config } from "../../config/config";
 import AdminBreadcrumb from "../breadcrumb/admin";
 
-export default function LayoutDashboard({ children, user = {}, paths = {} }) {
+export default function LayoutAdminDashboard({ children, user = {}, paths = {} }) {
   return (
     <>
       <Head>

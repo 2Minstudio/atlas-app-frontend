@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import LayoutDashboard from "../../../../../components/layout/layoutAdminDashboard";
+import LayoutAdminDashboard from "../../../../../components/layout/layoutAdminDashboard";
 import { isClientLoggedin, getUser } from "../../../../../helpers/helper";
 import {
   getCourse,
@@ -139,7 +139,7 @@ class ModuleDetails extends React.Component {
       "#": module?.name,
     };
     return (
-      <LayoutDashboard user={user} paths={paths}>
+      <LayoutAdminDashboard user={user} paths={paths}>
         <ConfirmBox
           isShow={deleteId}
           text={"Are you sure want to delete this Chapter?"}
@@ -230,7 +230,7 @@ class ModuleDetails extends React.Component {
             <Pagination></Pagination>
           </tfoot>
         </Table>
-      </LayoutDashboard>
+      </LayoutAdminDashboard>
     );
   }
 }
