@@ -65,7 +65,7 @@ class ResetPassword extends React.Component {
     if (!result.state) {
       const error = {};
       Object.keys(result.data).map((key) => {
-      error[key] = result.data[key];
+        error[key] = result.data[key];
       });
       this.setState({ error: error });
     } else {
@@ -91,100 +91,99 @@ class ResetPassword extends React.Component {
       <LayoutGuest>
         <div className={styles}>
           <main className={styles.main}>
-          <div className="container-fluid ">
+            <div className="container-fluid ">
               <div className="row winheight">
-              <div className="col-12 col-sm-12 col-md-6 d-flex align-items-center">
-                <div className="container-sm">
-                <div className="row align-items-center">
-                  <div className="col-12 col-sm-12 col-md-6 mb-5 pt-5 mx-auto">
-                    <Image
-                      width="120"
-                      height="65"
-                      className="Img-fluid myLogoLp"
-                      alt="logo"
-                      src="/image/logo.png"
-                    ></Image>
-                    <b className="text-success">Academy</b>
+                <div className="col-12 col-sm-12 col-md-6 d-flex align-items-center">
+                  <div className="container-sm">
+                    <div className="row align-items-center">
+                      <div className="col-12 col-sm-12 col-md-6 mb-5 pt-5 mx-auto">
+                        <Image
+                          width="120"
+                          height="65"
+                          className="Img-fluid myLogoLp"
+                          alt="logo"
+                          src="/image/logo.png"
+                        ></Image>
+                        <b className="text-success">Academy</b>
 
-                    <h2 className="mb-5 mt-5">Reset Password</h2>
-                    {istokenvalid && !showinfo && (
-                      <>
-                        {error &&
-                          Object.keys(error).map((err) => {
-                            return (
-                              <>
-                                <Alert variant="danger" className="error alert">
-                                  {error[err]}
-                                </Alert>
-                              </>
-                            );
-                          })}
-                        <h4 className="mb-5">
-                          Enter your new password to update your account.
-                        </h4>
-                        <form method="post" onSubmit={this.handleSubmit}>
-                          <div className="mb-3">
-                            <input
-                              name="new_password"
-                              required
-                              type="password"
-                              className="form-control border-0 border-bottom border-dark rounded-0"
-                              id="exampleFormControlInput1"
-                              placeholder="New Password"
-                            />
-                          </div>
-                          <div className="mb-3">
-                            <input
-                              name="confirm_password"
-                              required
-                              type="password"
-                              className="form-control border-0 border-bottom border-dark rounded-0"
-                              id="exampleFormControlInput2"
-                              placeholder="Confirm Password"
-                            />
-                          </div>
+                        <h2 className="mb-5 mt-5">Reset Password</h2>
+                        {istokenvalid && !showinfo && (
+                          <>
+                            {error &&
+                              Object.keys(error).map((err) => {
+                                return (
+                                  <>
+                                    <Alert
+                                      variant="danger"
+                                      className="error alert"
+                                    >
+                                      {error[err]}
+                                    </Alert>
+                                  </>
+                                );
+                              })}
+                            <h4 className="mb-5">
+                              Enter your new password to update your account.
+                            </h4>
+                            <form method="post" onSubmit={this.handleSubmit}>
+                              <div className="mb-3">
+                                <input
+                                  name="new_password"
+                                  required
+                                  type="password"
+                                  className="form-control border-0 border-bottom border-dark rounded-0"
+                                  id="exampleFormControlInput1"
+                                  placeholder="New Password"
+                                />
+                              </div>
+                              <div className="mb-3">
+                                <input
+                                  name="confirm_password"
+                                  required
+                                  type="password"
+                                  className="form-control border-0 border-bottom border-dark rounded-0"
+                                  id="exampleFormControlInput2"
+                                  placeholder="Confirm Password"
+                                />
+                              </div>
 
-                          <div className="row text-center justify-content-center">
-                            <button
-                              type="submit"
-                              className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5"
-                            >
-                              Update Password
-                            </button>
-                            <p className="small-text-14 mt-0">
-                              <Link href={"login"}>
-                                <a>Back to Login</a>
-                              </Link>
-                            </p>
-                          </div>
-                        </form>
-                      </>
-                    )}
-                    {!istokenvalid && (
-                      <>
-                        Sorry! Your token is not valid,{" "}
-                        <Link href={"/login"}>
-                          <a>click here to Login</a>
-                        </Link>
-                        <br />
-                      </>
-                    )}
-                    {showinfo && (
-                      <>
-                        Your password has been Updated,
-                        <Link href={"/login"}>
-                          <a>click here to Login</a>
-                        </Link>
-                      </>
-                    )}
+                              <div className="row text-center justify-content-center">
+                                <button
+                                  type="submit"
+                                  className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5"
+                                >
+                                  Update Password
+                                </button>
+                                <p className="small-text-14 mt-0">
+                                  <Link href={"login"}>Back to Login</Link>
+                                </p>
+                              </div>
+                            </form>
+                          </>
+                        )}
+                        {!istokenvalid && (
+                          <>
+                            Sorry! Your token is not valid,{" "}
+                            <Link href={"/login"}>click here to Login</Link>
+                            <br />
+                          </>
+                        )}
+                        {showinfo && (
+                          <>
+                            Your password has been Updated,
+                            <Link href={"/login"}>click here to Login</Link>
+                          </>
+                        )}
+                      </div>
+                    </div>{" "}
+                    {/* End container 1 */}
                   </div>
-                  
-                  </div> {/* End container 1 */}
-                </div>{/* End row 1 */}
-              </div>{/* End col 1 */}
-              <div className="col-12 col-sm-12 col-md-6 greyGrad d-flex align-items-end">
-                <div className="container-sm">
-                <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 col-xxl-9 d-none d-md-block mx-auto">
+                  {/* End row 1 */}
+                </div>
+                {/* End col 1 */}
+                <div className="col-12 col-sm-12 col-md-6 greyGrad d-flex align-items-end">
+                  <div className="container-sm">
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 col-xxl-9 d-none d-md-block mx-auto">
                       <Image
                         className="img-fluid"
                         width={2786}
@@ -193,10 +192,11 @@ class ResetPassword extends React.Component {
                         src="/image/healthcare-workers-prevent-virus-insurance-medicine-concept-smiling-attractive-female-doctor-nurse-blue-scrubs-pointing-fingers-left-show-patients-advertisement-important-info.png"
                       ></Image>
                     </div>
+                  </div>
                 </div>
+                {/* End container 2 */}
               </div>
-              {/* End container 2 */}
-            </div>{/* End col 2 */}
+              {/* End col 2 */}
             </div>
           </main>
         </div>

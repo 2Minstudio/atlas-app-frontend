@@ -41,7 +41,9 @@ class Test extends React.Component {
                         <p>Chiropractor Course Eligibility Test</p>
                       </div>
                       <div className="col text-center">
-                        <p className="pb-0 mb-0"><StopWatch/> </p>
+                        <p className="pb-0 mb-0">
+                          <StopWatch />{" "}
+                        </p>
                         <p>
                           <span className="small-text-12">Remaining Time</span>
                         </p>
@@ -116,7 +118,7 @@ class Test extends React.Component {
                   </div>
                   <div className="row text-center justify-content-center">
                     <div className="col">
-                      <Link href={"/finalcongratulations"}>
+                      <Link href={"/finalcongratulations"} legacyBehavior>
                         <button className="btn btn-success rounded-pill mt-5 col-5 col-sm-4 col-md-3 align-middle my-5">
                           Submit
                         </button>

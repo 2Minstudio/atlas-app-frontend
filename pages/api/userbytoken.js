@@ -35,9 +35,15 @@ export default async function handler(req, res) {
     })
     .catch((error) => {
       // handle error
-      // console.log(error, "userbytoken error");
-      if (error.response) {
-        resp = error.response.data;
+      if (error?.response) {
+        const {
+          response: { data, status },
+        } = error;
+        resp = data;
+        if (status == 401 && data.detail == "Invalid token.") {
+          // remove cookie if exist
+          resp = { action: "force_logout" };
+        }
       }
     });
 

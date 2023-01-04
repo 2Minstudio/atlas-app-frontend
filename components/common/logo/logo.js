@@ -12,13 +12,14 @@ export default function Logo(props) {
   );
   return (
     <>
-      <Link href={"/"}>
-        <a className="d-flex align-items-center text-dark text-decoration-none">
-          <span className={align ? "left" : "ps-3"}>
-            <Image width="120" height="65" alt="Logo" src="/image/logo.png" />
-          </span>
-          {subText}
-        </a>
+      <Link
+        href={"/"}
+        className="d-flex align-items-center text-dark text-decoration-none"
+      >
+        <span className={align ? "left" : "ps-3"}>
+          <Image width="120" height="65" alt="Logo" src="/image/logo.png" />
+        </span>
+        {subText}
       </Link>
     </>
   );
