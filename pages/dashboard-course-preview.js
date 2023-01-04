@@ -97,9 +97,9 @@ class Home extends React.Component {
                           <p className="pt-5">
                             Would you like to have a busier practice? Would you
                             like to see more patients and help more people and
-                            make more money in the process? Who wouldn't?
-                            Unfortunately it's never as simple as we thought it
-                            would be and we certainly didn't learn much about
+                            make more money in the process? Who wouldn&apos;t?
+                            Unfortunately it&apos;s never as simple as we thought it
+                            would be and we certainly didn&apos;t learn much about
                             this in school. In this program your will learn how
                             to double your chiropractic practice
                           </p>
