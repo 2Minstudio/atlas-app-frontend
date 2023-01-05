@@ -1,9 +1,9 @@
 import React from "react";
-import LayoutDashboard from "../../../components/layout/layout-dashboard";
+import LayoutAdminDashboard from "../../../components/layout/layoutAdminDashboard";
 
 class Users extends React.Component {
   render() {
-    return <LayoutDashboard>Users</LayoutDashboard>;
+    return <LayoutAdminDashboard>Users</LayoutAdminDashboard>;
   }
 }
 

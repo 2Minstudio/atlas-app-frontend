@@ -2,7 +2,7 @@ import React from "react";
 import { withCookies } from "react-cookie";
 import Router, { withRouter } from "next/router";
 import { isClientLoggedin, getUser } from "../../helpers/helper";
-import LayoutDashboard from "../../components/layout/layout-dashboard";
+import LayoutAdminDashboard from "../../components/layout/layoutAdminDashboard";
 class Admin extends React.Component {
   state = {
     user: {},
@@ -25,9 +25,9 @@ class Admin extends React.Component {
     const { user } = this.state;
     const paths = {};
     return (
-      <LayoutDashboard user={user} paths={paths}>
+      <LayoutAdminDashboard user={user} paths={paths}>
         <h1>Welcome to admin dashboard</h1>
-      </LayoutDashboard>
+      </LayoutAdminDashboard>
     );
   }
 }

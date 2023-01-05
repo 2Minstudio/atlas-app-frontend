@@ -1,24 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
-import Banner from "../components/common/banner";
-import LayoutDashboard from "../components/layout/LayoutDashboard";
+import LayoutDashboard from "../components/layout/layoutDashboard";
 import styles from "../styles/Home.module.css";
-import DemoCarousel from "../components/common/carousel";
-import InquerySection from "../components/home/inquerysection";
-import Highlightinfo from "../components/home/highlightinfo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserPlus,
-  faVideo,
-  faStar,
-  faSuitcaseMedical,
-} from "@fortawesome/free-solid-svg-icons";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
 import { isClientLoggedin, getUser } from "../helpers/helper";
 import React from "react";
 
-class Home extends React.Component {
+class Dashboard extends React.Component {
   state = {
     user: {},
   };
@@ -275,7 +263,10 @@ class Home extends React.Component {
                         </div>
 
                         <div className="row align-items-center mt-3">
-                          <div className="col-2 col-md-4 col-lg-6 "> &nbsp; </div>
+                          <div className="col-2 col-md-4 col-lg-6 ">
+                            {" "}
+                            &nbsp;{" "}
+                          </div>
                           <div className="col-6 col-md-8 col-lg-6 text-center">
                             <button className="btn btn-lg btn-outline-success rounded-pill ">
                               Enquire Now
@@ -324,4 +315,4 @@ class Home extends React.Component {
 //   return { user: false };
 // }
 
-export default withCookies(withRouter(Home));
+export default withCookies(withRouter(Dashboard));

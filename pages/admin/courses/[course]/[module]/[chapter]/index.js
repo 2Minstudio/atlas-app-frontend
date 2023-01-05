@@ -1,5 +1,5 @@
 import React from "react";
-import LayoutDashboard from "../../../../../../components/layout/layout-dashboard";
+import LayoutAdminDashboard from "../../../../../../components/layout/layoutAdminDashboard";
 import { getUser, isClientLoggedin } from "../../../../../../helpers/helper";
 import { withCookies } from "react-cookie";
 import { withRouter } from "next/router";
@@ -107,7 +107,7 @@ class ChapterDetails extends React.Component {
       "#": chapter?.name,
     };
     return (
-      <LayoutDashboard user={user} paths={paths}>
+      <LayoutAdminDashboard user={user} paths={paths}>
         <Row>
           <Col>
             <h2>Course Information</h2>
@@ -127,7 +127,7 @@ class ChapterDetails extends React.Component {
             <ChapterInfo chapter={chapter} />
           </Col>
         </Row>
-      </LayoutDashboard>
+      </LayoutAdminDashboard>
     );
   }
 }

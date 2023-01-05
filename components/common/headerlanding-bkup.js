@@ -1,9 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import styles from "../../styles/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { Logout } from "../../helpers/helper";
 class Headerlanding extends React.Component {
   state = {

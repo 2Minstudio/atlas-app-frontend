@@ -1,9 +1,9 @@
 import React from "react";
-import LayoutDashboard from "../../../components/layout/layout-dashboard";
+import LayoutAdminDashboard from "../../../components/layout/layoutAdminDashboard";
 
 class Adminisions extends React.Component {
   render() {
-    return <LayoutDashboard>Adminisions</LayoutDashboard>;
+    return <LayoutAdminDashboard>Adminisions</LayoutAdminDashboard>;
   }
 }
 
