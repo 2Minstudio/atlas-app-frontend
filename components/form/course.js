@@ -2,6 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { createCourse, getCourse, updateCourse } from "../../helpers/admin";
+import { Col, Row } from "react-bootstrap";
 
 class CourseForm extends React.Component {
   constructor(props) {
@@ -41,11 +42,12 @@ class CourseForm extends React.Component {
     });
   };
 
-  async handleSubmit(event) {
+  async handleSubmit() {
+    // event
     const { closeTrigger } = this.props;
     this.setState({ submited: true });
-    event.preventDefault();
-    event.stopPropagation();
+    // event.preventDefault();
+    // event.stopPropagation();
     const { id } = this.props;
 
     if (id) {
@@ -59,7 +61,7 @@ class CourseForm extends React.Component {
         this.setState({ submited: false });
       });
     } else {
-      await createCourse({}).then((resp) => {
+      await createCourse(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
         else {
@@ -72,7 +74,6 @@ class CourseForm extends React.Component {
   }
 
   async componentDidMount() {
-    console.log(process.env.NEXT_PUBLIC_API_URL);
     const { id } = this.props;
     if (id) {
       this.setState({ create: false });
@@ -82,8 +83,21 @@ class CourseForm extends React.Component {
       }
       console.log("Edit mode ", id, data);
     }
-    console.log(process.env.NEXT_PUBLIC_API_URL);
   }
+
+  setStatusAction = (value) => {
+    const { closeTrigger } = this.props;
+    const status = value == "publish" ? 1 : 0;
+    this.setState({ status }, async () => {
+      if (value == "cancel") {
+        //hide the popup form
+        closeTrigger();
+      } else {
+        await this.handleSubmit();
+        //submit the form
+      }
+    });
+  };
 
   render() {
     const { name, description, image, notes, cost, status, submited, create } =
@@ -137,7 +151,7 @@ class CourseForm extends React.Component {
           <Form.Label>Cost</Form.Label>
           <Form.Control
             required
-            type="text"
+            type="number"
             name="cost"
             autoFocus
             value={cost}
@@ -145,10 +159,33 @@ class CourseForm extends React.Component {
           />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group className="mb-3">
+          <Row className="align-items-right">
+            <Col xs="auto">
+              <Button
+                variant="light"
+                onClick={() => this.setStatusAction("cancel")}
+              >
+                Cancel
+              </Button>{" "}
+            </Col>
+            <Col xs="auto">
+              <Button
+                variant="success"
+                onClick={() => this.setStatusAction("draft")}
+              >
+                Save as Draft
+              </Button>{" "}
+            </Col>
+            <Col xs="auto">
+              <Button onClick={() => this.setStatusAction("publish")}>
+                Publish
+              </Button>
+            </Col>
+          </Row>
+          {/*
           <Form.Label>Status</Form.Label>
-
-          <Form.Check
+           <Form.Check
             checked={status == "1"}
             inline
             label="Published"
@@ -165,12 +202,12 @@ class CourseForm extends React.Component {
             type={"radio"}
             value={0}
             onChange={this.handleCheckbox}
-          />
+          /> */}
         </Form.Group>
 
-        <Button disabled={submited} variant="primary" type="submit">
+        {/* <Button disabled={submited} variant="primary" type="submit">
           {create ? "Create" : "Update"}
-        </Button>
+        </Button> */}
       </Form>
     );
   }

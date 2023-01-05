@@ -2,6 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { createChapter, getChapter, updateChapter } from "../../helpers/admin";
+import { Col, Row } from "react-bootstrap";
 
 class ChapterForm extends React.Component {
   constructor(props) {
@@ -39,11 +40,11 @@ class ChapterForm extends React.Component {
     });
   };
 
-  async handleSubmit(event) {
+  async handleSubmit() {
     const { closeTrigger } = this.props;
     this.setState({ submited: true });
-    event.preventDefault();
-    event.stopPropagation();
+    // event.preventDefault();
+    // event.stopPropagation();
     const { id } = this.props;
 
     if (id) {
@@ -75,6 +76,20 @@ class ChapterForm extends React.Component {
       console.log("Edit mode ", id, data);
     }
   }
+
+  setStatusAction = (value) => {
+    const { closeTrigger } = this.props;
+    const status = value == "publish" ? 1 : 0;
+    this.setState({ status }, async () => {
+      if (value == "cancel") {
+        //hide the popup form
+        closeTrigger();
+      } else {
+        await this.handleSubmit();
+        //submit the form
+      }
+    });
+  };
 
   render() {
     const { content, meterial, name, status, video, submited, create } =
@@ -121,8 +136,32 @@ class ChapterForm extends React.Component {
             onChange={this.handleFileChange}
           />
         </Form.Group>
-        <Form.Group>
-          <Form.Label>Status</Form.Label>
+
+        <Form.Group className="mb-3">
+          <Row className="align-items-right">
+            <Col xs="auto">
+              <Button
+                variant="light"
+                onClick={() => this.setStatusAction("cancel")}
+              >
+                Cancel
+              </Button>{" "}
+            </Col>
+            <Col xs="auto">
+              <Button
+                variant="success"
+                onClick={() => this.setStatusAction("draft")}
+              >
+                Save as Draft
+              </Button>{" "}
+            </Col>
+            <Col xs="auto">
+              <Button onClick={() => this.setStatusAction("publish")}>
+                Publish
+              </Button>
+            </Col>
+          </Row>
+          {/* <Form.Label>Status</Form.Label>
 
           <Form.Check
             checked={status == "1"}
@@ -141,12 +180,12 @@ class ChapterForm extends React.Component {
             type={"radio"}
             value={0}
             onChange={this.handleCheckbox}
-          />
+          /> */}
         </Form.Group>
 
-        <Button disabled={submited} variant="primary" type="submit">
+        {/* <Button disabled={submited} variant="primary" type="submit">
           {create ? "Create" : "Update"}
-        </Button>
+        </Button> */}
       </Form>
     );
   }
