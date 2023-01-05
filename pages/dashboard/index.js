@@ -1,9 +1,9 @@
 import Image from "next/image";
-import LayoutDashboard from "../components/layout/layoutDashboard";
-import styles from "../styles/Home.module.css";
+import LayoutDashboard from "../../components/layout/layoutDashboard";
+import styles from "../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
-import { isClientLoggedin, getUser } from "../helpers/helper";
+import { isClientLoggedin, getUser } from "../../helpers/helper";
 import React from "react";
 
 class Dashboard extends React.Component {

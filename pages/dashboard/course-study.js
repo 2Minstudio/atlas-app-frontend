@@ -1,9 +1,9 @@
 import styles from "../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
-import { isClientLoggedin, getUser } from "../helpers/helper";
+import { isClientLoggedin, getUser } from "../../helpers/helper";
 import React from "react";
-import LayoutDashboard from "../components/layout/layoutDashboard";
+import LayoutDashboard from "../../components/layout/layoutDashboard";
 
 class DashboardCourseStudy extends React.Component {
   state = {
