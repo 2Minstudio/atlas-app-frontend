@@ -5,16 +5,6 @@ import FormData from "form-data";
 
 import formidable from "formidable";
 
-const fileConsumer = (acc) => {
-  const writable = new Writable({
-    write: (chunk, _enc, next) => {
-      acc.push(chunk);
-      next();
-    },
-  });
-
-  return writable;
-};
 
 export default async function handler(req, res) {
   try {

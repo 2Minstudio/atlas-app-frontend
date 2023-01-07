@@ -9,7 +9,7 @@ function CourseInfo({ course, showImage = false }) {
           <h1>{course?.name}</h1>
           <Badge bg="info">₹ {course?.cost}</Badge>{" "}
           <Badge variant="primary">
-            {course?.status ? "Publishd" : "Draft"}
+            {course?.status ? "Published" : "Draft"}
           </Badge>
         </Card.Title>
       </Card.Header>

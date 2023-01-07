@@ -8,7 +8,7 @@ function ModuleInfo({ module }) {
         <Card.Title>
           <h1>{module?.name}</h1>
           <Badge variant="primary">
-            {module?.status ? "Publishd" : "Draft"}
+            {module?.status ? "Published" : "Draft"}
           </Badge>
         </Card.Title>
       </Card.Header>

@@ -10,7 +10,7 @@ function ChapterInfo({ chapter }) {
         <Card.Title>
           <h1>{chapter?.name}</h1>
           <Badge variant="primary">
-            {chapter?.status ? "Publishd" : "Draft"}
+            {chapter?.status ? "Published" : "Draft"}
           </Badge>
         </Card.Title>
       </Card.Header>

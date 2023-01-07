@@ -1,10 +1,10 @@
 import React from "react";
 import LayoutAdminDashboard from "../../../components/layout/layoutAdminDashboard";
 
-class Adminisions extends React.Component {
+class Admissions extends React.Component {
   render() {
-    return <LayoutAdminDashboard>Adminisions</LayoutAdminDashboard>;
+    return <LayoutAdminDashboard>Admissions</LayoutAdminDashboard>;
   }
 }
 
-export default Adminisions;
+export default Admissions;

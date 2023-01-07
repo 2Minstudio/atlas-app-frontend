@@ -22,7 +22,7 @@ export default function LayoutAdminDashboard({ children, user = {}, paths = {} }
           <Row>
             <Col md={3}>
               <Nav defaultActiveKey="/admin/admissions" className="flex-column">
-                <Nav.Link href="/admin/admissions">Adminisions</Nav.Link>
+                <Nav.Link href="/admin/admissions">Admissions</Nav.Link>
                 <Nav.Link href="/admin/courses">Course</Nav.Link>
                 <Nav.Link href="/admin/users">Users</Nav.Link>
               </Nav>
