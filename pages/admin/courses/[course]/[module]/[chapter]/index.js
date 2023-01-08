@@ -2,7 +2,7 @@ import React from "react";
 import LayoutAdminDashboard from "../../../../../../components/layout/layoutAdminDashboard";
 import { getUser, isClientLoggedin } from "../../../../../../helpers/helper";
 import { withCookies } from "react-cookie";
-import { withRouter } from "next/router";
+import Router, { withRouter } from "next/router";
 import {
   getCourse,
   getModule,

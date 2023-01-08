@@ -406,6 +406,7 @@ const updateChapter = async (data) => {
   const { id } = data;
   if (data.video && typeof data.video != "string")
     formData.append("video", data.video, data.video.name);
+
   if (data.meterial && typeof data.meterial != "string")
     formData.append("meterial", data.meterial, data.meterial.name);
 
@@ -414,7 +415,11 @@ const updateChapter = async (data) => {
   formData.append("status", data.status);
   const url = `${process.env.NEXT_PUBLIC_API_URL}/api/chapter/${id}/`;
   return axios
-    .patch(url, data)
+    .patch(url, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
     .then((response) => {
       const { data } = response;
       return { data, status: true };

@@ -2,7 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { createCourse, getCourse, updateCourse } from "../../helpers/admin";
-import { Col, Row } from "react-bootstrap";
+import { Alert, Col, Row, Image } from "react-bootstrap";
 
 class CourseForm extends React.Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class CourseForm extends React.Component {
       status: "0",
       submited: false,
       image: "",
+      previouseImage: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -45,7 +46,7 @@ class CourseForm extends React.Component {
   async handleSubmit() {
     // event
     const { closeTrigger } = this.props;
-    this.setState({ submited: true });
+    this.setState({ submited: true, errors: {} });
     // event.preventDefault();
     // event.stopPropagation();
     const { id } = this.props;
@@ -79,7 +80,8 @@ class CourseForm extends React.Component {
       this.setState({ create: false });
       const { data, state } = await getCourse(id);
       if (state) {
-        this.setState({ ...data });
+        const { image: previouseImage } = data;
+        this.setState({ ...data, previouseImage });
       }
       console.log("Edit mode ", id, data);
     }
@@ -100,8 +102,18 @@ class CourseForm extends React.Component {
   };
 
   render() {
-    const { name, description, image, notes, cost, status, submited, create } =
-      this.state;
+    const {
+      name,
+      description,
+      image,
+      notes,
+      cost,
+      status,
+      submited,
+      create,
+      errors,
+      previouseImage,
+    } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -114,6 +126,7 @@ class CourseForm extends React.Component {
             value={name}
             onChange={this.handleChange}
           />
+          {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Description</Form.Label>
@@ -125,6 +138,9 @@ class CourseForm extends React.Component {
             value={description}
             onChange={this.handleChange}
           />
+          {errors?.description && (
+            <Alert variant={"danger"}>{errors.description}</Alert>
+          )}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Course Image</Form.Label>
@@ -135,6 +151,12 @@ class CourseForm extends React.Component {
             accept="image/png, image/jpeg"
             onChange={this.handleImageChange}
           />
+          {previouseImage && (
+            <>
+              <Image thumbnail={true} src={previouseImage}></Image>
+            </>
+          )}
+          {errors?.image && <Alert variant={"danger"}>{errors.image}</Alert>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Notes</Form.Label>
@@ -146,6 +168,7 @@ class CourseForm extends React.Component {
             value={notes}
             onChange={this.handleChange}
           />
+          {errors?.notes && <Alert variant={"danger"}>{errors.notes}</Alert>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Cost</Form.Label>
@@ -157,6 +180,7 @@ class CourseForm extends React.Component {
             value={cost}
             onChange={this.handleChange}
           />
+          {errors?.cost && <Alert variant={"danger"}>{errors.cost}</Alert>}
         </Form.Group>
 
         <Form.Group className="mb-3">

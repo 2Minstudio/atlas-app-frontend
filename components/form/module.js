@@ -2,7 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { createModule, getModule, updateModule } from "../../helpers/admin";
-import { Col, Row } from "react-bootstrap";
+import { Alert, Col, Row } from "react-bootstrap";
 
 class ModuleForm extends React.Component {
   constructor(props) {
@@ -44,14 +44,20 @@ class ModuleForm extends React.Component {
       await updateModule(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
-        else console.log(data, "error");
+        else {
+          this.setState({ errors: data });
+          console.log(data, "error");
+        }
         this.setState({ submited: false });
       });
     } else {
       await createModule(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
-        else console.log(data, "error");
+        else {
+          this.setState({ errors: data });
+          console.log(data, "error");
+        }
         this.setState({ submited: false });
       });
     }
@@ -85,7 +91,7 @@ class ModuleForm extends React.Component {
   };
 
   render() {
-    const { name, attend_type, status, submited, create } = this.state;
+    const { name, attend_type, status, submited, create, errors } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -98,6 +104,7 @@ class ModuleForm extends React.Component {
             value={name}
             onChange={this.handleChange}
           />
+          {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -111,6 +118,9 @@ class ModuleForm extends React.Component {
             <option value="online">Online</option>
             <option value="offline">Offline</option>
           </Form.Select>
+          {errors?.attend_type && (
+            <Alert variant={"danger"}>{errors.attend_type}</Alert>
+          )}
         </Form.Group>
 
         <Form.Group className="mb-3">

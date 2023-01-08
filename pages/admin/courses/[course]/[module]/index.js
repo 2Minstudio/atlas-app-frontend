@@ -12,7 +12,7 @@ import {
   deleteChapter,
 } from "../../../../../helpers/admin";
 import { withCookies } from "react-cookie";
-import { withRouter } from "next/router";
+import Router, { withRouter } from "next/router";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";

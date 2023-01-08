@@ -1,13 +1,13 @@
 import React from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { createChapter, getChapter, updateChapter } from "../../helpers/admin";
-import { Col, Row } from "react-bootstrap";
+import { Alert, Col, Row, Button, Form } from "react-bootstrap";
+import ReactPlayer from "react-player";
 
 class ChapterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      errors: {},
       create: true,
       content: "",
       meterial: "",
@@ -15,6 +15,8 @@ class ChapterForm extends React.Component {
       status: "0",
       video: "",
       submited: false,
+      previousMeterial: "",
+      previousVideo: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -42,7 +44,7 @@ class ChapterForm extends React.Component {
 
   async handleSubmit() {
     const { closeTrigger } = this.props;
-    this.setState({ submited: true });
+    this.setState({ submited: true, errors: {} });
     // event.preventDefault();
     // event.stopPropagation();
     const { id } = this.props;
@@ -51,14 +53,20 @@ class ChapterForm extends React.Component {
       await updateChapter(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
-        else console.log(data, "error");
+        else {
+          this.setState({ errors: data });
+          console.log(data, "error");
+        }
         this.setState({ submited: false });
       });
     } else {
       await createChapter(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) closeTrigger();
-        else console.log(data, "error");
+        else {
+          this.setState({ errors: data });
+          console.log(data, "error");
+        }
         this.setState({ submited: false });
       });
     }
@@ -71,9 +79,9 @@ class ChapterForm extends React.Component {
       this.setState({ create: false });
       const { data, state } = await getChapter(id);
       if (state) {
-        this.setState({ ...data });
+        const { video: previouseVideo, meterial: previousMeterial } = data;
+        this.setState({ ...data, previouseVideo, previousMeterial });
       }
-      console.log("Edit mode ", id, data);
     }
   }
 
@@ -92,8 +100,18 @@ class ChapterForm extends React.Component {
   };
 
   render() {
-    const { content, meterial, name, status, video, submited, create } =
-      this.state;
+    const {
+      content,
+      meterial,
+      name,
+      status,
+      video,
+      submited,
+      create,
+      errors,
+      previouseVideo,
+      previousMeterial,
+    } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -106,6 +124,7 @@ class ChapterForm extends React.Component {
             value={name}
             onChange={this.handleChange}
           />
+          {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Content</Form.Label>
@@ -117,6 +136,9 @@ class ChapterForm extends React.Component {
             value={content}
             onChange={this.handleChange}
           />
+          {errors?.content && (
+            <Alert variant={"danger"}>{errors.content}</Alert>
+          )}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Video</Form.Label>
@@ -126,15 +148,42 @@ class ChapterForm extends React.Component {
             accept="video/mp4"
             onChange={this.handleFileChange}
           />
+          <Row className="align-items-right">
+            <Col xs="auto">
+              {previouseVideo && (
+                <ReactPlayer
+                  className="react-player"
+                  url={previouseVideo}
+                  width="200px"
+                  height="200px"
+                  controls={true}
+                />
+              )}
+            </Col>
+          </Row>
+          {errors?.video && <Alert variant={"danger"}>{errors.video}</Alert>}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Meterial</Form.Label>
           <Form.Control
             type="file"
             name="meterial"
-            // accept="image/png, image/jpeg"
             onChange={this.handleFileChange}
           />
+
+          <Row className="align-items-right">
+            <Col xs="auto">
+              {previousMeterial && (
+                <Button target="_blank" href={previousMeterial}>
+                  Material
+                </Button>
+              )}
+            </Col>
+          </Row>
+
+          {errors?.meterial && (
+            <Alert variant={"danger"}>{errors.meterial}</Alert>
+          )}
         </Form.Group>
 
         <Form.Group className="mb-3">

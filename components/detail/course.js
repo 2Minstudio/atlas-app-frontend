@@ -1,5 +1,5 @@
-import Card from "react-bootstrap/Card";
-import Badge from "react-bootstrap/Badge";
+import {Card, Badge, Image} from "react-bootstrap";
+
 
 function CourseInfo({ course, showImage = false }) {
   return (
@@ -13,8 +13,9 @@ function CourseInfo({ course, showImage = false }) {
           </Badge>
         </Card.Title>
       </Card.Header>
-      {showImage && <Card.Img variant="top" src={course?.image} />}
+      
       <Card.Body>
+      {showImage && <Image thumbnail={true} src={course?.image} />}
         <Card.Text>{course?.description}</Card.Text>
       </Card.Body>
     </Card>
