@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { createCourse, getCourse, updateCourse } from "../../helpers/admin";
 import { Alert, Col, Row, Image } from "react-bootstrap";
-
+import AutoHideAlert from "../common/autoHideAlert";
 class CourseForm extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +18,7 @@ class CourseForm extends React.Component {
       submited: false,
       image: "",
       previouseImage: "",
+      showSuccess: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -54,24 +55,26 @@ class CourseForm extends React.Component {
     if (id) {
       await updateCourse(this.state).then((resp) => {
         const { status, data } = resp;
-        if (status) closeTrigger();
-        else {
+        if (status) {
+          //show alert on success then trigger this close
+          this.setState({ showSuccess: true });
+        } else {
           console.log(data, "update error");
           this.setState({ error: data });
         }
-        this.setState({ submited: false });
       });
     } else {
       await createCourse(this.state).then((resp) => {
         const { status, data } = resp;
-        if (status) closeTrigger();
-        else {
+        if (status) {
+          this.setState({ showSuccess: true });
+        } else {
           console.log(data, "create error");
           this.setState({ error: data });
         }
-        this.setState({ submited: false });
       });
     }
+    this.setState({ submited: false });
   }
 
   async componentDidMount() {
@@ -113,9 +116,17 @@ class CourseForm extends React.Component {
       create,
       errors,
       previouseImage,
+      showSuccess,
     } = this.state;
+    const { closeTrigger } = this.props;
     return (
       <Form onSubmit={this.handleSubmit}>
+        {showSuccess && (
+          <AutoHideAlert
+            message={`Course ${create ? "created" : "updated"} successfully!`}
+            onClose={closeTrigger}
+          />
+        )}
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -196,13 +207,17 @@ class CourseForm extends React.Component {
             <Col xs="auto">
               <Button
                 variant="success"
+                disabled={submited}
                 onClick={() => this.setStatusAction("draft")}
               >
                 Save as Draft
               </Button>{" "}
             </Col>
             <Col xs="auto">
-              <Button onClick={() => this.setStatusAction("publish")}>
+              <Button
+                disabled={submited}
+                onClick={() => this.setStatusAction("publish")}
+              >
                 Publish
               </Button>
             </Col>

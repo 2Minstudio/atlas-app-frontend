@@ -94,7 +94,7 @@ const createCourse = async (data) => {
     })
     .then((returnedResponse) => {
       // Your response to manipulate
-      console.log(returnedResponse, "create success");
+      console.log(returnedResponse, "update success");
       return { status: true, data: returnedResponse };
     })
     .catch((error) => {

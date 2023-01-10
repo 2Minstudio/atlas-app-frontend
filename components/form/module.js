@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { createModule, getModule, updateModule } from "../../helpers/admin";
 import { Alert, Col, Row } from "react-bootstrap";
-
+import AutoHideAlert from "../common/autoHideAlert";
 class ModuleForm extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +15,7 @@ class ModuleForm extends React.Component {
       attend_type: "online",
       status: "0",
       submited: false,
+      showSuccess: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -43,24 +44,25 @@ class ModuleForm extends React.Component {
     if (id) {
       await updateModule(this.state).then((resp) => {
         const { status, data } = resp;
-        if (status) closeTrigger();
-        else {
+        if (status) {
+          this.setState({ showSuccess: true });
+        } else {
           this.setState({ errors: data });
           console.log(data, "error");
         }
-        this.setState({ submited: false });
       });
     } else {
       await createModule(this.state).then((resp) => {
         const { status, data } = resp;
-        if (status) closeTrigger();
-        else {
+        if (status) {
+          this.setState({ showSuccess: true });
+        } else {
           this.setState({ errors: data });
           console.log(data, "error");
         }
-        this.setState({ submited: false });
       });
     }
+    this.setState({ submited: false });
   }
 
   async componentDidMount() {
@@ -91,9 +93,17 @@ class ModuleForm extends React.Component {
   };
 
   render() {
-    const { name, attend_type, status, submited, create, errors } = this.state;
+    const { name, attend_type, status, submited, create, errors, showSuccess } =
+      this.state;
+    const { closeTrigger } = this.props;
     return (
       <Form onSubmit={this.handleSubmit}>
+        {showSuccess && (
+          <AutoHideAlert
+            message={`Module ${create ? "created" : "updated"} successfully!`}
+            onClose={closeTrigger}
+          />
+        )}
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Name</Form.Label>
           <Form.Control

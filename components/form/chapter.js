@@ -2,7 +2,7 @@ import React from "react";
 import { createChapter, getChapter, updateChapter } from "../../helpers/admin";
 import { Alert, Col, Row, Button, Form } from "react-bootstrap";
 import ReactPlayer from "react-player";
-
+import AutoHideAlert from "../common/autoHideAlert";
 class ChapterForm extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +17,7 @@ class ChapterForm extends React.Component {
       submited: false,
       previousMeterial: "",
       previousVideo: "",
+      showSuccess: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -52,24 +53,25 @@ class ChapterForm extends React.Component {
     if (id) {
       await updateChapter(this.state).then((resp) => {
         const { status, data } = resp;
-        if (status) closeTrigger();
-        else {
+        if (status) {
+          this.setState({ showSuccess: true });
+        } else {
           this.setState({ errors: data });
           console.log(data, "error");
         }
-        this.setState({ submited: false });
       });
     } else {
       await createChapter(this.state).then((resp) => {
         const { status, data } = resp;
-        if (status) closeTrigger();
-        else {
+        if (status) {
+          this.setState({ showSuccess: true });
+        } else {
           this.setState({ errors: data });
           console.log(data, "error");
         }
-        this.setState({ submited: false });
       });
     }
+    this.setState({ submited: false });
   }
 
   async componentDidMount() {
@@ -111,9 +113,17 @@ class ChapterForm extends React.Component {
       errors,
       previouseVideo,
       previousMeterial,
+      showSuccess,
     } = this.state;
+    const { closeTrigger } = this.props;
     return (
       <Form onSubmit={this.handleSubmit}>
+        {showSuccess && (
+          <AutoHideAlert
+            message={`Chapter ${create ? "created" : "updated"} successfully!`}
+            onClose={closeTrigger}
+          />
+        )}
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Name</Form.Label>
           <Form.Control
