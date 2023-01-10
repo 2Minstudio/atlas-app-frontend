@@ -21,6 +21,7 @@ import ChapterForm from "../../../../../components/form/chapter";
 import CourseInfo from "../../../../../components/detail/course";
 import ModuleInfo from "../../../../../components/detail/module";
 import ConfirmBox from "../../../../../components/modal/confirm";
+import ToolTip from "../../../../../components/common/toolTip";
 class ModuleDetails extends React.Component {
   state = {
     user: {},
@@ -217,7 +218,11 @@ class ModuleDetails extends React.Component {
                         <Link
                           href={`/admin/courses/${courseid}/${moduleid}/${d.id}`}
                         >
-                          <Button size="sm">View</Button>
+                          <ToolTip
+                            label={"view"}
+                            size={"sm"}
+                            tipMessage={"Click here to view Chapter details"}
+                          />
                         </Link>
                       </Stack>
                     </td>

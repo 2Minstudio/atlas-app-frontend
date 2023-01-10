@@ -14,6 +14,7 @@ import Col from "react-bootstrap/Col";
 import Link from "next/link";
 import Stack from "react-bootstrap/Stack";
 import ConfirmBox from "../../../components/modal/confirm";
+import ToolTip from "../../../components/common/toolTip";
 
 class Courses extends React.Component {
   state = {
@@ -145,7 +146,13 @@ class Courses extends React.Component {
                         </Button>
                         <div className="vr" />
                         <Link href={`/admin/courses/${d.id}`}>
-                          <Button size="sm">View</Button>
+                          <ToolTip
+                            label={"view"}
+                            size={"sm"}
+                            tipMessage={
+                              "Click here to view Course details & manage modules"
+                            }
+                          />
                         </Link>
                       </Stack>
                     </td>
