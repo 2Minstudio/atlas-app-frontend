@@ -1,5 +1,4 @@
 import axios from "axios";
-import cookie from "cookie";
 import { redirect } from "next/dist/server/api-utils";
 import Router from "next/router";
 // import Cookies

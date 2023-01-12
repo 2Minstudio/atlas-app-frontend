@@ -6,12 +6,18 @@ export default async function handler(req, res) {
   let resp = {};
   const {
     cookies: { atlastoken: token },
-    body: { id },
+    body: { name, course, attend_type, status },
   } = req;
 
   await axios({
-    method: "get",
-    url: `${process.env.API_URL}/api/chapter/${id}/`,
+    method: "post",
+    url: `${process.env.API_URL}/api/user/`,
+    data: {
+      name,
+      course,
+      attend_type,
+      status,
+    },
     headers: {
       Authorization: `Token ${token}`,
       "Content-Type": "application/json",
@@ -19,7 +25,6 @@ export default async function handler(req, res) {
   })
     .then((response) => {
       const { data } = response;
-
       state = true;
       resp = data;
     })
