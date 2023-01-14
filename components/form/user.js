@@ -54,7 +54,7 @@ class UserForm extends React.Component {
       if (state) {
         this.setState({ ...data });
       }
-      console.log("Edit mode ", id, data);
+      // console.log("Edit mode ", id, data);
     }
   }
 

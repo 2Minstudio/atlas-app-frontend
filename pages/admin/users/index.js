@@ -11,7 +11,7 @@ import Link from "next/link";
 import Stack from "react-bootstrap/Stack";
 import LayoutAdminDashboard from "../../../components/layout/adminDashboard";
 import { isClientLoggedin, getUser } from "../../../helpers/helper";
-import { getUsers, getRoles } from "../../../helpers/admin";
+import { getUsers, getRoles, deleteUser } from "../../../helpers/admin";
 import ConfirmBox from "../../../components/modal/confirm";
 import ToolTip from "../../../components/common/toolTip";
 import UserForm from "../../../components/form/user";
@@ -72,7 +72,7 @@ class Users extends React.Component {
 
   delete = async () => {
     const { deleteId } = this.state;
-    await deleteCourse(deleteId).then((resp) => {
+    await deleteUser(deleteId).then((resp) => {
       const { state, data } = resp;
       if (state) {
         this.setState({ deleteId: null }, async () => {

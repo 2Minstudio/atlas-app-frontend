@@ -24,8 +24,9 @@ class Admin extends React.Component {
   render() {
     const { user } = this.state;
     const paths = {};
+    
     return (
-      <LayoutAdminDashboard user={user} paths={paths}>
+      <LayoutAdminDashboard user={user} paths={paths} >
         <h1>Welcome to admin dashboard</h1>
       </LayoutAdminDashboard>
     );
