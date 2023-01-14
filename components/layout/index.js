@@ -14,7 +14,7 @@ export default function Layout({ children, user = {}, type = null }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-        {!type && <Header user={user} />}
+        {(!type || type === "user") && <Header user={user} />}
         {type === "dashboard" && <Headerdashboard user={user} />}
         {type === "landing" && <Headerlanding user={user} />}
 
