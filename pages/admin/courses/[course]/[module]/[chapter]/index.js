@@ -108,20 +108,20 @@ class ChapterDetails extends React.Component {
     };
     return (
       <LayoutAdminDashboard user={user} paths={paths}>
-        <Row>
+        <Row className="d-flex align-items-center pt-4 pb-5">
           <Col>
             <h2>Course Information</h2>
 
             <CourseInfo course={course} showImage={false} />
           </Col>
         </Row>
-        <Row>
+        <Row className="d-flex align-items-center pt-4 pb-5">
           <Col>
             <h2>Module Information</h2>
             <ModuleInfo module={module} />
           </Col>
         </Row>
-        <Row>
+        <Row className="d-flex align-items-center pt-4 pb-5">
           <Col>
             <h2>Chapter Information</h2>
             <ChapterInfo chapter={chapter} />

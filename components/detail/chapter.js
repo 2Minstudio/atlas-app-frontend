@@ -32,7 +32,7 @@ function ChapterInfo({ chapter }) {
         <div>
           {chapter?.meterial && (
             <a href={chapter?.meterial} target="_blank" rel="noreferrer">
-              <Button>Download Material</Button>
+              <Button className="btn btn-success rounded-pill p-3 me-3" variant="success">Download Material</Button>
             </a>
           )}
         </div>

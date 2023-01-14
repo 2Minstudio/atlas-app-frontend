@@ -1,8 +1,10 @@
+import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
 import { isClientLoggedin, getUser } from "../../helpers/helper";
 import React from "react";
+import Accordion from "react-bootstrap/Accordion";
 import Layout from "../../components/layout/index";
 
 class DashboardCourseStudy extends React.Component {
@@ -59,49 +61,27 @@ class DashboardCourseStudy extends React.Component {
                     </div>
                   </div>
 
-                  <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
+                  <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-top-25 rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
                     <div class="row">
-                      <div className="col-8">
+                      <div className="col-12">
                         <h3 className="py-3">Chiropractor Course</h3>
-                        <image
-                          src="image/dashboard/Course-Studying-video.jpg"
+                        <Image
+                          src="/image/dashboard/Course-Studying-video.jpg"
                           className="img-fluid"
                           alt="Study course Image"
                           height="840"
                           width="1296"
                         />
                       </div>
-                      <div className="col-4">
-                        <h3 className="py-3">Lessons</h3>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item border-bottom rounded-0">
-                            Back Pain<br></br> <small>Leson 4 . 11min</small>
-                          </li>
-                          <li class="list-group-item border-bottom rounded-0">
-                            Neck Pain<br></br> <small>Leson 4 . 11min</small>
-                          </li>
-                          <li class="list-group-item border-bottom rounded-0">
-                            Skeleton System<br></br>{" "}
-                            <small>Leson 4 . 11min</small>
-                          </li>
-                          <li class="list-group-item border-bottom rounded-0">
-                            Best Practices<br></br>{" "}
-                            <small>Leson 4 . 11min</small>
-                          </li>
-                          <li class="list-group-item rounded-0">
-                            Nervous system<br></br>{" "}
-                            <small>Leson 4 . 11min</small>
-                          </li>
-                        </ul>
-                      </div>
+                      
                     </div>
 
                     <div className="row">
                       <div className="col-8">
                         <div className="row d-flex align-items-center justify-content-center pt-5">
                           <div className="col-1">
-                            <image
-                              src="image/dashboard/student-img.png"
+                            <Image
+                              src="/image/dashboard/student-img.png"
                               className="img-fluid p-1 border rounded-circle border-warning"
                               alt="Study Image"
                               height="100"
@@ -137,6 +117,34 @@ class DashboardCourseStudy extends React.Component {
                             </button>
                           </div>
                         </div>
+                      </div>
+                    </div>
+                    <div className="row">
+                    <h5 className="pt-4">Course</h5>
+                      <div className="col">
+                        <Accordion defaultActiveKey="0">
+                          <Accordion.Item eventKey="0">
+                            <Accordion.Header>Back Pain</Accordion.Header>
+                            <Accordion.Body>
+                              <p>Lesson 1 . 11 min</p>
+                              <p>Lesson 2 . 24 min</p>
+                            </Accordion.Body>
+                          </Accordion.Item>
+                          <Accordion.Item eventKey="1">
+                            <Accordion.Header>Skeleton System</Accordion.Header>
+                            <Accordion.Body>
+                              <p>Lesson 1 . 11 min</p>
+                              <p>Lesson 2 . 24 min</p>
+                            </Accordion.Body>
+                          </Accordion.Item>
+                          <Accordion.Item eventKey="2">
+                            <Accordion.Header>Best Practices</Accordion.Header>
+                            <Accordion.Body>
+                              <p>Lesson 1 . 11 min</p>
+                              <p>Lesson 2 . 24 min</p>
+                            </Accordion.Body>
+                          </Accordion.Item>
+                        </Accordion>
                       </div>
                     </div>
                   </div>

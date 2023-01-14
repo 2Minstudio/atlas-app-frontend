@@ -21,33 +21,36 @@ export default function LayoutAdminDashboard({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
+        <div className="container-fluid bg-light">
         {user?.id && (
           <>
             <Header user={user} />
 
             <Container>
               <Row>
-                <Col md={3}>
-                  <Nav
+                <Col className="d-flex align-items-start mt-5 g-0" md={3}>
+                  <Nav className="list-group flex-fill"
                     defaultActiveKey="/admin/admissions"
-                    className="flex-column"
                   >
-                    <Nav.Link href="/admin/admissions">Admissions</Nav.Link>
-                    <Nav.Link href="/admin/courses">Course</Nav.Link>
-                    <Nav.Link href="/admin/users">Users</Nav.Link>
+                    <Nav.Link className="list-group-item" href="/admin/admissions">Admissions</Nav.Link>
+                    <Nav.Link className="list-group-item" href="/admin/courses">Course</Nav.Link>
+                    <Nav.Link className="list-group-item" href="/admin/users">Users</Nav.Link>
                   </Nav>
                 </Col>
-                <Col>
+                <Col className="g-0">
+                <div className="bg-white rounded-top-25 rounded-bottom-25 p-sm-3 p-md-4 p-lg-5">
                   {Object.keys(paths).length > 0 && (
                     <AdminBreadcrumb items={paths} />
                   )}
                   <main>{children}</main>
+                  </div>
                 </Col>
               </Row>
             </Container>
             <Footer />
           </>
         )}
+        </div>
       </body>
     </>
   );

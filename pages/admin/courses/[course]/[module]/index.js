@@ -148,13 +148,13 @@ class ModuleDetails extends React.Component {
           cancelAction={this.closeConfirm}
         />
 
-        <Row>
+        <Row className="d-flex align-items-center pt-4 pb-5">
           <Col>
             <h2>Course Information</h2>
             <CourseInfo course={course} showImage={false} />
           </Col>
         </Row>
-        <Row>
+        <Row className="d-flex align-items-center pt-4 pb-5">
           <Col>
             <h2>Module Information</h2>
             <ModuleInfo module={module} />
@@ -165,7 +165,7 @@ class ModuleDetails extends React.Component {
             <h2>Chapters</h2>
           </Col>
           <Col className="text-end">
-            <Button variant="primary" onClick={this.handleShow}>
+            <Button className="btn btn-success rounded-pill p-3 me-3" variant="success" onClick={this.handleShow}>
               Add New Chapter
             </Button>
           </Col>
@@ -186,10 +186,10 @@ class ModuleDetails extends React.Component {
         <Table responsive="sm">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Status</th>
-              <th>Actions</th>
+              <th className="col">#</th>
+              <th className="col-3">Name</th>
+              <th className="col-4">Status</th>
+              <th className="col-4">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -197,31 +197,28 @@ class ModuleDetails extends React.Component {
               return (
                 <>
                   <tr>
-                    <td>{d.id}</td>
-                    <td>{d.name}</td>
-                    <td>{d.status ? "Published" : "Draft"}</td>
-                    <td>
-                      <Stack direction="horizontal" gap={0}>
-                        <Button size="sm" onClick={() => this.edit(d.id)}>
+                    <td className="py-3">{d.id}</td>
+                    <td className="py-3">{d.name}</td>
+                    <td className="py-3">{d.status ? "Published" : "Draft"}</td>
+                    <td className="py-3">
+                      <Stack className="d-flex justify-content-start align-items-center" direction="horizontal" gap={3}>
+                        <Button className="btn btn-info rounded-pill px-3" size="md" onClick={() => this.edit(d.id)}>
                           Edit
                         </Button>
-                        <div className="vr" />
-                        <Button
-                          size="sm"
+                        
+                        <Button className="btn rounded-pill px-3"
+                          size="md"
                           variant="danger"
                           onClick={() => this.deleteConfirm(d.id)}
                         >
                           Delete
                         </Button>
-                        <div className="vr" />
+                        
                         <Link
                           href={`/admin/courses/${courseid}/${moduleid}/${d.id}`}
                         >
-                          <ToolTip
-                            label={"view"}
-                            size={"sm"}
-                            tipMessage={"Click here to view Chapter details"}
-                          />
+                          <Button className="btn rounded-pill px-3" size="md">View</Button>
+                          
                         </Link>
                       </Stack>
                     </td>
