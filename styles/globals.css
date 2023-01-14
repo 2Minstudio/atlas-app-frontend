@@ -4360,7 +4360,7 @@ textarea.form-control-lg {
 .tab-content > .active {
   display: block;
 }
-
+/* 
 .navbar {
   position: relative;
   display: flex;
@@ -4678,6 +4678,7 @@ textarea.form-control-lg {
 .navbar-dark .navbar-text a:focus {
   color: #fff;
 }
+*/
 
 .card {
   position: relative;
@@ -6452,6 +6453,7 @@ textarea.form-control-lg {
     animation-duration: 1.5s;
   }
 }
+/* 
 .offcanvas {
   position: fixed;
   bottom: 0;
@@ -6531,6 +6533,7 @@ textarea.form-control-lg {
 .offcanvas.show {
   transform: none;
 }
+*/
 
 .clearfix::after {
   display: block;
