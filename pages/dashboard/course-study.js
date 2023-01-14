@@ -3,7 +3,7 @@ import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
 import { isClientLoggedin, getUser } from "../../helpers/helper";
 import React from "react";
-import LayoutDashboard from "../../components/layout/layoutDashboard";
+import Layout from "../../components/layout/index";
 
 class DashboardCourseStudy extends React.Component {
   state = {
@@ -26,7 +26,7 @@ class DashboardCourseStudy extends React.Component {
   render() {
     const { user } = this.state;
     return (
-      <LayoutDashboard user={user}>
+      <Layout type="dashboard" user={user}>
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-grey">
@@ -145,7 +145,7 @@ class DashboardCourseStudy extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutDashboard>
+      </Layout>
     );
   }
 }

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import LayoutDashboard from "../../components/layout/layoutDashboard";
+import Layout from "../../components/layout/index";
 import styles from "../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
   render() {
     const { user } = this.state;
     return (
-      <LayoutDashboard>
+      <Layout type="dashboard">
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-grey">
@@ -299,7 +299,7 @@ class Dashboard extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutDashboard>
+      </Layout>
     );
   }
 }
