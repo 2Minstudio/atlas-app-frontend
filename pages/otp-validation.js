@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Logo from "../components/common/logo/logo";
-import LayoutGuest from "../components/layout/guest";
+import Layout from "../components/layout/index";
 import styles from "../styles/Home.module.css";
 export default function OtpValidation() {
   return (
-    <LayoutGuest>
+    <Layout type="guest">
       <div className={styles}>
         <main className={styles.main}>
         <div className="container-fluid">
@@ -100,6 +100,6 @@ export default function OtpValidation() {
                </div>
         </main>
       </div>
-    </LayoutGuest>
+    </Layout>
   );
 }

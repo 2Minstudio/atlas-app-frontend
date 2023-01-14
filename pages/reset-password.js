@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import LayoutGuest from "../components/layout/Guest";
+import Layout from "../components/layout/index";
 import styles from "../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
@@ -88,7 +88,7 @@ class ResetPassword extends React.Component {
       console.log("error", error[err]);
     });
     return (
-      <LayoutGuest>
+      <Layout type="guest">
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid ">
@@ -200,7 +200,7 @@ class ResetPassword extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutGuest>
+      </Layout>
     );
   }
 }

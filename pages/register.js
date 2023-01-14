@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import Router, { withRouter } from "next/router";
 import Logo from "../components/common/logo/logo";
-import LayoutGuest from "../components/layout/Guest";
+import Layout from "../components/layout/index";
 import styles from "../styles/Home.module.css";
 import { isLoggedin } from "../helpers/helper";
 import Alert from "react-bootstrap/Alert";
@@ -72,7 +72,7 @@ class Register extends React.Component {
   render() {
     const { error } = this.state;
     return (
-      <LayoutGuest>
+      <Layout type="guest">
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid">
@@ -217,7 +217,7 @@ class Register extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutGuest>
+      </Layout>
     );
   }
 }
