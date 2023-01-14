@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Router, { withRouter } from "next/router";
 import Logo from "../components/common/logo/logo";
-import LayoutGuest from "../components/layout/layoutGuest";
+import LayoutGuest from "../components/layout/Guest";
 import styles from "../styles/Home.module.css";
 import { isLoggedin, isClientLoggedin } from "../helpers/helper";
 import Toast from "react-bootstrap/Toast";

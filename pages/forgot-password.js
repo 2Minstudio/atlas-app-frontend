@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import LayoutGuest from "../components/layout/layoutGuest";
+import LayoutGuest from "../components/layout/guest";
 import styles from "../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";

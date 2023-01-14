@@ -1,5 +1,5 @@
 import Image from "next/image";
-import LayoutGuest from "../components/layout/layoutGuest";
+import LayoutGuest from "../components/layout/Guest";
 import styles from "../styles/Home.module.css";
 import React from "react";
 import { withCookies } from "react-cookie";

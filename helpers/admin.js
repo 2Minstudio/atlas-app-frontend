@@ -448,6 +448,22 @@ const deleteChapter = async (id) => {
       return data;
     });
 };
+
+const getUsers = async () => {
+  return axios
+    .post("/api/admin/user/getall")
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+}
 export {
   getCourses,
   getCourse,
@@ -464,4 +480,5 @@ export {
   createChapter,
   updateChapter,
   deleteChapter,
+  getUsers,
 };

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { redirect } from "next/dist/server/api-utils";
 import Router from "next/router";
+import Cookies from "cookies";
 // import Cookies
 const isLoggedin = async (req) => {
   const cookies =
@@ -101,6 +102,7 @@ const getUser = async (token) => {
       if (data?.data?.action == "force_logout") {
         console.log("Logout ?", data?.data?.action);
         // Logout();
+        // Cookies.remove('atlastoken');
       }
       // console.log(data, "it is data");
       return data;

@@ -8,7 +8,11 @@ import Header from "../common/header";
 import { config } from "../../config/config";
 import AdminBreadcrumb from "../breadcrumb/admin";
 
-export default function LayoutAdminDashboard({ children, user = {}, paths = {} }) {
+export default function LayoutAdminDashboard({
+  children,
+  user = {},
+  paths = {},
+}) {
   return (
     <>
       <Head>
@@ -17,26 +21,33 @@ export default function LayoutAdminDashboard({ children, user = {}, paths = {} }
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-        <Header user={user} />
-        <Container>
-          <Row>
-            <Col md={3}>
-              <Nav defaultActiveKey="/admin/admissions" className="flex-column">
-                <Nav.Link href="/admin/admissions">Admissions</Nav.Link>
-                <Nav.Link href="/admin/courses">Course</Nav.Link>
-                <Nav.Link href="/admin/users">Users</Nav.Link>
-              </Nav>
-            </Col>
-            <Col>
-              {Object.keys(paths).length > 0 && (
-                <AdminBreadcrumb items={paths} />
-              )}
-              <main>{children}</main>
-            </Col>
-          </Row>
-        </Container>
+        {user?.id && (
+          <>
+            <Header user={user} />
 
-        <Footer />
+            <Container>
+              <Row>
+                <Col md={3}>
+                  <Nav
+                    defaultActiveKey="/admin/admissions"
+                    className="flex-column"
+                  >
+                    <Nav.Link href="/admin/admissions">Admissions</Nav.Link>
+                    <Nav.Link href="/admin/courses">Course</Nav.Link>
+                    <Nav.Link href="/admin/users">Users</Nav.Link>
+                  </Nav>
+                </Col>
+                <Col>
+                  {Object.keys(paths).length > 0 && (
+                    <AdminBreadcrumb items={paths} />
+                  )}
+                  <main>{children}</main>
+                </Col>
+              </Row>
+            </Container>
+            <Footer />
+          </>
+        )}
       </body>
     </>
   );

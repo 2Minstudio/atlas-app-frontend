@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 
 export async function middleware(request) {
-  // Assume a "Cookie:nextjs=fast" header to be present on the incoming request
-  // Getting cookies from the request using the `RequestCookies` API
   const cookie = request.cookies.get("atlastoken")?.value;
   const url = `${process.env.API_URL}/api/user/`;
 
@@ -18,9 +16,20 @@ export async function middleware(request) {
     const userresp = await fetch(url, requestOptions).then((response) =>
       response.json()
     );
-    const usergroups = userresp?.groups;
-    if (!Object.values(usergroups).find((v)=> v == 4)) {
-      request.nextUrl.pathname = "/";
+    // allow only session users
+    if (userresp && userresp?.id) {
+      console.log(userresp, "userresp");
+      const usergroups = userresp?.groups;
+      // If admin path make sure they are super admin access exist
+      if (request.nextUrl.pathname.startsWith("/admin")) {
+        if (!usergroups || !Object.values(usergroups).find((v) => v == 4)) {
+          // request.nextUrl.pathname = "/";
+          return NextResponse.redirect(new URL("/", request.url));
+        }
+      }
+    }else{
+      console.log("Redirect non session users to home page");
+      request.cookies.delete("atlastoken");
       return NextResponse.redirect(new URL("/", request.url));
     }
   }
@@ -57,5 +66,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: "/admin/:path*",
+  matcher: ["/admin/:path*", "/dashboard/:path*"],
 };
