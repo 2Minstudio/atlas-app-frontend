@@ -1,5 +1,5 @@
 import axios from "axios";
-import Cookies from "cookies";
+import cookie from "cookie";
 
 export default async function handler(req, res) {
   let state = false;
@@ -42,6 +42,13 @@ export default async function handler(req, res) {
         resp = data;
         if (status == 401 && data.detail == "Invalid token.") {
           // remove cookie if exist
+          res.setHeader(
+            "Set-Cookie",
+            cookie.serialize("atlastoken", "", {
+              maxAge: -3600,
+              path: "/",
+            })
+          );
           resp = { action: "force_logout" };
         }
       }

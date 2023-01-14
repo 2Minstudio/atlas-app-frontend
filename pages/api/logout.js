@@ -18,20 +18,19 @@ export default async function handler(req, res) {
   })
     .then((response) => {
       const data = response.data;
-      console.log(data);
       state = true;
-      res.setHeader(
-        "Set-Cookie",
-        cookie.serialize("atlastoken", "", {
-          maxAge: -3600,
-          path: "/",
-        })
-      );
     })
     .catch((error) => {
       if (error.response) {
-        console.log('logout error',error.response);
+        console.log("logout error", error.response);
       }
     });
+  res.setHeader(
+    "Set-Cookie",
+    cookie.serialize("atlastoken", "", {
+      maxAge: -3600,
+      path: "/",
+    })
+  );
   res.status(200).json({ state: state });
 }

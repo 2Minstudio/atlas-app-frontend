@@ -21,7 +21,6 @@ export default async function handler(req, res) {
   })
     .then((response) => {
       const { token, expiry, created, duration } = response.data;
-      console.log(token, expiry, created, duration);
       state = true;
       res.setHeader(
         "Set-Cookie",

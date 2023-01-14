@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import LayoutGuest from "../components/layout/layoutGuest";
+import Layout from "../components/layout/index";
 import styles from "../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
@@ -31,11 +31,6 @@ class ResetPassword extends React.Component {
       confirm_password: { value: confirm_password },
       new_password: { value: new_password },
     } = event.target;
-    console.log(
-      confirm_password,
-      new_password,
-      "confirm_password != new_password"
-    );
     if (confirm_password != new_password) {
       this.setState({
         error: {
@@ -43,7 +38,6 @@ class ResetPassword extends React.Component {
           validation: "Password and confirm password doesn't match!",
         },
       });
-      console.log("error page");
       return false;
     }
     const { token } = this.state;
@@ -82,13 +76,9 @@ class ResetPassword extends React.Component {
   }
   render() {
     const { error, istokenvalid, showinfo } = this.state;
-    console.log(error, typeof error, "error");
 
-    Object.keys(error).map((err) => {
-      console.log("error", error[err]);
-    });
     return (
-      <LayoutGuest>
+      <Layout type="guest">
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid ">
@@ -200,7 +190,7 @@ class ResetPassword extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutGuest>
+      </Layout>
     );
   }
 }

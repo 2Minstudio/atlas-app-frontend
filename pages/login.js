@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Router, { withRouter } from "next/router";
 import Logo from "../components/common/logo/logo";
-import LayoutGuest from "../components/layout/layoutGuest";
+import Layout from "../components/layout/index";
 import styles from "../styles/Home.module.css";
 import { isLoggedin, isClientLoggedin } from "../helpers/helper";
 import Toast from "react-bootstrap/Toast";
@@ -43,7 +43,6 @@ class Login extends React.Component {
 
     const response = await fetch("/api/login", options);
     const result = await response.json();
-    console.log("Login", result);
     if (!result.state) {
       const error = {};
       Object.keys(result.data).map((key) => {
@@ -58,7 +57,7 @@ class Login extends React.Component {
   render() {
     const { error } = this.state;
     return (
-      <LayoutGuest>
+      <Layout type="guest">
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid">
@@ -185,7 +184,7 @@ class Login extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutGuest>
+      </Layout>
     );
   }
 }

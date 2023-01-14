@@ -1,7 +1,7 @@
 import axios from "axios";
-import cookie from "cookie";
 import { redirect } from "next/dist/server/api-utils";
 import Router from "next/router";
+import Cookies from "cookies";
 // import Cookies
 const isLoggedin = async (req) => {
   const cookies =
@@ -22,7 +22,6 @@ const isClientLoggedin = (props) => {
 };
 
 const verifyToken = async (token) => {
-  console.log("verify token, ", token);
   if (!token) return false;
   const url = `${process.env.API_URL}/api/password_reset/validate_token/`;
   const data = {
@@ -55,7 +54,6 @@ const verifyToken = async (token) => {
 const Logout = async () => {
   const url = `/api/logout`;
 
-  console.log("logout", url);
   return await axios({
     method: "get",
     url: url,
@@ -67,7 +65,6 @@ const Logout = async () => {
       const {
         data: { state },
       } = response;
-      console.log("route push", Router.pathname);
       if (Router.pathname == "/") Router.push("/login");
       else Router.push("/");
       // redirect(301,'/');
@@ -102,6 +99,7 @@ const getUser = async (token) => {
       if (data?.data?.action == "force_logout") {
         console.log("Logout ?", data?.data?.action);
         // Logout();
+        // Cookies.remove('atlastoken');
       }
       // console.log(data, "it is data");
       return data;

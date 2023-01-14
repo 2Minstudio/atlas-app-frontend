@@ -1,11 +1,11 @@
 import styles from "../styles/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import LayoutUser from "../components/layout/layoutUser";
+import Layout from "../components/layout/index";
 
 export default function FinalCongratulations() {
   return (
-    <LayoutUser>
+    <Layout type="user">
       <div className={styles}>
         <main className={styles.main}>
           <div className="container-fluid bg-light p-4 p-sm-5">
@@ -38,6 +38,6 @@ export default function FinalCongratulations() {
           </div>
         </main>
       </div>
-    </LayoutUser>
+    </Layout>
   );
 }

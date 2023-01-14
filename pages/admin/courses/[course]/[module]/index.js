@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import LayoutAdminDashboard from "../../../../../components/layout/layoutAdminDashboard";
+import LayoutAdminDashboard from "../../../../../components/layout/adminDashboard";
 import { isClientLoggedin, getUser } from "../../../../../helpers/helper";
 import {
   getCourse,
@@ -12,7 +12,7 @@ import {
   deleteChapter,
 } from "../../../../../helpers/admin";
 import { withCookies } from "react-cookie";
-import { withRouter } from "next/router";
+import Router, { withRouter } from "next/router";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
@@ -21,6 +21,7 @@ import ChapterForm from "../../../../../components/form/chapter";
 import CourseInfo from "../../../../../components/detail/course";
 import ModuleInfo from "../../../../../components/detail/module";
 import ConfirmBox from "../../../../../components/modal/confirm";
+import ToolTip from "../../../../../components/common/toolTip";
 class ModuleDetails extends React.Component {
   state = {
     user: {},
@@ -46,7 +47,6 @@ class ModuleDetails extends React.Component {
 
   async componentDidMount() {
     const token = isClientLoggedin(this.props);
-    console.log("???", this.props?.router);
     const {
       router: {
         query: { course: courseid, module: moduleid },
@@ -217,7 +217,11 @@ class ModuleDetails extends React.Component {
                         <Link
                           href={`/admin/courses/${courseid}/${moduleid}/${d.id}`}
                         >
-                          <Button size="sm">View</Button>
+                          <ToolTip
+                            label={"view"}
+                            size={"sm"}
+                            tipMessage={"Click here to view Chapter details"}
+                          />
                         </Link>
                       </Stack>
                     </td>

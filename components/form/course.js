@@ -2,8 +2,8 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { createCourse, getCourse, updateCourse } from "../../helpers/admin";
-import { Col, Row } from "react-bootstrap";
-
+import { Alert, Col, Row, Image } from "react-bootstrap";
+import AutoHideAlert from "../common/autoHideAlert";
 class CourseForm extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +17,8 @@ class CourseForm extends React.Component {
       status: "0",
       submited: false,
       image: "",
+      previouseImage: "",
+      showSuccess: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -45,7 +47,7 @@ class CourseForm extends React.Component {
   async handleSubmit() {
     // event
     const { closeTrigger } = this.props;
-    this.setState({ submited: true });
+    this.setState({ submited: true, errors: {} });
     // event.preventDefault();
     // event.stopPropagation();
     const { id } = this.props;
@@ -53,24 +55,26 @@ class CourseForm extends React.Component {
     if (id) {
       await updateCourse(this.state).then((resp) => {
         const { status, data } = resp;
-        if (status) closeTrigger();
-        else {
+        if (status) {
+          //show alert on success then trigger this close
+          this.setState({ showSuccess: true });
+        } else {
           console.log(data, "update error");
           this.setState({ error: data });
         }
-        this.setState({ submited: false });
       });
     } else {
       await createCourse(this.state).then((resp) => {
         const { status, data } = resp;
-        if (status) closeTrigger();
-        else {
+        if (status) {
+          this.setState({ showSuccess: true });
+        } else {
           console.log(data, "create error");
           this.setState({ error: data });
         }
-        this.setState({ submited: false });
       });
     }
+    this.setState({ submited: false });
   }
 
   async componentDidMount() {
@@ -79,7 +83,8 @@ class CourseForm extends React.Component {
       this.setState({ create: false });
       const { data, state } = await getCourse(id);
       if (state) {
-        this.setState({ ...data });
+        const { image: previouseImage } = data;
+        this.setState({ ...data, previouseImage });
       }
       console.log("Edit mode ", id, data);
     }
@@ -100,10 +105,28 @@ class CourseForm extends React.Component {
   };
 
   render() {
-    const { name, description, image, notes, cost, status, submited, create } =
-      this.state;
+    const {
+      name,
+      description,
+      image,
+      notes,
+      cost,
+      status,
+      submited,
+      create,
+      errors,
+      previouseImage,
+      showSuccess,
+    } = this.state;
+    const { closeTrigger } = this.props;
     return (
       <Form onSubmit={this.handleSubmit}>
+        {showSuccess && (
+          <AutoHideAlert
+            message={`Course ${create ? "created" : "updated"} successfully!`}
+            onClose={closeTrigger}
+          />
+        )}
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -114,6 +137,7 @@ class CourseForm extends React.Component {
             value={name}
             onChange={this.handleChange}
           />
+          {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Description</Form.Label>
@@ -125,6 +149,9 @@ class CourseForm extends React.Component {
             value={description}
             onChange={this.handleChange}
           />
+          {errors?.description && (
+            <Alert variant={"danger"}>{errors.description}</Alert>
+          )}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Course Image</Form.Label>
@@ -135,6 +162,12 @@ class CourseForm extends React.Component {
             accept="image/png, image/jpeg"
             onChange={this.handleImageChange}
           />
+          {previouseImage && (
+            <>
+              <Image alt="course cover" thumbnail={true} src={previouseImage}></Image>
+            </>
+          )}
+          {errors?.image && <Alert variant={"danger"}>{errors.image}</Alert>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Notes</Form.Label>
@@ -146,6 +179,7 @@ class CourseForm extends React.Component {
             value={notes}
             onChange={this.handleChange}
           />
+          {errors?.notes && <Alert variant={"danger"}>{errors.notes}</Alert>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Cost</Form.Label>
@@ -157,6 +191,7 @@ class CourseForm extends React.Component {
             value={cost}
             onChange={this.handleChange}
           />
+          {errors?.cost && <Alert variant={"danger"}>{errors.cost}</Alert>}
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -172,13 +207,17 @@ class CourseForm extends React.Component {
             <Col xs="auto">
               <Button
                 variant="success"
+                disabled={submited}
                 onClick={() => this.setStatusAction("draft")}
               >
                 Save as Draft
               </Button>{" "}
             </Col>
             <Col xs="auto">
-              <Button onClick={() => this.setStatusAction("publish")}>
+              <Button
+                disabled={submited}
+                onClick={() => this.setStatusAction("publish")}
+              >
                 Publish
               </Button>
             </Col>

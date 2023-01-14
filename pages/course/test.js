@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import LayoutUser from "../../components/layout/layoutUser";
+import Layout from "../../components/layout/index";
 import styles from "../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
@@ -29,7 +29,7 @@ class Test extends React.Component {
   render() {
     const { user } = this.state;
     return (
-      <LayoutUser user={user}>
+      <Layout type="user" user={user}>
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-light p-5">
@@ -130,7 +130,7 @@ class Test extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutUser>
+      </Layout>
     );
   }
 }

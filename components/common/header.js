@@ -12,7 +12,6 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const Header = (props) => {
   const { user = {} } = props;
-  console.log(user, "user");
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Container className=' my-5 border-radius-60 pb-2 mb-4 border p-2 border-opacity-10 shadow-sm bg-white'>

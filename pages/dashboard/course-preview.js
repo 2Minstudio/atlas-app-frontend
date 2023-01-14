@@ -5,7 +5,7 @@ import { withCookies } from "react-cookie";
 import { isClientLoggedin, getUser } from "../../helpers/helper";
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
-import LayoutDashboard from "../../components/layout/layoutDashboard";
+import Layout from "../../components/layout/index";
 
 class DashboardCoursePreview extends React.Component {
   state = {
@@ -28,7 +28,7 @@ class DashboardCoursePreview extends React.Component {
   render() {
     const { user } = this.state;
     return (
-      <LayoutDashboard user={user}>
+      <Layout type="dashboard" user={user}>
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-grey">
@@ -237,7 +237,7 @@ class DashboardCoursePreview extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutDashboard>
+      </Layout>
     );
   }
 }

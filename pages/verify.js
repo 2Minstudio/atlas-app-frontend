@@ -1,5 +1,5 @@
 import Image from "next/image";
-import LayoutGuest from "../components/layout/layoutGuest";
+import Layout from "../components/layout/index";
 import styles from "../styles/Home.module.css";
 import React from "react";
 import { withCookies } from "react-cookie";
@@ -50,7 +50,7 @@ class Verify extends React.Component {
     const { resent } = this.state;
 
     return (
-      <LayoutGuest>
+      <Layout type="guest">
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid">
@@ -132,7 +132,7 @@ class Verify extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutGuest>
+      </Layout>
     );
   }
 }
@@ -158,7 +158,6 @@ Verify.getInitialProps = async (ctx) => {
   if (code && email) {
     verifystatus = await verifyCode(code, email);
   }
-  console.log(verifystatus);
   return { token: token, verifystatus: verifystatus };
 };
 

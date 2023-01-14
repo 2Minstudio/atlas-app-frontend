@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/Home.module.css";
-import LayoutUser from "../../components/layout/layoutUser";
+import Layout from "../../components/layout/index";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
 import { isLoggedin, isClientLoggedin, getUser } from "../../helpers/helper";
@@ -27,7 +27,7 @@ class Payment extends React.Component {
   render() {
     const { user } = this.state;
     return (
-      <LayoutUser user={user}>
+      <Layout type="User" user={user}>
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-light py-5">
@@ -137,7 +137,7 @@ class Payment extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutUser>
+      </Layout>
     );
   }
 }

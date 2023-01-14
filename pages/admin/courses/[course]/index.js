@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import LayoutAdminDashboard from "../../../../components/layout/layoutAdminDashboard";
+import LayoutAdminDashboard from "../../../../components/layout/adminDashboard";
 import { isClientLoggedin, getUser } from "../../../../helpers/helper";
 import {
   deleteModule,
@@ -11,7 +11,7 @@ import {
   getCourseModules,
 } from "../../../../helpers/admin";
 import { withCookies } from "react-cookie";
-import { withRouter } from "next/router";
+import Router, { withRouter } from "next/router";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
@@ -20,6 +20,7 @@ import ModuleForm from "../../../../components/form/module";
 import Image from "next/image";
 import CourseInfo from "../../../../components/detail/course";
 import ConfirmBox from "../../../../components/modal/confirm";
+import ToolTip from "../../../../components/common/toolTip";
 
 class CourseDetail extends React.Component {
   state = {
@@ -190,7 +191,13 @@ class CourseDetail extends React.Component {
                         </Button>
                         <div className="vr" />
                         <Link href={`/admin/courses/${courseid}/${d.id}`}>
-                          <Button size="sm">View</Button>
+                          <ToolTip
+                            label={"view"}
+                            size={"sm"}
+                            tipMessage={
+                              "Click here to view Module details & manage chapters"
+                            }
+                          />
                         </Link>
                       </Stack>
                     </td>

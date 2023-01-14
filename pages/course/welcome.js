@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import LayoutUser from "../../components/layout/layoutUser";
+import Layout from "../../components/layout/index";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 import Router, { withRouter } from "next/router";
@@ -38,7 +38,7 @@ class CourseWelcome extends React.Component {
     const { user } = this.state;
     const { first_name } = user;
     return (
-      <LayoutUser user={user}>
+      <Layout type="user" user={user}>
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-light p-2 p-sm-3 p-md-5">
@@ -149,7 +149,7 @@ class CourseWelcome extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutUser>
+      </Layout>
     );
   }
 }

@@ -7,7 +7,6 @@ export default function ConfirmBox({
   cancelText = "Cancel",
   cancelAction,
 }) {
-  console.log();
   return (
     <Modal
       size="sm"

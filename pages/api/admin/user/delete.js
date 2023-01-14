@@ -10,8 +10,8 @@ export default async function handler(req, res) {
   } = req;
 
   await axios({
-    method: "get",
-    url: `${process.env.API_URL}/api/chapter/${id}/`,
+    method: "delete",
+    url: `${process.env.API_URL}/api/user/${id}/`,
     headers: {
       Authorization: `Token ${token}`,
       "Content-Type": "application/json",
