@@ -463,7 +463,78 @@ const getUsers = async () => {
       } = error;
       return data;
     });
-}
+};
+
+const getUser = async (id) => {
+  return axios
+    .post("/api/admin/user/get", { id: id })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
+const updateUser = async (data) => {
+  return axios
+    .post("/api/admin/user/update", data, {
+      "Content-Type": "application/json",
+    })
+    .then((response) => {
+      const {
+        data: { data, state },
+      } = response;
+      return { data, status: state };
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return { data, status: false };
+    });
+};
+
+const deleteUser = async (id) => {
+  return axios
+    .post("/api/admin/user/delete", { id: id })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
+const getRoles = async () => {
+  return axios
+    .post("/api/admin/user/roles")
+    .then((response) => {
+      const {
+        data,
+      } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
 export {
   getCourses,
   getCourse,
@@ -481,4 +552,8 @@ export {
   updateChapter,
   deleteChapter,
   getUsers,
+  getUser,
+  updateUser,
+  deleteUser,
+  getRoles,
 };

@@ -1,23 +1,16 @@
 import axios from "axios";
 
+
 export default async function handler(req, res) {
   let state = false;
   let resp = {};
-  // const { name, id, attend_type, status } = req.body;
   const {
     cookies: { atlastoken: token },
-    body: { id, first_name, email, groups, phone_number },
   } = req;
 
   await axios({
-    method: "patch",
-    url: `${process.env.API_URL}/api/user/${id}/`,
-    data: {
-      first_name,
-      email,
-      groups: groups.split(""),
-      phone_number,
-    },
+    method: "get",
+    url: `${process.env.API_URL}/api/roles/`,
     headers: {
       Authorization: `Token ${token}`,
       "Content-Type": "application/json",
