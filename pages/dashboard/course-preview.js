@@ -4,6 +4,7 @@ import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
 import { isClientLoggedin, getUser } from "../../helpers/helper";
 import React from "react";
+import Accordion from "react-bootstrap/Accordion";
 import LayoutDashboard from "../../components/layout/layoutDashboard";
 
 class DashboardCoursePreview extends React.Component {
@@ -60,7 +61,7 @@ class DashboardCoursePreview extends React.Component {
                     </div>
                   </div>
 
-                  <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
+                  <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-top-25 rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
                     <div className="row">
                       <p className="pb-4">&nbsp;</p>
                       <div className="col-4">
@@ -104,62 +105,30 @@ class DashboardCoursePreview extends React.Component {
 
                     <div className="row">
                       <h5 className="pt-4">Lessons</h5>
-                      <div className="col col-md-6 col-lg-7 d-flex align-items-center">
-                        <div className="p-2 flex-fill">
-                          <div className="row d-flex align-items-center">
-                            <div className="col-2 pt-2 g-0">
-                              <Image
-                                className="img-fluid"
-                                alt="Doctor Image"
-                                src="/image/dashboard/modules.jpg"
-                                height="87"
-                                width="75"
-                              />
-                            </div>
-                            <div className="col-10">
-                              <p className="text-left m-0"> Back Pain</p>
-                              <h6 className="text-black-50">
-                                Lesson 4 . 11 min
-                              </h6>
-                            </div>
-                          </div>
-
-                          <div className="row d-flex align-items-center border-bottom border-top">
-                            <div className="col-2 pt-2 g-0">
-                              <Image
-                                className="img-fluid"
-                                alt="Doctor Image"
-                                src="/image/dashboard/modules.jpg"
-                                height="87"
-                                width="75"
-                              />
-                            </div>
-                            <div className="col-10">
-                              <p className="text-left  m-0"> Skeleton System</p>
-                              <h6 className="text-black-50">
-                                Lesson 4 . 11 min
-                              </h6>
-                            </div>
-                          </div>
-
-                          <div className="row d-flex align-items-center ">
-                            <div className="col-2 pt-2 g-0">
-                              <Image
-                                className="img-fluid"
-                                alt="Doctor Image"
-                                src="/image/dashboard/modules.jpg"
-                                height="87"
-                                width="75"
-                              />
-                            </div>
-                            <div className="col-10">
-                              <p className="text-left m-0"> Best Practices</p>
-                              <h6 className="text-black-50">
-                                Lesson 4 . 11 min
-                              </h6>
-                            </div>
-                          </div>
-                        </div>
+                      <div className="col col-md-6 col-lg-7">
+                        <Accordion defaultActiveKey="0">
+                          <Accordion.Item eventKey="0">
+                            <Accordion.Header>Back Pain</Accordion.Header>
+                            <Accordion.Body>
+                              <p>Lesson 1 . 11 min</p>
+                              <p>Lesson 2 . 24 min</p>
+                            </Accordion.Body>
+                          </Accordion.Item>
+                          <Accordion.Item eventKey="1">
+                            <Accordion.Header>Skeleton System</Accordion.Header>
+                            <Accordion.Body>
+                              <p>Lesson 1 . 11 min</p>
+                              <p>Lesson 2 . 24 min</p>
+                            </Accordion.Body>
+                          </Accordion.Item>
+                          <Accordion.Item eventKey="2">
+                            <Accordion.Header>Best Practices</Accordion.Header>
+                            <Accordion.Body>
+                              <p>Lesson 1 . 11 min</p>
+                              <p>Lesson 2 . 24 min</p>
+                            </Accordion.Body>
+                          </Accordion.Item>
+                        </Accordion>
                       </div>
                       <div className="col col-md-6 col-lg-5">
                         <h3 className="text-success text-center"> </h3>

@@ -16,18 +16,18 @@ export default function LayoutAdminDashboard({ children, user = {}, paths = {} }
         <meta name="description" content={config.siteDescription} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body>
+      <body className="bg-light">
         <Header user={user} />
         <Container>
           <Row>
-            <Col md={3}>
-              <Nav defaultActiveKey="/admin/admissions" className="flex-column">
-                <Nav.Link href="/admin/admissions">Admissions</Nav.Link>
-                <Nav.Link href="/admin/courses">Course</Nav.Link>
-                <Nav.Link href="/admin/users">Users</Nav.Link>
+            <Col md={2} className="dashboard-menu-box d-flex align-items-center g-0">
+              <Nav defaultActiveKey="/admin/admissions" className="flex-fill list-group">
+                <Nav.Link className="list-group-item" href="/admin/admissions">Admissions</Nav.Link>
+                <Nav.Link className="list-group-item" href="/admin/courses">Course</Nav.Link>
+                <Nav.Link  className="list-group-item " href="/admin/users">Users</Nav.Link>
               </Nav>
             </Col>
-            <Col>
+            <Col className="col-lg-10 bg-white rounded-top-25 rounded-bottom-25 p-sm-3 p-md-4 p-lg-5">
               {Object.keys(paths).length > 0 && (
                 <AdminBreadcrumb items={paths} />
               )}
