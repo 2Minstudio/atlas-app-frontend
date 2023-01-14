@@ -97,7 +97,8 @@ class ModuleForm extends React.Component {
       this.state;
     const { closeTrigger } = this.props;
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <div className="d-flex align-items-center justify-content-center bg-light">
+      <Form className="col-11" onSubmit={this.handleSubmit}>
         {showSuccess && (
           <AutoHideAlert
             message={`Module ${create ? "created" : "updated"} successfully!`}
@@ -105,7 +106,7 @@ class ModuleForm extends React.Component {
           />
         )}
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Name</Form.Label>
+          <Form.Label className="fw-bold">Name</Form.Label>
           <Form.Control
             required
             type="text"
@@ -118,7 +119,7 @@ class ModuleForm extends React.Component {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Attend Type</Form.Label>
+          <Form.Label className="fw-bold">Attend Type</Form.Label>
           <Form.Select
             value={attend_type}
             onChange={this.handleChange}
@@ -133,18 +134,18 @@ class ModuleForm extends React.Component {
           )}
         </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Row className="align-items-right">
+        <Form.Group className="mb-3 mt-4">
+          <Row className="d-flex align-items-center justify-content-center">
             <Col xs="auto">
-              <Button
-                variant="light"
+              <Button className="btn rounded-pill" size="lg"
+                variant="danger"
                 onClick={() => this.setStatusAction("cancel")}
               >
                 Cancel
               </Button>{" "}
             </Col>
             <Col xs="auto">
-              <Button
+              <Button className="btn rounded-pill" size="lg"
                 variant="success"
                 onClick={() => this.setStatusAction("draft")}
               >
@@ -152,7 +153,7 @@ class ModuleForm extends React.Component {
               </Button>{" "}
             </Col>
             <Col xs="auto">
-              <Button onClick={() => this.setStatusAction("publish")}>
+              <Button className="btn rounded-pill" size="lg" onClick={() => this.setStatusAction("publish")}>
                 Publish
               </Button>
             </Col>
@@ -183,6 +184,7 @@ class ModuleForm extends React.Component {
           {create ? "Create" : "Update"}
         </Button> */}
       </Form>
+      </div>
     );
   }
 }

@@ -120,7 +120,8 @@ class CourseForm extends React.Component {
     } = this.state;
     const { closeTrigger } = this.props;
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <div className="d-flex align-items-center justify-content-center bg-light">
+      <Form className="col-11" onSubmit={this.handleSubmit}>
         {showSuccess && (
           <AutoHideAlert
             message={`Course ${create ? "created" : "updated"} successfully!`}
@@ -128,7 +129,7 @@ class CourseForm extends React.Component {
           />
         )}
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Name</Form.Label>
+          <Form.Label className="fw-bold">Name</Form.Label>
           <Form.Control
             required
             type="text"
@@ -140,7 +141,7 @@ class CourseForm extends React.Component {
           {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Description</Form.Label>
+          <Form.Label className="fw-bold">Description</Form.Label>
           <Form.Control
             required
             as="textarea"
@@ -154,7 +155,7 @@ class CourseForm extends React.Component {
           )}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Course Image</Form.Label>
+          <Form.Label className="fw-bold">Course Image</Form.Label>
           <Form.Control
             type="file"
             name="image"
@@ -170,7 +171,7 @@ class CourseForm extends React.Component {
           {errors?.image && <Alert variant={"danger"}>{errors.image}</Alert>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Notes</Form.Label>
+          <Form.Label className="fw-bold">Notes</Form.Label>
           <Form.Control
             required
             as="textarea"
@@ -182,7 +183,7 @@ class CourseForm extends React.Component {
           {errors?.notes && <Alert variant={"danger"}>{errors.notes}</Alert>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Cost</Form.Label>
+          <Form.Label className="fw-bold">Cost</Form.Label>
           <Form.Control
             required
             type="number"
@@ -195,17 +196,19 @@ class CourseForm extends React.Component {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Row className="align-items-right">
+          <Row className="d-flex align-items-center justify-content-center">
             <Col xs="auto">
-              <Button
-                variant="light"
+              <Button className="btn rounded-pill"
+                variant="danger"
+                size="lg"
                 onClick={() => this.setStatusAction("cancel")}
               >
                 Cancel
               </Button>{" "}
             </Col>
             <Col xs="auto">
-              <Button
+              <Button className="btn rounded-pill"
+                size="lg"
                 variant="success"
                 disabled={submited}
                 onClick={() => this.setStatusAction("draft")}
@@ -214,7 +217,8 @@ class CourseForm extends React.Component {
               </Button>{" "}
             </Col>
             <Col xs="auto">
-              <Button
+              <Button className="btn rounded-pill"
+              size="lg"
                 disabled={submited}
                 onClick={() => this.setStatusAction("publish")}
               >
@@ -248,6 +252,7 @@ class CourseForm extends React.Component {
           {create ? "Create" : "Update"}
         </Button> */}
       </Form>
+      </div>
     );
   }
 }

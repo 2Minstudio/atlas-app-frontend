@@ -117,7 +117,8 @@ class ChapterForm extends React.Component {
     } = this.state;
     const { closeTrigger } = this.props;
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <div className="d-flex align-items-center justify-content-center bg-light">
+      <Form className="col-11" onSubmit={this.handleSubmit}>
         {showSuccess && (
           <AutoHideAlert
             message={`Chapter ${create ? "created" : "updated"} successfully!`}
@@ -125,7 +126,7 @@ class ChapterForm extends React.Component {
           />
         )}
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Name</Form.Label>
+          <Form.Label className="fw-bold">Name</Form.Label>
           <Form.Control
             required
             type="text"
@@ -137,7 +138,7 @@ class ChapterForm extends React.Component {
           {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Content</Form.Label>
+          <Form.Label className="fw-bold">Content</Form.Label>
           <Form.Control
             required
             as="textarea"
@@ -151,7 +152,7 @@ class ChapterForm extends React.Component {
           )}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Video</Form.Label>
+          <Form.Label className="fw-bold">Video</Form.Label>
           <Form.Control
             type="file"
             name="video"
@@ -174,7 +175,7 @@ class ChapterForm extends React.Component {
           {errors?.video && <Alert variant={"danger"}>{errors.video}</Alert>}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Meterial</Form.Label>
+          <Form.Label className="fw-bold">Meterial</Form.Label>
           <Form.Control
             type="file"
             name="meterial"
@@ -196,18 +197,18 @@ class ChapterForm extends React.Component {
           )}
         </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Row className="align-items-right">
+        <Form.Group className="mb-3 mt-4">
+          <Row className="d-flex align-items-center justify-content-center">
             <Col xs="auto">
-              <Button
-                variant="light"
+              <Button className="btn rounded-pill" size="lg"
+                variant="danger"
                 onClick={() => this.setStatusAction("cancel")}
               >
                 Cancel
               </Button>{" "}
             </Col>
             <Col xs="auto">
-              <Button
+              <Button className="btn rounded-pill" size="lg"
                 variant="success"
                 onClick={() => this.setStatusAction("draft")}
               >
@@ -215,7 +216,7 @@ class ChapterForm extends React.Component {
               </Button>{" "}
             </Col>
             <Col xs="auto">
-              <Button onClick={() => this.setStatusAction("publish")}>
+              <Button className="btn rounded-pill" size="lg" onClick={() => this.setStatusAction("publish")}>
                 Publish
               </Button>
             </Col>
@@ -246,6 +247,7 @@ class ChapterForm extends React.Component {
           {create ? "Create" : "Update"}
         </Button> */}
       </Form>
+      </div>
     );
   }
 }
