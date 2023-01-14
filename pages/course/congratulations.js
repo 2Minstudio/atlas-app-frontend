@@ -1,5 +1,5 @@
 import styles from "../../styles/Home.module.css";
-import LayoutUser from "../../components/layout/layoutUser";
+import Layout from "../../components/layout/index";
 import Router, { withRouter } from "next/router";
 import React from "react";
 import { withCookies } from "react-cookie";
@@ -27,7 +27,7 @@ class Congratulations extends React.Component {
   render() {
     const { user } = this.state;
     return (
-      <LayoutUser user={user}>
+      <Layout type="user" user={user}>
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-light p-5 winheight70">
@@ -60,7 +60,7 @@ class Congratulations extends React.Component {
             </div>
           </main>
         </div>
-      </LayoutUser>
+      </Layout>
     );
   }
 }
