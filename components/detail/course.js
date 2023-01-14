@@ -15,7 +15,7 @@ function CourseInfo({ course, showImage = false }) {
       </Card.Header>
       
       <Card.Body>
-      {showImage && <Image thumbnail={true} src={course?.image} />}
+      {showImage && <Image alt="course cover" thumbnail={true} src={course?.image} />}
         <Card.Text>{course?.description}</Card.Text>
       </Card.Body>
     </Card>

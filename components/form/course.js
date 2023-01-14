@@ -164,7 +164,7 @@ class CourseForm extends React.Component {
           />
           {previouseImage && (
             <>
-              <Image thumbnail={true} src={previouseImage}></Image>
+              <Image alt="course cover" thumbnail={true} src={previouseImage}></Image>
             </>
           )}
           {errors?.image && <Alert variant={"danger"}>{errors.image}</Alert>}
