@@ -47,7 +47,6 @@ class ModuleDetails extends React.Component {
 
   async componentDidMount() {
     const token = isClientLoggedin(this.props);
-    console.log("???", this.props?.router);
     const {
       router: {
         query: { course: courseid, module: moduleid },

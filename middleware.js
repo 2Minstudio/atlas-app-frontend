@@ -18,7 +18,6 @@ export async function middleware(request) {
     );
     // allow only session users
     if (userresp && userresp?.id) {
-      console.log(userresp, "userresp");
       const usergroups = userresp?.groups;
       // If admin path make sure they are super admin access exist
       if (request.nextUrl.pathname.startsWith("/admin")) {

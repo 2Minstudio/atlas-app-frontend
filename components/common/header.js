@@ -8,7 +8,6 @@ import { faUser, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 const Header = (props) => {
   const { user = {} } = props;
-  console.log(user, "user");
   return (
     <header className=" header bg-light pb-1">
       <div className="container pt-5">

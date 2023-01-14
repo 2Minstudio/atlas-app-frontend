@@ -43,7 +43,6 @@ class Login extends React.Component {
 
     const response = await fetch("/api/login", options);
     const result = await response.json();
-    console.log("Login", result);
     if (!result.state) {
       const error = {};
       Object.keys(result.data).map((key) => {

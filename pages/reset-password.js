@@ -31,11 +31,6 @@ class ResetPassword extends React.Component {
       confirm_password: { value: confirm_password },
       new_password: { value: new_password },
     } = event.target;
-    console.log(
-      confirm_password,
-      new_password,
-      "confirm_password != new_password"
-    );
     if (confirm_password != new_password) {
       this.setState({
         error: {
@@ -43,7 +38,6 @@ class ResetPassword extends React.Component {
           validation: "Password and confirm password doesn't match!",
         },
       });
-      console.log("error page");
       return false;
     }
     const { token } = this.state;
@@ -82,11 +76,7 @@ class ResetPassword extends React.Component {
   }
   render() {
     const { error, istokenvalid, showinfo } = this.state;
-    console.log(error, typeof error, "error");
 
-    Object.keys(error).map((err) => {
-      console.log("error", error[err]);
-    });
     return (
       <Layout type="guest">
         <div className={styles}>

@@ -84,7 +84,6 @@ class Users extends React.Component {
 
   render() {
     const { user, data,modelshow, editId, deleteId } = this.state;
-    console.log(data, "data");
     return (
       <LayoutAdminDashboard user={user}>
         <ConfirmBox

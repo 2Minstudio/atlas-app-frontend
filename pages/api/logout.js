@@ -18,7 +18,6 @@ export default async function handler(req, res) {
   })
     .then((response) => {
       const data = response.data;
-      console.log(data);
       state = true;
     })
     .catch((error) => {

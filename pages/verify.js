@@ -158,7 +158,6 @@ Verify.getInitialProps = async (ctx) => {
   if (code && email) {
     verifystatus = await verifyCode(code, email);
   }
-  console.log(verifystatus);
   return { token: token, verifystatus: verifystatus };
 };
 
