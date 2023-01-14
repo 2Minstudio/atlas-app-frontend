@@ -1,7 +1,7 @@
 import React from "react";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
-import LayoutAdminDashboard from "../../../components/layout/layoutAdminDashboard";
+import LayoutAdminDashboard from "../../../components/layout/adminDashboard";
 import { isClientLoggedin, getUser } from "../../../helpers/helper";
 
 class Admissions extends React.Component {

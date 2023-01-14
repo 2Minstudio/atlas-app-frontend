@@ -2,7 +2,7 @@ import React from "react";
 import { withCookies } from "react-cookie";
 import Router, { withRouter } from "next/router";
 import { isClientLoggedin, getUser } from "../../helpers/helper";
-import LayoutAdminDashboard from "../../components/layout/layoutAdminDashboard";
+import LayoutAdminDashboard from "../../components/layout/adminDashboard";
 class Admin extends React.Component {
   state = {
     user: {},

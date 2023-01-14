@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import LayoutAdminDashboard from "../../../../components/layout/layoutAdminDashboard";
+import LayoutAdminDashboard from "../../../../components/layout/adminDashboard";
 import { isClientLoggedin, getUser } from "../../../../helpers/helper";
 import {
   deleteModule,

@@ -1,5 +1,5 @@
 import React from "react";
-import LayoutAdminDashboard from "../../../../../../components/layout/layoutAdminDashboard";
+import LayoutAdminDashboard from "../../../../../../components/layout/adminDashboard";
 import { getUser, isClientLoggedin } from "../../../../../../helpers/helper";
 import { withCookies } from "react-cookie";
 import Router, { withRouter } from "next/router";

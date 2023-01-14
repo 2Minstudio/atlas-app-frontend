@@ -9,7 +9,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Link from "next/link";
 import Stack from "react-bootstrap/Stack";
-import LayoutAdminDashboard from "../../../components/layout/layoutAdminDashboard";
+import LayoutAdminDashboard from "../../../components/layout/adminDashboard";
 import { isClientLoggedin, getUser } from "../../../helpers/helper";
 import { getUsers } from "../../../helpers/admin";
 import ConfirmBox from "../../../components/modal/confirm";
