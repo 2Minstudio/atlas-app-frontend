@@ -9,7 +9,6 @@ import { config } from "../../config/config";
 import AdminBreadcrumb from "../breadcrumb/admin";
 import Router, { withRouter } from "next/router";
 function LayoutAdminDashboard(props) {
-  console.log(props, "propsprops");
   const {
     children,
     user = {},
