@@ -141,7 +141,7 @@ class UserForm extends React.Component {
           >
             <option>Select</option>
             {roles.map((role) => {
-              return <option value={role.id}>{role.name}</option>;
+              return <option key={rold.id} value={role.id}>{role.name}</option>;
             })}
           </Form.Select>
           {errors?.groups && <Alert variant={"danger"}>{errors.groups}</Alert>}
