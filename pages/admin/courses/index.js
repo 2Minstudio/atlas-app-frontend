@@ -119,7 +119,7 @@ class Courses extends React.Component {
               <th className="col-3">Name</th>
               <th className="col-2">Cost</th>
               <th className="col">Status</th>
-              <th className="col-4">UserActions</th>
+              <th className="col-4">Actions</th>
             </tr>
           </thead>
           <tbody>
