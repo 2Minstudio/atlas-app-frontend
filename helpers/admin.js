@@ -1,9 +1,9 @@
 import axios from "axios";
 import FormData from "form-data";
 
-const getCourses = async () => {
+const getCourses = async (page = 1) => {
   return axios
-    .post("/api/admin/course/getall")
+    .post("/api/admin/course/getall", { page: page })
     .then((response) => {
       const { data } = response;
       return data;
@@ -184,9 +184,9 @@ const deleteCourse = async (id) => {
 
 // Models
 
-const getCourseModules = async (cid) => {
+const getCourseModules = async (cid, page = 1) => {
   return axios
-    .post("/api/admin/module/getall", { course: cid })
+    .post("/api/admin/module/getall", { course: cid, page: page })
     .then((response) => {
       const { data } = response;
       return data;
@@ -275,9 +275,9 @@ const deleteModule = async (id) => {
 };
 
 // Chapter
-const getModelChapters = async (mid) => {
+const getModelChapters = async (mid, page = 1) => {
   return axios
-    .post("/api/admin/chapter/getall", { module: mid })
+    .post("/api/admin/chapter/getall", { module: mid, page: page })
     .then((response) => {
       const { data } = response;
       return data;
@@ -449,9 +449,9 @@ const deleteChapter = async (id) => {
     });
 };
 
-const getUsers = async () => {
+const getUsers = async (page=1) => {
   return axios
-    .post("/api/admin/user/getall")
+    .post("/api/admin/user/getall",{page:page})
     .then((response) => {
       const { data } = response;
       return data;
@@ -521,9 +521,7 @@ const getRoles = async () => {
   return axios
     .post("/api/admin/user/roles")
     .then((response) => {
-      const {
-        data,
-      } = response;
+      const { data } = response;
       return data;
     })
     .catch((error) => {
