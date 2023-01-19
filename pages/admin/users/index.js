@@ -15,6 +15,7 @@ import { getUsers, getRoles, deleteUser } from "../../../helpers/admin";
 import ConfirmBox from "../../../components/modal/confirm";
 import ToolTip from "../../../components/common/toolTip";
 import UserForm from "../../../components/form/user";
+import DataList from "../../../components/datalist";
 
 class Users extends React.Component {
   state = {
@@ -25,7 +26,7 @@ class Users extends React.Component {
     roles: {},
   };
 
-  loaddata = async () => {
+  loaddata = async (page = 1) => {
     const { data, state } = await getUsers();
     const {
       data: { results: roles },
@@ -97,6 +98,11 @@ class Users extends React.Component {
 
   render() {
     const { user, data, modelshow, editId, deleteId, roles } = this.state;
+    const roles_obj = {};
+    for (let k in roles) {
+      roles_obj[roles[k].id] = roles[k].name;
+    }
+
     return (
       <LayoutAdminDashboard user={user}>
         <ConfirmBox
@@ -123,50 +129,34 @@ class Users extends React.Component {
             />
           </Modal.Body>
         </Modal>
-        <Table responsive="sm">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Role</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data?.results?.map((d) => {
-              return (
-                <>
-                  <tr>
-                    <td>{d.id}</td>
-                    <td>{d.first_name}</td>
-                    <td>{d.email}</td>
-                    <td>{d.phone_number}</td>
-                    <td>{this.getGroupName(d.groups)}</td>
-                    <td>
-                      <Stack direction="horizontal" gap={0}>
-                        <Button size="sm" onClick={() => this.edit(d.id)}>
-                          Edit
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="danger"
-                          onClick={() => this.deleteConfirm(d.id)}
-                        >
-                          Delete
-                        </Button>
-                      </Stack>
-                    </td>
-                  </tr>
-                </>
-              );
-            })}
-          </tbody>
-          <tfoot>
-            <Pagination></Pagination>
-          </tfoot>
-        </Table>
+        <DataList
+          data={data}
+          headings={[
+            { id: "#" },
+            { first_name: "Name" },
+            { email: "Email" },
+            { phone_number: "Phone Number" },
+            { groups: "Role" },
+          ]}
+          pagecallback={this.loaddata}
+          sourcemapper={{ groups: roles_obj }}
+          buttons={[
+            {
+              type: "button",
+              label: "Edit",
+              onclick: this.edit,
+              variant: "primary",
+              key: "id",
+            },
+            {
+              type: "button",
+              label: "Delete",
+              onclick: this.deleteConfirm,
+              variant: "danger",
+              key: "id",
+            },
+          ]}
+        />
       </LayoutAdminDashboard>
     );
   }

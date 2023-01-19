@@ -113,14 +113,13 @@ class Courses extends React.Component {
           </Modal.Body>
         </Modal>
         <DataList
-          data={data?.results}
+          data={data}
           headings={[
             { id: "#" },
             { name: "Name" },
             { cost: "Cost" },
             { status: "Status" },
           ]}
-          pagination={data?.pagination}
           pagecallback={this.loaddata}
           sourcemapper={{ status: { true: "Published", false: "Draft" } }}
           buttons={[
