@@ -1,6 +1,4 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
-import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import LayoutAdminDashboard from "../../../../../components/layout/adminDashboard";
@@ -15,13 +13,11 @@ import { withCookies } from "react-cookie";
 import Router, { withRouter } from "next/router";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Stack from "react-bootstrap/Stack";
-import Link from "next/link";
 import ChapterForm from "../../../../../components/form/chapter";
 import CourseInfo from "../../../../../components/detail/course";
 import ModuleInfo from "../../../../../components/detail/module";
 import ConfirmBox from "../../../../../components/modal/confirm";
-import ToolTip from "../../../../../components/common/toolTip";
+import DataList from "../../../../../components/datalist";
 class ModuleDetails extends React.Component {
   state = {
     user: {},
@@ -32,17 +28,20 @@ class ModuleDetails extends React.Component {
     moduleid: null,
   };
 
-  loadData = async (courseid, moduleid) => {
-    await getCourse(courseid).then(async (courseresp) => {
-      const { data: course } = courseresp;
-      await getModule(moduleid).then(async (moduleresp) => {
-        const { data: module } = moduleresp;
-        await getModelChapters(moduleid).then((resp) => {
-          const { data } = resp;
-          this.setState({ data, module, course });
+  loadData = async (page = 1) => {
+    const { courseid, moduleid } = this.state;
+    if (courseid && moduleid) {
+      await getCourse(courseid).then(async (courseresp) => {
+        const { data: course } = courseresp;
+        await getModule(moduleid).then(async (moduleresp) => {
+          const { data: module } = moduleresp;
+          await getModelChapters(moduleid, page).then((resp) => {
+            const { data } = resp;
+            this.setState({ data, module, course });
+          });
         });
       });
-    });
+    }
   };
 
   async componentDidMount() {
@@ -59,7 +58,7 @@ class ModuleDetails extends React.Component {
       } = await getUser(token);
       if (state) {
         this.setState({ user, courseid, moduleid }, async () => {
-          if (courseid) await this.loadData(courseid, moduleid);
+          if (courseid) await this.loadData();
         });
       }
     } else {
@@ -71,9 +70,8 @@ class ModuleDetails extends React.Component {
   };
 
   handleClose = () => {
-    const { courseid, moduleid } = this.state;
     this.setState({ modelshow: false, editId: null }, () => {
-      this.loadData(courseid, moduleid);
+      this.loadData();
     });
   };
 
@@ -86,12 +84,12 @@ class ModuleDetails extends React.Component {
   };
 
   delete = async () => {
-    const { deleteId, courseid, moduleid } = this.state;
+    const { deleteId } = this.state;
     await deleteChapter(deleteId).then(async (resp) => {
       const { state, data } = resp;
       if (state) {
         this.setState({ deleteId: null });
-        await this.loadData(courseid, moduleid);
+        await this.loadData();
       }
     });
   };
@@ -112,7 +110,7 @@ class ModuleDetails extends React.Component {
       prevState.courseid !== this.state.courseid &&
       prevState.moduleid !== this.state.moduleid
     ) {
-      this.loadData(this.state.courseid, this.state.moduleid);
+      this.loadData();
     }
   }
 
@@ -165,7 +163,11 @@ class ModuleDetails extends React.Component {
             <h2>Chapters</h2>
           </Col>
           <Col className="text-end">
-            <Button className="btn btn-success rounded-pill p-3 me-3" variant="success" onClick={this.handleShow}>
+            <Button
+              className="btn btn-success rounded-pill p-3 me-3"
+              variant="success"
+              onClick={this.handleShow}
+            >
               Add New Chapter
             </Button>
           </Col>
@@ -183,54 +185,40 @@ class ModuleDetails extends React.Component {
             />
           </Modal.Body>
         </Modal>
-        <Table responsive="sm">
-          <thead>
-            <tr>
-              <th className="col">#</th>
-              <th className="col-3">Name</th>
-              <th className="col-4">Status</th>
-              <th className="col-4">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data?.results.map((d) => {
-              return (
-                <>
-                  <tr>
-                    <td className="py-3">{d.id}</td>
-                    <td className="py-3">{d.name}</td>
-                    <td className="py-3">{d.status ? "Published" : "Draft"}</td>
-                    <td className="py-3">
-                      <Stack className="d-flex justify-content-start align-items-center" direction="horizontal" gap={3}>
-                        <Button className="btn btn-info rounded-pill px-3" size="md" onClick={() => this.edit(d.id)}>
-                          Edit
-                        </Button>
-                        
-                        <Button className="btn rounded-pill px-3"
-                          size="md"
-                          variant="danger"
-                          onClick={() => this.deleteConfirm(d.id)}
-                        >
-                          Delete
-                        </Button>
-                        
-                        <Link
-                          href={`/admin/courses/${courseid}/${moduleid}/${d.id}`}
-                        >
-                          <Button className="btn rounded-pill px-3" size="md">View</Button>
-                          
-                        </Link>
-                      </Stack>
-                    </td>
-                  </tr>
-                </>
-              );
-            })}
-          </tbody>
-          <tfoot>
-            <Pagination></Pagination>
-          </tfoot>
-        </Table>
+        <DataList
+          data={data}
+          headings={[
+            { id: "#" },
+            { name: "Name" },
+            { cost: "Cost" },
+            { status: "Status" },
+          ]}
+          pagecallback={this.loaddata}
+          sourcemapper={{ status: { true: "Published", false: "Draft" } }}
+          buttons={[
+            {
+              type: "button",
+              label: "Edit",
+              onclick: this.edit,
+              variant: "primary",
+              key: "id",
+            },
+            {
+              type: "button",
+              label: "Delete",
+              onclick: this.deleteConfirm,
+              variant: "danger",
+              key: "id",
+            },
+            {
+              type: "link",
+              label: "View",
+              link: `/admin/courses/${courseid}/${moduleid}/$id`,
+              variant: "primary",
+              replacetokens: { $id: "id" },
+            },
+          ]}
+        />
       </LayoutAdminDashboard>
     );
   }

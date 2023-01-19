@@ -1,6 +1,4 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
-import Pagination from "react-bootstrap/Pagination";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import LayoutAdminDashboard from "../../../../components/layout/adminDashboard";
@@ -14,13 +12,11 @@ import { withCookies } from "react-cookie";
 import Router, { withRouter } from "next/router";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Stack from "react-bootstrap/Stack";
-import Link from "next/link";
+
 import ModuleForm from "../../../../components/form/module";
-import Image from "next/image";
 import CourseInfo from "../../../../components/detail/course";
 import ConfirmBox from "../../../../components/modal/confirm";
-import ToolTip from "../../../../components/common/toolTip";
+import DataList from "../../../../components/datalist";
 
 class CourseDetail extends React.Component {
   state = {
@@ -31,14 +27,17 @@ class CourseDetail extends React.Component {
     courseid: null,
   };
 
-  loadData = async (courseid) => {
-    await getCourse(courseid).then(async (courseresp) => {
-      const { data: course } = courseresp;
-      await getCourseModules(courseid).then((resp) => {
-        const { data } = resp;
-        this.setState({ data, course });
+  loadData = async (page = 1) => {
+    const { courseid } = this.state;
+    if (courseid) {
+      await getCourse(courseid).then(async (courseresp) => {
+        const { data: course } = courseresp;
+        await getCourseModules(courseid, page).then((resp) => {
+          const { data } = resp;
+          this.setState({ data, course });
+        });
       });
-    });
+    }
   };
 
   async componentDidMount() {
@@ -56,8 +55,8 @@ class CourseDetail extends React.Component {
         data: { user },
       } = await getUser(token);
       if (state) {
-        this.setState({ user }, async () => {
-          if (courseid) await this.loadData(courseid);
+        this.setState({ user, courseid }, async () => {
+          if (courseid) await this.loadData();
         });
       }
     } else {
@@ -70,9 +69,8 @@ class CourseDetail extends React.Component {
   };
 
   handleClose = () => {
-    const { courseid } = this.state;
     this.setState({ modelshow: false, editId: null }, () => {
-      this.loadData(courseid);
+      this.loadData();
     });
   };
 
@@ -85,12 +83,12 @@ class CourseDetail extends React.Component {
   };
 
   delete = async () => {
-    const { deleteId, courseid } = this.state;
+    const { deleteId } = this.state;
     await deleteModule(deleteId).then(async (resp) => {
       const { state, data } = resp;
       if (state) {
         this.setState({ deleteId: null });
-        await this.loadData(courseid);
+        await this.loadData();
       }
     });
   };
@@ -108,7 +106,7 @@ class CourseDetail extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.courseid !== this.state.courseid) {
-      this.loadData(this.state.courseid);
+      this.loadData();
     }
   }
 
@@ -140,7 +138,11 @@ class CourseDetail extends React.Component {
             <h2>Modules</h2>
           </Col>
           <Col className="text-end">
-            <Button className="btn btn-success rounded-pill p-3 me-3" variant="success" onClick={this.handleShow}>
+            <Button
+              className="btn btn-success rounded-pill p-3 me-3"
+              variant="success"
+              onClick={this.handleShow}
+            >
               Add New Module
             </Button>
           </Col>
@@ -157,53 +159,40 @@ class CourseDetail extends React.Component {
             />
           </Modal.Body>
         </Modal>
-        <Table responsive="sm">
-          <thead>
-            <tr>
-              <th className="col">#</th>
-              <th className="col-3">Name</th>
-              <th className="col-2">Type</th>
-              <th className="col">Status</th>
-              <th className="col-4">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data?.results.map((d) => {
-              return (
-                <>
-                  <tr>
-                    <td className="py-3">{d.id}</td>
-                    <td className="py-3">{d.name}</td>
-                    <td className="py-3">{d.attend_type}</td>
-                    <td className="py-3">{d.status ? "Published" : "Draft"}</td>
-                    <td>
-                      <Stack className="d-flex justify-content-start align-items-center" direction="horizontal" gap={3}>
-                        <Button className="btn btn-info rounded-pill px-3" size="md" onClick={() => this.edit(d.id)}>
-                          Edit
-                        </Button>
-                        
-                        <Button className="btn rounded-pill px-3"
-                          size="md"
-                          variant="danger"
-                          onClick={() => this.deleteConfirm(d.id)}
-                        >
-                          Delete
-                        </Button>
-                       
-                        <Link href={`/admin/courses/${courseid}/${d.id}`}>
-                        <Button className="btn rounded-pill px-3" size="md">View</Button>
-                        </Link>
-                      </Stack>
-                    </td>
-                  </tr>
-                </>
-              );
-            })}
-          </tbody>
-          <tfoot>
-            <Pagination></Pagination>
-          </tfoot>
-        </Table>
+        <DataList
+          data={data}
+          headings={[
+            { id: "#" },
+            { name: "Name" },
+            { attend_type: "Type" },
+            { status: "Status" },
+          ]}
+          pagecallback={this.loaddata}
+          sourcemapper={{ status: { true: "Published", false: "Draft" } }}
+          buttons={[
+            {
+              type: "button",
+              label: "Edit",
+              onclick: this.edit,
+              variant: "primary",
+              key: "id",
+            },
+            {
+              type: "button",
+              label: "Delete",
+              onclick: this.deleteConfirm,
+              variant: "danger",
+              key: "id",
+            },
+            {
+              type: "link",
+              label: "View",
+              link: `/admin/courses/${courseid}/$id`,
+              variant: "primary",
+              replacetokens: { $id: "id" },
+            },
+          ]}
+        />
       </LayoutAdminDashboard>
     );
   }

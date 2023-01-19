@@ -1,19 +1,13 @@
 import React from "react";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
-import Table from "react-bootstrap/Table";
-import Pagination from "react-bootstrap/Pagination";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Link from "next/link";
-import Stack from "react-bootstrap/Stack";
 import LayoutAdminDashboard from "../../../components/layout/adminDashboard";
 import { isClientLoggedin, getUser } from "../../../helpers/helper";
 import { getUsers, getRoles, deleteUser } from "../../../helpers/admin";
 import ConfirmBox from "../../../components/modal/confirm";
-import ToolTip from "../../../components/common/toolTip";
 import UserForm from "../../../components/form/user";
 import DataList from "../../../components/datalist";
 
@@ -27,7 +21,7 @@ class Users extends React.Component {
   };
 
   loaddata = async (page = 1) => {
-    const { data, state } = await getUsers();
+    const { data, state } = await getUsers(page);
     const {
       data: { results: roles },
     } = await getRoles();
