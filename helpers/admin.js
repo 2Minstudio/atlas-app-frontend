@@ -82,26 +82,21 @@ const createCourse = async (data) => {
     method: "POST",
     body: formData,
   };
-
-  return await fetch(url, options)
-    .then((response) => {
-      console.log(response.status, "response.status");
-      if (response.status >= 400 && response.status < 600) {
-        throw new Error("Bad response from server");
-      }
-      console.log("then", response);
-      return { status: true, data: response };
-    })
-    .then((returnedResponse) => {
-      // Your response to manipulate
-      console.log(returnedResponse, "update success");
-      return { status: true, data: returnedResponse };
-    })
-    .catch((error) => {
-      // Your error is here!
-      console.log(error, "create ");
-      return { status: false, data: error };
-    });
+  let json;
+  try {
+    const resp = await fetch(url, options);
+    json = await resp.json();
+    if (resp.status == 201) return { status: true, data: json };
+    else return { status: false, data: json };
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      // Unexpected token < in JSON
+      console.log("There was a SyntaxError", error);
+    } else {
+      console.log("There was an error", error);
+    }
+    return { status: false, data: error };
+  }
 };
 // const updateCourse = async (data) => {
 //   let formData = new FormData();
@@ -144,26 +139,21 @@ const updateCourse = async (data) => {
     method: "PATCH",
     body: formData,
   };
-
-  return await fetch(url, options)
-    .then((response) => {
-      console.log(response.status, "response.status");
-      if (response.status >= 400 && response.status < 600) {
-        throw new Error("Bad response from server");
-      }
-      console.log("then", response);
-      return { status: true, data: response };
-    })
-    .then((returnedResponse) => {
-      // Your response to manipulate
-      console.log(returnedResponse, "create success");
-      return { status: true, data: returnedResponse };
-    })
-    .catch((error) => {
-      // Your error is here!
-      console.log(error, "create ");
-      return { status: false, data: error };
-    });
+  let json;
+  try {
+    const resp = await fetch(url, options);
+    json = await resp.json();
+    if (resp.status == 201) return { status: true, data: json };
+    else return { status: false, data: json };
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      // Unexpected token < in JSON
+      console.log("There was a SyntaxError", error);
+    } else {
+      console.log("There was an error", error);
+    }
+    return { status: false, data: error };
+  }
 };
 
 const deleteCourse = async (id) => {
@@ -449,9 +439,9 @@ const deleteChapter = async (id) => {
     });
 };
 
-const getUsers = async (page=1) => {
+const getUsers = async (page = 1) => {
   return axios
-    .post("/api/admin/user/getall",{page:page})
+    .post("/api/admin/user/getall", { page: page })
     .then((response) => {
       const { data } = response;
       return data;
