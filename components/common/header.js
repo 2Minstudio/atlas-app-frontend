@@ -9,9 +9,12 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-
+import { config } from "../../config/config";
 const Header = (props) => {
-  const { user = {}, type = "general" } = props;
+  const { user = {} } = props;
+  const roleId = user?.groups && user?.groups[0];
+  const roleName = roleId && config?.roles[roleId]?.name;
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Container className=" my-5 border-radius-60 pb-2 mb-4 border p-2 border-opacity-10 shadow-sm bg-white">
@@ -24,7 +27,13 @@ const Header = (props) => {
           id="responsive-navbar-nav"
         >
           <Nav className="align-items-lg-center">
-            {type != "admin" && (
+            {roleName == "admin" ? (
+              <>
+                <Nav.Link href={"/admin"} className="" aria-current="page">
+                  Admin
+                </Nav.Link>
+              </>
+            ) : (
               <>
                 <Nav.Link href={"/register"} className="" aria-current="page">
                   Take Eligibility Test
@@ -52,7 +61,7 @@ const Header = (props) => {
             {user?.first_name && (
               <>
                 <Nav.Link href={"#"} className="nav-link">
-                  <b>{user.first_name}{" "}</b>
+                  <b>{user.first_name} </b>
                   <FontAwesomeIcon
                     className="Auser text-primary position-relative"
                     icon={faCircleUser}

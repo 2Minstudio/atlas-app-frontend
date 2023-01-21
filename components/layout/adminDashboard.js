@@ -28,7 +28,7 @@ function LayoutAdminDashboard(props) {
         <div className="container-fluid bg-light">
           {user?.id && (
             <>
-              <Header user={user} type={"admin"} />
+              <Header user={user} />
 
               <Container>
                 <Row>

@@ -58,9 +58,9 @@ class Login extends React.Component {
           },
         },
       } = result;
-      const redirectPath = config.redirectByRole[role]
-        ? config.redirectByRole[role]
-        : "/course/welcome";
+      const redirectPath = config?.roles[role]?.redirect
+        ? config.roles[role].redirect
+        : config.defaultLanding;
       this.props.router.push(redirectPath);
     }
   };
