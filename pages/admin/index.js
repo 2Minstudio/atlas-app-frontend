@@ -43,7 +43,7 @@ class Admin extends React.Component {
             "Light",
             "Dark",
           ].map((variant) => (
-            <Col>
+            <Col key={variant}>
               <Card
                 bg={variant.toLowerCase()}
                 key={variant}
@@ -56,7 +56,7 @@ class Admin extends React.Component {
                   <Card.Title>{variant} Card Title </Card.Title>
                   <Card.Text>
                     Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    up the bulk of the card&apos;s content.
                   </Card.Text>
                 </Card.Body>
               </Card>
