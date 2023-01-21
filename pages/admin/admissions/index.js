@@ -5,7 +5,7 @@ import LayoutAdminDashboard from "../../../components/layout/adminDashboard";
 import { isClientLoggedin, getUser } from "../../../helpers/helper";
 
 class Admissions extends React.Component {
-  state = {}
+  state = {};
   async componentDidMount() {
     const token = isClientLoggedin(this.props);
     if (token) {
@@ -22,7 +22,11 @@ class Admissions extends React.Component {
   }
   render() {
     const { user } = this.state;
-    return <LayoutAdminDashboard user={user}>Coming soon Admissions</LayoutAdminDashboard>;
+    return (
+      <LayoutAdminDashboard user={user}>
+        <h2>Coming soon Admissions</h2>
+      </LayoutAdminDashboard>
+    );
   }
 }
 

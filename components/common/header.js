@@ -52,7 +52,11 @@ const Header = (props) => {
             {user?.first_name && (
               <>
                 <Nav.Link href={"#"} className="nav-link">
-                  {user.first_name}
+                  <b>{user.first_name}{" "}</b>
+                  <FontAwesomeIcon
+                    className="Auser text-primary position-relative"
+                    icon={faCircleUser}
+                  />
                 </Nav.Link>
 
                 <Nav.Link
