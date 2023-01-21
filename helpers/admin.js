@@ -37,7 +37,7 @@ const getCourse = async (id) => {
 //   let formData = new FormData();
 
 //   // console.log(data.image, "data.image,");
-//   const url = `${process.env.NEXT_PUBLIC_API_URL}/api/course/`;
+//   const url = `${process.env.NEXT_PUBLIC_API_URL}/api/admin//course/`;
 //   // const url = "/api/admin/course/create"
 //   if (data.image) formData.append("image", data.image, data.image.name);
 
@@ -69,7 +69,7 @@ const createCourse = async (data) => {
   let formData = new FormData();
 
   // console.log(data.image, "data.image,");
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/course/`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/admin/course/`;
   // const url = "/api/admin/course/create"
   if (data.image) formData.append("image", data.image, data.image.name);
 
@@ -134,7 +134,7 @@ const updateCourse = async (data) => {
   formData.append("cost", data.cost);
   formData.append("notes", data.notes);
   formData.append("status", data.status);
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/course/${id}/`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/admin/course/${id}/`;
   const options = {
     method: "PATCH",
     body: formData,
@@ -371,7 +371,7 @@ const createChapter = async (data) => {
   formData.append("course", data.course);
   formData.append("content", data.content);
   formData.append("status", data.status);
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/chapter/`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/admin/chapter/`;
   return await axios
     .post(url, formData, {
       headers: {
@@ -403,7 +403,7 @@ const updateChapter = async (data) => {
   formData.append("name", data.name);
   formData.append("content", data.content);
   formData.append("status", data.status);
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/chapter/${id}/`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/admin/chapter/${id}/`;
   return axios
     .patch(url, formData, {
       headers: {

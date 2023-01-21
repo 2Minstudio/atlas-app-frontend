@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   const { name, description, cost, notes, status, id } = body;
   await axios({
     method: "patch",
-    url: `${process.env.API_URL}/api/course/${body.id}/`,
+    url: `${process.env.API_URL}/api/admin/course/${body.id}/`,
     data: { name, description, cost, notes, status },
     headers: {
       Authorization: `Token ${token}`,

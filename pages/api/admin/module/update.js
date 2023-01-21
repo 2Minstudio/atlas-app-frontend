@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
   await axios({
     method: "patch",
-    url: `${process.env.API_URL}/api/module/${id}/`,
+    url: `${process.env.API_URL}/api/admin/module/${id}/`,
     data: {
       name,
       attend_type,

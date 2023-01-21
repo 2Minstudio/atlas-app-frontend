@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   await axios({
     method: "get",
-    url: `${process.env.API_URL}/api/user/${id}/`,
+    url: `${process.env.API_URL}/api/admin/user/${id}/`,
     headers: {
       Authorization: `Token ${token}`,
       "Content-Type": "application/json",
