@@ -28,7 +28,7 @@ function LayoutAdminDashboard(props) {
         <div className="container-fluid bg-light">
           {user?.id && (
             <>
-              <Header user={user} />
+              <Header user={user} type={"admin"} />
 
               <Container>
                 <Row>
@@ -37,7 +37,7 @@ function LayoutAdminDashboard(props) {
                       className="list-group flex-fill"
                       defaultActiveKey={asPath}
                     >
-                      <Nav.Link className="list-group-item" href="/admin/">
+                      <Nav.Link className="list-group-item" href="/admin">
                         Home
                       </Nav.Link>
 
