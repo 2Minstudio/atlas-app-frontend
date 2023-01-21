@@ -6,9 +6,9 @@ import Logo from "../components/common/logo/logo";
 import Layout from "../components/layout/index";
 import styles from "../styles/Home.module.css";
 import { isLoggedin, isClientLoggedin } from "../helpers/helper";
-import Toast from "react-bootstrap/Toast";
 import Alert from "react-bootstrap/Alert";
 import { withCookies } from "react-cookie";
+import { config } from "../config/config";
 
 class Login extends React.Component {
   state = {
@@ -50,7 +50,18 @@ class Login extends React.Component {
       });
       this.setState({ error: error });
     } else {
-      this.props.router.push("/course/welcome");
+      // console.log(result, "result from login");
+      const {
+        data: {
+          user: {
+            groups: { 0: role },
+          },
+        },
+      } = result;
+      const redirectPath = config.redirectByRole[role]
+        ? config.redirectByRole[role]
+        : "/course/welcome";
+      this.props.router.push(redirectPath);
     }
   };
 
