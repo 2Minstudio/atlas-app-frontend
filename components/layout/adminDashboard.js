@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Nav from "react-bootstrap/Nav";
+import Dropdown from "react-bootstrap/Dropdown";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -36,6 +37,23 @@ function LayoutAdminDashboard(props) {
                       className="list-group flex-fill"
                       defaultActiveKey={asPath}
                     >
+                      <Nav.Link className="list-group-item" href="/admin/">
+                        Home
+                      </Nav.Link>
+
+                      {/* <Dropdown className="d-inline mx-2" >
+                        <Dropdown.Toggle id="dropdown-autoclose-true">
+                          Settings
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                          <Dropdown.Item eventKey="2">
+                            Another action
+                          </Dropdown.Item>
+                          <Dropdown.Item eventKey="3">
+                            Something else here
+                          </Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown> */}
                       <Nav.Link
                         className="list-group-item"
                         href="/admin/admissions"
