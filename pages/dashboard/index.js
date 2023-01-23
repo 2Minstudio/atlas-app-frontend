@@ -254,11 +254,16 @@ class Dashboard extends React.Component {
                                 EMI Available
                               </small>
                             </h5>
+                            <h6 className="text-success py-3"><b>Preview Course</b></h6>
+                            
                           </div>
-                          <div className="col text-center">
-                            <h6>
-                              <b>Preview Course</b>
-                            </h6>
+                          <div className="col text-end">
+                          <button className="col-12 col-lg-12 col-xl-10 btn btn-lg btn-success rounded-pill mb-3">
+                              Buy Now
+                            </button>
+                            <button className="col-12  col-lg-12 col-xl-10 btn btn-lg btn-outline-success rounded-pill ">
+                              Enquire Now
+                            </button>
                           </div>
                         </div>
 
@@ -268,9 +273,7 @@ class Dashboard extends React.Component {
                             &nbsp;{" "}
                           </div>
                           <div className="col-6 col-md-8 col-lg-6 text-center">
-                            <button className="btn btn-lg btn-outline-success rounded-pill ">
-                              Enquire Now
-                            </button>
+                            
                           </div>
                         </div>
                       </div>
