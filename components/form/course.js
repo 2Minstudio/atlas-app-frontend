@@ -60,17 +60,18 @@ class CourseForm extends React.Component {
           this.setState({ showSuccess: true });
         } else {
           console.log(data, "update error");
-          this.setState({ error: data });
+          this.setState({ errors: data });
         }
       });
     } else {
       await createCourse(this.state).then((resp) => {
+        console.log(resp,'resp createcourse');
         const { status, data } = resp;
         if (status) {
           this.setState({ showSuccess: true });
         } else {
           console.log(data, "create error");
-          this.setState({ error: data });
+          this.setState({ errors: data });
         }
       });
     }

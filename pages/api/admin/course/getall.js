@@ -1,16 +1,16 @@
 import axios from "axios";
 
-
 export default async function handler(req, res) {
   let state = false;
   let resp = {};
   const {
     cookies: { atlastoken: token },
+    body: { page = 1 },
   } = req;
 
   await axios({
     method: "get",
-    url: `${process.env.API_URL}/api/course/`,
+    url: `${process.env.API_URL}/api/admin/course/?page=${page}`,
     headers: {
       Authorization: `Token ${token}`,
       "Content-Type": "application/json",

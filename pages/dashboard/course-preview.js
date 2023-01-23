@@ -65,8 +65,8 @@ class DashboardCoursePreview extends React.Component {
                     <div className="row">
                       <p className="pb-4">&nbsp;</p>
                       <div className="col-4">
-                        <div class="card border-0">
-                          <div class="card-body p-0 dash-min-h-400">
+                        <div className="card border-0">
+                          <div className="card-body p-0 dash-min-h-400">
                             <Image
                               src="/image/dashboard/course-preview.jpg"
                               className="img-fluid"
@@ -217,7 +217,7 @@ class DashboardCoursePreview extends React.Component {
                       <div className="col">
                         <h5>
                           INR 6,00,000 <br></br>
-                          <small class="text-success small-text-12">
+                          <small className="text-success small-text-12">
                             EMI Available
                           </small>
                         </h5>

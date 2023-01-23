@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { createModule, getModule, updateModule } from "../../helpers/admin";
+import { getUser, updateUser } from "../../helpers/admin";
 import { Alert, Col, Row } from "react-bootstrap";
 import AutoHideAlert from "../common/autoHideAlert";
 class UserForm extends React.Component {
@@ -13,25 +13,16 @@ class UserForm extends React.Component {
       name: "",
       email: "",
       phone_number: "online",
-      status: "0",
       submited: false,
       showSuccess: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 
   handleChange(event) {
     const { name, value } = event.target;
-    console.log("Update state", name, value);
-    this.setState({ [name]: value });
-  }
-
-  handleCheckbox(event) {
-    const { name, value, checked } = event.target;
-    // const setvalue = checked ? value : "";
     this.setState({ [name]: value });
   }
 
@@ -42,17 +33,7 @@ class UserForm extends React.Component {
     // event.stopPropagation();
 
     if (id) {
-      await updateModule(this.state).then((resp) => {
-        const { status, data } = resp;
-        if (status) {
-          this.setState({ showSuccess: true });
-        } else {
-          this.setState({ errors: data });
-          console.log(data, "error");
-        }
-      });
-    } else {
-      await createModule(this.state).then((resp) => {
+      await updateUser(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) {
           this.setState({ showSuccess: true });
@@ -66,41 +47,46 @@ class UserForm extends React.Component {
   }
 
   async componentDidMount() {
-    const { id, courseId } = this.props;
-    this.setState({ course: courseId });
+    const { id, roles } = this.props;
     if (id) {
       this.setState({ create: false });
-      const { data, state } = await getModule(id);
+      const { data, state } = await getUser(id);
       if (state) {
         this.setState({ ...data });
       }
-      console.log("Edit mode ", id, data);
+      // console.log("Edit mode ", id, data);
     }
   }
 
-  setStatusAction = (value) => {
+  setStatusAction = async (value) => {
     const { closeTrigger } = this.props;
-    const status = value == "publish" ? 1 : 0;
-    this.setState({ status }, async () => {
-      if (value == "cancel") {
-        //hide the popup form
-        closeTrigger();
-      } else {
-        await this.handleSubmit();
-        //submit the form
-      }
-    });
+
+    if (value == "cancel") {
+      //hide the popup form
+      closeTrigger();
+    } else {
+      await this.handleSubmit();
+      //submit the form
+    }
   };
 
   render() {
-    const { name, attend_type, status, submited, create, errors, showSuccess } =
-      this.state;
-    const { closeTrigger } = this.props;
+    const {
+      first_name,
+      phone_number,
+      groups,
+      email,
+      submited,
+      create,
+      errors,
+      showSuccess,
+    } = this.state;
+    const { closeTrigger, roles } = this.props;
     return (
       <Form onSubmit={this.handleSubmit}>
         {showSuccess && (
           <AutoHideAlert
-            message={`Module ${create ? "created" : "updated"} successfully!`}
+            message={`User ${create ? "created" : "updated"} successfully!`}
             onClose={closeTrigger}
           />
         )}
@@ -109,28 +95,56 @@ class UserForm extends React.Component {
           <Form.Control
             required
             type="text"
-            name="name"
+            name="first_name"
             autoFocus
-            value={name}
+            value={first_name}
             onChange={this.handleChange}
           />
-          {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
+          {errors?.first_name && (
+            <Alert variant={"danger"}>{errors.first_name}</Alert>
+          )}
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            required
+            readOnly={true}
+            type="text"
+            name="email"
+            autoFocus
+            value={email}
+            onChange={this.handleChange}
+          />
+          {errors?.email && <Alert variant={"danger"}>{errors.email}</Alert>}
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label>Phone Number</Form.Label>
+          <Form.Control
+            required
+            type="text"
+            name="phone_number"
+            autoFocus
+            value={phone_number}
+            onChange={this.handleChange}
+          />
+          {errors?.phone_number && (
+            <Alert variant={"danger"}>{errors.phone_number}</Alert>
+          )}
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Attend Type</Form.Label>
+          <Form.Label>Role</Form.Label>
           <Form.Select
-            value={attend_type}
+            value={groups}
             onChange={this.handleChange}
-            name="attend_type"
+            name="groups"
           >
             <option>Select</option>
-            <option value="online">Online</option>
-            <option value="offline">Offline</option>
+            {roles.map((role) => {
+              return <option key={role.id} value={role.id}>{role.name}</option>;
+            })}
           </Form.Select>
-          {errors?.attend_type && (
-            <Alert variant={"danger"}>{errors.attend_type}</Alert>
-          )}
+          {errors?.groups && <Alert variant={"danger"}>{errors.groups}</Alert>}
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -144,44 +158,12 @@ class UserForm extends React.Component {
               </Button>{" "}
             </Col>
             <Col xs="auto">
-              <Button
-                variant="success"
-                onClick={() => this.setStatusAction("draft")}
-              >
-                Save as Draft
-              </Button>{" "}
-            </Col>
-            <Col xs="auto">
               <Button onClick={() => this.setStatusAction("publish")}>
-                Publish
+                Save
               </Button>
             </Col>
           </Row>
-          {/* <Form.Label>Status</Form.Label>
-
-          <Form.Check
-            checked={status == "1"}
-            inline
-            label="Published"
-            name="status"
-            type={"radio"}
-            value={1}
-            onChange={this.handleCheckbox}
-          />
-          <Form.Check
-            checked={status == "0"}
-            inline
-            label="Draft"
-            name="status"
-            type={"radio"}
-            value={0}
-            onChange={this.handleCheckbox}
-          /> */}
         </Form.Group>
-
-        {/* <Button disabled={submited} variant="primary" type="submit">
-          {create ? "Create" : "Update"}
-        </Button> */}
       </Form>
     );
   }

@@ -97,7 +97,7 @@ const getUser = async (token) => {
     .then((response) => {
       const { data } = response;
       if (data?.data?.action == "force_logout") {
-        console.log("Logout ?", data?.data?.action);
+        // console.log("Logout ?", data?.data?.action);
         // Logout();
         // Cookies.remove('atlastoken');
       }

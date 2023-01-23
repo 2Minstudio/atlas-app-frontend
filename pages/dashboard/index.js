@@ -65,8 +65,8 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="row">
                       <div className="col-5">
-                        <div class="card border-0">
-                          <div class="card-body p-0 dash-min-h-400">
+                        <div className="card border-0">
+                          <div className="card-body p-0 dash-min-h-400">
                             <Image
                               src="/image/dash-imge1.png"
                               className="img-fluid"

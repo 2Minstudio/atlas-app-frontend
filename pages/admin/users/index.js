@@ -1,20 +1,15 @@
 import React from "react";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
-import Table from "react-bootstrap/Table";
-import Pagination from "react-bootstrap/Pagination";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Link from "next/link";
-import Stack from "react-bootstrap/Stack";
 import LayoutAdminDashboard from "../../../components/layout/adminDashboard";
 import { isClientLoggedin, getUser } from "../../../helpers/helper";
-import { getUsers } from "../../../helpers/admin";
+import { getUsers, getRoles, deleteUser } from "../../../helpers/admin";
 import ConfirmBox from "../../../components/modal/confirm";
-import ToolTip from "../../../components/common/toolTip";
 import UserForm from "../../../components/form/user";
+import DataList from "../../../components/datalist";
 
 class Users extends React.Component {
   state = {
@@ -22,12 +17,16 @@ class Users extends React.Component {
     modelshow: false,
     editId: null,
     deleteId: null,
+    roles: {},
   };
 
-  loaddata = async () => {
-    const { data, state } = await getUsers();
+  loaddata = async (page = 1) => {
+    const { data, state } = await getUsers(page);
+    const {
+      data: { results: roles },
+    } = await getRoles();
     if (state) {
-      this.setState({ data });
+      this.setState({ data, roles });
     }
   };
 
@@ -68,7 +67,7 @@ class Users extends React.Component {
 
   delete = async () => {
     const { deleteId } = this.state;
-    await deleteCourse(deleteId).then((resp) => {
+    await deleteUser(deleteId).then((resp) => {
       const { state, data } = resp;
       if (state) {
         this.setState({ deleteId: null }, async () => {
@@ -82,13 +81,27 @@ class Users extends React.Component {
     this.setState({ deleteId: null });
   };
 
+  getGroupName = (id) => {
+    const { roles } = this.state;
+    if (id && id.length > 0) {
+      const res = roles.find((elem) => elem.id === id[0]);
+      return res.name;
+    }
+    return "";
+  };
+
   render() {
-    const { user, data,modelshow, editId, deleteId } = this.state;
+    const { user, data, modelshow, editId, deleteId, roles } = this.state;
+    const roles_obj = {};
+    for (let k in roles) {
+      roles_obj[roles[k].id] = roles[k].name;
+    }
+
     return (
       <LayoutAdminDashboard user={user}>
         <ConfirmBox
           isShow={deleteId}
-          text={"Are you sure want to delete this Course?"}
+          text={"Are you sure want to delete this User?"}
           okayText={"Delete"}
           okayAction={this.delete}
           cancelAction={this.closeConfirm}
@@ -100,65 +113,44 @@ class Users extends React.Component {
         </Row>
         <Modal size="lg" show={modelshow} onHide={() => this.handleClose()}>
           <Modal.Header closeButton>
-            <Modal.Title>{editId ? "Edit" : "New"} Course</Modal.Title>
+            <Modal.Title>{editId ? "Edit" : "New"} User</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <UserForm id={editId} closeTrigger={this.handleClose} />
+            <UserForm
+              roles={roles}
+              id={editId}
+              closeTrigger={this.handleClose}
+            />
           </Modal.Body>
         </Modal>
-        <Table responsive="sm">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data?.results?.map((d) => {
-              return (
-                <>
-                  <tr>
-                    <td>{d.id}</td>
-                    <td>{d.first_name}</td>
-                    <td>{d.email}</td>
-                    <td>{d.status ? "Published" : "Draft"}</td>
-                    <td>
-                      <Stack direction="horizontal" gap={0}>
-                        <Button size="sm" onClick={() => this.edit(d.id)}>
-                          Edit
-                        </Button>
-                        <div className="vr" />
-                        <Button
-                          size="sm"
-                          variant="danger"
-                          onClick={() => this.deleteConfirm(d.id)}
-                        >
-                          Delete
-                        </Button>
-                        <div className="vr" />
-                        <Link href={`/admin/courses/${d.id}`}>
-                          <ToolTip
-                            label={"view"}
-                            size={"sm"}
-                            tipMessage={
-                              "Click here to view Course details & manage modules"
-                            }
-                          />
-                        </Link>
-                      </Stack>
-                    </td>
-                  </tr>
-                </>
-              );
-            })}
-          </tbody>
-          <tfoot>
-            <Pagination></Pagination>
-          </tfoot>
-        </Table>
+        <DataList
+          data={data}
+          headings={[
+            { id: "#" },
+            { first_name: "Name" },
+            { email: "Email" },
+            { phone_number: "Phone Number" },
+            { groups: "Role" },
+          ]}
+          pagecallback={this.loaddata}
+          sourcemapper={{ groups: roles_obj }}
+          buttons={[
+            {
+              type: "button",
+              label: "Edit",
+              onclick: this.edit,
+              variant: "primary",
+              key: "id",
+            },
+            {
+              type: "button",
+              label: "Delete",
+              onclick: this.deleteConfirm,
+              variant: "danger",
+              key: "id",
+            },
+          ]}
+        />
       </LayoutAdminDashboard>
     );
   }

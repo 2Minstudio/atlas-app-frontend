@@ -28,10 +28,10 @@ export default async function handler(req, res) {
     .then((response) => {
       // console.log(response, "userbytoken response");
       const {
-        data: { id, first_name },
+        data: { id, first_name, groups },
       } = response;
       state = true;
-      resp = { user: { id, first_name } };
+      resp = { user: { id, first_name, groups } };
     })
     .catch((error) => {
       // handle error

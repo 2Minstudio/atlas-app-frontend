@@ -1,18 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import Banner from "../components/common/banner";
 import Layout from "../components/layout/index";
 import styles from "../styles/Home.module.css";
-import DemoCarousel from "../components/common/carousel";
 import InquerySection from "../components/home/inquerysection";
 import Highlightinfo from "../components/home/highlightinfo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserPlus,
-  faVideo,
-  faStar,
-  faSuitcaseMedical,
-} from "@fortawesome/free-solid-svg-icons";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
 import { isClientLoggedin, getUser } from "../helpers/helper";
@@ -77,12 +68,12 @@ class Home extends React.Component {
                     <div className="row text-success">
                       <div className="col-12 col-sm-6 text-center pt-5">
                         <Image
-                        className="img-fluid"
-                        alt="Doctor Image"
-                        src="/image/Group%20224.svg"
-                        height="75"
-                        width="75"
-                      />
+                          className="img-fluid"
+                          alt="Doctor Image"
+                          src="/image/Group%20224.svg"
+                          height="75"
+                          width="75"
+                        />
                         <p className="pt-1">
                           {" "}
                           Live Training with <br></br>Atlas Chiropractors
@@ -90,12 +81,12 @@ class Home extends React.Component {
                       </div>
                       <div className="col-12 col-sm-6 text-center pt-5">
                         <Image
-                        className="img-fluid"
-                        alt="Doctor Image"
-                        src="/image/Group%20225.svg"
-                        height="75"
-                        width="75"
-                      />
+                          className="img-fluid"
+                          alt="Doctor Image"
+                          src="/image/Group%20225.svg"
+                          height="75"
+                          width="75"
+                        />
                         <p className="pt-1">
                           {" "}
                           400 Hours of Course + <br></br>Paid Internship of 6
@@ -106,13 +97,13 @@ class Home extends React.Component {
 
                     <div className="row text-success">
                       <div className="col-12 col-sm-6 text-center pt-5">
-                       <Image
-                        className="img-fluid"
-                        alt="Doctor Image"
-                        src="/image/Group%20223.svg"
-                        height="75"
-                        width="75"
-                      />
+                        <Image
+                          className="img-fluid"
+                          alt="Doctor Image"
+                          src="/image/Group%20223.svg"
+                          height="75"
+                          width="75"
+                        />
                         <p className="pt-1">
                           {" "}
                           Become a Certified <br></br> Chiropractor in India
@@ -120,12 +111,12 @@ class Home extends React.Component {
                       </div>
                       <div className="col-12 col-sm-6 text-center pt-5">
                         <Image
-                        className="img-fluid"
-                        alt="Doctor Image"
-                        src="/image/Group%20222.svg"
-                        height="75"
-                        width="75"
-                      />
+                          className="img-fluid"
+                          alt="Doctor Image"
+                          src="/image/Group%20222.svg"
+                          height="75"
+                          width="75"
+                        />
                         <p className="pt-1">
                           {" "}
                           Get Placed with Atlas <br></br>Chiropractic & Wellness

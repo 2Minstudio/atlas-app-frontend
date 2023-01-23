@@ -37,10 +37,10 @@ class Headerdashboard extends React.Component {
         <Navbar.Collapse className=" justify-content-end" id="responsive-navbar-nav">
           
           <Nav>
-          <Nav.Link href="#" class="nav-link">
+          <Nav.Link href="#" className="nav-link">
                       Community
                       </Nav.Link>    
-                      <Nav.Link href="#" class="nav-link">
+                      <Nav.Link href="#" className="nav-link">
                       {" "}
                       <span className="text-dark">{first_name}</span>{" "}
                       <FontAwesomeIcon
