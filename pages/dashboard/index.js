@@ -5,11 +5,14 @@ import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
 import { isClientLoggedin, getUser } from "../../helpers/helper";
 import React from "react";
+import { getCoursesList } from "../../helpers/course";
 
 class Dashboard extends React.Component {
   state = {
     user: {},
+    data: {}
   };
+
   componentDidMount() {
     const token = isClientLoggedin(this.props);
     if (token) {
@@ -17,6 +20,7 @@ class Dashboard extends React.Component {
         .then((resp) => {
           // this.setState({user});
           console.log(resp, "resp");
+          this.loadData();
         })
         .catch((error) => {
           console.log(error, "error");
@@ -24,8 +28,15 @@ class Dashboard extends React.Component {
     }
   }
 
+  loadData = async () => {
+    const { data, state } = await getCoursesList();
+    if (state) {
+      this.setState({ data });
+    }
+  };
+
   render() {
-    const { user } = this.state;
+    const { user, data } = this.state;
     return (
       <Layout type="dashboard">
         <div className={styles}>
@@ -63,221 +74,222 @@ class Dashboard extends React.Component {
                     <div className="row d-flex justify-content-start align-items-start pb-3">
                       <h4>Welcome Siddanth</h4>
                     </div>
-                    <div className="row">
-                      <div className="col-5">
-                        <div className="card border-0">
-                          <div className="card-body p-0 dash-min-h-400">
-                            <Image
-                              src="/image/dash-imge1.png"
-                              className="img-fluid"
-                              alt="Doctor Image"
-                              height="397"
-                              width="400"
-                            />
+                    {data?.results?.map((item) => (
+                      <div className="row">
+                        <div className="col-5">
+                          <div className="card border-0">
+                            <div className="card-body p-0 dash-min-h-400">
+                              <Image
+                                src="/image/dash-imge1.png"
+                                className="img-fluid"
+                                alt="Doctor Image"
+                                height="397"
+                                width="400"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-7">
+                          <div className="row bg-light rounded-25 px-3 py-4 d-flex justify-content-center d-none d-lg-block">
+                            <div className="row text-success">
+                              <div className="col-12 col-sm-6">
+                                <div className="row d-flex align-items-center">
+                                  <div className="col-3 pt-2 g-0">
+                                    <Image
+                                      className="img-fluid"
+                                      alt="Doctor Image"
+                                      src="/image/Group%20224.svg"
+                                      height="50"
+                                      width="50"
+                                    />
+                                  </div>
+                                  <div className="col-9">
+                                    <p className="text-left m-0">
+                                      {" "}
+                                      Learn from the Licensed Chiropractors
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-12 col-sm-6">
+                                <div className="row d-flex align-items-center">
+                                  <div className="col-3 pt-2 g-0">
+                                    <Image
+                                      className="img-fluid"
+                                      alt="Doctor Image"
+                                      src="/image/Group%20225.svg"
+                                      height="50"
+                                      width="50"
+                                    />
+                                  </div>
+                                  <div className="col-9">
+                                    <p className="text-left  m-0">
+                                      {" "}
+                                      Unlock 400hrs of Study Material
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="row text-success mt-3">
+                              <div className="col-12 col-sm-6">
+                                <div className="row d-flex align-items-center">
+                                  <div className="col-3 pt-2 g-0">
+                                    <Image
+                                      className="img-fluid"
+                                      alt="Doctor Image"
+                                      src="/image/Group%20223.svg"
+                                      height="50"
+                                      width="50"
+                                    />
+                                  </div>
+                                  <div className="col-9">
+                                    <p className="text-left m-0">
+                                      {" "}
+                                      Get Live Hands-on Training
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-12 col-sm-6">
+                                <div className="row d-flex align-items-center">
+                                  <div className="col-3 pt-2 g-0">
+                                    <Image
+                                      className="img-fluid"
+                                      alt="Doctor Image"
+                                      src="/image/Group%20222.svg"
+                                      height="50"
+                                      width="50"
+                                    />
+                                  </div>
+                                  <div className="col-9">
+                                    <p className="text-left  m-0">
+                                      {" "}
+                                      6 Months of Paid Internship
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="row bg-light rounded-25 px-0 py-2 d-flex justify-content-center d-block d-lg-none">
+                            <div className="row text-success">
+                              <div className="col-12">
+                                <div className="row d-flex align-items-center justify-content-center">
+                                  <div className="col-2 g-0 d-flex justify-content-center">
+                                    <Image
+                                      className="img-fluid"
+                                      alt="Doctor Image"
+                                      src="/image/Group%20224.svg"
+                                      height="30"
+                                      width="30"
+                                    />
+                                  </div>
+                                  <div className="col-10">
+                                    <p className="text-left m-0">
+                                      {" "}
+                                      Learn from the Licensed Chiropractors
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-12 mt-2">
+                                <div className="row d-flex align-items-center">
+                                  <div className="col-2 g-0 d-flex justify-content-center">
+                                    <Image
+                                      className="img-fluid"
+                                      alt="Doctor Image"
+                                      src="/image/Group%20225.svg"
+                                      height="30"
+                                      width="30"
+                                    />
+                                  </div>
+                                  <div className="col-10">
+                                    <p className="text-left  m-0">
+                                      {" "}
+                                      Unlock 400hrs of Study Material
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="row text-success">
+                              <div className="col-12 mt-2">
+                                <div className="row d-flex align-items-center">
+                                  <div className="col-2 g-0 d-flex justify-content-center">
+                                    <Image
+                                      className="img-fluid"
+                                      alt="Doctor Image"
+                                      src="/image/Group%20223.svg"
+                                      height="30"
+                                      width="30"
+                                    />
+                                  </div>
+                                  <div className="col-10">
+                                    <p className="text-left m-0">
+                                      {" "}
+                                      Get Live Hands-on Training
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-12 mt-2">
+                                <div className="row d-flex align-items-center">
+                                  <div className="col-2 g-0 d-flex justify-content-center">
+                                    <Image
+                                      className="img-fluid"
+                                      alt="Doctor Image"
+                                      src="/image/Group%20222.svg"
+                                      height="30"
+                                      width="30"
+                                    />
+                                  </div>
+                                  <div className="col-10">
+                                    <p className="text-left  m-0">
+                                      {" "}
+                                      6 Months of Paid Internship
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="row align-items-center mt-5">
+                            <div className="col">
+                              <h5>
+                                INR 6,00,000<br></br>
+                                <small className="text-success small-text-12">
+                                  EMI Available
+                                </small>
+                              </h5>
+                              <h6 className="text-success py-3">
+                                <b>Preview Course</b>
+                              </h6>
+                            </div>
+                            <div className="col text-end">
+                              <button className="col-12 col-lg-12 col-xl-10 btn btn-lg btn-success rounded-pill mb-3">
+                                Buy Now
+                              </button>
+                              <button className="col-12  col-lg-12 col-xl-10 btn btn-lg btn-outline-success rounded-pill ">
+                                Enquire Now
+                              </button>
+                            </div>
+                          </div>
+
+                          <div className="row align-items-center mt-3">
+                            <div className="col-2 col-md-4 col-lg-6 ">
+                              {" "}
+                              &nbsp;{" "}
+                            </div>
+                            <div className="col-6 col-md-8 col-lg-6 text-center"></div>
                           </div>
                         </div>
                       </div>
-                      <div className="col-7">
-                        <div className="row bg-light rounded-25 px-3 py-4 d-flex justify-content-center d-none d-lg-block">
-                          <div className="row text-success">
-                            <div className="col-12 col-sm-6">
-                              <div className="row d-flex align-items-center">
-                                <div className="col-3 pt-2 g-0">
-                                  <Image
-                                    className="img-fluid"
-                                    alt="Doctor Image"
-                                    src="/image/Group%20224.svg"
-                                    height="50"
-                                    width="50"
-                                  />
-                                </div>
-                                <div className="col-9">
-                                  <p className="text-left m-0">
-                                    {" "}
-                                    Learn from the Licensed Chiropractors
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                              <div className="row d-flex align-items-center">
-                                <div className="col-3 pt-2 g-0">
-                                  <Image
-                                    className="img-fluid"
-                                    alt="Doctor Image"
-                                    src="/image/Group%20225.svg"
-                                    height="50"
-                                    width="50"
-                                  />
-                                </div>
-                                <div className="col-9">
-                                  <p className="text-left  m-0">
-                                    {" "}
-                                    Unlock 400hrs of Study Material
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="row text-success mt-3">
-                            <div className="col-12 col-sm-6">
-                              <div className="row d-flex align-items-center">
-                                <div className="col-3 pt-2 g-0">
-                                  <Image
-                                    className="img-fluid"
-                                    alt="Doctor Image"
-                                    src="/image/Group%20223.svg"
-                                    height="50"
-                                    width="50"
-                                  />
-                                </div>
-                                <div className="col-9">
-                                  <p className="text-left m-0">
-                                    {" "}
-                                    Get Live Hands-on Training
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                              <div className="row d-flex align-items-center">
-                                <div className="col-3 pt-2 g-0">
-                                  <Image
-                                    className="img-fluid"
-                                    alt="Doctor Image"
-                                    src="/image/Group%20222.svg"
-                                    height="50"
-                                    width="50"
-                                  />
-                                </div>
-                                <div className="col-9">
-                                  <p className="text-left  m-0">
-                                    {" "}
-                                    6 Months of Paid Internship
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="row bg-light rounded-25 px-0 py-2 d-flex justify-content-center d-block d-lg-none">
-                          <div className="row text-success">
-                            <div className="col-12">
-                              <div className="row d-flex align-items-center justify-content-center">
-                                <div className="col-2 g-0 d-flex justify-content-center">
-                                  <Image
-                                    className="img-fluid"
-                                    alt="Doctor Image"
-                                    src="/image/Group%20224.svg"
-                                    height="30"
-                                    width="30"
-                                  />
-                                </div>
-                                <div className="col-10">
-                                  <p className="text-left m-0">
-                                    {" "}
-                                    Learn from the Licensed Chiropractors
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-12 mt-2">
-                              <div className="row d-flex align-items-center">
-                                <div className="col-2 g-0 d-flex justify-content-center">
-                                  <Image
-                                    className="img-fluid"
-                                    alt="Doctor Image"
-                                    src="/image/Group%20225.svg"
-                                    height="30"
-                                    width="30"
-                                  />
-                                </div>
-                                <div className="col-10">
-                                  <p className="text-left  m-0">
-                                    {" "}
-                                    Unlock 400hrs of Study Material
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="row text-success">
-                            <div className="col-12 mt-2">
-                              <div className="row d-flex align-items-center">
-                                <div className="col-2 g-0 d-flex justify-content-center">
-                                  <Image
-                                    className="img-fluid"
-                                    alt="Doctor Image"
-                                    src="/image/Group%20223.svg"
-                                    height="30"
-                                    width="30"
-                                  />
-                                </div>
-                                <div className="col-10">
-                                  <p className="text-left m-0">
-                                    {" "}
-                                    Get Live Hands-on Training
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-12 mt-2">
-                              <div className="row d-flex align-items-center">
-                                <div className="col-2 g-0 d-flex justify-content-center">
-                                  <Image
-                                    className="img-fluid"
-                                    alt="Doctor Image"
-                                    src="/image/Group%20222.svg"
-                                    height="30"
-                                    width="30"
-                                  />
-                                </div>
-                                <div className="col-10">
-                                  <p className="text-left  m-0">
-                                    {" "}
-                                    6 Months of Paid Internship
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="row align-items-center mt-5">
-                          <div className="col">
-                            <h5>
-                              INR 6,00,000<br></br>
-                              <small className="text-success small-text-12">
-                                EMI Available
-                              </small>
-                            </h5>
-                            <h6 className="text-success py-3"><b>Preview Course</b></h6>
-                            
-                          </div>
-                          <div className="col text-end">
-                          <button className="col-12 col-lg-12 col-xl-10 btn btn-lg btn-success rounded-pill mb-3">
-                              Buy Now
-                            </button>
-                            <button className="col-12  col-lg-12 col-xl-10 btn btn-lg btn-outline-success rounded-pill ">
-                              Enquire Now
-                            </button>
-                          </div>
-                        </div>
-
-                        <div className="row align-items-center mt-3">
-                          <div className="col-2 col-md-4 col-lg-6 ">
-                            {" "}
-                            &nbsp;{" "}
-                          </div>
-                          <div className="col-6 col-md-8 col-lg-6 text-center">
-                            
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    ))}
                     <div className="row">
                       <div className="col">
                         <h5 className="pt-5">Community</h5>

@@ -38,8 +38,7 @@ class Headerdashboard extends React.Component {
                 <Logo />
               </div>
               <div className="col col-md-9 col-lg-10 bg-white rounded-top-25 d-flex justify-content-end">
-                {/* {} */}
-                <Navbar collapseOnSelect expand="lg" >
+                <Navbar collapseOnSelect expand="lg">
                   <Navbar.Toggle
                     className="me-3"
                     aria-controls="responsive-navbar-nav"
@@ -63,40 +62,12 @@ class Headerdashboard extends React.Component {
                           <span className="visually-hidden">New alerts</span>
                         </span>{" "}
                       </Nav.Link>
-                      <Nav.Link href={"#"} onClick={() => Logout()}>
+                      <Nav.Link onClick={() => Logout()}>
                         Logout
                       </Nav.Link>
                     </Nav>
                   </Navbar.Collapse>
                 </Navbar>
-                {/* <nav class="navigation pe-3">
-                  <input type="checkbox" className="toggle-menu"></input>
-                  <div className="hamburger"></div>
-                  <ul class="nav-menu">
-                    <li class="nav-item">
-                      <Link href="#" class="nav-link">
-                        {" "}
-                        <span className="text-dark">{first_name}</span>{" "}
-                        <FontAwesomeIcon
-                          className="Auser text-primary position-relative"
-                          icon={faCircleUser}
-                        />
-                        <span className="Indicator position-absolute translate-left p-1 bg-success border border-light rounded-circle">
-                          <span className="visually-hidden">New alerts</span>
-                        </span>{" "}
-                      </Link>
-                    </li>
-                    <li class="nav-item">
-                      <Link
-                        href={"#"}
-                        class="nav-link"
-                        onClick={() => Logout()}
-                      >
-                        Logout
-                      </Link>
-                    </li>
-                  </ul>
-                </nav> */}
               </div>
             </div>
           </div>
