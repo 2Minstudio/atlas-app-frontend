@@ -59,10 +59,24 @@
 .dash-min-h-400{
   min-height: 400px;
 }
+
+.pos-bottom {
+ position: absolute;
+ bottom:0;
+ width: 100%;
+}
+
+.bg-course-cover-img{
+  background-image:url("/image/dashboard/eddie-image.png");
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-size: contain;
+}
+
 .greyGrad{
-  background-image: linear-gradient(#dedfde, #f2f2f2);
+  background-image: linear-gradient(#9e9f9e, #f2f2f2);
   background-position: center center;
-    background-size: cover;
+  background-size: cover;
 }
 .border-radius-60{
   border-radius: 60px !important;
