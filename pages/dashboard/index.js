@@ -2,6 +2,7 @@ import Image from "next/image";
 import Layout from "../../components/layout/index";
 import styles from "../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
+import Link from "next/link";
 import { withCookies } from "react-cookie";
 import { isClientLoggedin, getUser } from "../../helpers/helper";
 import React from "react";
@@ -289,14 +290,18 @@ class Dashboard extends React.Component {
                                 EMI Available
                               </small>
                             </h5>
-                            <h6 className="text-success py-3">
+                            <h6 className="text-success py-3 btn">
+                            <Link href={"/dashboard/course-preview"} legacyBehavior>
                               <b>Preview Course</b>
+                              </Link>
                             </h6>
                           </div>
                           <div className="col text-end">
+                          <Link type="button" href={"/dashboard/course-study"} legacyBehavior>
                             <button className="col-12 col-lg-12 col-xl-10 btn btn-lg btn-success rounded-pill mb-3">
                               Buy Now
                             </button>
+                            </Link>
                             <button className="col-12  col-lg-12 col-xl-10 btn btn-lg btn-outline-success rounded-pill ">
                               Enquire Now
                             </button>
