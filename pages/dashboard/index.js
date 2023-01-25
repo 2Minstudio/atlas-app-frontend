@@ -77,8 +77,8 @@ class Dashboard extends React.Component {
                     <div className="row d-flex justify-content-start align-items-start pb-3">
                       <h4>Welcome Siddanth</h4>
                     </div>
-                    {data?.results?.map((item) => (
-                      <div className="row">
+                    {data?.results?.map((item, i) => (
+                      <div key={`item-${i}`} className="row">
                         <div className="col-5 ">
                           <div className="card border-0 greyGrad rounded-25">
                             <div className="card-body p-0 dash-min-h-400 bg-course-cover-img img-fluid">

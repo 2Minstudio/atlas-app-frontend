@@ -1,12 +1,12 @@
 import {Card, Badge, Image} from "react-bootstrap";
-
+// View Course Details
 
 function CourseInfo({ course, showImage = false }) {
   return (
     <Card>
       <Card.Header>
         <Card.Title>
-          <h1>{course?.name}</h1>
+          <h3>{course?.name}</h3>
           <Badge bg="info">₹ {course?.cost}</Badge>{" "}
           <Badge variant="primary">
             {course?.status ? "Published" : "Draft"}
