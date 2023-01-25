@@ -61,7 +61,7 @@ class DashboardCourseStudy extends React.Component {
                     </div>
                   </div>
 
-                  <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-top-25 rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
+                  <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
                     <div className="row">
                       <div className="col-12">
                         <h3 className="py-3">Chiropractor Course</h3>
