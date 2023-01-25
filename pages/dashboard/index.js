@@ -6,6 +6,7 @@ import { withCookies } from "react-cookie";
 import { isClientLoggedin, getUser } from "../../helpers/helper";
 import React from "react";
 import { getCoursesList } from "../../helpers/course";
+import Features from "../../components/freatures";
 
 class Dashboard extends React.Component {
   state = {
@@ -83,17 +84,20 @@ class Dashboard extends React.Component {
                               <div className="row p-4">
                                 <div className="col-9 d-flex justify-content-start">
                                   <div className="col-2">
-                                    <Image
-                                      src="/image/dashboard/student-img.png"
-                                      className="img-fluid py-2 pe-2  rounded-circle"
-                                      alt="Study Image"
-                                      height="100"
-                                      width="100"
-                                    />
+                                    {item?.image && (
+                                      <Image
+                                        src={item?.image}
+                                        className="img-fluid py-2 pe-2  rounded-circle"
+                                        alt="Study Image"
+                                        height="100"
+                                        width="100"
+                                      />
+                                    )}
                                   </div>
                                   <div className="col-10">
                                     <p className="m-0 text-white fw-bold">
-                                      {item.first_name}<br></br>
+                                      {item.first_name}
+                                      <br></br>
                                       <small>@dianneed</small>
                                     </p>
                                   </div>
@@ -114,171 +118,26 @@ class Dashboard extends React.Component {
                         </div>
                         <div className="col-7">
                           <div className="row bg-light rounded-25 px-3 py-4 d-flex justify-content-center d-none d-lg-block">
-                            <div className="row text-success">
-                              <div className="col-12 col-sm-6">
-                                <div className="row d-flex align-items-center">
-                                  <div className="col-3 pt-2 g-0">
-                                    <Image
-                                      className="img-fluid"
-                                      alt="Doctor Image"
-                                      src="/image/Group%20224.svg"
-                                      height="50"
-                                      width="50"
-                                    />
-                                  </div>
-                                  <div className="col-9">
-                                    <p className="text-left m-0">
-                                      {" "}
-                                      Learn from the Licensed Chiropractors
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-12 col-sm-6">
-                                <div className="row d-flex align-items-center">
-                                  <div className="col-3 pt-2 g-0">
-                                    <Image
-                                      className="img-fluid"
-                                      alt="Doctor Image"
-                                      src="/image/Group%20225.svg"
-                                      height="50"
-                                      width="50"
-                                    />
-                                  </div>
-                                  <div className="col-9">
-                                    <p className="text-left  m-0">
-                                      {" "}
-                                      Unlock 400hrs of Study Material
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="row text-success mt-3">
-                              <div className="col-12 col-sm-6">
-                                <div className="row d-flex align-items-center">
-                                  <div className="col-3 pt-2 g-0">
-                                    <Image
-                                      className="img-fluid"
-                                      alt="Doctor Image"
-                                      src="/image/Group%20223.svg"
-                                      height="50"
-                                      width="50"
-                                    />
-                                  </div>
-                                  <div className="col-9">
-                                    <p className="text-left m-0">
-                                      {" "}
-                                      Get Live Hands-on Training
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-12 col-sm-6">
-                                <div className="row d-flex align-items-center">
-                                  <div className="col-3 pt-2 g-0">
-                                    <Image
-                                      className="img-fluid"
-                                      alt="Doctor Image"
-                                      src="/image/Group%20222.svg"
-                                      height="50"
-                                      width="50"
-                                    />
-                                  </div>
-                                  <div className="col-9">
-                                    <p className="text-left  m-0">
-                                      {" "}
-                                      6 Months of Paid Internship
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="row bg-light rounded-25 px-0 py-2 d-flex justify-content-center d-block d-lg-none">
-                            <div className="row text-success">
-                              <div className="col-12">
-                                <div className="row d-flex align-items-center justify-content-center">
-                                  <div className="col-2 g-0 d-flex justify-content-center">
-                                    <Image
-                                      className="img-fluid"
-                                      alt="Doctor Image"
-                                      src="/image/Group%20224.svg"
-                                      height="30"
-                                      width="30"
-                                    />
-                                  </div>
-                                  <div className="col-10">
-                                    <p className="text-left m-0">
-                                      {" "}
-                                      Learn from the Licensed Chiropractors
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-12 mt-2">
-                                <div className="row d-flex align-items-center">
-                                  <div className="col-2 g-0 d-flex justify-content-center">
-                                    <Image
-                                      className="img-fluid"
-                                      alt="Doctor Image"
-                                      src="/image/Group%20225.svg"
-                                      height="30"
-                                      width="30"
-                                    />
-                                  </div>
-                                  <div className="col-10">
-                                    <p className="text-left  m-0">
-                                      {" "}
-                                      Unlock 400hrs of Study Material
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="row text-success">
-                              <div className="col-12 mt-2">
-                                <div className="row d-flex align-items-center">
-                                  <div className="col-2 g-0 d-flex justify-content-center">
-                                    <Image
-                                      className="img-fluid"
-                                      alt="Doctor Image"
-                                      src="/image/Group%20223.svg"
-                                      height="30"
-                                      width="30"
-                                    />
-                                  </div>
-                                  <div className="col-10">
-                                    <p className="text-left m-0">
-                                      {" "}
-                                      Get Live Hands-on Training
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-12 mt-2">
-                                <div className="row d-flex align-items-center">
-                                  <div className="col-2 g-0 d-flex justify-content-center">
-                                    <Image
-                                      className="img-fluid"
-                                      alt="Doctor Image"
-                                      src="/image/Group%20222.svg"
-                                      height="30"
-                                      width="30"
-                                    />
-                                  </div>
-                                  <div className="col-10">
-                                    <p className="text-left  m-0">
-                                      {" "}
-                                      6 Months of Paid Internship
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                            <Features
+                              features={[
+                                {
+                                  image: "/image/Group%20223.svg",
+                                  text: "Get Live Hands-on Training",
+                                },
+                                {
+                                  image: "/image/Group%20222.svg",
+                                  text: "6 Months of Paid Internship",
+                                },
+                                {
+                                  image: "/image/Group%20225.svg",
+                                  text: "Learn from the Licensed Chiropractors",
+                                },
+                                {
+                                  image: "/image/Group%20223.svg",
+                                  text: "Unlock 400hrs of Study Material",
+                                },
+                              ]}
+                            />
                           </div>
 
                           <div className="row align-items-center mt-5">
