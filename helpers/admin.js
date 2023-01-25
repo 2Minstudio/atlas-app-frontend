@@ -143,7 +143,7 @@ const updateCourse = async (data) => {
   try {
     const resp = await fetch(url, options);
     json = await resp.json();
-    if (resp.status == 201) return { status: true, data: json };
+    if (resp.status == 200) return { status: true, data: json };
     else return { status: false, data: json };
   } catch (error) {
     if (error instanceof SyntaxError) {
