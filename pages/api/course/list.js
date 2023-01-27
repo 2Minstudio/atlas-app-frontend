@@ -5,12 +5,22 @@ export default async function handler(req, res) {
   let resp = {};
   const {
     cookies: { atlastoken: token },
-    body: { page = 1, status = 1 },
+    body,
   } = req;
+  const allowedkeys = new Array("status", "id");
+  // const query = {};
 
+  let querystring = "status=1&";
+  Object.keys(body).map((key) => {
+    if (allowedkeys.find((k) => k === key)) {
+      querystring = `${querystring}${key}=${body[key]}&`;
+    }
+  });
+  // console.log(body, querystring, "querystring");
+  //?status=${status}
   await axios({
     method: "get",
-    url: `${process.env.API_URL}/api/courseslist?status=${status}`,
+    url: `${process.env.API_URL}/api/courselist?${querystring}`,
     headers: {
       Authorization: `Token ${token}`,
       "Content-Type": "application/json",

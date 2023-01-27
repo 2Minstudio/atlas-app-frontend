@@ -1,32 +1,66 @@
 import Image from "next/image";
-import styles from "../../styles/Home.module.css";
+import styles from "../../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
-import { isClientLoggedin, getUser } from "../../helpers/helper";
+import { isClientLoggedin, getUser } from "../../../helpers/helper";
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
-import Layout from "../../components/layout/index";
+import Layout from "../../../components/layout/index";
+import { getCoursePreview } from "../../../helpers/course";
+import Menu from "../../../components/menu/studentLeft";
+import Link from "next/link";
+import ModuleList from "../../../components/course/moduleList";
 
 class DashboardCoursePreview extends React.Component {
   state = {
     user: {},
   };
-  componentDidMount() {
+
+  async componentDidMount() {
     const token = isClientLoggedin(this.props);
+    const {
+      router: {
+        query: { course: courseid },
+      },
+    } = this.props;
     if (token) {
-      getUser(token)
-        .then((resp) => {
-          // this.setState({user});
-          console.log(resp, "resp");
-        })
-        .catch((error) => {
-          console.log(error, "error");
-        });
+      const {
+        state,
+        data: { user },
+      } = await getUser(token);
+      if (state) {
+        this.setState({ user, courseid }, this.loadData);
+      }
     }
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.router !== prevState.router) {
+      const {
+        router: {
+          query: { course: propcourseid },
+        },
+      } = nextProps;
+      return { courseid: propcourseid };
+    } else return null;
+  }
+
+  loadData = async () => {
+    const { courseid } = this.state;
+    if (courseid) {
+      const {
+        data: { results },
+        state,
+      } = await getCoursePreview(courseid);
+      if (state) {
+        this.setState({ data: results[0] });
+      }
+    }
+  };
+
   render() {
-    const { user } = this.state;
+    const { user, data } = this.state;
+    console.log(data);
     return (
       <Layout type="dashboard" user={user}>
         <div className={styles}>
@@ -35,14 +69,7 @@ class DashboardCoursePreview extends React.Component {
               <div className="container pb-5">
                 <div className="row g-0 ">
                   <div className="col col-md-3 col-lg-2">
-                    <div className="dashboard-menu-box d-flex align-items-center">
-                      <ul className="list-group flex-fill">
-                        <li className="list-group-item  active"> Home </li>
-                        <li className="list-group-item "> Progress </li>
-                        <li className="list-group-item "> Community</li>
-                        <li className="list-group-item "> Settings</li>
-                      </ul>
-                    </div>
+                    <Menu />
                     <div className="container dashboard-support-box d-flex align-items-end">
                       <div className="row">
                         <div className="col pt-5 pe-4">
@@ -67,29 +94,22 @@ class DashboardCoursePreview extends React.Component {
                       <div className="col-4">
                         <div className="card border-0">
                           <div className="card-body p-0 dash-min-h-400">
-                            <Image
-                              src="/image/dashboard/course-preview.jpg"
-                              className="img-fluid"
-                              alt="Preview course Image"
-                              height="584"
-                              width="502"
-                            />
+                            {data?.image && (
+                              <Image
+                                src={data?.image}
+                                className="img-fluid"
+                                alt="Preview course Image"
+                                height="584"
+                                width="502"
+                              />
+                            )}
                           </div>
                         </div>
                       </div>
                       <div className="col-8">
                         <div className="row  px-3 pb-4 d-flex justify-content-center">
-                          <h3>Chiropractor beginner course</h3>
-                          <p className="pt-5">
-                            Would you like to have a busier practice? Would you
-                            like to see more patients and help more people and
-                            make more money in the process? Who wouldn&apos;t?
-                            Unfortunately it&apos;s never as simple as we
-                            thought it would be and we certainly didn&apos;t
-                            learn much about this in school. In this program
-                            your will learn how to double your chiropractic
-                            practice
-                          </p>
+                          <h3>{data?.name}</h3>
+                          <p className="pt-5">{data?.description}</p>
                           <div className="row text-success">
                             <div className="col-12 col-sm-6"></div>
                             <div className="col-12 col-sm-6"></div>
@@ -104,32 +124,7 @@ class DashboardCoursePreview extends React.Component {
                     </div>
 
                     <div className="row">
-                      <h5 className="pt-4">Lessons</h5>
-                      <div className="col col-md-6 col-lg-7">
-                        <Accordion defaultActiveKey="0">
-                          <Accordion.Item eventKey="0">
-                            <Accordion.Header>Back Pain</Accordion.Header>
-                            <Accordion.Body>
-                              <p>Lesson 1 . 11 min</p>
-                              <p>Lesson 2 . 24 min</p>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="1">
-                            <Accordion.Header>Skeleton System</Accordion.Header>
-                            <Accordion.Body>
-                              <p>Lesson 1 . 11 min</p>
-                              <p>Lesson 2 . 24 min</p>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="2">
-                            <Accordion.Header>Best Practices</Accordion.Header>
-                            <Accordion.Body>
-                              <p>Lesson 1 . 11 min</p>
-                              <p>Lesson 2 . 24 min</p>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                        </Accordion>
-                      </div>
+                      <ModuleList mode="preview" data={data?.modules} />
                       <div className="col col-md-6 col-lg-5">
                         <h3 className="text-success text-center"> </h3>
                         <div className="card rounded-25 p-2">
@@ -216,16 +211,21 @@ class DashboardCoursePreview extends React.Component {
                     <div className="row mt-2 ">
                       <div className="col">
                         <h5>
-                          INR 6,00,000 <br></br>
+                          INR {data?.cost} <br></br>
                           <small className="text-success small-text-12">
                             EMI Available
                           </small>
                         </h5>
                       </div>
                       <div className="col d-flex justify-content-end">
-                        <button className="btn btn-success rounded-pill p-3 me-3">
-                          Buy Now
-                        </button>
+                        {data?.id && (
+                          <Link
+                            href={`/dashboard/${data?.id}/study`}
+                            className="btn btn-success rounded-pill p-3 me-3"
+                          >
+                            Buy Now
+                          </Link>
+                        )}
                         <button className="btn btn-outline-success rounded-pill p-3">
                           Enquire Now
                         </button>

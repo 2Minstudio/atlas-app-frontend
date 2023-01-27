@@ -15,18 +15,16 @@ class Dashboard extends React.Component {
     data: {},
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const token = isClientLoggedin(this.props);
     if (token) {
-      getUser(token)
-        .then((resp) => {
-          // this.setState({user});
-          console.log(resp, "resp");
-          this.loadData();
-        })
-        .catch((error) => {
-          console.log(error, "error");
-        });
+      const {
+        state,
+        data: { user },
+      } = await getUser(token);
+      if (state) {
+        this.setState({ user }, this.loadData);
+      }
     }
   }
 
@@ -41,7 +39,7 @@ class Dashboard extends React.Component {
     const { user, data } = this.state;
     console.log(data, "data");
     return (
-      <Layout type="dashboard">
+      <Layout type="dashboard" user={user}>
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-grey">
@@ -152,7 +150,7 @@ class Dashboard extends React.Component {
                               </h5>
                               <h6 className="text-success py-3">
                                 <Link
-                                  href={"/dashboard/course-preview"}
+                                  href={`/dashboard/${item.id}/preview`}
                                   legacyBehavior
                                 >
                                   <b>Preview Course</b>
@@ -162,7 +160,7 @@ class Dashboard extends React.Component {
                             <div className="col text-end">
                               <Link
                                 type="button"
-                                href={"/dashboard/course-study"}
+                                href={`/dashboard/${item.id}/study`}
                                 legacyBehavior
                               >
                                 <button className="col-12 col-lg-12 col-xl-10 btn btn-lg btn-success rounded-pill mb-3">

@@ -1,11 +1,12 @@
 import Image from "next/image";
-import styles from "../../styles/Home.module.css";
+import styles from "../../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
-import { isClientLoggedin, getUser } from "../../helpers/helper";
+import { isClientLoggedin, getUser } from "../../../helpers/helper";
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
-import Layout from "../../components/layout/index";
+import Layout from "../../../components/layout/index";
+import Menu from "../../../components/menu/studentLeft";
 
 class DashboardCourseStudy extends React.Component {
   state = {
@@ -73,7 +74,6 @@ class DashboardCourseStudy extends React.Component {
                           width="1296"
                         />
                       </div>
-                      
                     </div>
 
                     <div className="row">
@@ -120,7 +120,7 @@ class DashboardCourseStudy extends React.Component {
                       </div>
                     </div>
                     <div className="row">
-                    <h5 className="pt-4">Course</h5>
+                      <h5 className="pt-4">Course</h5>
                       <div className="col">
                         <Accordion defaultActiveKey="0">
                           <Accordion.Item eventKey="0">

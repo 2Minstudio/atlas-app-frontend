@@ -17,4 +17,20 @@ const getCoursesList = async (page = 1) => {
     });
 };
 
-export { getCoursesList };
+const getCoursePreview = async (id) => {
+  return axios
+    .post("/api/course/list", { id })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
+export { getCoursesList, getCoursePreview };
