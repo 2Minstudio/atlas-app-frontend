@@ -19,7 +19,7 @@ const getCoursesList = async (page = 1) => {
 
 const getCoursePreview = async (id) => {
   return axios
-    .post("/api/course/list", { id })
+    .post("/api/course/preview", { id })
     .then((response) => {
       const { data } = response;
       return data;

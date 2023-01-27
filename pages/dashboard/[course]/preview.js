@@ -9,7 +9,7 @@ import Layout from "../../../components/layout/index";
 import { getCoursePreview } from "../../../helpers/course";
 import Menu from "../../../components/menu/studentLeft";
 import Link from "next/link";
-import ModuleList from "../../../components/course/moduleList";
+import ModuleList from "../../../components/course/modulePreviewList";
 
 class DashboardCoursePreview extends React.Component {
   state = {
@@ -49,11 +49,11 @@ class DashboardCoursePreview extends React.Component {
     const { courseid } = this.state;
     if (courseid) {
       const {
-        data: { results },
+        data,
         state,
       } = await getCoursePreview(courseid);
       if (state) {
-        this.setState({ data: results[0] });
+        this.setState({ data });
       }
     }
   };
