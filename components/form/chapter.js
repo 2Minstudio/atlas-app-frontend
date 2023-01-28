@@ -15,6 +15,8 @@ class ChapterForm extends React.Component {
       status: "0",
       video: "",
       submited: false,
+      created_by: "",
+      updated_by: "",
       previousMeterial: "",
       previousVideo: "",
       showSuccess: false,

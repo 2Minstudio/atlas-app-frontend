@@ -109,7 +109,7 @@ class Courses extends React.Component {
             <Modal.Title>{editId ? "Edit" : "New"} Course</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <CourseForm id={editId} closeTrigger={this.handleClose} />
+            <CourseForm user={user} id={editId} closeTrigger={this.handleClose} />
           </Modal.Body>
         </Modal>
         <DataList

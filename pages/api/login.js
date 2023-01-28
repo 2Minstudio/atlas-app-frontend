@@ -20,7 +20,15 @@ export default async function handler(req, res) {
     },
   })
     .then((response) => {
-      const { token, expiry, created, duration } = response.data;
+      const {
+        data: {
+          token,
+          expiry,
+          created,
+          duration,
+          user: { uid },
+        },
+      } = response;
       state = true;
       res.setHeader(
         "Set-Cookie",
@@ -32,7 +40,17 @@ export default async function handler(req, res) {
           path: "/",
         })
       );
-      resp = response.data;
+      res.setHeader(
+        "Set-Cookie",
+        cookie.serialize("atlasuid", id, {
+          // httpOnly: true,
+          // secure: process.env.NODE_ENV !== "development",
+          // sameSite: "strict",
+          maxAge: parseInt(duration),
+          path: "/",
+        })
+      );
+      resp = { token, uid: id };
     })
     .catch((error) => {
       if (error.response) {

@@ -178,6 +178,7 @@ class ModuleDetails extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <ChapterForm
+              user={user}
               courseId={courseid}
               moduleId={moduleid}
               id={editId}

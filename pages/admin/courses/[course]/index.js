@@ -153,6 +153,7 @@ class CourseDetail extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <ModuleForm
+              user={user}
               courseId={courseid}
               id={editId}
               closeTrigger={this.handleClose}

@@ -14,6 +14,8 @@ class ModuleForm extends React.Component {
       course: "",
       attend_type: "online",
       status: "0",
+      created_by: "",
+      updated_by: "",
       submited: false,
       showSuccess: false,
     };
