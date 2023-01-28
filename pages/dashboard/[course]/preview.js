@@ -1,4 +1,5 @@
-import Image from "next/image";
+// import Image from "next/image";
+import { Image} from "react-bootstrap";
 import styles from "../../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
