@@ -77,15 +77,22 @@ class ChapterForm extends React.Component {
   }
 
   async componentDidMount() {
-    const { id, courseId, moduleId } = this.props;
+    const {
+      id,
+      user: { id: userid },
+      courseId,
+      moduleId,
+    } = this.props;
     this.setState({ course: courseId, module: moduleId });
     if (id) {
-      this.setState({ create: false });
+      this.setState({ create: false, updated_by: userid });
       const { data, state } = await getChapter(id);
       if (state) {
         const { video: previouseVideo, meterial: previousMeterial } = data;
         this.setState({ ...data, previouseVideo, previousMeterial });
       }
+    } else {
+      this.setState({ created_by: userid, updated_by: userid });
     }
   }
 
@@ -120,110 +127,120 @@ class ChapterForm extends React.Component {
     const { closeTrigger } = this.props;
     return (
       <div className="d-flex align-items-center justify-content-center bg-light">
-      <Form className="col-11" onSubmit={this.handleSubmit}>
-        {showSuccess && (
-          <AutoHideAlert
-            message={`Chapter ${create ? "created" : "updated"} successfully!`}
-            onClose={closeTrigger}
-          />
-        )}
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label className="fw-bold">Name</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            name="name"
-            autoFocus
-            value={name}
-            onChange={this.handleChange}
-          />
-          {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label className="fw-bold">Content</Form.Label>
-          <Form.Control
-            required
-            as="textarea"
-            name="content"
-            rows={3}
-            value={content}
-            onChange={this.handleChange}
-          />
-          {errors?.content && (
-            <Alert variant={"danger"}>{errors.content}</Alert>
+        <Form className="col-11" onSubmit={this.handleSubmit}>
+          {showSuccess && (
+            <AutoHideAlert
+              message={`Chapter ${
+                create ? "created" : "updated"
+              } successfully!`}
+              onClose={closeTrigger}
+            />
           )}
-        </Form.Group>
-        <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label className="fw-bold">Video</Form.Label>
-          <Form.Control
-            type="file"
-            name="video"
-            accept="video/mp4"
-            onChange={this.handleFileChange}
-          />
-          <Row className="align-items-right">
-            <Col xs="auto">
-              {previouseVideo && (
-                <ReactPlayer
-                  className="react-player"
-                  url={previouseVideo}
-                  width="200px"
-                  height="200px"
-                  controls={true}
-                />
-              )}
-            </Col>
-          </Row>
-          {errors?.video && <Alert variant={"danger"}>{errors.video}</Alert>}
-        </Form.Group>
-        <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label className="fw-bold">Meterial</Form.Label>
-          <Form.Control
-            type="file"
-            name="meterial"
-            onChange={this.handleFileChange}
-          />
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label className="fw-bold">Name</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="name"
+              autoFocus
+              value={name}
+              onChange={this.handleChange}
+            />
+            {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label className="fw-bold">Content</Form.Label>
+            <Form.Control
+              required
+              as="textarea"
+              name="content"
+              rows={3}
+              value={content}
+              onChange={this.handleChange}
+            />
+            {errors?.content && (
+              <Alert variant={"danger"}>{errors.content}</Alert>
+            )}
+          </Form.Group>
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Label className="fw-bold">Video</Form.Label>
+            <Form.Control
+              type="file"
+              name="video"
+              accept="video/mp4"
+              onChange={this.handleFileChange}
+            />
+            <Row className="align-items-right">
+              <Col xs="auto">
+                {previouseVideo && (
+                  <ReactPlayer
+                    className="react-player"
+                    url={previouseVideo}
+                    width="200px"
+                    height="200px"
+                    controls={true}
+                  />
+                )}
+              </Col>
+            </Row>
+            {errors?.video && <Alert variant={"danger"}>{errors.video}</Alert>}
+          </Form.Group>
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Label className="fw-bold">Meterial</Form.Label>
+            <Form.Control
+              type="file"
+              name="meterial"
+              onChange={this.handleFileChange}
+            />
 
-          <Row className="align-items-right">
-            <Col xs="auto">
-              {previousMeterial && (
-                <Button target="_blank" href={previousMeterial}>
-                  Material
+            <Row className="align-items-right">
+              <Col xs="auto">
+                {previousMeterial && (
+                  <Button target="_blank" href={previousMeterial}>
+                    Material
+                  </Button>
+                )}
+              </Col>
+            </Row>
+
+            {errors?.meterial && (
+              <Alert variant={"danger"}>{errors.meterial}</Alert>
+            )}
+          </Form.Group>
+
+          <Form.Group className="mb-3 mt-4">
+            <Row className="d-flex align-items-center justify-content-center">
+              <Col xs="auto">
+                <Button
+                  className="btn rounded-pill"
+                  size="lg"
+                  variant="danger"
+                  onClick={() => this.setStatusAction("cancel")}
+                >
+                  Cancel
+                </Button>{" "}
+              </Col>
+              <Col xs="auto">
+                <Button
+                  className="btn rounded-pill"
+                  size="lg"
+                  variant="success"
+                  onClick={() => this.setStatusAction("draft")}
+                >
+                  Save as Draft
+                </Button>{" "}
+              </Col>
+              <Col xs="auto">
+                <Button
+                  className="btn rounded-pill"
+                  size="lg"
+                  onClick={() => this.setStatusAction("publish")}
+                >
+                  Publish
                 </Button>
-              )}
-            </Col>
-          </Row>
-
-          {errors?.meterial && (
-            <Alert variant={"danger"}>{errors.meterial}</Alert>
-          )}
-        </Form.Group>
-
-        <Form.Group className="mb-3 mt-4">
-          <Row className="d-flex align-items-center justify-content-center">
-            <Col xs="auto">
-              <Button className="btn rounded-pill" size="lg"
-                variant="danger"
-                onClick={() => this.setStatusAction("cancel")}
-              >
-                Cancel
-              </Button>{" "}
-            </Col>
-            <Col xs="auto">
-              <Button className="btn rounded-pill" size="lg"
-                variant="success"
-                onClick={() => this.setStatusAction("draft")}
-              >
-                Save as Draft
-              </Button>{" "}
-            </Col>
-            <Col xs="auto">
-              <Button className="btn rounded-pill" size="lg" onClick={() => this.setStatusAction("publish")}>
-                Publish
-              </Button>
-            </Col>
-          </Row>
-          {/* <Form.Label>Status</Form.Label>
+              </Col>
+            </Row>
+            {/* <Form.Label>Status</Form.Label>
 
           <Form.Check
             checked={status == "1"}
@@ -243,12 +260,12 @@ class ChapterForm extends React.Component {
             value={0}
             onChange={this.handleCheckbox}
           /> */}
-        </Form.Group>
+          </Form.Group>
 
-        {/* <Button disabled={submited} variant="primary" type="submit">
+          {/* <Button disabled={submited} variant="primary" type="submit">
           {create ? "Create" : "Update"}
         </Button> */}
-      </Form>
+        </Form>
       </div>
     );
   }

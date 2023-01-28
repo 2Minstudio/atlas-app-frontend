@@ -1,12 +1,11 @@
 import axios from "axios";
 
-
 export default async function handler(req, res) {
   let state = false;
   let resp = {};
   const {
     cookies: { atlastoken: token },
-    body: { name, course, attend_type, status },
+    body: { name, course, attend_type, status, created_by, updated_by },
   } = req;
 
   await axios({
@@ -17,6 +16,8 @@ export default async function handler(req, res) {
       course,
       attend_type,
       status,
+      created_by,
+      updated_by,
     },
     headers: {
       Authorization: `Token ${token}`,
