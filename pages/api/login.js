@@ -26,31 +26,27 @@ export default async function handler(req, res) {
           expiry,
           created,
           duration,
-          user: { uid },
+          user: { id, groups },
         },
       } = response;
       state = true;
-      res.setHeader(
-        "Set-Cookie",
-        cookie.serialize("atlastoken", token, {
-          // httpOnly: true,
-          // secure: process.env.NODE_ENV !== "development",
-          // sameSite: "strict",
-          maxAge: parseInt(duration),
-          path: "/",
-        })
-      );
-      res.setHeader(
-        "Set-Cookie",
+      res.setHeader("Set-Cookie", [
         cookie.serialize("atlasuid", id, {
           // httpOnly: true,
           // secure: process.env.NODE_ENV !== "development",
           // sameSite: "strict",
           maxAge: parseInt(duration),
           path: "/",
-        })
-      );
-      resp = { token, uid: id };
+        }),
+        cookie.serialize("atlastoken", token, {
+          // httpOnly: true,
+          // secure: process.env.NODE_ENV !== "development",
+          // sameSite: "strict",
+          maxAge: parseInt(duration),
+          path: "/",
+        }),
+      ]);
+      resp = { token, uid: id, user: { groups } };
     })
     .catch((error) => {
       if (error.response) {
