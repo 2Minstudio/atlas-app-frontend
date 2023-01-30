@@ -14,6 +14,8 @@ class ModuleForm extends React.Component {
       course: "",
       attend_type: "online",
       status: "0",
+      created_by: "",
+      updated_by: "",
       submited: false,
       showSuccess: false,
     };
@@ -66,15 +68,21 @@ class ModuleForm extends React.Component {
   }
 
   async componentDidMount() {
-    const { id, courseId } = this.props;
+    const {
+      id,
+      user: { id: userid },
+      courseId,
+    } = this.props;
     this.setState({ course: courseId });
     if (id) {
-      this.setState({ create: false });
+      this.setState({ create: false, updated_by: userid });
       const { data, state } = await getModule(id);
       if (state) {
         this.setState({ ...data });
       }
       console.log("Edit mode ", id, data);
+    } else {
+      this.setState({ created_by: userid, updated_by: userid });
     }
   }
 
@@ -98,67 +106,75 @@ class ModuleForm extends React.Component {
     const { closeTrigger } = this.props;
     return (
       <div className="d-flex align-items-center justify-content-center bg-light">
-      <Form className="col-11" onSubmit={this.handleSubmit}>
-        {showSuccess && (
-          <AutoHideAlert
-            message={`Module ${create ? "created" : "updated"} successfully!`}
-            onClose={closeTrigger}
-          />
-        )}
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label className="fw-bold">Name</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            name="name"
-            autoFocus
-            value={name}
-            onChange={this.handleChange}
-          />
-          {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label className="fw-bold">Attend Type</Form.Label>
-          <Form.Select
-            value={attend_type}
-            onChange={this.handleChange}
-            name="attend_type"
-          >
-            <option>Select</option>
-            <option value="online">Online</option>
-            <option value="offline">Offline</option>
-          </Form.Select>
-          {errors?.attend_type && (
-            <Alert variant={"danger"}>{errors.attend_type}</Alert>
+        <Form className="col-11" onSubmit={this.handleSubmit}>
+          {showSuccess && (
+            <AutoHideAlert
+              message={`Module ${create ? "created" : "updated"} successfully!`}
+              onClose={closeTrigger}
+            />
           )}
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label className="fw-bold">Name</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="name"
+              autoFocus
+              value={name}
+              onChange={this.handleChange}
+            />
+            {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
+          </Form.Group>
 
-        <Form.Group className="mb-3 mt-4">
-          <Row className="d-flex align-items-center justify-content-center">
-            <Col xs="auto">
-              <Button className="btn rounded-pill" size="lg"
-                variant="danger"
-                onClick={() => this.setStatusAction("cancel")}
-              >
-                Cancel
-              </Button>{" "}
-            </Col>
-            <Col xs="auto">
-              <Button className="btn rounded-pill" size="lg"
-                variant="success"
-                onClick={() => this.setStatusAction("draft")}
-              >
-                Save as Draft
-              </Button>{" "}
-            </Col>
-            <Col xs="auto">
-              <Button className="btn rounded-pill" size="lg" onClick={() => this.setStatusAction("publish")}>
-                Publish
-              </Button>
-            </Col>
-          </Row>
-          {/* <Form.Label>Status</Form.Label>
+          <Form.Group className="mb-3">
+            <Form.Label className="fw-bold">Attend Type</Form.Label>
+            <Form.Select
+              value={attend_type}
+              onChange={this.handleChange}
+              name="attend_type"
+            >
+              <option>Select</option>
+              <option value="online">Online</option>
+              <option value="offline">Offline</option>
+            </Form.Select>
+            {errors?.attend_type && (
+              <Alert variant={"danger"}>{errors.attend_type}</Alert>
+            )}
+          </Form.Group>
+
+          <Form.Group className="mb-3 mt-4">
+            <Row className="d-flex align-items-center justify-content-center">
+              <Col xs="auto">
+                <Button
+                  className="btn rounded-pill"
+                  size="lg"
+                  variant="danger"
+                  onClick={() => this.setStatusAction("cancel")}
+                >
+                  Cancel
+                </Button>{" "}
+              </Col>
+              <Col xs="auto">
+                <Button
+                  className="btn rounded-pill"
+                  size="lg"
+                  variant="success"
+                  onClick={() => this.setStatusAction("draft")}
+                >
+                  Save as Draft
+                </Button>{" "}
+              </Col>
+              <Col xs="auto">
+                <Button
+                  className="btn rounded-pill"
+                  size="lg"
+                  onClick={() => this.setStatusAction("publish")}
+                >
+                  Publish
+                </Button>
+              </Col>
+            </Row>
+            {/* <Form.Label>Status</Form.Label>
 
           <Form.Check
             checked={status == "1"}
@@ -178,12 +194,12 @@ class ModuleForm extends React.Component {
             value={0}
             onChange={this.handleCheckbox}
           /> */}
-        </Form.Group>
+          </Form.Group>
 
-        {/* <Button disabled={submited} variant="primary" type="submit">
+          {/* <Button disabled={submited} variant="primary" type="submit">
           {create ? "Create" : "Update"}
         </Button> */}
-      </Form>
+        </Form>
       </div>
     );
   }

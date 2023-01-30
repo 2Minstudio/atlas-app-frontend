@@ -1,15 +1,16 @@
-import Image from "next/image";
+// import Image from "next/image";
+import { Image } from "react-bootstrap";
 import styles from "../../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
 import { isClientLoggedin, getUser } from "../../../helpers/helper";
 import React from "react";
-import Accordion from "react-bootstrap/Accordion";
 import Layout from "../../../components/layout/index";
 import { getCoursePreview } from "../../../helpers/course";
 import Menu from "../../../components/menu/studentLeft";
 import Link from "next/link";
 import ModuleList from "../../../components/course/modulePreviewList";
+import SupportContact from "../../../components/common/supportContact";
 
 class DashboardCoursePreview extends React.Component {
   state = {
@@ -31,6 +32,8 @@ class DashboardCoursePreview extends React.Component {
       if (state) {
         this.setState({ user, courseid }, this.loadData);
       }
+    } else {
+      Router.push("/");
     }
   }
 
@@ -48,10 +51,7 @@ class DashboardCoursePreview extends React.Component {
   loadData = async () => {
     const { courseid } = this.state;
     if (courseid) {
-      const {
-        data,
-        state,
-      } = await getCoursePreview(courseid);
+      const { data, state } = await getCoursePreview(courseid);
       if (state) {
         this.setState({ data });
       }
@@ -70,22 +70,7 @@ class DashboardCoursePreview extends React.Component {
                 <div className="row g-0 ">
                   <div className="col col-md-3 col-lg-2">
                     <Menu />
-                    <div className="container dashboard-support-box d-flex align-items-end">
-                      <div className="row">
-                        <div className="col pt-5 pe-4">
-                          <div className="card bg-grey rounded-25 p-0">
-                            <div className="card-body ">
-                              <h5 className="card-title">Support 24/7</h5>
-                              <h6 className="card-subtitle mb-2 text-muted">
-                                Contact us anytime
-                              </h6>
-                              <p className="card-text"></p>
-                              <buton className=" btn btn-success"> Start</buton>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <SupportContact />
                   </div>
 
                   <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">

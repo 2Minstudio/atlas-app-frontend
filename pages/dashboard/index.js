@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "react-bootstrap";
 import Layout from "../../components/layout/index";
 import styles from "../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
@@ -8,6 +8,8 @@ import { isClientLoggedin, getUser } from "../../helpers/helper";
 import React from "react";
 import { getCoursesList } from "../../helpers/course";
 import Features from "../../components/freatures";
+import Menu from "../../components/menu/studentLeft";
+import SupportContact from "../../components/common/supportContact";
 
 class Dashboard extends React.Component {
   state = {
@@ -25,6 +27,8 @@ class Dashboard extends React.Component {
       if (state) {
         this.setState({ user }, this.loadData);
       }
+    } else {
+      Router.push("/");
     }
   }
 
@@ -46,43 +50,30 @@ class Dashboard extends React.Component {
               <div className="container pb-5">
                 <div className="row g-0 ">
                   <div className="col col-md-3 col-lg-2">
-                    <div className="dashboard-menu-box d-flex align-items-center">
-                      <ul className="list-group flex-fill">
-                        <li className="list-group-item  active"> Home </li>
-                        <li className="list-group-item "> Progress </li>
-                        <li className="list-group-item "> Community</li>
-                        <li className="list-group-item "> Settings</li>
-                      </ul>
-                    </div>
-                    <div className="container dashboard-support-box d-flex align-items-end">
-                      <div className="row">
-                        <div className="col pt-5 pe-4">
-                          <div className="card bg-grey rounded-25 p-0">
-                            <div className="card-body ">
-                              <h5 className="card-title">Support 24/7</h5>
-                              <h6 className="card-subtitle mb-2 text-muted">
-                                Contact us anytime
-                              </h6>
-                              <p className="card-text"></p>
-                              <buton className=" btn btn-success"> Start</buton>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <Menu />
+                    <SupportContact />
                   </div>
                   <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
                     <div className="row d-flex justify-content-start align-items-start pb-3">
-                      <h4>Welcome Siddanth</h4>
+                      <h4>Welcome {user?.first_name}</h4>
                     </div>
                     {data?.results?.map((item, i) => (
                       <div key={`item-${i}`} className="row">
                         <div className="col-5 ">
                           <div className="card border-0 greyGrad rounded-25">
-                            <div className="card-body p-0 dash-min-h-400 bg-course-cover-img img-fluid">
+                            <div className="card-body p-0 dash-min-h-400 img-fluid">
+                              {item?.image && (
+                                <Image
+                                  src={item?.image}
+                                  className="img-fluid py-2 pe-2 "
+                                  alt="Study Image"
+                                  height="420"
+                                  width="400"
+                                />
+                              )}
                               <div className="row p-4">
                                 <div className="col-9 d-flex justify-content-start">
-                                  <div className="col-2">
+                                  {/* <div className="col-2">
                                     {item?.image && (
                                       <Image
                                         src={item?.image}
@@ -92,12 +83,12 @@ class Dashboard extends React.Component {
                                         width="100"
                                       />
                                     )}
-                                  </div>
+                                  </div> */}
                                   <div className="col-10">
                                     <p className="m-0 text-white fw-bold">
-                                      {item.first_name}
+                                      {item?.user?.first_name}
                                       <br></br>
-                                      <small>@dianneed</small>
+                                      {/* <small>@dianneed</small> */}
                                     </p>
                                   </div>
                                 </div>

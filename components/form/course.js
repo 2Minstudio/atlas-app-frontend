@@ -17,6 +17,8 @@ class CourseForm extends React.Component {
       status: "0",
       submited: false,
       image: "",
+      created_by: "",
+      updated_by: "",
       previouseImage: "",
       showSuccess: false,
     };
@@ -65,7 +67,7 @@ class CourseForm extends React.Component {
       });
     } else {
       await createCourse(this.state).then((resp) => {
-        console.log(resp,'resp createcourse');
+        console.log(resp, "resp createcourse");
         const { status, data } = resp;
         if (status) {
           this.setState({ showSuccess: true });
@@ -79,15 +81,20 @@ class CourseForm extends React.Component {
   }
 
   async componentDidMount() {
-    const { id } = this.props;
+    const {
+      id,
+      user: { id: userid },
+    } = this.props;
     if (id) {
-      this.setState({ create: false });
+      this.setState({ create: false, updated_by: userid });
       const { data, state } = await getCourse(id);
       if (state) {
         const { image: previouseImage } = data;
         this.setState({ ...data, previouseImage });
       }
       console.log("Edit mode ", id, data);
+    } else {
+      this.setState({ created_by: userid, updated_by: userid });
     }
   }
 
@@ -122,112 +129,119 @@ class CourseForm extends React.Component {
     const { closeTrigger } = this.props;
     return (
       <div className="d-flex align-items-center justify-content-center bg-light">
-      <Form className="col-11" onSubmit={this.handleSubmit}>
-        {showSuccess && (
-          <AutoHideAlert
-            message={`Course ${create ? "created" : "updated"} successfully!`}
-            onClose={closeTrigger}
-          />
-        )}
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label className="fw-bold">Name</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            name="name"
-            autoFocus
-            value={name}
-            onChange={this.handleChange}
-          />
-          {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label className="fw-bold">Description</Form.Label>
-          <Form.Control
-            required
-            as="textarea"
-            name="description"
-            rows={3}
-            value={description}
-            onChange={this.handleChange}
-          />
-          {errors?.description && (
-            <Alert variant={"danger"}>{errors.description}</Alert>
+        <Form className="col-11" onSubmit={this.handleSubmit}>
+          {showSuccess && (
+            <AutoHideAlert
+              message={`Course ${create ? "created" : "updated"} successfully!`}
+              onClose={closeTrigger}
+            />
           )}
-        </Form.Group>
-        <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label className="fw-bold">Course Image</Form.Label>
-          <Form.Control
-            type="file"
-            name="image"
-            // value={image}
-            accept="image/png, image/jpeg"
-            onChange={this.handleImageChange}
-          />
-          {previouseImage && (
-            <>
-              <Image alt="course cover" thumbnail={true} src={previouseImage}></Image>
-            </>
-          )}
-          {errors?.image && <Alert variant={"danger"}>{errors.image}</Alert>}
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label className="fw-bold">Notes</Form.Label>
-          <Form.Control
-            required
-            as="textarea"
-            name="notes"
-            rows={3}
-            value={notes}
-            onChange={this.handleChange}
-          />
-          {errors?.notes && <Alert variant={"danger"}>{errors.notes}</Alert>}
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label className="fw-bold">Cost</Form.Label>
-          <Form.Control
-            required
-            type="number"
-            name="cost"
-            autoFocus
-            value={cost}
-            onChange={this.handleChange}
-          />
-          {errors?.cost && <Alert variant={"danger"}>{errors.cost}</Alert>}
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label className="fw-bold">Name</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="name"
+              autoFocus
+              value={name}
+              onChange={this.handleChange}
+            />
+            {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label className="fw-bold">Description</Form.Label>
+            <Form.Control
+              required
+              as="textarea"
+              name="description"
+              rows={3}
+              value={description}
+              onChange={this.handleChange}
+            />
+            {errors?.description && (
+              <Alert variant={"danger"}>{errors.description}</Alert>
+            )}
+          </Form.Group>
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Label className="fw-bold">Course Image</Form.Label>
+            <Form.Control
+              type="file"
+              name="image"
+              // value={image}
+              accept="image/png, image/jpeg"
+              onChange={this.handleImageChange}
+            />
+            {previouseImage && (
+              <>
+                <Image
+                  alt="course cover"
+                  thumbnail={true}
+                  src={previouseImage}
+                ></Image>
+              </>
+            )}
+            {errors?.image && <Alert variant={"danger"}>{errors.image}</Alert>}
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label className="fw-bold">Notes</Form.Label>
+            <Form.Control
+              required
+              as="textarea"
+              name="notes"
+              rows={3}
+              value={notes}
+              onChange={this.handleChange}
+            />
+            {errors?.notes && <Alert variant={"danger"}>{errors.notes}</Alert>}
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label className="fw-bold">Cost</Form.Label>
+            <Form.Control
+              required
+              type="number"
+              name="cost"
+              autoFocus
+              value={cost}
+              onChange={this.handleChange}
+            />
+            {errors?.cost && <Alert variant={"danger"}>{errors.cost}</Alert>}
+          </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Row className="d-flex align-items-center justify-content-center">
-            <Col xs="auto">
-              <Button className="btn rounded-pill"
-                variant="danger"
-                size="lg"
-                onClick={() => this.setStatusAction("cancel")}
-              >
-                Cancel
-              </Button>{" "}
-            </Col>
-            <Col xs="auto">
-              <Button className="btn rounded-pill"
-                size="lg"
-                variant="success"
-                disabled={submited}
-                onClick={() => this.setStatusAction("draft")}
-              >
-                Save as Draft
-              </Button>{" "}
-            </Col>
-            <Col xs="auto">
-              <Button className="btn rounded-pill"
-              size="lg"
-                disabled={submited}
-                onClick={() => this.setStatusAction("publish")}
-              >
-                Publish
-              </Button>
-            </Col>
-          </Row>
-          {/*
+          <Form.Group className="mb-3">
+            <Row className="d-flex align-items-center justify-content-center">
+              <Col xs="auto">
+                <Button
+                  className="btn rounded-pill"
+                  variant="danger"
+                  size="lg"
+                  onClick={() => this.setStatusAction("cancel")}
+                >
+                  Cancel
+                </Button>{" "}
+              </Col>
+              <Col xs="auto">
+                <Button
+                  className="btn rounded-pill"
+                  size="lg"
+                  variant="success"
+                  disabled={submited}
+                  onClick={() => this.setStatusAction("draft")}
+                >
+                  Save as Draft
+                </Button>{" "}
+              </Col>
+              <Col xs="auto">
+                <Button
+                  className="btn rounded-pill"
+                  size="lg"
+                  disabled={submited}
+                  onClick={() => this.setStatusAction("publish")}
+                >
+                  Publish
+                </Button>
+              </Col>
+            </Row>
+            {/*
           <Form.Label>Status</Form.Label>
            <Form.Check
             checked={status == "1"}
@@ -247,12 +261,12 @@ class CourseForm extends React.Component {
             value={0}
             onChange={this.handleCheckbox}
           /> */}
-        </Form.Group>
+          </Form.Group>
 
-        {/* <Button disabled={submited} variant="primary" type="submit">
+          {/* <Button disabled={submited} variant="primary" type="submit">
           {create ? "Create" : "Update"}
         </Button> */}
-      </Form>
+        </Form>
       </div>
     );
   }

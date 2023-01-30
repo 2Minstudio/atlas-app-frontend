@@ -7,22 +7,24 @@ import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Layout from "../../../components/layout/index";
 import Menu from "../../../components/menu/studentLeft";
-
+import SupportContact from "../../../components/common/supportContact";
 class DashboardCourseStudy extends React.Component {
   state = {
     user: {},
   };
-  componentDidMount() {
+
+  async componentDidMount() {
     const token = isClientLoggedin(this.props);
     if (token) {
-      getUser(token)
-        .then((resp) => {
-          // this.setState({user});
-          console.log(resp, "resp");
-        })
-        .catch((error) => {
-          console.log(error, "error");
-        });
+      const {
+        state,
+        data: { user },
+      } = await getUser(token);
+      if (state) {
+        this.setState({ user: user });
+      }
+    } else {
+      Router.push("/");
     }
   }
 
@@ -36,30 +38,8 @@ class DashboardCourseStudy extends React.Component {
               <div className="container pb-5">
                 <div className="row g-0 ">
                   <div className="col col-md-3 col-lg-2">
-                    <div className="dashboard-menu-box d-flex align-items-center">
-                      <ul className="list-group flex-fill">
-                        <li className="list-group-item  active"> Home </li>
-                        <li className="list-group-item "> Progress </li>
-                        <li className="list-group-item "> Community</li>
-                        <li className="list-group-item "> Settings</li>
-                      </ul>
-                    </div>
-                    <div className="container dashboard-support-box d-flex align-items-end">
-                      <div className="row">
-                        <div className="col pt-5 pe-4">
-                          <div className="card bg-grey rounded-25 p-0">
-                            <div className="card-body ">
-                              <h5 className="card-title">Support 24/7</h5>
-                              <h6 className="card-subtitle mb-2 text-muted">
-                                Contact us anytime
-                              </h6>
-                              <p className="card-text"></p>
-                              <buton className=" btn btn-success"> Start</buton>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <Menu />
+                    <SupportContact />
                   </div>
 
                   <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">

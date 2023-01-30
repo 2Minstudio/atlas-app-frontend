@@ -1,4 +1,5 @@
 import Accordion from "react-bootstrap/Accordion";
+import Link from "next/link";
 function ModuleList({ mode, data }) {
   let i = 0;
   return (
@@ -12,9 +13,11 @@ function ModuleList({ mode, data }) {
               <Accordion.Item key={`module-${i}`} eventKey={`module-${i}`}>
                 <Accordion.Header>{module.name}</Accordion.Header>
                 <Accordion.Body>
-                  {module?.chapters.map((chapter) => (
-                    <p key={`chapter-${chapter.id}`}>{chapter.name}</p>
-                  ))}
+                  {module?.chapters.map((chapter) => {
+                    return i === 1 ? <Link href={`/dashboard/${chapter.course_id}/study/${chapter.id}`}><p key={`chapter-${chapter.id}`}>{chapter.name}</p></Link> : <p key={`chapter-${chapter.id}`}>{chapter.name}</p>
+                  }
+                    
+                  )}
                 </Accordion.Body>
               </Accordion.Item>
             );

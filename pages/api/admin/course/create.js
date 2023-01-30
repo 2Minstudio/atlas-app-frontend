@@ -57,7 +57,7 @@ export default async function handler(req, res) {
     // console.log(formData, "req?");
     let resp = {};
     const {
-      cookies: { atlastoken: token },
+      cookies: { atlastoken: token, atlasuid: created_by },
       // body,
     } = req;
     //
