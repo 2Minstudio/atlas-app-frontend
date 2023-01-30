@@ -27,7 +27,7 @@ function ActionButton(btn, row) {
   if (btn?.type == "button") {
     return (
       <Button
-        className="btn btn-info rounded-pill px-3"
+        className="btn rounded-pill px-3"
         size="md"
         onClick={() => btn.onclick(row[btn.key])}
         variant={btn?.variant}

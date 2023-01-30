@@ -7,8 +7,8 @@ function CourseInfo({ course, showImage = false }) {
       <Card.Header>
         <Card.Title>
           <h3>{course?.name}</h3>
-          <Badge bg="info">₹ {course?.cost}</Badge>{" "}
-          <Badge variant="primary">
+          <Badge className="rounded-25" bg="success">₹ {course?.cost}</Badge>{" "}
+          <Badge className="rounded-25" bg="secondary" variant="primary">
             {course?.status ? "Published" : "Draft"}
           </Badge>
         </Card.Title>
