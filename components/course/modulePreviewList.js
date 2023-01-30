@@ -14,7 +14,7 @@ function ModuleList({ mode, data }) {
                 <Accordion.Header>{module.name}</Accordion.Header>
                 <Accordion.Body>
                   {module?.chapters.map((chapter) => {
-                    return i === 1 ? <Link href={`/dashboard/${chapter.course_id}/study/${chapter.id}`}><p key={`chapter-${chapter.id}`}>{chapter.name}</p></Link> : <p key={`chapter-${chapter.id}`}>{chapter.name}</p>
+                    return i === 1 ? <Link href={`/dashboard/${chapter.course}/study/${chapter.id}`}><p key={`chapter-${chapter.id}`}>{chapter.name}</p></Link> : <p key={`chapter-${chapter.id}`}>{chapter.name}</p>
                   }
                     
                   )}
