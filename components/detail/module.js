@@ -6,7 +6,7 @@ function ModuleInfo({ module }) {
     <Card className="mt-4">
       <Card.Header>
         <Card.Title>
-          <h3>{module?.name}</h3>
+          <h4>{module?.name}</h4>
           <Badge className="rounded-25" bg="success" variant="success">
             {module?.status ? "Published" : "Draft"}
           </Badge>

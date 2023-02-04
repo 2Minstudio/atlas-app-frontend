@@ -84,7 +84,7 @@ class DashboardCoursePreview extends React.Component {
                             {data?.image && (
                               <Image
                                 src={data?.image}
-                                className="img-fluid"
+                                className="img-fluid rounded-25"
                                 alt="Preview course Image"
                                 height="584"
                                 width="502"

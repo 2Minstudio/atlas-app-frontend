@@ -9,7 +9,7 @@ export default function ConfirmBox({
 }) {
   return (
     <Modal
-      size="sm"
+      size="md"
       show={isShow ? true : false}
       aria-labelledby="example-modal-sizes-title-sm"
     >
@@ -17,10 +17,10 @@ export default function ConfirmBox({
         <Modal.Title id="example-modal-sizes-title-sm">{text}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Button variant="light" onClick={cancelAction}>
+        <Button className="rounded-25 me-3" variant="outline-success" size="lg" onClick={cancelAction}>
           {cancelText}
         </Button>
-        <Button variant="primary" onClick={okayAction}>
+        <Button className="rounded-25" variant="success" size="lg" onClick={okayAction}>
           {okayText}
         </Button>
       </Modal.Body>

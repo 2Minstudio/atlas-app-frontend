@@ -24,7 +24,7 @@ function DataTable({ headings, data, children, buttons, sourcemapper }) {
                 </th>
               );
             })}
-            {buttons && <th className="col-4">Actions</th>}
+            {buttons && <th className="col">Actions</th>}
           </tr>
         </thead>
         <tbody>

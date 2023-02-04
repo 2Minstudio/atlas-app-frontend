@@ -47,7 +47,7 @@ class Headerdashboard extends React.Component {
                     className=" justify-content-end"
                     id="responsive-navbar-nav"
                   >
-                    <Nav>
+                    <Nav className=" pt-3 pe-5">
                       <Nav.Link href="#" className="nav-link">
                         Community
                       </Nav.Link>

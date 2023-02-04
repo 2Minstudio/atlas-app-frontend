@@ -62,15 +62,7 @@ class Dashboard extends React.Component {
                         <div className="col-5 ">
                           <div className="card border-0 greyGrad rounded-25">
                             <div className="card-body p-0 dash-min-h-400 img-fluid">
-                              {item?.image && (
-                                <Image
-                                  src={item?.image}
-                                  className="img-fluid py-2 pe-2 "
-                                  alt="Study Image"
-                                  height="420"
-                                  width="400"
-                                />
-                              )}
+                              
                               <div className="row p-4">
                                 <div className="col-9 d-flex justify-content-start">
                                   {/* <div className="col-2">
@@ -97,6 +89,15 @@ class Dashboard extends React.Component {
                                     400 <small>HRS</small>
                                   </span>
                                 </div>
+                                {item?.image && (
+                                <Image
+                                  src={item?.image}
+                                  className="img-fluid"
+                                  alt="Study Image"
+                                  height="420"
+                                  width="400"
+                                />
+                              )}
                               </div>
                               <div className="pos-bottom">
                                 <div className="col m-4 p-4 rounded-25 bg-secondary bg-gradient text-center text-white fw-bold">
