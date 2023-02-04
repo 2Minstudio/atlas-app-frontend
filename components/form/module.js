@@ -148,7 +148,7 @@ class ModuleForm extends React.Component {
                 <Button
                   className="btn rounded-pill"
                   size="lg"
-                  variant="danger"
+                  variant="outline-success"
                   onClick={() => this.setStatusAction("cancel")}
                 >
                   Cancel
@@ -158,7 +158,7 @@ class ModuleForm extends React.Component {
                 <Button
                   className="btn rounded-pill"
                   size="lg"
-                  variant="success"
+                  variant="secondary"
                   onClick={() => this.setStatusAction("draft")}
                 >
                   Save as Draft
@@ -168,6 +168,7 @@ class ModuleForm extends React.Component {
                 <Button
                   className="btn rounded-pill"
                   size="lg"
+                  variant="success"
                   onClick={() => this.setStatusAction("publish")}
                 >
                   Publish

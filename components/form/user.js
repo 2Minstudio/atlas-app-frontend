@@ -132,7 +132,7 @@ class UserForm extends React.Component {
           )}
         </Form.Group>
 
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-3 mt-4">
           <Form.Label>Role</Form.Label>
           <Form.Select
             value={groups}
@@ -147,18 +147,17 @@ class UserForm extends React.Component {
           {errors?.groups && <Alert variant={"danger"}>{errors.groups}</Alert>}
         </Form.Group>
 
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-3 mt-4">
           <Row className="align-items-right">
             <Col xs="auto">
-              <Button
-                variant="light"
+              <Button className="rounded-25" variant="outline-success" size="lg"
                 onClick={() => this.setStatusAction("cancel")}
               >
                 Cancel
               </Button>{" "}
             </Col>
             <Col xs="auto">
-              <Button onClick={() => this.setStatusAction("publish")}>
+              <Button className="rounded-25" variant="success"  size="lg" onClick={() => this.setStatusAction("publish")}>
                 Save
               </Button>
             </Col>

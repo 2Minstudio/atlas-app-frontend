@@ -139,7 +139,7 @@ class Users extends React.Component {
               type: "button",
               label: "Edit",
               onclick: this.edit,
-              variant: "btn-outline-success",
+              variant: "outline-success",
               key: "id",
             },
             {
