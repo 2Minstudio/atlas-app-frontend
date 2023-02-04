@@ -9,8 +9,11 @@ import Layout from "../../../../components/layout/index";
 import Menu from "../../../../components/menu/studentLeft";
 import SupportContact from "../../../../components/common/supportContact";
 import ReactPlayer from "react-player";
-import { getCoursePreview, getChapterPreview } from "../../../../helpers/course";
-
+import {
+  getCoursePreview,
+  getChapterPreview,
+} from "../../../../helpers/course";
+import ModuleList from "../../../../components/course/modulePreviewList";
 class DashboardCourseStudy extends React.Component {
   state = {
     user: {},
@@ -62,6 +65,7 @@ class DashboardCourseStudy extends React.Component {
 
   render() {
     const { user, data, course } = this.state;
+    console.log(data, "course ?", course);
     return (
       <Layout type="dashboard" user={user}>
         <div className={styles}>
@@ -77,14 +81,21 @@ class DashboardCourseStudy extends React.Component {
                   <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
                     <div className="row">
                       <div className="col-12">
-                        <h3 className="py-3">Chiropractor Course</h3>
-                        <Image
+                        <h3 className="py-3">{course?.name}</h3>
+                        {/* <Image
                           src="/image/dashboard/Course-Studying-video.jpg"
                           className="img-fluid"
                           alt="Study course Image"
                           height="840"
                           width="1296"
-                        />
+                        /> */}
+                        {data?.video && (
+                          <ReactPlayer
+                            className="react-player"
+                            url={data?.video}
+                            controls={true}
+                          />
+                        )}
                       </div>
                     </div>
 
@@ -102,18 +113,13 @@ class DashboardCourseStudy extends React.Component {
                           </div>
                           <div className="col-11">
                             <p className="m-0">
-                              Lesson 6 – Implement Navigation<br></br>
+                              Lesson 6 – {data?.name}
+                              <br></br>
                               <small>@dianneed</small>
                             </p>
                           </div>
                           <hr className="my-4"></hr>
-                          <p>
-                            In this lesson, you use navigation controllers and
-                            segues to create the navigation flow of the
-                            FoodTracker app. At the end of the lesson, you’ll
-                            have a complete navigation scheme and interaction
-                            flow for the app.
-                          </p>
+                          <p>{data?.content}</p>
                         </div>
                       </div>
                       <div className="col-4 ">
@@ -134,29 +140,12 @@ class DashboardCourseStudy extends React.Component {
                     <div className="row">
                       <h5 className="pt-4">Course</h5>
                       <div className="col">
-                        <Accordion defaultActiveKey="0">
-                          <Accordion.Item eventKey="0">
-                            <Accordion.Header>Back Pain</Accordion.Header>
-                            <Accordion.Body>
-                              <p>Lesson 1 . 11 min</p>
-                              <p>Lesson 2 . 24 min</p>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="1">
-                            <Accordion.Header>Skeleton System</Accordion.Header>
-                            <Accordion.Body>
-                              <p>Lesson 1 . 11 min</p>
-                              <p>Lesson 2 . 24 min</p>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="2">
-                            <Accordion.Header>Best Practices</Accordion.Header>
-                            <Accordion.Body>
-                              <p>Lesson 1 . 11 min</p>
-                              <p>Lesson 2 . 24 min</p>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                        </Accordion>
+                        <ModuleList
+                          mode="preview"
+                          data={course?.modules}
+                          activeModel={data?.model}
+                          activeChapter={data?.id}
+                        />
                       </div>
                     </div>
                   </div>

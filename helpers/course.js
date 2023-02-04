@@ -35,7 +35,7 @@ const getCoursePreview = async (id) => {
 
 const getChapterPreview = async (id) => {
   return axios
-    .post("/api/chapter/preview", { id })
+    .post("/api/course/preview/chapter", { id })
     .then((response) => {
       const { data } = response;
       return data;
