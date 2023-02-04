@@ -37,6 +37,8 @@ class DashboardCoursePreview extends React.Component {
     }
   }
 
+  
+
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.router !== prevState.router) {
       const {
@@ -60,7 +62,7 @@ class DashboardCoursePreview extends React.Component {
 
   render() {
     const { user, data } = this.state;
-    console.log(data);
+
     return (
       <Layout type="dashboard" user={user}>
         <div className={styles}>

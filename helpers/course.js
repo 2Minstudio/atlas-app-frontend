@@ -33,4 +33,20 @@ const getCoursePreview = async (id) => {
     });
 };
 
-export { getCoursesList, getCoursePreview };
+const getChapterPreview = async (id) => {
+  return axios
+    .post("/api/chapter/preview", { id })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
+export { getCoursesList, getCoursePreview, getChapterPreview };

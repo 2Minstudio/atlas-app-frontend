@@ -1,13 +1,16 @@
 import Image from "next/image";
-import styles from "../../../styles/Home.module.css";
+import styles from "../../../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
-import { isClientLoggedin, getUser } from "../../../helpers/helper";
+import { isClientLoggedin, getUser } from "../../../../helpers/helper";
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
-import Layout from "../../../components/layout/index";
-import Menu from "../../../components/menu/studentLeft";
-import SupportContact from "../../../components/common/supportContact";
+import Layout from "../../../../components/layout/index";
+import Menu from "../../../../components/menu/studentLeft";
+import SupportContact from "../../../../components/common/supportContact";
+import ReactPlayer from "react-player";
+import { getCoursePreview, getChapterPreview } from "../../../../helpers/course";
+
 class DashboardCourseStudy extends React.Component {
   state = {
     user: {},
@@ -15,21 +18,50 @@ class DashboardCourseStudy extends React.Component {
 
   async componentDidMount() {
     const token = isClientLoggedin(this.props);
+    const {
+      router: {
+        query: { course: courseid, chapter: chapterid },
+      },
+    } = this.props;
     if (token) {
       const {
         state,
         data: { user },
       } = await getUser(token);
       if (state) {
-        this.setState({ user: user });
+        this.setState({ user, courseid, chapterid }, this.loadData);
       }
     } else {
       Router.push("/");
     }
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.router !== prevState.router) {
+      const {
+        router: {
+          query: { course: propcourseid, chapter: propchapterid },
+        },
+      } = nextProps;
+      return { courseid: propcourseid, chapterid: propchapterid };
+    } else return null;
+  }
+
+  loadData = async () => {
+    const { chapterid, courseid } = this.state;
+    if (chapterid) {
+      const { data: course, state: coursestate } = await getCoursePreview(
+        courseid
+      );
+      const { data, state } = await getChapterPreview(chapterid);
+      if (state && coursestate) {
+        this.setState({ course, data });
+      }
+    }
+  };
+
   render() {
-    const { user } = this.state;
+    const { user, data, course } = this.state;
     return (
       <Layout type="dashboard" user={user}>
         <div className={styles}>
