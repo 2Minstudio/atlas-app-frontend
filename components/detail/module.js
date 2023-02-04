@@ -3,11 +3,11 @@ import Badge from "react-bootstrap/Badge";
 
 function ModuleInfo({ module }) {
   return (
-    <Card>
+    <Card className="mt-4">
       <Card.Header>
         <Card.Title>
-          <h1>{module?.name}</h1>
-          <Badge variant="primary">
+          <h3>{module?.name}</h3>
+          <Badge className="rounded-25" bg="success" variant="success">
             {module?.status ? "Published" : "Draft"}
           </Badge>
         </Card.Title>

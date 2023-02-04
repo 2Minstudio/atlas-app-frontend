@@ -212,7 +212,7 @@ class CourseForm extends React.Component {
               <Col xs="auto">
                 <Button
                   className="btn rounded-pill"
-                  variant="danger"
+                  variant="outline-success"
                   size="lg"
                   onClick={() => this.setStatusAction("cancel")}
                 >
@@ -223,7 +223,7 @@ class CourseForm extends React.Component {
                 <Button
                   className="btn rounded-pill"
                   size="lg"
-                  variant="success"
+                  variant="outline-success"
                   disabled={submited}
                   onClick={() => this.setStatusAction("draft")}
                 >
@@ -234,6 +234,7 @@ class CourseForm extends React.Component {
                 <Button
                   className="btn rounded-pill"
                   size="lg"
+                  variant="success"
                   disabled={submited}
                   onClick={() => this.setStatusAction("publish")}
                 >

@@ -31,7 +31,7 @@ class Admin extends React.Component {
 
     return (
       <LayoutAdminDashboard user={user} paths={paths}>
-        <h2>Welcome to admin dashboard</h2>
+        <h2 className="pb-4">Welcome to admin dashboard</h2>
         <Row xs={1} md={3} className="g-4">
           {[
             "Primary",

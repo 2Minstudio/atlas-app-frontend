@@ -85,7 +85,7 @@ class Courses extends React.Component {
       <LayoutAdminDashboard user={user} paths={paths}>
         <ConfirmBox
           isShow={deleteId}
-          text={"Are you sure want to delete this Course?"}
+          text={"Are you sure to delete this Course?"}
           okayText={"Delete"}
           okayAction={this.delete}
           cancelAction={this.closeConfirm}

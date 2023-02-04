@@ -3,7 +3,7 @@ function DataPagination({ pagination, pagecallback }) {
   if (pagination?.count > 0) {
     const { pages, next, previous, page_size, current_page } = pagination;
     return (
-      <Pagination>
+      <Pagination className="pt-4">
         {[...Array(pages).keys()].map((p) => {
           let pno = p + 1;
           return (

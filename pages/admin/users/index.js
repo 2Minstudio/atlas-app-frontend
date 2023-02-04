@@ -139,14 +139,14 @@ class Users extends React.Component {
               type: "button",
               label: "Edit",
               onclick: this.edit,
-              variant: "primary",
+              variant: "btn-outline-success",
               key: "id",
             },
             {
               type: "button",
               label: "Delete",
               onclick: this.deleteConfirm,
-              variant: "danger",
+              variant: "success",
               key: "id",
             },
           ]}
