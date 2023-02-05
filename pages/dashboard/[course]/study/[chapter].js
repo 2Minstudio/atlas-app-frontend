@@ -92,6 +92,8 @@ class DashboardCourseStudy extends React.Component {
                           <ReactPlayer
                             className="react-player"
                             url={data?.video}
+                            width="1296"
+                            height="840"
                             controls={true}
                           />
                         )}
@@ -137,15 +139,12 @@ class DashboardCourseStudy extends React.Component {
                       </div>
                     </div>
                     <div className="row">
-                      <h5 className="pt-4">Course</h5>
-                      <div className="col">
-                        <ModuleList
-                          mode="preview"
-                          data={modules}
-                          activeModel={data?.module}
-                          activeChapter={data?.id}
-                        />
-                      </div>
+                      <ModuleList
+                        mode="preview"
+                        data={modules}
+                        activeModel={data?.module}
+                        activeChapter={data?.id}
+                      />
                     </div>
                   </div>
                 </div>

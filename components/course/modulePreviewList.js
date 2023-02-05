@@ -19,10 +19,10 @@ function ModuleList({ mode, data, activeModel, activeChapter }) {
                     return i === 1 && mode === "preview" ? (
                       <Link
                         className={
-                          activeChapter == chapter.id && "active link-primary"
+                          activeChapter === chapter.id && "active link-primary"
                         }
                         href={
-                          activeChapter == chapter.id
+                          activeChapter === chapter.id
                             ? "#"
                             : `/dashboard/${chapter.course}/study/${chapter.id}`
                         }
