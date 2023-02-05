@@ -104,13 +104,13 @@ class DashboardCourseStudy extends React.Component {
                       <div className="col-8">
                         <div className="row d-flex align-items-center justify-content-center pt-5">
                           <div className="col-1">
-                            {/* <Image
+                            <Image
                               src="/image/dashboard/student-img.png"
                               className="img-fluid p-1 border rounded-circle border-warning"
                               alt="Study Image"
                               height="100"
                               width="100"
-                            /> */}
+                            />
                           </div>
                           <div className="col-11">
                             <p className="m-0">
