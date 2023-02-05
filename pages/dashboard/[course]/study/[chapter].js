@@ -10,7 +10,7 @@ import Menu from "../../../../components/menu/studentLeft";
 import SupportContact from "../../../../components/common/supportContact";
 import ReactPlayer from "react-player";
 import {
-  getCoursePreview,
+  getCourseModulesList,
   getChapterPreview,
 } from "../../../../helpers/course";
 import ModuleList from "../../../../components/course/modulePreviewList";
@@ -53,19 +53,18 @@ class DashboardCourseStudy extends React.Component {
   loadData = async () => {
     const { chapterid, courseid } = this.state;
     if (chapterid) {
-      const { data: course, state: coursestate } = await getCoursePreview(
-        courseid
-      );
+      const { data: modules } = await getCourseModulesList(courseid);
       const { data, state } = await getChapterPreview(chapterid);
-      if (state && coursestate) {
-        this.setState({ course, data });
+      if (state) {
+        this.setState({ data, modules });
       }
     }
   };
 
   render() {
-    const { user, data, course } = this.state;
-    console.log(data, "course ?", course);
+    const { user, data, modules } = this.state;
+    const course = data?.course_info;
+    console.log(data, "course ?", modules);
     return (
       <Layout type="dashboard" user={user}>
         <div className={styles}>
@@ -103,19 +102,19 @@ class DashboardCourseStudy extends React.Component {
                       <div className="col-8">
                         <div className="row d-flex align-items-center justify-content-center pt-5">
                           <div className="col-1">
-                            <Image
+                            {/* <Image
                               src="/image/dashboard/student-img.png"
                               className="img-fluid p-1 border rounded-circle border-warning"
                               alt="Study Image"
                               height="100"
                               width="100"
-                            />
+                            /> */}
                           </div>
                           <div className="col-11">
                             <p className="m-0">
-                              Lesson 6 – {data?.name}
+                              {data?.module_info?.name} – {data?.name}
                               <br></br>
-                              <small>@dianneed</small>
+                              <small>{course?.user?.first_name}</small>
                             </p>
                           </div>
                           <hr className="my-4"></hr>
@@ -142,8 +141,8 @@ class DashboardCourseStudy extends React.Component {
                       <div className="col">
                         <ModuleList
                           mode="preview"
-                          data={course?.modules}
-                          activeModel={data?.model}
+                          data={modules}
+                          activeModel={data?.module}
                           activeChapter={data?.id}
                         />
                       </div>

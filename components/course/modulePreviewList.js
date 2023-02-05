@@ -18,8 +18,14 @@ function ModuleList({ mode, data, activeModel, activeChapter }) {
                   {module?.chapters.map((chapter) => {
                     return i === 1 ? (
                       <Link
-                        className={activeChapter == chapter.id && "active"}
-                        href={`/dashboard/${chapter.course}/study/${chapter.id}`}
+                        className={
+                          activeChapter == chapter.id && "active link-primary"
+                        }
+                        href={
+                          activeChapter == chapter.id
+                            ? "#"
+                            : `/dashboard/${chapter.course}/study/${chapter.id}`
+                        }
                       >
                         <p key={`chapter-${chapter.id}`}>{chapter.name}</p>
                       </Link>

@@ -152,7 +152,7 @@ class Dashboard extends React.Component {
                             <div className="col text-end">
                               <Link
                                 type="button"
-                                href={`/dashboard/${item.id}/study`}
+                                href={`/dashboard/${item.id}/preview`}
                                 legacyBehavior
                               >
                                 <button className="col-12 col-lg-12 col-xl-10 btn btn-lg btn-success rounded-pill mb-3">

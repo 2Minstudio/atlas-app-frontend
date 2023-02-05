@@ -35,6 +35,15 @@ const Header = (props) => {
               </>
             ) : (
               <>
+                {roleName == "student" && (
+                  <Nav.Link
+                    href={"/dashboard"}
+                    className=""
+                    aria-current="page"
+                  >
+                    Dashboard
+                  </Nav.Link>
+                )}
                 <Nav.Link href={"/register"} className="" aria-current="page">
                   Take Eligibility Test
                 </Nav.Link>

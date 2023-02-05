@@ -207,7 +207,7 @@ class DashboardCoursePreview extends React.Component {
                       <div className="col d-flex justify-content-end">
                         {data?.id && (
                           <Link
-                            href={`/dashboard/${data?.id}/study`}
+                            href={`/dashboard/${data.id}/buy`}
                             className="btn btn-success rounded-pill p-3 me-3"
                           >
                             Buy Now
