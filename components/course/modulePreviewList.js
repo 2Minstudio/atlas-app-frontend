@@ -16,7 +16,7 @@ function ModuleList({ mode, data, activeModel, activeChapter }) {
                 <Accordion.Header>{module.name}</Accordion.Header>
                 <Accordion.Body>
                   {module?.chapters.map((chapter) => {
-                    return i === 1 ? (
+                    return i === 1 && mode === "preview" ? (
                       <Link
                         className={
                           activeChapter == chapter.id && "active link-primary"
