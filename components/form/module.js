@@ -158,7 +158,7 @@ class ModuleForm extends React.Component {
                 <Button
                   className="btn rounded-pill"
                   size="lg"
-                  variant="secondary"
+                  variant="outline-success"
                   onClick={() => this.setStatusAction("draft")}
                 >
                   Save as Draft

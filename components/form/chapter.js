@@ -214,7 +214,7 @@ class ChapterForm extends React.Component {
                 <Button
                   className="btn rounded-pill"
                   size="lg"
-                  variant="danger"
+                  variant="outline-success"
                   onClick={() => this.setStatusAction("cancel")}
                 >
                   Cancel
@@ -224,7 +224,7 @@ class ChapterForm extends React.Component {
                 <Button
                   className="btn rounded-pill"
                   size="lg"
-                  variant="success"
+                  variant="outline-secondary"
                   onClick={() => this.setStatusAction("draft")}
                 >
                   Save as Draft
@@ -234,6 +234,7 @@ class ChapterForm extends React.Component {
                 <Button
                   className="btn rounded-pill"
                   size="lg"
+                  variant="success"
                   onClick={() => this.setStatusAction("publish")}
                 >
                   Publish
