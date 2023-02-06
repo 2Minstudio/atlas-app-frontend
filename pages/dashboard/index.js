@@ -63,8 +63,9 @@ class Dashboard extends React.Component {
                           <div className="card border-0 greyGrad rounded-25">
                             <div className="card-body p-0 dash-min-h-400 img-fluid">
                               
-                              <div className="row p-4">
-                                <div className="col-9 d-flex justify-content-start">
+                              <div>
+                               <div className="pos-top d-flex ">
+                               <div className="col-6 justify-content-start p-3">
                                   {/* <div className="col-2">
                                     {item?.image && (
                                       <Image
@@ -76,23 +77,25 @@ class Dashboard extends React.Component {
                                       />
                                     )}
                                   </div> */}
-                                  <div className="col-10">
-                                    <p className="m-0 text-white fw-bold">
+                                  
+                                    <p className="m-0 text-white fw-bold ">
                                       {item?.user?.first_name}
                                       <br></br>
                                       {/* <small>@dianneed</small> */}
                                     </p>
-                                  </div>
+                                  
                                 </div>
-                                <div className="col-3 d-flex flex-column justify-content-center align-items-center">
+                                <div className="col-6 p-3 text-end">
                                   <span class="badge bg-success d-inline text-end">
                                     400 <small>HRS</small>
                                   </span>
                                 </div>
+                                </div>
+                                
                                 {item?.image && (
                                 <Image
                                   src={item?.image}
-                                  className="img-fluid"
+                                  className="img-fluid rounded-25"
                                   alt="Study Image"
                                   height="420"
                                   width="400"
@@ -140,7 +143,7 @@ class Dashboard extends React.Component {
                                   EMI Available
                                 </small>
                               </h5>
-                              <h6 className="text-success py-3">
+                              <h6 className="text-success py-3 btn px-0">
                                 <Link
                                   href={`/dashboard/${item.id}/preview`}
                                   legacyBehavior
@@ -173,14 +176,16 @@ class Dashboard extends React.Component {
                             <div className="col-6 col-md-8 col-lg-6 text-center"></div>
                           </div>
                         </div>
+                        <hr class="border border-success border-1 my-5 opacity-50"></hr>
                       </div>
+                      
                     ))}
 
                     <div className="row">
                       <div className="col">
                         <h5 className="pt-5">Community</h5>
                       </div>
-                      <div className="col-1">
+                      <div className="col-1 btn">
                         <h3 className="text-success text-center"> ... </h3>
                       </div>
                     </div>

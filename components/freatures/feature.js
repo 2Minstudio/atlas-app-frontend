@@ -17,7 +17,9 @@ function Feature({ image, text }) {
           <p className="text-left m-0"> {text}</p>
         </div>
       </div>
+      
     </div>
+    
   );
 }
 
