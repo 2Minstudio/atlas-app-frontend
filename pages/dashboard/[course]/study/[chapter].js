@@ -81,13 +81,6 @@ class DashboardCourseStudy extends React.Component {
                     <div className="row">
                       <div className="col-12">
                         <h3 className="py-3">{course?.name}</h3>
-                        {/* <Image
-                          src="/image/dashboard/Course-Studying-video.jpg"
-                          className="img-fluid"
-                          alt="Study course Image"
-                          height="840"
-                          width="1296"
-                        /> */}
                         {data?.video && (
                           <ReactPlayer
                             className="react-player"
