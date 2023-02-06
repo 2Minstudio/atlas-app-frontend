@@ -96,7 +96,7 @@ class DashboardCoursePreview extends React.Component {
                       <div className="col-8">
                         <div className="row  px-3 pb-4 d-flex justify-content-center">
                           <h3>{data?.name}</h3>
-                          <p className="pt-5">{data?.description}</p>
+                          <p className="pt-3">{data?.description}</p>
                           <div className="row text-success">
                             <div className="col-12 col-sm-6"></div>
                             <div className="col-12 col-sm-6"></div>

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function Feature({ image, text }) {
   return (
-    <div className="col-12 col-sm-6">
+    <div className="col-12 col-sm-6 pb-5">
       <div className="row d-flex align-items-center">
         <div className="col-3 pt-2 g-0">
           <Image
@@ -17,7 +17,9 @@ function Feature({ image, text }) {
           <p className="text-left m-0"> {text}</p>
         </div>
       </div>
+      
     </div>
+    
   );
 }
 
