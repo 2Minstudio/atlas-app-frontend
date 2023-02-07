@@ -71,6 +71,16 @@
   width: 100%;
 }
 
+.pos-top img{
+  max-height:100%; 
+  max-width:100%;
+}
+
+.txt-shadow{
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+
 .bg-course-cover-img{
   background-image:url("/image/dashboard/eddie-image.png");
   background-position:center center;
@@ -310,7 +320,7 @@ display:block;
 .AuserNoMargin{
   width:25px;
   height:25px;
-  margin:0;
+  margin:-1px;
 }
 
 .Aicon5x{

@@ -26,11 +26,11 @@ const Header = (props) => {
           className="justify-content-end p-0 m-0"
           id="responsive-navbar-nav"
         >
-          <Nav className="align-items-lg-center">
+          <Nav className="align-items-center">
             {roleName == "admin" ? (
               <>
-                <Nav.Link href={"/admin"} className="" aria-current="page">
-                  Admin
+                <Nav.Link href={"/admin"} className="position-relative mt-n5" aria-current="page">
+                <b>admin</b>
                 </Nav.Link>
               </>
             ) : (
@@ -41,38 +41,38 @@ const Header = (props) => {
                     className=""
                     aria-current="page"
                   >
-                    Dashboard
+                   <b> Dashboard</b>
                   </Nav.Link>
                 )}
                 <Nav.Link href={"/register"} className="" aria-current="page">
-                  Take Eligibility Test
+                <b>Take Eligibility Test</b>
                 </Nav.Link>
                 <Nav.Link href="#" className="">
                   {" "}
-                  Enquire Now{" "}
+                  <b>Enquire Now{" "}</b>
                 </Nav.Link>
               </>
             )}
             {!user?.first_name && (
               <>
-                <Nav.Link href={"/login"} className="nav-link">
+                <Nav.Link href={"/login"} >
                   <button className="btn px-4 btn-md btn-outline-success rounded-pill">
-                    Login
+                    <b>Login</b>
                   </button>
                 </Nav.Link>
-                <Nav.Link href={"/register"} className="nav-link">
+                <Nav.Link href={"/register"} >
                   <button className="btn px-4 btn-md btn-success rounded-pill">
-                    Sign Up
+                   <b> Sign Up</b>
                   </button>
                 </Nav.Link>
               </>
             )}
             {user?.first_name && (
               <>
-                <Nav.Link href={"#"} className="nav-link">
+                <Nav.Link href={"#"} >
                   <b>{user.first_name} </b>
                   <FontAwesomeIcon
-                    className="Auser text-primary position-relative"
+                    className="AuserNoMargin text-primary position-relative"
                     icon={faCircleUser}
                   />
                 </Nav.Link>
@@ -80,9 +80,9 @@ const Header = (props) => {
                 <Nav.Link
                   href={"#"}
                   onClick={() => Logout()}
-                  className="nav-link"
+                  className="me-2"
                 >
-                  Logout
+                  <b>Logout</b>
                 </Nav.Link>
               </>
             )}

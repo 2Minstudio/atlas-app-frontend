@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
                                     )}
                                   </div> */}
 
-                                    <p className="m-0 text-white fw-bold ">
+                                    <p className="m-0 text-white fw-bold txt-shadow">
                                       {item?.user?.first_name}
                                       <br></br>
                                       {/* <small>@dianneed</small> */}
@@ -93,7 +93,7 @@ class Dashboard extends React.Component {
                                 {item?.image && (
                                   <Image
                                     src={item?.image}
-                                    className="img-fluid rounded-25"
+                                    className="rounded-25"
                                     alt="Study Image"
                                     height="420"
                                     width="400"
