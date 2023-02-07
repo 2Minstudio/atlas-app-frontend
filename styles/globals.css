@@ -320,7 +320,7 @@ display:block;
 .AuserNoMargin{
   width:25px;
   height:25px;
-  margin:0;
+  margin:-1px;
 }
 
 .Aicon5x{

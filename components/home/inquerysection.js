@@ -34,7 +34,7 @@ const InquerySection = () => (
                   className="btn btn-lg btn-outline-success rounded-pill"
                   type="button"
                 >
-                  Inquire Now
+                  Enquire Now
                 </button>
               </a>
             </div>
