@@ -61,7 +61,7 @@ class Dashboard extends React.Component {
                       <div key={`item-${i}`} className="row">
                         <div className="col-5 ">
                           <div className="card border-0 greyGrad rounded-25">
-                            <div className="card-body p-0 dash-min-h-400 img-fluid">
+                            <div className="card-body p-0 img-fluid">
                               <div>
                                 <div className="pos-top d-flex ">
                                   <div className="col-6 justify-content-start p-3">
