@@ -71,11 +71,6 @@
   width: 100%;
 }
 
-.pos-top img{
-  max-height:100%; 
-  max-width:100%;
-}
-
 .txt-shadow{
   color: white;
   text-shadow: 2px 2px 4px #000000;
