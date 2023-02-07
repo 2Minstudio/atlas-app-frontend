@@ -1,6 +1,6 @@
 import { Image } from "react-bootstrap";
 import Layout from "../../../components/layout/index";
-import styles from "../../styles/Home.module.css";
+import styles from "../../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
 import Link from "next/link";
 import { withCookies } from "react-cookie";
