@@ -16,7 +16,7 @@ function Menu(props) {
         <Nav.Link className="list-group-item" href="/dashboard/community">
           Community
         </Nav.Link>
-        <Nav.Link className="list-group-item" href="/user/settings">
+        <Nav.Link className="list-group-item" href="/dashboard/settings">
           Settings
         </Nav.Link>
       </Nav>
