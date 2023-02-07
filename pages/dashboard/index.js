@@ -10,7 +10,7 @@ import { getCoursesList } from "../../helpers/course";
 import Features from "../../components/freatures";
 import Menu from "../../components/menu/studentLeft";
 import SupportContact from "../../components/common/supportContact";
-
+import CommunityBox from "../../components/common/communitybox";
 class Dashboard extends React.Component {
   state = {
     user: {},
@@ -61,12 +61,11 @@ class Dashboard extends React.Component {
                       <div key={`item-${i}`} className="row">
                         <div className="col-5 ">
                           <div className="card border-0 greyGrad rounded-25">
-                            <div className="card-body p-0  img-fluid">
-                              
+                            <div className="card-body p-0 dash-min-h-400 img-fluid">
                               <div>
-                               <div className="pos-top d-flex ">
-                               <div className="col-6 justify-content-start p-3">
-                                  {/* <div className="col-2">
+                                <div className="pos-top d-flex ">
+                                  <div className="col-6 justify-content-start p-3">
+                                    {/* <div className="col-2">
                                     {item?.image && (
                                       <Image
                                         src={item?.image}
@@ -77,21 +76,20 @@ class Dashboard extends React.Component {
                                       />
                                     )}
                                   </div> */}
-                                  
+
                                     <p className="m-0 text-white fw-bold txt-shadow">
                                       {item?.user?.first_name}
                                       <br></br>
                                       {/* <small>@dianneed</small> */}
                                     </p>
-                                  
+                                  </div>
+                                  <div className="col-6 p-3 text-end">
+                                    <span class="badge bg-success d-inline text-end">
+                                      400 <small>HRS</small>
+                                    </span>
+                                  </div>
                                 </div>
-                                <div className="col-6 p-3 text-end">
-                                  <span class="badge bg-success d-inline text-end txt-shadow">
-                                    400 <small>HRS</small>
-                                  </span>
-                                </div>
-                                </div>
-                                
+
                                 {item?.image && (
                                 <Image
                                   src={item?.image}
@@ -146,6 +144,7 @@ class Dashboard extends React.Component {
                               <h6 className="text-success py-3 btn px-0">
                                 <Link
                                   href={`/dashboard/${item.id}/preview`}
+                                  className="pointer-cursor"
                                   legacyBehavior
                                 >
                                   <b>Preview Course</b>
@@ -153,11 +152,7 @@ class Dashboard extends React.Component {
                               </h6>
                             </div>
                             <div className="col text-end">
-                              <Link
-                                type="button"
-                                href={`/dashboard/${item.id}/preview`}
-                                legacyBehavior
-                              >
+                              <Link type="button" href="#" legacyBehavior>
                                 <button className="col-12 col-lg-12 col-xl-10 btn btn-lg btn-success rounded-pill mb-3">
                                   Buy Now
                                 </button>
@@ -178,27 +173,9 @@ class Dashboard extends React.Component {
                         </div>
                         <hr class="border border-success border-1 my-5 opacity-50"></hr>
                       </div>
-                      
                     ))}
 
-                    <div className="row">
-                      <div className="col">
-                        <h5 className="pt-5">Community</h5>
-                      </div>
-                      <div className="col-1 btn">
-                        <h3 className="text-success text-center"> ... </h3>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col mt-4">
-                        <button className="btn btn-success rounded-pill p-3 me-3">
-                          Ask A Question
-                        </button>
-                        <button className="btn btn-outline-success rounded-pill p-3">
-                          Go to community
-                        </button>
-                      </div>
-                    </div>
+                    <CommunityBox></CommunityBox>
                   </div>
                 </div>
               </div>

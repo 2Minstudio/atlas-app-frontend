@@ -1,5 +1,6 @@
 import Accordion from "react-bootstrap/Accordion";
 import Link from "next/link";
+
 function ModuleList({ mode, data, activeModel, activeChapter }) {
   let i = 0;
   return (
@@ -16,18 +17,34 @@ function ModuleList({ mode, data, activeModel, activeChapter }) {
                 <Accordion.Header>{module.name}</Accordion.Header>
                 <Accordion.Body>
                   {module?.chapters.map((chapter) => {
+                    // const url =
+                    //   activeChapter === chapter.id
+                    //     ? "#"
+                    //     : {
+                    //         pathname: "/dashboard/[course]/study/[chapter]",
+                    //         query: {
+                    //           course: chapter.course,
+                    //           chapter: chapter.id,
+                    //         },
+                    //       };
+                    //`/dashboard/${chapter.course}/study/${chapter.id}`
                     return i === 1 && mode === "preview" ? (
                       <Link
+                        key={`chapter-link-${chapter.id}`}
+                        href={{
+                          pathname: "/dashboard/[course]/study/[chapter]",
+                          query: {
+                            course: chapter.course,
+                            chapter: chapter.id,
+                          },
+                        }}
+                        replace
+                        as={`/dashboard/${chapter.course}/study/${chapter.id}`}
                         className={
                           activeChapter === chapter.id && "active link-primary"
                         }
-                        href={
-                          activeChapter === chapter.id
-                            ? "#"
-                            : `/dashboard/${chapter.course}/study/${chapter.id}`
-                        }
                       >
-                        <p key={`chapter-${chapter.id}`}>{chapter.name}</p>
+                        <p>{chapter.name}</p>
                       </Link>
                     ) : (
                       <p key={`chapter-${chapter.id}`}>{chapter.name}</p>
