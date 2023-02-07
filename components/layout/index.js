@@ -6,7 +6,6 @@ import Headerdashboard from "../common/headerdashboard";
 import Headerlanding from "../common/headerlanding";
 
 export default function Layout({ children, user = {}, type = null }) {
-  console.log("type ? ", type);
   return (
     <>
       <Head>

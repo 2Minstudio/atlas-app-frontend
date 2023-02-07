@@ -1,7 +1,10 @@
 import Accordion from "react-bootstrap/Accordion";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function ModuleList({ mode, data, activeModel, activeChapter }) {
+  const router = useRouter();
+
   let i = 0;
   return (
     <>
@@ -31,15 +34,29 @@ function ModuleList({ mode, data, activeModel, activeChapter }) {
                     return i === 1 && mode === "preview" ? (
                       <Link
                         key={`chapter-link-${chapter.id}`}
-                        href={{
-                          pathname: "/dashboard/[course]/study/[chapter]",
-                          query: {
-                            course: chapter.course,
-                            chapter: chapter.id,
-                          },
+                        onClick={() => {
+                          router.push(
+                            "/dashboard/[course]/study/[chapter]",
+                            `/dashboard/${chapter.course}/study/${chapter.id}`,
+                            { shallow: true }
+                          );
+                          // router.push({
+                          //   pathname: "/dashboard/[course]/study/[chapter]",
+                          //   query: {
+                          //     course: chapter.course,
+                          //     chapter: chapter.id,
+                          //   },
+                          // });
                         }}
-                        replace
-                        as={`/dashboard/${chapter.course}/study/${chapter.id}`}
+                        // href={{
+                        //   pathname: "/dashboard/[course]/study/[chapter]",
+                        //   query: {
+                        //     course: chapter.course,
+                        //     chapter: chapter.id,
+                        //   },
+                        // }}
+                        // replace
+                        href={`/dashboard/${chapter.course}/study/${chapter.id}`}
                         className={
                           activeChapter === chapter.id && "active link-primary"
                         }

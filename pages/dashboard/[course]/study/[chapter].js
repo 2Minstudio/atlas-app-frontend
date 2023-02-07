@@ -18,8 +18,13 @@ class DashboardCourseStudy extends React.Component {
   state = {
     user: {},
   };
+  
+  async componentDidUpdate() {
+    this.loadData();
+  }
 
   async componentDidMount() {
+    // console.log("Hello");
     const token = isClientLoggedin(this.props);
     const {
       router: {
@@ -39,18 +44,8 @@ class DashboardCourseStudy extends React.Component {
     }
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.router !== prevState.router) {
-      const {
-        router: {
-          query: { course: propcourseid, chapter: propchapterid },
-        },
-      } = nextProps;
-      return { courseid: propcourseid, chapterid: propchapterid };
-    } else return null;
-  }
-
   loadData = async () => {
+    // console.log("Load data");
     const { chapterid, courseid } = this.state;
     if (chapterid) {
       const { data: modules } = await getCourseModulesList(courseid);
@@ -61,10 +56,25 @@ class DashboardCourseStudy extends React.Component {
     }
   };
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.router !== prevState.router) {
+      const {
+        router: {
+          query: { course: propcourseid, chapter: propchapterid },
+        },
+      } = nextProps;
+      // this.setState(
+      //   { courseid: propcourseid, chapterid: propchapterid },
+      //   this.loadData
+      // );
+      return { courseid: propcourseid, chapterid: propchapterid };
+    } else return null;
+  }
+
   render() {
     const { user, data, modules } = this.state;
     const course = data?.course_info;
-    console.log(data, "course ?", modules);
+    // console.log(data, "course ?", modules);
     return (
       <Layout type="dashboard" user={user}>
         <div className={styles}>
@@ -160,5 +170,11 @@ class DashboardCourseStudy extends React.Component {
 
 //   return { user: false };
 // }
+
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}
 
 export default withCookies(withRouter(DashboardCourseStudy));
