@@ -12,7 +12,7 @@ import Menu from "../../../components/menu/studentLeft";
 import SupportContact from "../../../components/common/supportContact";
 import CommunityBox from "../../../components/common/communitybox";
 
-class Progress extends React.Component {
+class Community extends React.Component {
   state = {
     user: {},
     data: {},
@@ -58,7 +58,7 @@ class Progress extends React.Component {
                     <div className="row d-flex justify-content-start align-items-start pb-3">
                       <h4>Welcome {user?.first_name}</h4>
                     </div>
-                    <h3>Progress - Coming soon</h3>
+                    <h3>Community - Coming soon</h3>
 
                     <CommunityBox></CommunityBox>
                   </div>
@@ -83,4 +83,4 @@ class Progress extends React.Component {
 //   return { user: false };
 // }
 
-export default withCookies(withRouter(Progress));
+export default withCookies(withRouter(Community));
