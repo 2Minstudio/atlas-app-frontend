@@ -14,11 +14,12 @@ import {
   getChapterPreview,
 } from "../../../../helpers/course";
 import ModuleList from "../../../../components/course/modulePreviewList";
+import CommunityBox from "../../../../components/common/communitybox";
 class DashboardCourseStudy extends React.Component {
   state = {
     user: {},
   };
-  
+
   async componentDidUpdate() {
     this.loadData();
   }
@@ -126,20 +127,7 @@ class DashboardCourseStudy extends React.Component {
                           <p>{data?.content}</p>
                         </div>
                       </div>
-                      <div className="col-4 ">
-                        <div className="row d-flex  align-items-center">
-                          <div className="col-12 py-5 text-center">
-                            <button className="btn btn-success rounded-pill p-3 ">
-                              Ask A Question
-                            </button>
-                          </div>
-                          <div className="col-12 text-center">
-                            <button className="btn btn-outline-success rounded-pill p-3">
-                              Go to community
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+                      <CommunityBox type={'compact'} />
                     </div>
                     <div className="row">
                       <ModuleList

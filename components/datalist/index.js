@@ -1,7 +1,7 @@
 import DataPagination from "./pagination";
 import DataTable from "./table";
 
-function DataList({ headings, data, pagecallback, buttons, sourcemapper }) {
+function DataList({ headings, data, pagecallback, buttons, sourcemapper={} }) {
   return (
     <>
       <DataTable

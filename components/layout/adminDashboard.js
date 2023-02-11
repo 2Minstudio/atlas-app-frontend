@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Nav from "react-bootstrap/Nav";
+import { Nav, NavDropdown } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -41,7 +41,27 @@ function LayoutAdminDashboard(props) {
                         Home
                       </Nav.Link>
 
-                      {/* <Dropdown className="d-inline mx-2" >
+                      <Nav.Link
+                        className="list-group-item"
+                        href="/admin/admissions"
+                      >
+                        Admissions
+                      </Nav.Link>
+                      <Nav.Link
+                        className="list-group-item"
+                        href="/admin/admissions/tests"
+                      >
+                        Tests
+                      </Nav.Link>
+                      {/* <NavDropdown menuRole={'menu'} title="Pricing" id="nav-dropdown">
+                        <NavDropdown.Item eventKey="Basic pricing">
+                          Basic
+                        </NavDropdown.Item>
+                        <NavDropdown.Item eventKey="Corporate Pricing">
+                          Corporates
+                        </NavDropdown.Item>
+                      </NavDropdown> */}
+                      {/* <Dropdown className="d-inline mx-2">
                         <Dropdown.Toggle id="dropdown-autoclose-true">
                           Settings
                         </Dropdown.Toggle>
@@ -54,12 +74,6 @@ function LayoutAdminDashboard(props) {
                           </Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown> */}
-                      <Nav.Link
-                        className="list-group-item"
-                        href="/admin/admissions"
-                      >
-                        Admissions
-                      </Nav.Link>
                       <Nav.Link
                         className="list-group-item"
                         href="/admin/courses"
