@@ -1,9 +1,9 @@
 import axios from "axios";
 import FormData from "form-data";
 
-const getCourses = async () => {
+const getCourses = async (page = 1) => {
   return axios
-    .post("/api/admin/course/getall")
+    .post("/api/admin/course/getall", { page: page })
     .then((response) => {
       const { data } = response;
       return data;
@@ -37,7 +37,7 @@ const getCourse = async (id) => {
 //   let formData = new FormData();
 
 //   // console.log(data.image, "data.image,");
-//   const url = `${process.env.NEXT_PUBLIC_API_URL}/api/course/`;
+//   const url = `${process.env.NEXT_PUBLIC_API_URL}/api/admin//course/`;
 //   // const url = "/api/admin/course/create"
 //   if (data.image) formData.append("image", data.image, data.image.name);
 
@@ -69,7 +69,7 @@ const createCourse = async (data) => {
   let formData = new FormData();
 
   // console.log(data.image, "data.image,");
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/course/`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/admin/course/`;
   // const url = "/api/admin/course/create"
   if (data.image) formData.append("image", data.image, data.image.name);
 
@@ -78,30 +78,28 @@ const createCourse = async (data) => {
   formData.append("cost", data.cost);
   formData.append("notes", data.notes);
   formData.append("status", data.status);
+
+  formData.append("created_by", data.created_by);
+  formData.append("updated_by", data.updated_by);
   const options = {
     method: "POST",
     body: formData,
   };
-
-  return await fetch(url, options)
-    .then((response) => {
-      console.log(response.status, "response.status");
-      if (response.status >= 400 && response.status < 600) {
-        throw new Error("Bad response from server");
-      }
-      console.log("then", response);
-      return { status: true, data: response };
-    })
-    .then((returnedResponse) => {
-      // Your response to manipulate
-      console.log(returnedResponse, "update success");
-      return { status: true, data: returnedResponse };
-    })
-    .catch((error) => {
-      // Your error is here!
-      console.log(error, "create ");
-      return { status: false, data: error };
-    });
+  let json;
+  try {
+    const resp = await fetch(url, options);
+    json = await resp.json();
+    if (resp.status == 201) return { status: true, data: json };
+    else return { status: false, data: json };
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      // Unexpected token < in JSON
+      console.log("There was a SyntaxError", error);
+    } else {
+      console.log("There was an error", error);
+    }
+    return { status: false, data: error };
+  }
 };
 // const updateCourse = async (data) => {
 //   let formData = new FormData();
@@ -139,31 +137,27 @@ const updateCourse = async (data) => {
   formData.append("cost", data.cost);
   formData.append("notes", data.notes);
   formData.append("status", data.status);
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/course/${id}/`;
+  formData.append("updated_by", data.updated_by);
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/admin/course/${id}/`;
   const options = {
     method: "PATCH",
     body: formData,
   };
-
-  return await fetch(url, options)
-    .then((response) => {
-      console.log(response.status, "response.status");
-      if (response.status >= 400 && response.status < 600) {
-        throw new Error("Bad response from server");
-      }
-      console.log("then", response);
-      return { status: true, data: response };
-    })
-    .then((returnedResponse) => {
-      // Your response to manipulate
-      console.log(returnedResponse, "create success");
-      return { status: true, data: returnedResponse };
-    })
-    .catch((error) => {
-      // Your error is here!
-      console.log(error, "create ");
-      return { status: false, data: error };
-    });
+  let json;
+  try {
+    const resp = await fetch(url, options);
+    json = await resp.json();
+    if (resp.status == 200) return { status: true, data: json };
+    else return { status: false, data: json };
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      // Unexpected token < in JSON
+      console.log("There was a SyntaxError", error);
+    } else {
+      console.log("There was an error", error);
+    }
+    return { status: false, data: error };
+  }
 };
 
 const deleteCourse = async (id) => {
@@ -184,9 +178,9 @@ const deleteCourse = async (id) => {
 
 // Models
 
-const getCourseModules = async (cid) => {
+const getCourseModules = async (cid, page = 1) => {
   return axios
-    .post("/api/admin/module/getall", { course: cid })
+    .post("/api/admin/module/getall", { course: cid, page: page })
     .then((response) => {
       const { data } = response;
       return data;
@@ -275,9 +269,9 @@ const deleteModule = async (id) => {
 };
 
 // Chapter
-const getModelChapters = async (mid) => {
+const getModelChapters = async (mid, page = 1) => {
   return axios
-    .post("/api/admin/chapter/getall", { module: mid })
+    .post("/api/admin/chapter/getall", { module: mid, page: page })
     .then((response) => {
       const { data } = response;
       return data;
@@ -381,7 +375,10 @@ const createChapter = async (data) => {
   formData.append("course", data.course);
   formData.append("content", data.content);
   formData.append("status", data.status);
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/chapter/`;
+  formData.append("created_by", data.created_by);
+  formData.append("updated_by", data.updated_by);
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/admin/chapter/`;
+  // atlasuid: created_by
   return await axios
     .post(url, formData, {
       headers: {
@@ -413,7 +410,8 @@ const updateChapter = async (data) => {
   formData.append("name", data.name);
   formData.append("content", data.content);
   formData.append("status", data.status);
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/chapter/${id}/`;
+  formData.append("updated_by", data.updated_by);
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/admin/chapter/${id}/`;
   return axios
     .patch(url, formData, {
       headers: {
@@ -449,9 +447,9 @@ const deleteChapter = async (id) => {
     });
 };
 
-const getUsers = async () => {
+const getUsers = async (page = 1) => {
   return axios
-    .post("/api/admin/user/getall")
+    .post("/api/admin/user/getall", { page: page })
     .then((response) => {
       const { data } = response;
       return data;
@@ -463,7 +461,76 @@ const getUsers = async () => {
       } = error;
       return data;
     });
-}
+};
+
+const getUser = async (id) => {
+  return axios
+    .post("/api/admin/user/get", { id: id })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
+const updateUser = async (data) => {
+  return axios
+    .post("/api/admin/user/update", data, {
+      "Content-Type": "application/json",
+    })
+    .then((response) => {
+      const {
+        data: { data, state },
+      } = response;
+      return { data, status: state };
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return { data, status: false };
+    });
+};
+
+const deleteUser = async (id) => {
+  return axios
+    .post("/api/admin/user/delete", { id: id })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
+const getRoles = async () => {
+  return axios
+    .post("/api/admin/user/roles")
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
 export {
   getCourses,
   getCourse,
@@ -481,4 +548,8 @@ export {
   updateChapter,
   deleteChapter,
   getUsers,
+  getUser,
+  updateUser,
+  deleteUser,
+  getRoles,
 };

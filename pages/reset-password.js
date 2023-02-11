@@ -140,7 +140,7 @@ class ResetPassword extends React.Component {
                               <div className="row text-center justify-content-center">
                                 <button
                                   type="submit"
-                                  className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5"
+                                  className="btn btn-success rounded-pill p-3 col-12 col-xl-8 align-middle mt-5 mb-4"
                                 >
                                   Update Password
                                 </button>

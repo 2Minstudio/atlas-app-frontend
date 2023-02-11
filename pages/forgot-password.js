@@ -133,7 +133,7 @@ class ForgotPassword extends React.Component {
                             <Link href={"login"}>
                               <a>
                                 {" "}
-                                <i class="fas faUserPlus"></i> Back to Login
+                                <i className="fas faUserPlus"></i> Back to Login
                               </a>
                             </Link>
                           </p>

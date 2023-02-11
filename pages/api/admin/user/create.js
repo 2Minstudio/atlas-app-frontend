@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   await axios({
     method: "post",
-    url: `${process.env.API_URL}/api/user/`,
+    url: `${process.env.API_URL}/api/admin/user/`,
     data: {
       name,
       course,

@@ -12,7 +12,7 @@ import styles from "../../styles/Home.module.css";
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className="container p-5 my-5">
+      <div className="container p-5 mt-5">
         <div className="row row-cols-1 row-cols-md-2">
           <div className="col d-none d-md-block">
             <p className="align-items-center">

@@ -57,13 +57,13 @@ export default async function handler(req, res) {
     // console.log(formData, "req?");
     let resp = {};
     const {
-      cookies: { atlastoken: token },
+      cookies: { atlastoken: token, atlasuid: created_by },
       // body,
     } = req;
     //
     //`http://127.0.0.1:5000/api/course`
     await axios
-      .post(`${process.env.API_URL}/api/course/`, formpostdata, {
+      .post(`${process.env.API_URL}/api/admin/course/`, formpostdata, {
         headers: {
           Authorization: `Token ${token}`,
           // "Content-Type": "multipart/form-data",

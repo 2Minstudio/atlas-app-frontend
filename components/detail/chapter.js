@@ -5,11 +5,11 @@ import Button from "react-bootstrap/Button";
 
 function ChapterInfo({ chapter }) {
   return (
-    <Card>
+    <Card className="mt-4">
       <Card.Header>
         <Card.Title>
-          <h1>{chapter?.name}</h1>
-          <Badge variant="primary">
+          <h4>{chapter?.name}</h4>
+          <Badge className="rounded-25" bg="secondary" variant="secondary">
             {chapter?.status ? "Published" : "Draft"}
           </Badge>
         </Card.Title>

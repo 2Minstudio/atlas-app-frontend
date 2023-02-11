@@ -1,22 +1,23 @@
 import axios from "axios";
 
-
 export default async function handler(req, res) {
   let state = false;
   let resp = {};
   const {
     cookies: { atlastoken: token },
-    body: { name, course, attend_type, status },
+    body: { name, course, attend_type, status, created_by, updated_by },
   } = req;
 
   await axios({
     method: "post",
-    url: `${process.env.API_URL}/api/module/`,
+    url: `${process.env.API_URL}/api/admin/module/`,
     data: {
       name,
       course,
       attend_type,
       status,
+      created_by,
+      updated_by,
     },
     headers: {
       Authorization: `Token ${token}`,

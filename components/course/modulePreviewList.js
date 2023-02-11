@@ -1,0 +1,79 @@
+import Accordion from "react-bootstrap/Accordion";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+function ModuleList({ mode, data, activeModel, activeChapter }) {
+  const router = useRouter();
+
+  let i = 0;
+  return (
+    <>
+      <h5 className="pt-4">Lessons</h5>
+      <div className="col col-md-6 col-lg-7">
+        <Accordion
+          defaultActiveKey={activeModel ? `module-${activeModel}` : "module-1"}
+        >
+          {data?.map((module) => {
+            i++;
+            return (
+              <Accordion.Item key={`module-${i}`} eventKey={`module-${i}`}>
+                <Accordion.Header>{module.name}</Accordion.Header>
+                <Accordion.Body>
+                  {module?.chapters.map((chapter) => {
+                    // const url =
+                    //   activeChapter === chapter.id
+                    //     ? "#"
+                    //     : {
+                    //         pathname: "/dashboard/[course]/study/[chapter]",
+                    //         query: {
+                    //           course: chapter.course,
+                    //           chapter: chapter.id,
+                    //         },
+                    //       };
+                    //`/dashboard/${chapter.course}/study/${chapter.id}`
+                    return i === 1 && mode === "preview" ? (
+                      <Link
+                        key={`chapter-link-${chapter.id}`}
+                        onClick={() => {
+                          router.push(
+                            "/dashboard/[course]/study/[chapter]",
+                            `/dashboard/${chapter.course}/study/${chapter.id}`,
+                            { shallow: true }
+                          );
+                          // router.push({
+                          //   pathname: "/dashboard/[course]/study/[chapter]",
+                          //   query: {
+                          //     course: chapter.course,
+                          //     chapter: chapter.id,
+                          //   },
+                          // });
+                        }}
+                        // href={{
+                        //   pathname: "/dashboard/[course]/study/[chapter]",
+                        //   query: {
+                        //     course: chapter.course,
+                        //     chapter: chapter.id,
+                        //   },
+                        // }}
+                        // replace
+                        href={`/dashboard/${chapter.course}/study/${chapter.id}`}
+                        className={
+                          activeChapter === chapter.id && "active link-primary"
+                        }
+                      >
+                        <p>{chapter.name}</p>
+                      </Link>
+                    ) : (
+                      <p key={`chapter-${chapter.id}`}>{chapter.name}</p>
+                    );
+                  })}
+                </Accordion.Body>
+              </Accordion.Item>
+            );
+          })}
+        </Accordion>
+      </div>
+    </>
+  );
+}
+export default ModuleList;

@@ -20,7 +20,7 @@ export default function Layout({ children, user = {}, type = null }) {
         {type === "landing" && <Headerlanding user={user} />}
         
         <main>{children}</main>
-        <Footer />
+        {(!type || type === "landing") && <Footer />}
       </body>
     </>
   );
