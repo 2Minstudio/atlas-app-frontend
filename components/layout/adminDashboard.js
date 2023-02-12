@@ -5,10 +5,11 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Footer from "../common/footer";
-import Header from "../common/header";
 import { config } from "../../config/config";
 import AdminBreadcrumb from "../breadcrumb/admin";
 import Router, { withRouter } from "next/router";
+import MenuBar from "../common/menubar";
+
 function LayoutAdminDashboard(props) {
   const {
     children,
@@ -28,7 +29,7 @@ function LayoutAdminDashboard(props) {
         <div className="container-fluid bg-light">
           {user?.id && (
             <>
-              <Header user={user} />
+              <MenuBar user={user} />
 
               <Container>
                 <Row>
