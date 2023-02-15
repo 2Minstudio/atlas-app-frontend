@@ -109,7 +109,11 @@ class Courses extends React.Component {
             <Modal.Title>{editId ? "Edit" : "New"} Course</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <CourseForm user={user} id={editId} closeTrigger={this.handleClose} />
+            <CourseForm
+              user={user}
+              id={editId}
+              closeTrigger={this.handleClose}
+            />
           </Modal.Body>
         </Modal>
         <DataList
@@ -127,7 +131,7 @@ class Courses extends React.Component {
               type: "button",
               label: "Edit",
               onclick: this.edit,
-              variant: 'outline-success',
+              variant: "outline-success",
               key: "id",
             },
             {

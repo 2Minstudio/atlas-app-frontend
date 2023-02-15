@@ -1,16 +1,22 @@
 import React from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
+import TestForm from "../../../../components/form/test";
 import LayoutAdminDashboard from "../../../../components/layout/adminDashboard";
 import { isClientLoggedin, getUser } from "../../../../helpers/helper";
 import DataList from "../../../../components/datalist";
-import { getExams } from "../../../../helpers/admissions";
+import { getTests } from "../../../../helpers/admissions";
 
 class ManageTest extends React.Component {
-  state = {};
+  state = {
+    modelshow: false,
+    editId: null,
+  };
 
   loaddata = async (page = 1) => {
-    const { data, state } = await getExams(page);
+    const { data, state } = await getTests(page);
     if (state) {
       this.setState({ data });
     }
@@ -33,11 +39,37 @@ class ManageTest extends React.Component {
     }
   }
 
+  handleShow = () => {
+    this.setState({ modelshow: true });
+  };
+
+  handleClose = () => {
+    this.setState({ modelshow: false, editId: null }, async () => {
+      await this.loaddata();
+    });
+  };
+
+  edit = (id) => {
+    this.setState({ editId: id, modelshow: true });
+  };
+
   render() {
-    const { user, data } = this.state;
+    const { user, data, modelshow, editId } = this.state;
     return (
       <LayoutAdminDashboard user={user}>
         <h2>Manage Tests</h2>
+        <Modal size="lg" show={modelshow} onHide={() => this.handleClose()}>
+          <Modal.Header closeButton>
+            <Modal.Title>{editId ? "Edit" : "New"} Course</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <TestForm
+              user={user}
+              id={editId}
+              closeTrigger={this.handleClose}
+            />
+          </Modal.Body>
+        </Modal>
         <DataList
           data={data}
           headings={[
@@ -57,15 +89,8 @@ class ManageTest extends React.Component {
               key: "id",
             },
             {
-              type: "button",
-              label: "Delete",
-              onclick: this.deleteConfirm,
-              variant: "outline-success",
-              key: "id",
-            },
-            {
               type: "link",
-              label: "View",
+              label: "Manage Questions",
               link: "/admin/admissions/tests/$id",
               variant: "success",
               replacetokens: { $id: "id" },

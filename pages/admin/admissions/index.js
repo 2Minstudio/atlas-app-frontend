@@ -37,6 +37,7 @@ class Admissions extends React.Component {
     }
   }
   sendRetry = (id) => {};
+  sendReminder = (id) => {};
 
   render() {
     const { user, data } = this.state;
@@ -64,7 +65,8 @@ class Admissions extends React.Component {
                 {data?.results?.map((d) => {
                   const last_transaction = d?.transactions[0];
                   const is_paid = last_transaction?.status == "paid";
-                  const is_test_taken = last_transaction?.user_exam;
+                  const is_test_taken = last_transaction?.user_exam?.id;
+                  const is_passed = last_transaction?.user_exam?.result;
                   return (
                     <>
                       <tr>
@@ -101,6 +103,10 @@ class Admissions extends React.Component {
                                       Send Reminder
                                     </Dropdown.Item>
                                   )}
+
+                                  <Dropdown.Item href={`/admin/admissions/${d?.id}`}>
+                                    View Result
+                                  </Dropdown.Item>
                                 </Dropdown.Menu>
                               </Dropdown>
                             </>

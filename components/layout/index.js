@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Footer from "../common/footer";
-// import Header from "../common/header";
 import { config } from "../../config/config";
 import Headerdashboard from "../common/headerdashboard";
 import Headerlanding from "../common/headerlanding";

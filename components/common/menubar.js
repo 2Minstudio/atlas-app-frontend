@@ -5,6 +5,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import Logo from "./logo/logo";
 import { Logout } from "../../helpers/helper";
 import { config } from "../../config/config";
@@ -33,28 +35,9 @@ function MenuBar(props) {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end d-flex align-items-center flex-grow-1 pe-3">
-                {roleName == "admin" ? (
+              <Nav className="justify-content-end flex-grow-1 pe-3">
+                {roleName !== "admin" && (
                   <>
-                    <Nav.Link
-                      href={"/admin"}
-                      className="position-relative mt-n5"
-                      aria-current="page"
-                    >
-                      <b>Admin Dashboard</b>
-                    </Nav.Link>
-                  </>
-                ) : (
-                  <>
-                    {roleName == "student" && (
-                      <Nav.Link
-                        href={"/dashboard"}
-                        className=""
-                        aria-current="page"
-                      >
-                        <b>Dashboard</b>
-                      </Nav.Link>
-                    )}
                     <Nav.Link
                       href={"/register"}
                       className=""
@@ -63,7 +46,6 @@ function MenuBar(props) {
                       <b>Take Eligibility Test</b>
                     </Nav.Link>
                     <Nav.Link href="#" className="">
-                      {" "}
                       <b>Enquire Now </b>
                     </Nav.Link>
                   </>
@@ -84,23 +66,40 @@ function MenuBar(props) {
                   </>
                 )}
                 {user?.first_name && (
-                  <NavDropdown className="text-bold"
-                  title={user.first_name}
-                    id={`offcanvasNavbarDropdown-expand-lg`}
-                  >
-                    <NavDropdown.Item href="#action3">
-                      My Account
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
-                      My Dashboard
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">Admin</NavDropdown.Item>
+                  <>
+                    <FontAwesomeIcon
+                      className="AuserNoMargin text-primary position-relative"
+                      icon={faCircleUser}
+                    >{user.first_name}</FontAwesomeIcon>
 
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#" onClick={() => Logout()}>
-                      Logout
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                    <NavDropdown
+                      title={user.first_name}
+                      id={`offcanvasNavbarDropdown-expand-lg`}
+                    >
+                      <NavDropdown.Item href="#action3">
+                        My Account
+                      </NavDropdown.Item>
+                      {roleName == "admin" && (
+                        <>
+                          <NavDropdown.Item href={"/admin"}>
+                            <b>Admin Dashboard</b>
+                          </NavDropdown.Item>
+                        </>
+                      )}
+                      {roleName == "student" && (
+                        <>
+                          <NavDropdown.Item href={"/dashboard"}>
+                            <b>Dashboard</b>
+                          </NavDropdown.Item>
+                        </>
+                      )}
+
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item href="#" onClick={() => Logout()}>
+                        Logout
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  </>
                 )}
               </Nav>
             </Offcanvas.Body>
