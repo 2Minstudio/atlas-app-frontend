@@ -53,7 +53,7 @@ function MenuBar(props) {
                 {!user?.first_name && (
                   <>
                     <Nav.Link href="/login">
-                      <Button className="btn px-4 btn-md btn-outline-success rounded-pill">
+                      <Button variant="outline-success" className="btn px-4 btn-md rounded-pill">
                         <b>Login</b>
                       </Button>
                     </Nav.Link>
