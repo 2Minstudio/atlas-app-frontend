@@ -53,7 +53,10 @@ function MenuBar(props) {
                 {!user?.first_name && (
                   <>
                     <Nav.Link href="/login">
-                      <Button variant="outline-success" className="btn px-4 btn-md rounded-pill">
+                      <Button
+                        variant="outline-success"
+                        className="btn px-4 btn-md rounded-pill"
+                      >
                         <b>Login</b>
                       </Button>
                     </Nav.Link>
@@ -66,38 +69,22 @@ function MenuBar(props) {
                 )}
                 {user?.first_name && (
                   <>
-                    <FontAwesomeIcon
-                      className="AuserNoMargin text-primary position-relative"
-                      icon={faCircleUser}
-                    >{user.first_name}</FontAwesomeIcon>
-
-                    <NavDropdown
-                      title={user.first_name}
-                      id={`offcanvasNavbarDropdown-expand-lg`}
-                    >
-                      <NavDropdown.Item href="#action3">
-                        My Account
-                      </NavDropdown.Item>
-                      {roleName == "admin" && (
-                        <>
-                          <NavDropdown.Item href={"/admin"}>
-                            <b>Admin Dashboard</b>
-                          </NavDropdown.Item>
-                        </>
-                      )}
-                      {roleName == "student" && (
-                        <>
-                          <NavDropdown.Item href={"/dashboard"}>
-                            <b>Dashboard</b>
-                          </NavDropdown.Item>
-                        </>
-                      )}
-
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item href="#" onClick={() => Logout()}>
-                        Logout
-                      </NavDropdown.Item>
-                    </NavDropdown>
+                    <Nav.Link>
+                      <FontAwesomeIcon
+                        className="AuserNoMargin text-primary position-relative"
+                        icon={faCircleUser}
+                      />{" "}
+                      {user.first_name}
+                    </Nav.Link>
+                    {roleName == "admin" && (
+                      <Nav.Link href="/admin">Admin</Nav.Link>
+                    )}
+                    {roleName == "student" && (
+                      <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                    )}
+                    <Nav.Link href="#" onClick={() => Logout()}>
+                      Logout
+                    </Nav.Link>
                   </>
                 )}
               </Nav>
