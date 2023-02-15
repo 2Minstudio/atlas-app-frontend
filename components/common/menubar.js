@@ -18,7 +18,7 @@ function MenuBar(props) {
 
   return (
     <>
-      <Navbar key={"lg"} bg="light" expand={"lg"} className="header mb-3 pb-1">
+      <Navbar key={"lg"} bg="light" expand={"lg"} className="header pb-1">
         <Container className="d-flex d-flex justify-content-between align-items-center mb-4 border p-3 border-opacity-10 rounded-pill shadow-sm bg-white">
           <Navbar.Brand href="#">
             <Logo />{" "}
@@ -35,7 +35,7 @@ function MenuBar(props) {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav className="justify-content-end d-flex align-items-center flex-grow-1 pe-3">
                 {roleName !== "admin" && (
                   <>
                     <Nav.Link
