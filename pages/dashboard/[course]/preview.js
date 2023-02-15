@@ -37,8 +37,6 @@ class DashboardCoursePreview extends React.Component {
     }
   }
 
-  
-
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.router !== prevState.router) {
       const {
@@ -209,7 +207,7 @@ class DashboardCoursePreview extends React.Component {
                           <Link
                             disabled
                             scroll={false}
-                            href='#'
+                            href="#"
                             className="btn btn-success rounded-pill p-3 me-3 btn-disabled"
                           >
                             Buy Now
