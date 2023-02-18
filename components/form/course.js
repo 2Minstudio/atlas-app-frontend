@@ -67,7 +67,6 @@ class CourseForm extends React.Component {
       });
     } else {
       await createCourse(this.state).then((resp) => {
-        console.log(resp, "resp createcourse");
         const { status, data } = resp;
         if (status) {
           this.setState({ showSuccess: true });
@@ -92,7 +91,6 @@ class CourseForm extends React.Component {
         const { image: previouseImage } = data;
         this.setState({ ...data, previouseImage });
       }
-      console.log("Edit mode ", id, data);
     } else {
       this.setState({ created_by: userid, updated_by: userid });
     }

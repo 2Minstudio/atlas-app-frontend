@@ -2,7 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { getTest, updateTest } from "../../helpers/admissions";
-import { Alert, Col, Row, Image } from "react-bootstrap";
+import { Alert, Col, Row } from "react-bootstrap";
 import AutoHideAlert from "../common/autoHideAlert";
 class TestForm extends React.Component {
   constructor(props) {
@@ -11,20 +11,17 @@ class TestForm extends React.Component {
       errors: {},
       create: true,
       name: "",
-      cost: "",
-      description: "",
-      notes: "",
+      duration: "",
+      price: "",
+      tax_percentage: "",
+      elegible_percentage: "",
       status: "0",
       submited: false,
-      image: "",
-      created_by: "",
-      updated_by: "",
       previouseImage: "",
       showSuccess: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleImageChange = this.handleImageChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCheckbox = this.handleCheckbox.bind(this);
   }
@@ -39,13 +36,6 @@ class TestForm extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleImageChange = (event) => {
-    const { name, files } = event.target;
-    this.setState({
-      [name]: files[0],
-    });
-  };
-
   async handleSubmit() {
     // event
     const { closeTrigger } = this.props;
@@ -55,24 +45,13 @@ class TestForm extends React.Component {
     const { id } = this.props;
 
     if (id) {
-      await updateCourse(this.state).then((resp) => {
+      await updateTest(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) {
           //show alert on success then trigger this close
           this.setState({ showSuccess: true });
         } else {
           console.log(data, "update error");
-          this.setState({ errors: data });
-        }
-      });
-    } else {
-      await createCourse(this.state).then((resp) => {
-        console.log(resp, "resp createcourse");
-        const { status, data } = resp;
-        if (status) {
-          this.setState({ showSuccess: true });
-        } else {
-          console.log(data, "create error");
           this.setState({ errors: data });
         }
       });
@@ -87,12 +66,11 @@ class TestForm extends React.Component {
     } = this.props;
     if (id) {
       this.setState({ create: false, updated_by: userid });
-      const { data, state } = await getCourse(id);
+      const { data, state } = await getTest(id);
       if (state) {
         const { image: previouseImage } = data;
         this.setState({ ...data, previouseImage });
       }
-      console.log("Edit mode ", id, data);
     } else {
       this.setState({ created_by: userid, updated_by: userid });
     }
@@ -115,10 +93,10 @@ class TestForm extends React.Component {
   render() {
     const {
       name,
-      description,
-      image,
-      notes,
-      cost,
+      duration,
+      price,
+      tax_percentage,
+      elegible_percentage,
       status,
       submited,
       create,
@@ -148,63 +126,65 @@ class TestForm extends React.Component {
             />
             {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
           </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label className="fw-bold">Description</Form.Label>
-            <Form.Control
-              required
-              as="textarea"
-              name="description"
-              rows={3}
-              value={description}
-              onChange={this.handleChange}
-            />
-            {errors?.description && (
-              <Alert variant={"danger"}>{errors.description}</Alert>
-            )}
-          </Form.Group>
-          <Form.Group controlId="formFile" className="mb-3">
-            <Form.Label className="fw-bold">Course Image</Form.Label>
-            <Form.Control
-              type="file"
-              name="image"
-              // value={image}
-              accept="image/png, image/jpeg"
-              onChange={this.handleImageChange}
-            />
-            {previouseImage && (
-              <>
-                <Image
-                  alt="course cover"
-                  thumbnail={true}
-                  src={previouseImage}
-                ></Image>
-              </>
-            )}
-            {errors?.image && <Alert variant={"danger"}>{errors.image}</Alert>}
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label className="fw-bold">Notes</Form.Label>
-            <Form.Control
-              required
-              as="textarea"
-              name="notes"
-              rows={3}
-              value={notes}
-              onChange={this.handleChange}
-            />
-            {errors?.notes && <Alert variant={"danger"}>{errors.notes}</Alert>}
-          </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label className="fw-bold">Cost</Form.Label>
+            <Form.Label className="fw-bold">Duration</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="duration"
+              autoFocus
+              value={duration}
+              onChange={this.handleChange}
+            />
+            {errors?.duration && (
+              <Alert variant={"danger"}>{errors.duration}</Alert>
+            )}
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="exampleForm.price">
+            <Form.Label className="fw-bold">Price</Form.Label>
             <Form.Control
               required
               type="number"
-              name="cost"
+              name="price"
               autoFocus
-              value={cost}
+              value={price}
               onChange={this.handleChange}
             />
-            {errors?.cost && <Alert variant={"danger"}>{errors.cost}</Alert>}
+            {errors?.price && <Alert variant={"danger"}>{errors.price}</Alert>}
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="exampleForm.tax_percentage">
+            <Form.Label className="fw-bold">Tax %</Form.Label>
+            <Form.Control
+              required
+              type="number"
+              name="tax_percentage"
+              autoFocus
+              value={tax_percentage}
+              onChange={this.handleChange}
+            />
+            {errors?.tax_percentage && (
+              <Alert variant={"danger"}>{errors.tax_percentage}</Alert>
+            )}
+          </Form.Group>
+
+          <Form.Group
+            className="mb-3"
+            controlId="exampleForm.elegible_percentage"
+          >
+            <Form.Label className="fw-bold">Pass Elegible %</Form.Label>
+            <Form.Control
+              required
+              type="number"
+              name="elegible_percentage"
+              autoFocus
+              value={elegible_percentage}
+              onChange={this.handleChange}
+            />
+            {errors?.elegible_percentage && (
+              <Alert variant={"danger"}>{errors.elegible_percentage}</Alert>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3">

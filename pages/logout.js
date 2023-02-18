@@ -5,7 +5,6 @@ import { withRouter } from "next/router";
 class Logout extends React.Component {
     async componentDidMount() {
         const response = await Action();
-        console.log(response);
         // const {cookies} =this.props;
         // Router.push("/");
     }

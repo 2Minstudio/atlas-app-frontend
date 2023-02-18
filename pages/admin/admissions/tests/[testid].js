@@ -4,17 +4,17 @@ import Modal from "react-bootstrap/Modal";
 import LayoutAdminDashboard from "../../../../components/layout/adminDashboard";
 import { isClientLoggedin, getUser } from "../../../../helpers/helper";
 import {
-  deleteModule,
-  getCourse,
-  getCourseModules,
-} from "../../../../helpers/admin";
+  deleteQuestion,
+  getTest,
+  getTestQuestions,
+} from "../../../../helpers/admissions";
 import { withCookies } from "react-cookie";
 import Router, { withRouter } from "next/router";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import ModuleForm from "../../../../components/form/module";
-import CourseInfo from "../../../../components/detail/course";
+import QuestionForm from "../../../../components/form/question";
+import TestInfo from "../../../../components/detail/test";
 import ConfirmBox from "../../../../components/modal/confirm";
 import DataList from "../../../../components/datalist";
 
@@ -27,14 +27,14 @@ class TestQuestions extends React.Component {
     testid: null,
   };
 
-  loadData = async (page = 1) => {
+  loadData = async () => {
     const { testid } = this.state;
     if (testid) {
-      await getCourse(testid).then(async (courseresp) => {
-        const { data: course } = courseresp;
-        await getCourseModules(testid, page).then((resp) => {
+      await getTest(testid).then(async (resp) => {
+        const { data: test } = resp;
+        await getTestQuestions(testid).then((resp) => {
           const { data } = resp;
-          this.setState({ data, course });
+          this.setState({ data, test });
         });
       });
     }
@@ -45,7 +45,7 @@ class TestQuestions extends React.Component {
 
     const {
       router: {
-        query: { course: testid },
+        query: { testid },
       },
     } = this.props;
 
@@ -97,7 +97,7 @@ class TestQuestions extends React.Component {
     if (nextProps.router !== prevState.router) {
       const {
         router: {
-          query: { course: proptestid },
+          query: { testid: proptestid },
         },
       } = nextProps;
       return { testid: proptestid };
@@ -115,14 +115,14 @@ class TestQuestions extends React.Component {
   };
 
   render() {
-    const { user, data, modelshow, editId, deleteId, course, testid } =
+    const { user, data, modelshow, editId, deleteId, test, questionid } =
       this.state;
-    const paths = { "/admin/courses": "Courses", "#": course?.name };
+    const paths = { "admin/admissions/tests/": "Tests", "#": test?.name };
     return (
       <LayoutAdminDashboard user={user} paths={paths}>
         <ConfirmBox
           isShow={deleteId}
-          text={"Are you sure want to delete this Module?"}
+          text={"Are you sure want to delete this Question?"}
           okayText={"Delete"}
           okayAction={this.delete}
           cancelAction={this.closeConfirm}
@@ -130,12 +130,12 @@ class TestQuestions extends React.Component {
 
         <Row>
           <Col>
-            <CourseInfo course={course} showImage={true} />
+            <TestInfo test={test}  />
           </Col>
         </Row>
         <Row className="d-flex align-items-center pt-4 pb-5">
           <Col>
-            <h2>Modules</h2>
+            <h2>Questions</h2>
           </Col>
           <Col className="text-end">
             <Button
@@ -143,32 +143,33 @@ class TestQuestions extends React.Component {
               variant="success"
               onClick={this.handleShow}
             >
-              Add New Module
+              Add New Question
             </Button>
           </Col>
         </Row>
         <Modal size="lg" show={modelshow} onHide={() => this.handleClose()}>
           <Modal.Header closeButton>
-            <Modal.Title>{editId ? "Edit" : "New"} Module</Modal.Title>
+            <Modal.Title>{editId ? "Edit" : "New"} Question</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <ModuleForm
-              user={user}
-              testid={testid}
-              id={editId}
-              closeTrigger={this.handleClose}
-            />
+            <QuestionForm
+            user={user}
+            questionid={questionid}
+            id={editId}
+            closeTrigger={this.handleClose}
+            ></QuestionForm>
+            
           </Modal.Body>
         </Modal>
         <DataList
           data={data}
           headings={[
             { id: "#" },
-            { name: "Name" },
-            { attend_type: "Type" },
+            { question: "Question" },
+            { question_type: "Type" },
             { status: "Status" },
           ]}
-          pagecallback={this.loaddata}
+          pagecallback={this.loadData}
           sourcemapper={{ status: { true: "Published", false: "Draft" } }}
           buttons={[
             {
@@ -184,14 +185,7 @@ class TestQuestions extends React.Component {
               onclick: this.deleteConfirm,
               variant: "outline-success",
               key: "id",
-            },
-            {
-              type: "link",
-              label: "View",
-              link: `/admin/courses/${testid}/$id`,
-              variant: "success",
-              replacetokens: { $id: "id" },
-            },
+            }
           ]}
         />
       </LayoutAdminDashboard>

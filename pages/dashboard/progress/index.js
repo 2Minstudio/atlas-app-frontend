@@ -42,7 +42,6 @@ class Progress extends React.Component {
 
   render() {
     const { user, data } = this.state;
-    console.log(data, "data");
     return (
       <Layout type="dashboard" user={user}>
         <div className={styles}>

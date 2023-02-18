@@ -1,27 +1,31 @@
 import axios from "axios";
 
-
 export default async function handler(req, res) {
   let state = false;
-  // console.log(Object.keys(req),'req?');
   let resp = {};
   const {
     cookies: { atlastoken: token },
-    body,
+    body: { name, course, attend_type, status, created_by, updated_by },
   } = req;
-  const { name, description, cost, notes, status, id } = body;
+
   await axios({
-    method: "patch",
-    url: `${process.env.API_URL}/api/admin/course/${body.id}/`,
-    data: { name, description, cost, notes, status },
+    method: "post",
+    url: `${process.env.API_URL}/api/admin/question/`,
+    data: {
+      name,
+      course,
+      attend_type,
+      status,
+      created_by,
+      updated_by,
+    },
     headers: {
       Authorization: `Token ${token}`,
-      "Content-Type": "multipart/form-data",
+      "Content-Type": "application/json",
     },
   })
     .then((response) => {
       const { data } = response;
-
       state = true;
       resp = data;
     })

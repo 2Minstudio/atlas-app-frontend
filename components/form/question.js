@@ -4,18 +4,19 @@ import Button from "react-bootstrap/Button";
 import { createModule, getModule, updateModule } from "../../helpers/admin";
 import { Alert, Col, Row } from "react-bootstrap";
 import AutoHideAlert from "../common/autoHideAlert";
-class ModuleForm extends React.Component {
+class QuestionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       errors: {},
       create: true,
-      name: "",
-      course: "",
-      attend_type: "online",
+      question: "",
+      options: "",
+      correct_answers: "",
+      question_type: "",
       status: "0",
-      created_by: "",
-      updated_by: "",
+    //   created_by: "",
+    //   updated_by: "",
       submited: false,
       showSuccess: false,
     };
@@ -204,4 +205,4 @@ class ModuleForm extends React.Component {
   }
 }
 
-export default ModuleForm;
+export default QuestionForm;
