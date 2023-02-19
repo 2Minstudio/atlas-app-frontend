@@ -1,0 +1,124 @@
+import React from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import { Col, Row } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+
+class AnswerOptions extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      options: [],
+      type: 0,
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
+  }
+
+  componentDidMount() {
+    const { options, type } = this.props;
+    this.setState({ options, type });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { options, type } = this.props;
+    if (prevProps.options !== options) {
+      this.setState({ options });
+    }
+    if (prevProps.type !== type) {
+      this.setState({ type });
+    }
+  }
+
+  removeItem = (i) => {
+    const { options } = this.state;
+    if (i > -1) {
+      options.splice(i, 1); // 2nd parameter means remove one item only
+      this.setState({ options });
+    }
+  };
+
+  addNew = () => {
+    const { options } = this.state;
+    options.push({ value: "", is_answer: false });
+    this.setState({ options });
+  };
+
+  updateOption = (name, value, key) => {
+    const { callback } = this.props;
+    const { options } = this.state;
+    const index = name.replace(`${key}-`, "");
+    options[index][key] = value;
+    this.setState({ options }, () => {
+      callback(options);
+    });
+  };
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.updateOption(name, value, "value");
+  }
+
+  handleCheckbox(event) {
+    const { name, value, checked } = event.target;
+    // console.log(value, "value",checked);
+    this.updateOption(name, checked, "is_answer");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.options !== this.props.options) {
+      const { options, type } = this.props;
+      this.setState({ options, type });
+    }
+  }
+
+  render() {
+    const { options, type } = this.state;
+    let inc = 0;
+    return (
+      type !== 0 && (
+        <Form.Group className="mb-3">
+          <Form.Label>Options </Form.Label>
+          {options &&
+            options.length > 0 &&
+            options?.map((v, i) => {
+              inc = inc + 1;
+              return (
+                <Row md={4} className={`g-4 answeroption-${i}`}>
+                  <Col>{inc}</Col>
+                  <Col>
+                    <Form.Control
+                      type="text"
+                      value={v["value"]}
+                      name={`value-${i}`}
+                      onChange={this.handleChange}
+                    />
+                  </Col>
+                  <Col>
+                    <Form.Check
+                      type="checkbox"
+                      name={`is_answer-${i}`}
+                      checked={v["is_answer"]}
+                      label="Is Valid Answer?"
+                      onChange={this.handleCheckbox}
+                    />
+                  </Col>
+                  <Col>
+                    <a onClick={() => this.removeItem(i)}>
+                      <FontAwesomeIcon width={10} size={"xs"} icon={faClose} />
+                    </a>
+                  </Col>
+                </Row>
+              );
+            })}
+          <Button variant="outline-primary" onClick={this.addNew}>
+            Add New
+          </Button>
+        </Form.Group>
+      )
+    );
+  }
+}
+export default AnswerOptions;

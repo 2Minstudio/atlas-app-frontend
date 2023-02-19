@@ -5,19 +5,19 @@ export default async function handler(req, res) {
   let resp = {};
   const {
     cookies: { atlastoken: token },
-    body: { name, course, attend_type, status, created_by, updated_by },
+    body: { question, exam, options, question_type, status, correct_answers },
   } = req;
 
   await axios({
     method: "post",
     url: `${process.env.API_URL}/api/admin/question/`,
     data: {
-      name,
-      course,
-      attend_type,
-      status,
-      created_by,
-      updated_by,
+      question,
+      exam,
+      options,
+      correct_answers,
+      question_type,
+      status
     },
     headers: {
       Authorization: `Token ${token}`,

@@ -1,39 +1,42 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { createModule, getModule, updateModule } from "../../helpers/admin";
+import {
+  createQuestion,
+  getQuestion,
+  updateQuestion,
+} from "../../helpers/admissions";
 import { Alert, Col, Row } from "react-bootstrap";
 import AutoHideAlert from "../common/autoHideAlert";
+import AnswerOptions from "./answeroptions";
 class QuestionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       errors: {},
       create: true,
+      exam: "",
       question: "",
-      options: "",
-      correct_answers: "",
-      question_type: "",
+      options: [],
+      correct_answers: [],
+      question_type: 0,
       status: "0",
-    //   created_by: "",
-    //   updated_by: "",
+      //   created_by: "",
+      //   updated_by: "",
       submited: false,
       showSuccess: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.readOptions = this.readOptions.bind(this);
+  }
+  readOptions(data) {
+    this.setState({ options: data });
   }
 
   handleChange(event) {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
-
-  handleCheckbox(event) {
-    const { name, value, checked } = event.target;
-    // const setvalue = checked ? value : "";
     this.setState({ [name]: value });
   }
 
@@ -44,7 +47,7 @@ class QuestionForm extends React.Component {
     // event.stopPropagation();
 
     if (id) {
-      await updateModule(this.state).then((resp) => {
+      await updateQuestion(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) {
           this.setState({ showSuccess: true });
@@ -54,7 +57,7 @@ class QuestionForm extends React.Component {
         }
       });
     } else {
-      await createModule(this.state).then((resp) => {
+      await createQuestion(this.state).then((resp) => {
         const { status, data } = resp;
         if (status) {
           this.setState({ showSuccess: true });
@@ -70,19 +73,18 @@ class QuestionForm extends React.Component {
   async componentDidMount() {
     const {
       id,
-      user: { id: userid },
-      courseId,
+      exam,
+      // user: { id: userid },
+      // questionid,
     } = this.props;
-    this.setState({ course: courseId });
     if (id) {
-      this.setState({ create: false, updated_by: userid });
-      const { data, state } = await getModule(id);
+      this.setState({ create: false });
+      const { data, state } = await getQuestion(id);
       if (state) {
         this.setState({ ...data });
       }
-    } else {
-      this.setState({ created_by: userid, updated_by: userid });
     }
+    this.setState({ exam });
   }
 
   setStatusAction = (value) => {
@@ -99,48 +101,70 @@ class QuestionForm extends React.Component {
     });
   };
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.testid !== this.state.testid) {
+  //     this.loadData();
+  //   }
+  // }
+
   render() {
-    const { name, attend_type, status, submited, create, errors, showSuccess } =
-      this.state;
+    const {
+      question,
+      options,
+      correct_answers,
+      question_type,
+      submited,
+      create,
+      errors,
+      showSuccess,
+    } = this.state;
     const { closeTrigger } = this.props;
     return (
       <div className="d-flex align-items-center justify-content-center bg-light">
         <Form className="col-11" onSubmit={this.handleSubmit}>
           {showSuccess && (
             <AutoHideAlert
-              message={`Module ${create ? "created" : "updated"} successfully!`}
+              message={`Question ${
+                create ? "created" : "updated"
+              } successfully!`}
               onClose={closeTrigger}
             />
           )}
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label className="fw-bold">Name</Form.Label>
+            <Form.Label className="fw-bold">Question</Form.Label>
             <Form.Control
               required
               type="text"
-              name="name"
+              name="question"
               autoFocus
-              value={name}
+              value={question}
               onChange={this.handleChange}
             />
-            {errors?.name && <Alert variant={"danger"}>{errors.name}</Alert>}
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label className="fw-bold">Attend Type</Form.Label>
-            <Form.Select
-              value={attend_type}
-              onChange={this.handleChange}
-              name="attend_type"
-            >
-              <option>Select</option>
-              <option value="online">Online</option>
-              <option value="offline">Offline</option>
-            </Form.Select>
-            {errors?.attend_type && (
-              <Alert variant={"danger"}>{errors.attend_type}</Alert>
+            {errors?.question && (
+              <Alert variant={"danger"}>{errors.question}</Alert>
             )}
           </Form.Group>
 
+          <Form.Group className="mb-3">
+            <Form.Label className="fw-bold">Type</Form.Label>
+            <Form.Select
+              value={question_type.toString()}
+              onChange={this.handleChange}
+              name="question_type"
+            >
+              <option value="0">Text</option>
+              <option value="1">Single Select</option>
+              <option value="2">Multi Select</option>
+            </Form.Select>
+            {errors?.question_type && (
+              <Alert variant={"danger"}>{errors.question_type}</Alert>
+            )}
+          </Form.Group>
+          <AnswerOptions
+            callback={this.readOptions}
+            options={options}
+            type={question_type}
+          />
           <Form.Group className="mb-3 mt-4">
             <Row className="d-flex align-items-center justify-content-center">
               <Col xs="auto">
@@ -174,26 +198,6 @@ class QuestionForm extends React.Component {
                 </Button>
               </Col>
             </Row>
-            {/* <Form.Label>Status</Form.Label>
-
-          <Form.Check
-            checked={status == "1"}
-            inline
-            label="Published"
-            name="status"
-            type={"radio"}
-            value={1}
-            onChange={this.handleCheckbox}
-          />
-          <Form.Check
-            checked={status == "0"}
-            inline
-            label="Draft"
-            name="status"
-            type={"radio"}
-            value={0}
-            onChange={this.handleCheckbox}
-          /> */}
           </Form.Group>
 
           {/* <Button disabled={submited} variant="primary" type="submit">

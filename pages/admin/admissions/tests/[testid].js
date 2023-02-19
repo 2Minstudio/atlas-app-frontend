@@ -130,7 +130,7 @@ class TestQuestions extends React.Component {
 
         <Row>
           <Col>
-            <TestInfo test={test}  />
+            <TestInfo test={test} />
           </Col>
         </Row>
         <Row className="d-flex align-items-center pt-4 pb-5">
@@ -153,12 +153,11 @@ class TestQuestions extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <QuestionForm
-            user={user}
-            questionid={questionid}
-            id={editId}
-            closeTrigger={this.handleClose}
-            ></QuestionForm>
-            
+              user={user}
+              id={editId}
+              exam={test?.id}
+              closeTrigger={this.handleClose}
+            />
           </Modal.Body>
         </Modal>
         <DataList
@@ -170,7 +169,10 @@ class TestQuestions extends React.Component {
             { status: "Status" },
           ]}
           pagecallback={this.loadData}
-          sourcemapper={{ status: { true: "Published", false: "Draft" } }}
+          sourcemapper={{
+            status: { true: "Published", false: "Draft" },
+            question_type: { 0: "Text", 1: "Single Select", 2: "Multi Select" },
+          }}
           buttons={[
             {
               type: "button",
@@ -185,7 +187,7 @@ class TestQuestions extends React.Component {
               onclick: this.deleteConfirm,
               variant: "outline-success",
               key: "id",
-            }
+            },
           ]}
         />
       </LayoutAdminDashboard>

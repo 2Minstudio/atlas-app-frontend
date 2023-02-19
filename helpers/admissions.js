@@ -111,7 +111,7 @@ const updateTest = async (data) => {
 
 const getTestQuestions = async (testid, page = 1) => {
   return axios
-    .post("/api/admin/questions/getall", { page, testid })
+    .post("/api/admin/question/getall", { page, testid })
     .then((response) => {
       const { data } = response;
       return data;

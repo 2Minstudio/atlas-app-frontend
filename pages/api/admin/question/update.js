@@ -6,17 +6,17 @@ export default async function handler(req, res) {
   // const { name, id, attend_type, status } = req.body;
   const {
     cookies: { atlastoken: token },
-    body: { id, name, attend_type, status, updated_by },
+    body: { id, question, options, status, question_type },
   } = req;
 
   await axios({
     method: "patch",
     url: `${process.env.API_URL}/api/admin/question/${id}/`,
     data: {
-      name,
-      attend_type,
+      question,
+      options,
+      question_type,
       status,
-      updated_by,
     },
     headers: {
       Authorization: `Token ${token}`,
