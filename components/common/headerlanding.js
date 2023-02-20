@@ -104,7 +104,7 @@ class Headerlanding extends React.Component {
       <Container className=' my-5 border-radius-60 pb-2 mb-4 border p-2 border-opacity-10 shadow-sm bg-white'>
         <Navbar.Brand className='py-1 ps-3' href="#home"><Logo /></Navbar.Brand>
         <Navbar.Toggle className="me-3" aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse className=" justify-content-end" id="responsive-navbar-nav">
+        <Navbar.Collapse className="justify-content-end d-flex align-items-sm-start align-items-lg-center" id="responsive-navbar-nav">
           
           <Nav>
             <Nav.Link href="#">Community</Nav.Link>

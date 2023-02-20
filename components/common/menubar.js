@@ -35,7 +35,7 @@ function MenuBar(props) {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end d-flex align-items-center flex-grow-1 pe-3">
+              <Nav className="justify-content-md-end d-flex align-items-sm-start align-items-lg-center flex-grow-1 pe-3">
                 {roleName !== "admin" && (
                   <>
                     <Nav.Link

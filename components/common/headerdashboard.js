@@ -37,7 +37,7 @@ class Headerdashboard extends React.Component {
               <div className="col col-md-3 col-lg-2 ps-2">
                 <Logo />
               </div>
-              <div className="col col-md-9 col-lg-10 bg-white rounded-top-25 d-flex justify-content-end">
+              <div className="col col-md-9 col-lg-10 bg-white rounded-top-25 d-flex justify-content-end align-items-sm-start align-items-lg-center">
                 <Navbar collapseOnSelect expand="lg">
                   <Navbar.Toggle
                     className="me-3"
