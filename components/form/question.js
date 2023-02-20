@@ -8,7 +8,7 @@ import {
 } from "../../helpers/admissions";
 import { Alert, Col, Row } from "react-bootstrap";
 import AutoHideAlert from "../common/autoHideAlert";
-import AnswerOptions from "./answeroptions";
+import AnswerOptions from "./field/answeroptions";
 class QuestionForm extends React.Component {
   constructor(props) {
     super(props);
@@ -30,9 +30,17 @@ class QuestionForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.readOptions = this.readOptions.bind(this);
+    this.setError = this.setError.bind(this);
   }
+
   readOptions(data) {
     this.setState({ options: data });
+  }
+
+  setError(err) {
+    const { errors } = this.state;
+    // errors["options"] = err;
+    this.setState({ errors: { ...{ options: err }, errors } });
   }
 
   handleChange(event) {
@@ -164,7 +172,11 @@ class QuestionForm extends React.Component {
             callback={this.readOptions}
             options={options}
             type={question_type}
+            seterror={this.setError}
           />
+          {errors?.options && (
+            <Alert variant={"danger"}>{errors.options}</Alert>
+          )}
           <Form.Group className="mb-3 mt-4">
             <Row className="d-flex align-items-center justify-content-center">
               <Col xs="auto">

@@ -84,7 +84,7 @@ class TestQuestions extends React.Component {
 
   delete = async () => {
     const { deleteId } = this.state;
-    await deleteModule(deleteId).then(async (resp) => {
+    await deleteQuestion(deleteId).then(async (resp) => {
       const { state, data } = resp;
       if (state) {
         this.setState({ deleteId: null });

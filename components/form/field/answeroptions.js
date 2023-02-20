@@ -11,6 +11,7 @@ class AnswerOptions extends React.Component {
     this.state = {
       options: [],
       type: 0,
+      errors: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -46,13 +47,33 @@ class AnswerOptions extends React.Component {
     this.setState({ options });
   };
 
+  validateOptions = () => {
+    const { callback, type, seterror } = this.props;
+    const { options } = this.state;
+    const errors = [];
+    const emptys = options.filter((o) => o.value === "");
+    const multi_answers = options.filter((o) => o.is_answer === true);
+    errors["multi_answers"] = type == "1" && multi_answers.length > 0;
+    errors["emptys"] = emptys.length > 0;
+    console.log(errors);
+    if (errors["multi_answers"] || errors["emptys"])
+      this.setState({ errors }, () => {
+        seterror(errors);
+      });
+    else {
+      this.setState({ errors:[] }, () => {
+        callback(options);
+      });
+    }
+  };
+
   updateOption = (name, value, key) => {
-    const { callback } = this.props;
     const { options } = this.state;
     const index = name.replace(`${key}-`, "");
     options[index][key] = value;
+
     this.setState({ options }, () => {
-      callback(options);
+      this.validateOptions();
     });
   };
 
@@ -62,8 +83,7 @@ class AnswerOptions extends React.Component {
   }
 
   handleCheckbox(event) {
-    const { name, value, checked } = event.target;
-    // console.log(value, "value",checked);
+    const { name, checked } = event.target;
     this.updateOption(name, checked, "is_answer");
   }
 
@@ -75,42 +95,54 @@ class AnswerOptions extends React.Component {
   }
 
   render() {
-    const { options, type } = this.state;
+    const { options, type, errors } = this.state;
     let inc = 0;
     return (
       type !== 0 && (
         <Form.Group className="mb-3">
           <Form.Label>Options </Form.Label>
+          {errors}
           {options &&
             options.length > 0 &&
             options?.map((v, i) => {
               inc = inc + 1;
               return (
-                <Row md={4} className={`g-4 answeroption-${i}`}>
-                  <Col>{inc}</Col>
-                  <Col>
-                    <Form.Control
-                      type="text"
-                      value={v["value"]}
-                      name={`value-${i}`}
-                      onChange={this.handleChange}
-                    />
-                  </Col>
-                  <Col>
-                    <Form.Check
-                      type="checkbox"
-                      name={`is_answer-${i}`}
-                      checked={v["is_answer"]}
-                      label="Is Valid Answer?"
-                      onChange={this.handleCheckbox}
-                    />
-                  </Col>
-                  <Col>
-                    <a onClick={() => this.removeItem(i)}>
-                      <FontAwesomeIcon width={10} size={"xs"} icon={faClose} />
-                    </a>
-                  </Col>
-                </Row>
+                <>
+                  <Row md={4} className={`g-4 answeroption-${i}`}>
+                    <Col md={1}>{inc}</Col>
+                    <Col md={6}>
+                      <Form.Control
+                        type="text"
+                        value={v["value"]}
+                        name={`value-${i}`}
+                        onChange={this.handleChange}
+                      />
+                    </Col>
+                    <Col md={4}>
+                      <Form.Check
+                        type="checkbox"
+                        name={`is_answer-${i}`}
+                        checked={v["is_answer"]}
+                        label="Is Valid Answer?"
+                        onChange={this.handleCheckbox}
+                      />
+                    </Col>
+                    <Col md={1}>
+                      <a onClick={() => this.removeItem(i)}>
+                        <FontAwesomeIcon
+                          width={10}
+                          size={"xs"}
+                          icon={faClose}
+                        />
+                      </a>
+                    </Col>
+                  </Row>
+                  {/* <Row>
+                    <Col>
+                      <p>{errors[i]}</p>
+                    </Col>
+                  </Row> */}
+                </>
               );
             })}
           <Button variant="outline-primary" onClick={this.addNew}>
