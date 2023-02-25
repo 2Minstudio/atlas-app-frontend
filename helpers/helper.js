@@ -164,6 +164,38 @@ const verifyCode = async (code, email) => {
       return error?.response?.data;
     });
 };
+
+const getUserTest = async (id) => {
+  return axios
+    .post("/api/test/get", { id: id })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+const getTest = async (id) => {
+  return axios
+    .post("/api/test/getinfo", { id: id })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
 export {
   isLoggedin,
   getUser,
@@ -172,4 +204,6 @@ export {
   Logout,
   resendCode,
   verifyCode,
+  getTest,
+  getUserTest,
 };

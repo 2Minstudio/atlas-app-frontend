@@ -3,7 +3,7 @@ import "./StopWatch.module.css";
 import Timer from "../timer/Timer";
 // import ControlButtons from "../ControlButtons/ControlButtons";
 
-function StopWatch() {
+function StopWatch({ max, callback }) {
   const [isActive, setIsActive] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
   const [time, setTime] = useState(0);
@@ -13,7 +13,12 @@ function StopWatch() {
 
     if (isActive && isPaused === false) {
       interval = setInterval(() => {
-        setTime((time) => time + 10);
+        console.log(time, max, "callback", callback);
+        if (time > max && callback) {
+          callback();
+          setIsPaused(true);
+        }
+        else setTime((time) => time + 10);
       }, 10);
     } else {
       clearInterval(interval);

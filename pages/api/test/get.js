@@ -2,34 +2,15 @@ import axios from "axios";
 
 export default async function handler(req, res) {
   let state = false;
-  // console.log(Object.keys(req), "req?");
   let resp = {};
   const {
     cookies: { atlastoken: token },
-    body,
+    body: { id },
   } = req;
-  const {
-    name,
-    duration,
-    tax_percentage,
-    elegible_percentage,
-    price,
-    final_price,
-    status,
-    id,
-  } = body;
+
   await axios({
-    method: "patch",
-    url: `${process.env.API_URL}/api/admin/exam/${id}/`,
-    data: {
-      name,
-      duration,
-      tax_percentage,
-      elegible_percentage,
-      price,
-      final_price,
-      status,
-    },
+    method: "get",
+    url: `${process.env.API_URL}/api/test/${id}`,
     headers: {
       Authorization: `Token ${token}`,
       "Content-Type": "application/json",

@@ -13,6 +13,7 @@ class TestForm extends React.Component {
       name: "",
       duration: "",
       price: "",
+      final_price: "",
       tax_percentage: "",
       elegible_percentage: "",
       status: "0",
@@ -95,6 +96,7 @@ class TestForm extends React.Component {
       name,
       duration,
       price,
+      final_price,
       tax_percentage,
       elegible_percentage,
       status,
@@ -152,6 +154,20 @@ class TestForm extends React.Component {
               onChange={this.handleChange}
             />
             {errors?.price && <Alert variant={"danger"}>{errors.price}</Alert>}
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.final_price">
+            <Form.Label className="fw-bold">Final Price</Form.Label>
+            <Form.Control
+              required
+              type="number"
+              name="final_price"
+              autoFocus
+              value={final_price}
+              onChange={this.handleChange}
+            />
+            {errors?.final_price && (
+              <Alert variant={"danger"}>{errors.final_price}</Alert>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="exampleForm.tax_percentage">
