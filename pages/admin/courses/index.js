@@ -91,12 +91,12 @@ class Courses extends React.Component {
           cancelAction={this.closeConfirm}
         />
         <Row className="d-flex align-items-center pt-4 pb-5">
-          <Col>
+          <Col xs={12} sm={2}>
             <h2 className="m-0">Courses</h2>
           </Col>
-          <Col className="text-end">
+          <Col className="text-end pt-1 pt-sm-0">
             <Button
-              className="btn btn-success rounded-pill p-3 me-3"
+              className="btn btn-success rounded-pill p-3"
               variant="success"
               onClick={this.handleShow}
             >

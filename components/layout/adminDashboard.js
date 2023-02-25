@@ -87,7 +87,7 @@ function LayoutAdminDashboard(props) {
                     </Nav>
                   </Col>
                   <Col className="g-0">
-                    <div className="bg-white rounded-top-25 rounded-bottom-25 p-sm-3 p-md-4 p-lg-5">
+                    <div className="bg-white rounded-top-25 rounded-bottom-25  py-5 px-2  p-sm-3 p-md-4 p-lg-5">
                       {Object.keys(paths).length > 0 && (
                         <AdminBreadcrumb items={paths} />
                       )}

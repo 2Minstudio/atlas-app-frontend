@@ -209,7 +209,7 @@ class CourseForm extends React.Component {
             <Row className="d-flex align-items-center justify-content-center">
               <Col xs="auto">
                 <Button
-                  className="btn rounded-pill"
+                  className="btn rounded-pill mt-2 mt-sm-0"
                   variant="outline-success"
                   size="lg"
                   onClick={() => this.setStatusAction("cancel")}
@@ -219,7 +219,7 @@ class CourseForm extends React.Component {
               </Col>
               <Col xs="auto">
                 <Button
-                  className="btn rounded-pill"
+                  className="btn rounded-pill mt-2 mt-sm-0"
                   size="lg"
                   variant="outline-success"
                   disabled={submited}
@@ -230,7 +230,7 @@ class CourseForm extends React.Component {
               </Col>
               <Col xs="auto">
                 <Button
-                  className="btn rounded-pill"
+                  className="btn rounded-pill mt-2 mt-sm-0"
                   size="lg"
                   variant="success"
                   disabled={submited}
