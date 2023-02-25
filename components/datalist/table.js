@@ -13,7 +13,7 @@ function DataTable({ headings, data, children, buttons, sourcemapper }) {
 
   return (
     <>
-      <Table className="table-hover" responsive="sm">
+      <Table className="table-hover" responsive="md">
         <thead>
           <tr>
             {head.map((i, indx) => {
