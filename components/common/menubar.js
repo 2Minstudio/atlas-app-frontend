@@ -77,7 +77,7 @@ function MenuBar(props) {
                       {user.first_name}
                     </Nav.Link>
                     {roleName == "admin" && (
-                      <Nav.Link href="/admin">Admin</Nav.Link>
+                      <Nav.Link href="/admin/admissions">Admin</Nav.Link>
                     )}
                     {roleName == "student" && (
                       <Nav.Link href="/dashboard">Dashboard</Nav.Link>

@@ -38,9 +38,9 @@ function LayoutAdminDashboard(props) {
                       className="list-group flex-fill"
                       defaultActiveKey={asPath}
                     >
-                      <Nav.Link className="list-group-item" href="/admin">
+                      {/* <Nav.Link className="list-group-item" href="/admin">
                         Home
-                      </Nav.Link>
+                      </Nav.Link> */}
 
                       <Nav.Link
                         className="list-group-item"
