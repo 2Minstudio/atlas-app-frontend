@@ -86,7 +86,7 @@ function LayoutAdminDashboard(props) {
                       </Nav.Link>
                     </Nav>
                   </Col>
-                  <Col className="g-0">
+                  <Col className="g-0"  md={9}>
                     <div className="bg-white rounded-top-25 rounded-bottom-25  py-5 px-2  p-sm-3 p-md-4 p-lg-5">
                       {Object.keys(paths).length > 0 && (
                         <AdminBreadcrumb items={paths} />
