@@ -9,6 +9,7 @@ import { isLoggedin, isClientLoggedin, getUser } from "../../helpers/helper";
 import StopWatch from "../../components/stopwatch/StopWatch";
 import { getUserTest } from "../../helpers/helper";
 
+
 class Test extends React.Component {
   state = {
     user: {},
@@ -38,7 +39,6 @@ class Test extends React.Component {
 
   render() {
     const { user, test } = this.state;
-    console.log(test);
     return (
       <Layout type="user" user={user}>
         <div className={styles}>
@@ -54,7 +54,7 @@ class Test extends React.Component {
                         </div>
                         <div className="col text-center">
                           <p className="pb-0 mb-0">
-                            <StopWatch max={30} callback={this.stopedWatch} />{" "}
+                          {test?.duration && <StopWatch duration={test.duration} callback={this.stopedWatch} />}{" "}
                           </p>
                           <p>
                             <span className="small-text-12">

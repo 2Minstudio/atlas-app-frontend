@@ -160,7 +160,7 @@ class QuestionForm extends React.Component {
               onChange={this.handleChange}
               name="question_type"
             >
-              <option value="0">Text</option>
+              {/* <option value="0">Text</option> */}
               <option value="1">Single Select</option>
               <option value="2">Multi Select</option>
             </Form.Select>

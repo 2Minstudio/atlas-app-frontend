@@ -1,59 +1,48 @@
 import React, { useState } from "react";
 import "./StopWatch.module.css";
-import Timer from "../timer/Timer";
+// import "./Timer.module.css";
+// import Timer from "../timer/Timer";
 // import ControlButtons from "../ControlButtons/ControlButtons";
+import Countdown, { zeroPad } from "react-countdown";
 
-function StopWatch({ max, callback }) {
-  const [isActive, setIsActive] = useState(true);
-  const [isPaused, setIsPaused] = useState(false);
-  const [time, setTime] = useState(0);
-
-  React.useEffect(() => {
-    let interval = null;
-
-    if (isActive && isPaused === false) {
-      interval = setInterval(() => {
-        console.log(time, max, "callback", callback);
-        if (time > max && callback) {
-          callback();
-          setIsPaused(true);
-        }
-        else setTime((time) => time + 10);
-      }, 10);
-    } else {
-      clearInterval(interval);
-    }
-    return () => {
-      clearInterval(interval);
-    };
-  }, [isActive, isPaused]);
-
-  const handleStart = () => {
-    setIsActive(true);
-    setIsPaused(false);
+class StopWatch extends React.Component {
+  state = {
+    counter: 0,
   };
 
-  const handlePauseResume = () => {
-    setIsPaused(!isPaused);
+  componentDidMount() {
+    const { duration, callback } = this.props;
+    const time = duration.split(":");
+    const h = time[0] * 3600000;
+    const m = time[1] * 60000;
+    const s = time[2] * 1000;
+    const timercount = Date.now() + h + m + s;
+    this.setState({ counter: timercount });
+  }
+
+  Timer = ({ hours, minutes, seconds }) => {
+    console.log(hours, minutes, seconds);
+
+    return (
+      <div className="timer">
+        <span className="digits">{zeroPad(hours)}</span>
+        <span className="digits">:{zeroPad(minutes)}</span>
+        <span className="digits mili-sec">:{zeroPad(seconds)}</span>
+      </div>
+    );
   };
 
-  const handleReset = () => {
-    setIsActive(false);
-    setTime(0);
-  };
-
-  return (
-    <div className="stop-watch">
-      <Timer time={time} />
-      {/* <ControlButtons
-        active={isActive}
-        isPaused={isPaused}
-        handleStart={handleStart}
-        handlePauseResume={handlePauseResume}
-        handleReset={handleReset}
-      /> */}
-    </div>
-  );
+  // ({ duration, callback })
+  render() {
+    const { counter } = this.state;
+    console.log(counter, "counter");
+    if (counter)
+      return (
+        <div className="stop-watch">
+          <Countdown date={counter} autoStart={true} renderer={this.Timer} />
+        </div>
+      );
+  }
 }
 
 export default StopWatch;
