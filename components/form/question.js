@@ -19,7 +19,7 @@ class QuestionForm extends React.Component {
       question: "",
       options: [],
       correct_answers: [],
-      question_type: 0,
+      question_type: 1,
       status: "0",
       //   created_by: "",
       //   updated_by: "",
