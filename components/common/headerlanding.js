@@ -118,7 +118,7 @@ class Headerlanding extends React.Component {
                       <span className="visually-hidden">New alerts</span></span>{" "}
                    
             </Nav.Link>
-            <Nav.Link href={"#"} onClick={() => Logout()}>Logout</Nav.Link>
+            <Nav.Link href={"#"} onClick={() => Logout()}><b>Logout</b></Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

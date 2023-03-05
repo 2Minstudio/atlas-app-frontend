@@ -228,7 +228,7 @@ class TestForm extends React.Component {
               </Col>
               <Col xs="auto">
                 <Button
-                  className="btn rounded-pill"
+                  className="btn rounded-pill mt-2 mt-sm-0"
                   size="lg"
                   variant="success"
                   disabled={submited}

@@ -212,7 +212,7 @@ class ChapterForm extends React.Component {
             <Row className="d-flex align-items-center justify-content-center">
               <Col xs="auto">
                 <Button
-                  className="btn rounded-pill"
+                  className="btn rounded-pill mt-2 mt-sm-0"
                   size="lg"
                   variant="outline-success"
                   onClick={() => this.setStatusAction("cancel")}
@@ -222,7 +222,7 @@ class ChapterForm extends React.Component {
               </Col>
               <Col xs="auto">
                 <Button
-                  className="btn rounded-pill"
+                  className="btn rounded-pill mt-2 mt-sm-0"
                   size="lg"
                   variant="outline-secondary"
                   onClick={() => this.setStatusAction("draft")}
@@ -232,7 +232,7 @@ class ChapterForm extends React.Component {
               </Col>
               <Col xs="auto">
                 <Button
-                  className="btn rounded-pill"
+                  className="btn rounded-pill mt-2 mt-sm-0"
                   size="lg"
                   variant="success"
                   onClick={() => this.setStatusAction("publish")}

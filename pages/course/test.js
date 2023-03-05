@@ -73,6 +73,7 @@ class Test extends React.Component {
                             {q?.options.map((o, index) => (
                               <Form.Check type="radio" label={o} key={index} />
                             ))}
+                            <br></br>
                           </Form.Group>
                         );
                       })}
