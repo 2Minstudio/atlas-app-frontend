@@ -7,9 +7,9 @@ function Menu(props) {
   return (
     <div className="dashboard-menu-box d-flex align-items-center">
       <Nav className="list-group flex-fill" defaultActiveKey={asPath}>
-        <Nav.Link className="list-group-item" href="/dashboard">
+        {/* <Nav.Link className="list-group-item" href="/dashboard">
           Home
-        </Nav.Link>
+        </Nav.Link> */}
         <Nav.Link className="list-group-item" href="/dashboard/progress">
           Progress
         </Nav.Link>

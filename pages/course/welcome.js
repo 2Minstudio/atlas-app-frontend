@@ -120,10 +120,10 @@ class CourseWelcome extends React.Component {
                           <div className="col-6 text-center">
                             <p className="text-success">
                               {" "}
-                              <b>Rs {test?.price}</b>
+                              <b>Rs {test?.final_price}</b>
                             </p>
                             <p>
-                              <del>Rs {test?.final_price}</del>
+                              <del>Rs {test?.price}</del>
                             </p>
                           </div>
                           <div className="col-6 text-center">
