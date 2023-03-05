@@ -58,7 +58,7 @@ class Headerdashboard extends React.Component {
                           <Offcanvas.Title
                             id={`offcanvasNavbarLabel-expand-lg`}
                           >
-                            ATLAS Academy
+                          
                           </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>

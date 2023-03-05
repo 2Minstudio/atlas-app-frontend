@@ -542,11 +542,11 @@ sup {
 }
 
 a {
-  color:#357a75;
+  color:#357a75 !important;
   text-decoration:none;
 }
 a:hover {
-  color: var(--bs-gray-dark);
+  color: var(--bs-gray-dark) !important;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {

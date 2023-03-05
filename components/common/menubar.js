@@ -31,7 +31,7 @@ function MenuBar(props) {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
-                ATLAS Academy
+                
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
