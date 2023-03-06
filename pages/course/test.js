@@ -7,17 +7,25 @@ import Router, { withRouter } from "next/router";
 import { withCookies } from "react-cookie";
 import { isLoggedin, isClientLoggedin, getUser } from "../../helpers/helper";
 import StopWatch from "../../components/stopwatch/StopWatch";
-import { getUserTest } from "../../helpers/helper";
-
+import { getUserTest, submitTest, checkUserIsAllowed } from "../../helpers/helper";
 
 class Test extends React.Component {
-  state = {
-    user: {},
-    test: {},
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+      test: {},
+      answers: {},
+      testId: 1,
+    };
+    this.handleCheckbox = this.handleCheckbox.bind(this);
+  }
 
   async componentDidMount() {
+    
     const token = isClientLoggedin(this.props);
+    const {testId} = this.state;
+    
     if (token) {
       const {
         state,
@@ -25,7 +33,8 @@ class Test extends React.Component {
       } = await getUser(token);
 
       if (state) {
-        const { data: test } = await getUserTest(1);
+        const is_allowed = await checkUserIsAllowed(testId, user);
+        const { data: test } = await getUserTest(testId);
         this.setState({ user, test });
       }
     } else {
@@ -33,8 +42,18 @@ class Test extends React.Component {
     }
   }
 
-  stopedWatch = () => {
-    console.log("Triggered ");
+  handleCheckbox(event) {
+    const { answers } = this.state;
+    const { name, value, checked } = event.target;
+    const newanswers = { ...answers, [name]: value };
+    this.setState({ answers: newanswers });
+  }
+
+  submit = async () => {
+    const { answers, test, user } = this.state;
+    const is_submited = await submitTest({ user, test, answers });
+    this.setState({ is_submited: true });
+    console.log("Triggered ", answers,'"/finalcongratulations"');
   };
 
   render() {
@@ -54,7 +73,12 @@ class Test extends React.Component {
                         </div>
                         <div className="col text-center">
                           <p className="pb-0 mb-0">
-                          {test?.duration && <StopWatch duration={test.duration} callback={this.stopedWatch} />}{" "}
+                            {test?.duration && (
+                              <StopWatch
+                                duration={test.duration}
+                                callback={this.submit}
+                              />
+                            )}{" "}
                           </p>
                           <p>
                             <span className="small-text-12">
@@ -71,7 +95,14 @@ class Test extends React.Component {
                               {i + 1}. {q?.question}
                             </Form.Label>
                             {q?.options.map((o, index) => (
-                              <Form.Check type="radio" label={o} key={index} />
+                              <Form.Check
+                                type="radio"
+                                label={o}
+                                key={index}
+                                name={q?.id}
+                                value={o}
+                                onClick={this.handleCheckbox}
+                              />
                             ))}
                           </Form.Group>
                         );
@@ -79,11 +110,11 @@ class Test extends React.Component {
                     </div>
                     <div className="row text-center justify-content-center">
                       <div className="col">
-                        <Link href={"/finalcongratulations"} legacyBehavior>
-                          <button className="btn btn-success rounded-pill mt-5 col-5 col-sm-4 col-md-3 align-middle my-5">
+                        {/* <Link href={'#'} legacyBehavior> */}
+                          <button onClick={this.submit} className="btn btn-success rounded-pill mt-5 col-5 col-sm-4 col-md-3 align-middle my-5">
                             Submit
                           </button>
-                        </Link>
+                        {/* </Link> */}
                       </div>
                     </div>
                   </div>

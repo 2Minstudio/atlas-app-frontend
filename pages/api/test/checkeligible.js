@@ -2,15 +2,15 @@ import axios from "axios";
 
 export default async function handler(req, res) {
   let state = false;
-  const body = req.body;
   let resp = {};
   const {
     cookies: { atlastoken: token },
+    body,
   } = req;
 
   await axios({
     method: "post",
-    url: `${process.env.API_URL}/api/test/submit/`,
+    url: `${process.env.API_URL}/api/test/eligible`,
     data: body,
     headers: {
       Authorization: `Token ${token}`,
