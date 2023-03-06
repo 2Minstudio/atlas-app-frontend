@@ -41,11 +41,11 @@ class Headerdashboard extends React.Component {
                 <>
                   <Navbar
                     key={"lg"}
-                    bg="light"
+                    bg=""
                     expand={"lg"}
-                    className="header pb-1"
+                    className="header pb-1 rounded-top-25"
                   >
-                    <Container className="d-flex d-flex justify-content-between align-items-center mb-4  p-3 border-opacity-10   bg-white">
+                    <Container className="d-flex d-flex justify-content-between align-items-center mb-4  p-3 border-opacity-10">
                       <Navbar.Toggle
                         aria-controls={`offcanvasNavbar-expand-lg`}
                       />
@@ -58,7 +58,7 @@ class Headerdashboard extends React.Component {
                           <Offcanvas.Title
                             id={`offcanvasNavbarLabel-expand-lg`}
                           >
-                            ATLAS Academy
+                          
                           </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
@@ -98,13 +98,13 @@ class Headerdashboard extends React.Component {
                                     className="AuserNoMargin text-primary position-relative"
                                     icon={faCircleUser}
                                   />{" "}
-                                  {user.first_name}
+                                  <b>{user.first_name}</b>
                                 </Nav.Link>
 
-                                <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                                <Nav.Link href="/dashboard"><b>Dashboard</b></Nav.Link>
 
                                 <Nav.Link href="#" onClick={() => Logout()}>
-                                  Logout
+                                <b>Logout</b>
                                 </Nav.Link>
                               </>
                             )}

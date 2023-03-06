@@ -104,6 +104,7 @@ class Test extends React.Component {
                                 onClick={this.handleCheckbox}
                               />
                             ))}
+                            <br></br>
                           </Form.Group>
                         );
                       })}

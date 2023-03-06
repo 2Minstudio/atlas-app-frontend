@@ -31,7 +31,7 @@ function MenuBar(props) {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
-                ATLAS Academy
+                
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
@@ -74,16 +74,16 @@ function MenuBar(props) {
                         className="AuserNoMargin text-primary position-relative"
                         icon={faCircleUser}
                       />{" "}
-                      {user.first_name}
+                     <b> {user.first_name}</b>
                     </Nav.Link>
                     {roleName == "admin" && (
-                      <Nav.Link href="/admin/admissions">Admin</Nav.Link>
+                      <Nav.Link href="/admin/admissions"><b>Admin</b></Nav.Link>
                     )}
                     {roleName == "student" && (
-                      <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                      <Nav.Link href="/dashboard"><b>Dashboard</b></Nav.Link>
                     )}
                     <Nav.Link href="#" onClick={() => Logout()}>
-                      Logout
+                    <b> Logout</b>
                     </Nav.Link>
                   </>
                 )}

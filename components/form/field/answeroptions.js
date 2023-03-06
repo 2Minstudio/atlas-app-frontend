@@ -109,7 +109,7 @@ class AnswerOptions extends React.Component {
               return (
                 <>
                   <Row md={4} className={`g-4 answeroption-${i}`}>
-                    <Col md={1}>{inc}</Col>
+                    <Col xs={1} md={1}>{inc}</Col>
                     <Col md={6}>
                       <Form.Control
                         type="text"

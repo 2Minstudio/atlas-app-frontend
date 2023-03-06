@@ -61,7 +61,7 @@ const Header = (props) => {
                       onClick={() => Logout()}
                       className="nav-link"
                     >
-                      Logout
+                      <b>Logout</b>
                     </Link>
                   </li>
                 </>
