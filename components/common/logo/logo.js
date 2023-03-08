@@ -17,7 +17,7 @@ export default function Logo(props) {
         className="d-flex align-items-center text-dark text-decoration-none"
       >
         <span className={align ? "left" : "ps-2"}>
-          <Image width="220" height="57" alt="Logo" src="/image/logo.png" />
+          <Image width="200" height="52" alt="Logo" src="/image/logo.png" />
         </span>
         {/* {subText} */}
       </Link>

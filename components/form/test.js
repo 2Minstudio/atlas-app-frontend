@@ -189,11 +189,11 @@ class TestForm extends React.Component {
             className="mb-3"
             controlId="exampleForm.elegible_percentage"
           >
-            <Form.Label className="fw-bold">Pass Elegible %</Form.Label>
+            <Form.Label className="fw-bold">Pass Eligible %</Form.Label>
             <Form.Control
               required
               type="number"
-              name="elegible_percentage"
+              name="eligible_percentage"
               autoFocus
               value={elegible_percentage}
               onChange={this.handleChange}

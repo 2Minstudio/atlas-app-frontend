@@ -18,13 +18,13 @@ export default function Footer() {
             <p className="align-items-center">
               {" "}
               <div className="">
-              <Image className="mt-2" width="120" height="65" alt="Logo" src="/image/logo.png"/>{" "}
+              <Image className="mt-2" width="200" height="52" alt="Logo" src="/image/logo.png"/>{" "}
               </div>
             </p>
           </div>
           <div className="col d-block d-md-none text-center">
            
-            <Image width="120" height="65" alt="Logo" src="/image/logo.png" />{" "}
+            <Image width="200" height="52" alt="Logo" src="/image/logo.png" />{" "}
             
           </div>
           <div className="col text-end text-success d-none d-md-block align-items-center mt-2">

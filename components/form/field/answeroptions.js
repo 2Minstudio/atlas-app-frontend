@@ -108,9 +108,9 @@ class AnswerOptions extends React.Component {
               inc = inc + 1;
               return (
                 <>
-                  <Row md={4} className={`g-4 answeroption-${i}`}>
+                  <Row md={4} className={`g-4 mb-3 answeroption-${i}`}>
                     <Col xs={1} md={1}>{inc}</Col>
-                    <Col md={6}>
+                    <Col xs={5} sm={5} md={3}>
                       <Form.Control
                         type="text"
                         value={v["value"]}
@@ -118,7 +118,7 @@ class AnswerOptions extends React.Component {
                         onChange={this.handleChange}
                       />
                     </Col>
-                    <Col md={4}>
+                    <Col xs={5} sm={5} md={4} >
                       <Form.Check
                         type="checkbox"
                         name={`is_answer-${i}`}
@@ -127,7 +127,7 @@ class AnswerOptions extends React.Component {
                         onChange={this.handleCheckbox}
                       />
                     </Col>
-                    <Col md={1}>
+                    <Col xs={1} sm={1} md={1}>
                       <a onClick={() => this.removeItem(i)}>
                         <FontAwesomeIcon
                           width={10}
@@ -145,10 +145,12 @@ class AnswerOptions extends React.Component {
                 </>
               );
             })}
-          <Button variant="outline-primary" onClick={this.addNew}>
+          <Button className="mt-4" variant="outline-success mx-auto d-block" onClick={this.addNew}>
             Add New
           </Button>
+          <hr className="text-success"></hr>
         </Form.Group>
+        
       )
     );
   }
