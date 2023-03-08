@@ -46,19 +46,19 @@ class Dashboard extends React.Component {
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-grey">
-              <div className="container pb-5">
+              <div className="container pb-5 g-0">
                 <div className="row g-0 ">
                   <div className="col col-md-3 col-lg-2">
                     <Menu />
                     <SupportContact />
                   </div>
-                  <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
+                  <div className="col-12 col-sm-12 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
                     <div className="row d-flex justify-content-start align-items-start pb-3">
-                      <h4>Welcome {user?.first_name}</h4>
+                      <h4 className="pt-4 ps-4">Welcome {user?.first_name}</h4>
                     </div>
                     {data?.results?.map((item, i) => (
                       <div key={`item-${i}`} className="row">
-                        <div className="col-5 ">
+                        <div className="col-12 col-md-5 p-4">
                           <div className="card border-0 greyGrad rounded-25">
                             <div className="card-body p-0 img-fluid">
                               <div>
@@ -131,7 +131,7 @@ class Dashboard extends React.Component {
                             />
                           </div>
 
-                          <div className="row align-items-center mt-5">
+                          <div className="row align-items-center mt-5 ps-4">
                             <div className="col">
                               <h5>
                                 INR {item.cost}

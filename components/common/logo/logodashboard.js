@@ -5,9 +5,7 @@ export default function Logo(props) {
   const { align, hideText = true } = props;
   const subText = hideText ? (
     <span className="pt-3 pe-3 text-success">
-      <b>
-        <small>Academy</small>
-      </b>
+     
     </span>
   ) : (
     ""
@@ -19,7 +17,7 @@ export default function Logo(props) {
         className="d-flex align-items-center text-dark text-decoration-none"
       >
         <span className={align ? "left" : "ps-0"}>
-          <Image width="111" height="60" alt="Logo" src="/image/logo.png" />
+          <Image width="200" height="52" alt="Logo" src="/image/logo.png" />
         </span>
         {subText}
       </Link>

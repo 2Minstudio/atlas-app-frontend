@@ -1,7 +1,7 @@
 function SupportContact() {
   return (
     <>
-      <div className="container dashboard-support-box d-flex align-items-end">
+      <div className="container dashboard-support-box d-flex align-items-end d-none d-md-block">
         <div className="row">
           <div className="col pt-5 pe-4">
             <div className="card bg-grey rounded-25 p-0">

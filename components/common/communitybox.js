@@ -1,7 +1,7 @@
 function CommunityBox({ type }) {
   return type ? (
     <>
-      <div className="col-4 ">
+      <div className="col-4">
         <div className="row d-flex  align-items-center">
           <div className="col-12 py-5 text-center">
             <button className="btn btn-success rounded-pill p-3 ">
@@ -20,18 +20,18 @@ function CommunityBox({ type }) {
     <>
       <div className="row">
         <div className="col">
-          <h5 className="pt-5">Community</h5>
+          <h5 className="pt-5 ps-4">Community</h5>
         </div>
         <div className="col-1 btn">
           <h3 className="text-success text-center"> ... </h3>
         </div>
       </div>
-      <div className="row">
+      <div className="row ps-4">
         <div className="col mt-4">
-          <button className="btn btn-success rounded-pill p-3 me-3">
+          <button className="btn btn-success rounded-pill p-3 me-3 mb-2">
             Ask A Question
           </button>
-          <button className="btn btn-outline-success rounded-pill p-3">
+          <button className="btn btn-outline-success rounded-pill p-3 mb-2">
             Go to community
           </button>
         </div>

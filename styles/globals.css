@@ -287,7 +287,23 @@ display:block;
   background-repeat:no-repeat;
 }
 
+.list-group {
+  flex-direction: row !important;
+  margin-bottom: 10px !important;
  }
+ 
+ .list-group-item {
+  border-radius : 25px !important;
+ }
+
+ .dashboard-support-box{
+height:100px !important;
+ }
+ .dashboard-menu-box{
+  height:125px !important;
+ }
+
+}
  
  .AiconHolderbg{
   padding: 20px;
@@ -4853,9 +4869,9 @@ textarea.form-control-lg {
   text-decoration: none;
   background-color: transparent;
   border: transparent;
-  border-radius: 25px 0 0 25px !important;
-  moz-border-radius: 25px 0 0 25px !important;
-  webkit-border-radius: 25px 0 0 25px !important;
+  border-radius: 25px 0 0 25px;
+  moz-border-radius: 25px 0 0 25px;
+  webkit-border-radius: 25px 0 0 25px;
 }
 .list-group-item:first-child {
   border-top-left-radius: inherit;

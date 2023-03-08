@@ -193,7 +193,7 @@ class TestForm extends React.Component {
             <Form.Control
               required
               type="number"
-              name="eligible_percentage"
+              name="elegible_percentage"
               autoFocus
               value={elegible_percentage}
               onChange={this.handleChange}

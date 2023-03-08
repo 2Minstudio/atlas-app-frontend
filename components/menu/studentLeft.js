@@ -5,7 +5,7 @@ function Menu(props) {
     router: { asPath },
   } = props;
   return (
-    <div className="dashboard-menu-box d-flex align-items-center">
+    <div className="dashboard-menu-box d-flex align-items-cente d-none d-md-block">
       <Nav className="list-group flex-fill" defaultActiveKey={asPath}>
         {/* <Nav.Link className="list-group-item" href="/dashboard">
           Home
