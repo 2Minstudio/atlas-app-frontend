@@ -180,9 +180,42 @@ const getUserTest = async (id) => {
       return data;
     });
 };
+
+const submitTest = async (data) => {
+  return axios
+    .post("/api/test/submit", data)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
 const getTest = async (id) => {
   return axios
     .post("/api/test/getinfo", { id: id })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
+const checkUserIsAllowed = async (testid, userid) => {
+  return axios
+    .post("/api/test/check_eligible", { testid, userid })
     .then((response) => {
       const { data } = response;
       return data;
@@ -206,4 +239,6 @@ export {
   verifyCode,
   getTest,
   getUserTest,
+  submitTest,
+  checkUserIsAllowed,
 };

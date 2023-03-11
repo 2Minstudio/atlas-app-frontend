@@ -2,16 +2,16 @@ import axios from "axios";
 
 export default async function handler(req, res) {
   let state = false;
-  const body = req.body;
   let resp = {};
   const {
     cookies: { atlastoken: token },
+    body: { testid, userid },
   } = req;
 
   await axios({
-    method: "post",
-    url: `${process.env.API_URL}/api/test/submit/`,
-    data: body,
+    method: "get",
+    url: `${process.env.API_URL}/api/test/check_eligible/?exam=${testid}&user=${userid}`,
+    // data: body,
     headers: {
       Authorization: `Token ${token}`,
       "Content-Type": "application/json",
@@ -19,9 +19,11 @@ export default async function handler(req, res) {
   })
     .then((response) => {
       const { data } = response;
-
-      state = true;
-      resp = data;
+      const {
+        pagination: { count },
+      } = data;
+      state = count == 0 ? true : false;
+      resp = count;
     })
     .catch((error) => {
       // handle error

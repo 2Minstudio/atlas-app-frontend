@@ -35,11 +35,17 @@ class StopWatch extends React.Component {
   // ({ duration, callback })
   render() {
     const { counter } = this.state;
+    const { callback } = this.props;
     console.log(counter, "counter");
     if (counter)
       return (
         <div className="stop-watch">
-          <Countdown date={counter} autoStart={true} renderer={this.Timer} />
+          <Countdown
+            date={counter}
+            autoStart={true}
+            renderer={this.Timer}
+            onComplete={callback}
+          />
         </div>
       );
   }
