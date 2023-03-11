@@ -215,7 +215,7 @@ const getTest = async (id) => {
 
 const checkUserIsAllowed = async (testid, userid) => {
   return axios
-    .post("/api/test/checkeligible", { testid, userid })
+    .post("/api/test/check_eligible", { testid, userid })
     .then((response) => {
       const { data } = response;
       return data;
