@@ -6,11 +6,11 @@ function StudentInfo({ student }) {
     <Card className="mt-4">
       <Card.Header>
         <Card.Title>
-          <h4>{student?.first_name}</h4>
+          {student?.first_name}
         </Card.Title>
       </Card.Header>
       <Card.Body>
-        <Card.Text></Card.Text>
+        <Card.Text>{student?.email}</Card.Text>
       </Card.Body>
     </Card>
   );
