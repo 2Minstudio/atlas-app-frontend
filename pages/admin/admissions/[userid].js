@@ -9,7 +9,7 @@ import { isClientLoggedin, getUser } from "../../../helpers/helper";
 import { getAdmissionDetail } from "../../../helpers/admissions";
 import DataPagination from "../../../components/datalist/pagination";
 import Dropdown from "react-bootstrap/Dropdown";
-import StudentInfo from "../../../components/detail/student";
+import {StudentInfo, PaymentInfo, ResultInfo} from "../../../components/detail";
 
 class Admissions extends React.Component {
   state = {
@@ -19,17 +19,25 @@ class Admissions extends React.Component {
 
   loaddata = async () => {
     const { userid } = this.state;
-    if (userid) {
-
-    }
+    console.log("load", userid);
     if (userid) {
       await getAdmissionDetail(userid).then(async (resp) => {
         const { data } = resp;
         this.setState({ data });
       });
     }
-    
   };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.router !== prevState.router) {
+      const {
+        router: {
+          query: { userid: propuserid },
+        },
+      } = nextProps;
+      return { userid: propuserid };
+    } else return null;
+  }
 
   async componentDidMount() {
     const token = isClientLoggedin(this.props);
@@ -47,6 +55,7 @@ class Admissions extends React.Component {
       } = await getUser(token);
       if (state) {
         this.setState({ user, userid }, async () => {
+          //Get student info
           await this.loaddata();
         });
       }
@@ -57,18 +66,21 @@ class Admissions extends React.Component {
 
   render() {
     const { user, data } = this.state;
+    console.log(data, "data?");
     return (
       <LayoutAdminDashboard user={user}>
         <Row>
           <Col>
             <h2>Admission Detail</h2>
+
             <h4>Student Information</h4>
-            <StudentInfo/>
+            <StudentInfo student={data} />
             <h4>Payment History</h4>
+            <PaymentInfo transactions={data?.transactions}/>
             <h4>Test Results</h4>
+            <ResultInfo results={data?.usertests}/>
           </Col>
         </Row>
-        
       </LayoutAdminDashboard>
     );
   }

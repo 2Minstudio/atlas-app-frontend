@@ -7,4 +7,5 @@ export const config = {
     4: { redirect: "/admin/admissions", name: "admin" },
   },
   defaultLanding: "/course/welcome",
+  elegiblityTest: "1"
 };
