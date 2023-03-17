@@ -13,6 +13,7 @@ import {
   submitTest,
   checkUserIsAllowed,
 } from "../../../helpers/helper";
+import Link from "next/link";
 
 class PaymentFailed extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ class PaymentFailed extends React.Component {
                       <div className="row justify-content-center ">
                         <h2 className="py-0">Your payment has been failed</h2>
                         <p>
-                          <a href="/course/test">Click here</a> to retry.
+                          <Link href="/course/test">Click here</Link> to retry.
                         </p>
                       </div>
                     </div>
