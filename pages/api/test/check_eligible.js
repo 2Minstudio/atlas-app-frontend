@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-  let state = false;
+  // let state = false;
   let resp = {};
   const {
     cookies: { atlastoken: token },
@@ -19,11 +19,11 @@ export default async function handler(req, res) {
   })
     .then((response) => {
       const { data } = response;
-      const {
-        pagination: { count },
-      } = data;
-      state = count == 0 ? true : false;
-      resp = count;
+      // const {
+      //   pagination: { count },
+      // } = data;
+      // state = count == 0 ? true : false;
+      resp = data;
     })
     .catch((error) => {
       // handle error
@@ -33,5 +33,5 @@ export default async function handler(req, res) {
       }
     });
 
-  res.status(200).json({ state: state, data: resp });
+  res.status(200).json( resp );
 }

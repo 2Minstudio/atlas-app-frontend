@@ -218,6 +218,7 @@ const checkUserIsAllowed = async (testid, userid) => {
     .post("/api/test/check_eligible", { testid, userid })
     .then((response) => {
       const { data } = response;
+      
       return data;
     })
     .catch((error) => {

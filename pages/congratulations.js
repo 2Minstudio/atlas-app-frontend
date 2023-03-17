@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../components/layout/index";
 
-export default function FinalCongratulations() {
+export default function Congratulations() {
   return (
     <Layout type="user">
       <div className={styles}>

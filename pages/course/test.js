@@ -41,9 +41,16 @@ class Test extends React.Component {
       } = await getUser(token);
 
       if (state) {
-        const { state: is_allowed } = await checkUserIsAllowed(testId, user.id);
+        const { paid, passed, test_taken } = await checkUserIsAllowed(
+          testId,
+          user.id
+        );
+        const is_allowed = paid > 0 && test_taken == 0 && passed == 0;
+        if (paid == 0) {
+          Router.push(`${process.env.NEXT_PUBLIC_API_URL}/checkout/pay/?user=${user.id}&exam=${testId}`);
+        }
         const { data: test } = await getUserTest(testId);
-        this.setState({ user, test, is_allowed });
+        this.setState({ user, test, is_allowed, paid });
       }
     } else {
       Router.push("/");
@@ -79,8 +86,8 @@ class Test extends React.Component {
       answers,
     });
     this.setState({ is_submited: true });
-    Router.push("/finalcongratulations");
-    console.log("Triggered ", answers, '"/finalcongratulations"');
+    Router.push("/congratulations");
+    console.log("Triggered ", answers, '"/congratulations"');
   };
 
   triggerSubmit = (event) => {
@@ -167,6 +174,7 @@ class Test extends React.Component {
     );
   }
 }
+
 Test.getInitialProps = async (ctx) => {
   const token = await isLoggedin(ctx.req);
   if (!token) {

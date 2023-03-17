@@ -64,7 +64,7 @@ class Admissions extends React.Component {
               <tbody>
                 {data?.results?.map((d) => {
                   const last_transaction = d?.transactions[0];
-                  const is_paid = last_transaction?.status == "paid";
+                  const is_paid = last_transaction?.status == "success";
                   const is_test_taken = last_transaction?.user_exam?.id;
                   const is_passed = last_transaction?.user_exam?.result;
                   return (
