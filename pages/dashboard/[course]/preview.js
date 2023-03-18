@@ -11,7 +11,7 @@ import Menu from "../../../components/menu/studentLeft";
 import Link from "next/link";
 import ModuleList from "../../../components/course/modulePreviewList";
 import SupportContact from "../../../components/common/supportContact";
-
+import ReactReadMoreReadLess from "react-read-more-read-less";
 class DashboardCoursePreview extends React.Component {
   state = {
     user: {},
@@ -94,7 +94,17 @@ class DashboardCoursePreview extends React.Component {
                       <div className="col-8">
                         <div className="row  px-3 pb-4 d-flex justify-content-center">
                           <h3>{data?.name}</h3>
-                          <p className="pt-3">{data?.description}</p>
+                          <p className="pt-3">
+                            <ReactReadMoreReadLess
+                              charLimit={200}
+                              readMoreText={"Read more ▼"}
+                              readLessText={"Read less ▲"}
+                              readMoreClassName="read-more-less--more"
+                              readLessClassName="read-more-less--less"
+                            >
+                              {data?.description}
+                            </ReactReadMoreReadLess>
+                          </p>
                           <div className="row text-success">
                             <div className="col-12 col-sm-6"></div>
                             <div className="col-12 col-sm-6"></div>
