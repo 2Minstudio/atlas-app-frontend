@@ -14,6 +14,8 @@ import { config } from "../../config/config";
 function MenuBar(props) {
   const { user = {} } = props;
   const roleId = user?.groups && user?.groups[0];
+
+  const { passed = 0 } = user?.is_eligible || { passed: 0 };
   const roleName = roleId && config?.roles[roleId]?.name;
 
   return (
@@ -30,13 +32,13 @@ function MenuBar(props) {
             placement="end"
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
-                
-              </Offcanvas.Title>
+              <Offcanvas.Title
+                id={`offcanvasNavbarLabel-expand-lg`}
+              ></Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-md-end d-flex align-items-sm-start align-items-lg-center flex-grow-1 pe-3">
-                {roleName !== "admin" && (
+                {roleName !== "admin" && passed == 0 && (
                   <>
                     <Nav.Link
                       href={"/register"}
@@ -74,16 +76,20 @@ function MenuBar(props) {
                         className="AuserNoMargin text-primary position-relative"
                         icon={faCircleUser}
                       />{" "}
-                     <b> {user.first_name}</b>
+                      <b> {user.first_name}</b>
                     </Nav.Link>
                     {roleName == "admin" && (
-                      <Nav.Link href="/admin/admissions"><b>Admin</b></Nav.Link>
+                      <Nav.Link href="/admin/admissions">
+                        <b>Admin</b>
+                      </Nav.Link>
                     )}
-                    {roleName == "student" && (
-                      <Nav.Link href="/dashboard"><b>Dashboard</b></Nav.Link>
+                    {roleName == "student" && passed != 0 && (
+                      <Nav.Link href="/dashboard">
+                        <b>Dashboard</b>
+                      </Nav.Link>
                     )}
                     <Nav.Link href="#" onClick={() => Logout()}>
-                    <b> Logout</b>
+                      <b> Logout</b>
                     </Nav.Link>
                   </>
                 )}

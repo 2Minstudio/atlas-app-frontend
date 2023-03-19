@@ -26,7 +26,18 @@ export async function middleware(request) {
           return NextResponse.redirect(new URL("/", request.url));
         }
       }
-    }else{
+      
+      const is_eligible = userresp?.is_eligible;
+
+      if (request.nextUrl.pathname.startsWith("/dashboard")) {
+        // Stop user who don't pay, pass, attend test
+        const { paid, passed, test_taken, retried_count, allow_retry } =
+          is_eligible;
+        if (!paid || !passed || !test_taken) {
+          return NextResponse.redirect(new URL("/", request.url));
+        }
+      }
+    } else {
       console.log("Redirect non session users to home page");
       request.cookies.delete("atlastoken");
       return NextResponse.redirect(new URL("/", request.url));

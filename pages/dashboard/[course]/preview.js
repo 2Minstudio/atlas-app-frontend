@@ -95,15 +95,17 @@ class DashboardCoursePreview extends React.Component {
                         <div className="row  px-3 pb-4 d-flex justify-content-center">
                           <h3>{data?.name}</h3>
                           <p className="pt-3">
-                            <ReactReadMoreReadLess
-                              charLimit={200}
-                              readMoreText={"Read more ▼"}
-                              readLessText={"Read less ▲"}
-                              readMoreClassName="read-more-less--more"
-                              readLessClassName="read-more-less--less"
-                            >
-                              {data?.description}
-                            </ReactReadMoreReadLess>
+                            {data?.description && (
+                              <ReactReadMoreReadLess
+                                charLimit={200}
+                                readMoreText={"Read more ▼"}
+                                readLessText={"Read less ▲"}
+                                readMoreClassName="read-more-less--more"
+                                readLessClassName="read-more-less--less"
+                              >
+                                {data?.description}
+                              </ReactReadMoreReadLess>
+                            )}
                           </p>
                           <div className="row text-success">
                             <div className="col-12 col-sm-6"></div>

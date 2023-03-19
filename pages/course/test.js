@@ -41,13 +41,17 @@ class Test extends React.Component {
       } = await getUser(token);
 
       if (state) {
-        const { paid, passed, test_taken } = await checkUserIsAllowed(
-          testId,
-          user.id
-        );
-        const is_allowed = paid > 0 && test_taken == 0 && passed == 0;
+        const { paid, passed, test_taken, retried_count, allow_retry } =
+          await checkUserIsAllowed(testId, user.id);
+        const is_allowed =
+          paid > 0 && (test_taken == 0 || allow_retry) && passed == 0;
         if (paid == 0) {
-          Router.push(`${process.env.NEXT_PUBLIC_API_URL}/checkout/pay/?user=${user.id}&exam=${testId}`);
+          Router.push(
+            `${process.env.NEXT_PUBLIC_API_URL}/checkout/pay/?user=${user.id}&exam=${testId}`
+          );
+        }
+        if (passed == 1) {
+          Router.push(`/dashboard`);
         }
         const { data: test } = await getUserTest(testId);
         this.setState({ user, test, is_allowed, paid });
@@ -71,13 +75,7 @@ class Test extends React.Component {
       test: { id: testId },
       user: { id: userId },
     } = this.state;
-    console.log({
-      user: userId,
-      exam: testId,
-      started_at: started,
-      submited_at: new Date(),
-      answers,
-    });
+
     const is_submited = await submitTest({
       user: userId,
       exam: testId,

@@ -63,7 +63,7 @@ class Headerdashboard extends React.Component {
                         </Offcanvas.Header>
                         <Offcanvas.Body>
                           <Nav className="justify-content-md-end d-flex align-items-sm-start align-items-lg-center flex-grow-1 pe-3">
-                            <Nav.Link
+                            {/* <Nav.Link
                               href={"/register"}
                               className=""
                               aria-current="page"
@@ -72,7 +72,7 @@ class Headerdashboard extends React.Component {
                             </Nav.Link>
                             <Nav.Link href="#" className="">
                               <b>Enquire Now </b>
-                            </Nav.Link>
+                            </Nav.Link> */}
 
                             {!user?.first_name && (
                               <>
