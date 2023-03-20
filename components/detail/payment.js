@@ -3,7 +3,7 @@ import Badge from "react-bootstrap/Badge";
 
 function PaymentInfo({ transactions }) {
   return transactions?.map((t, i) => (
-    <Card className="mt-4" key={`pay-${i}`}>
+    <Card className="mt-2 mb-5" key={`pay-${i}`}>
       <Card.Header>
         <Card.Title>
           <h4>{t.transaction_id} <Badge>{t.status}</Badge></h4>

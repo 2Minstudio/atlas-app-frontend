@@ -71,7 +71,7 @@ class Admissions extends React.Component {
       <LayoutAdminDashboard user={user}>
         <Row>
           <Col>
-            <h2>Admission Detail</h2>
+            <h2 className="pb-4">Admission Detail</h2>
 
             <h4>Student Information</h4>
             <StudentInfo student={data} />

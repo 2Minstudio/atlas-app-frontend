@@ -45,8 +45,8 @@ class PaymentSuccess extends React.Component {
       <Layout type="user" user={user}>
         <div className={styles}>
           <main className={styles.main}>
-            <div className="container-fluid bg-light p-4 p-sm-5">
-              <div className="container rounded rounded-10 winheight57 d-flex align-items-center">
+            <div className="container-fluid bg-light p-4 p-sm-5 d-flex align-items-center">
+              <div className="container rounded rounded-10 winheight57 mt-5">
                 <div className="row bg-white rounded-10">
                   <div className="col-12 col-sm-12 col-md-4 col-lg-4 p-5">
                     <div className="row">
@@ -55,13 +55,13 @@ class PaymentSuccess extends React.Component {
                         icon={faThumbsUp}
                       />
                     </div>
-                  </div>
+                  </div>  
                   <div className="col-12 col-sm-12 col-md-8 col-lg-8 d-flex align-items-center">
                     <div className="rounded-10">
-                      <div className="row justify-content-center ">
+                      <div className="row justify-content-center">
                         <h2 className="py-0">Your payment has been success</h2>
                         <p>
-                          <Link href="/course/test">Click here</Link> to attend test.
+                          <Link href="/course/test"><b className="fs-6"><u>Click Here</u></b></Link> to attend test.
                         </p>
                       </div>
                     </div>
