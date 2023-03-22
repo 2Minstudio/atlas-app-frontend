@@ -31,6 +31,23 @@ const getAdmissionDetail = async (id) => {
       return data;
     });
 };
+
+const sendAction = async (id, type) => {
+  return axios
+    .post("/api/admin/admissions/send", { id, type })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
+
 const getTests = async (page = 1) => {
   return axios
     .post("/api/admin/tests/getall", { page: page })
@@ -214,5 +231,5 @@ export {
   createQuestion,
   updateQuestion,
   deleteQuestion,
-  
+  sendAction,
 };
