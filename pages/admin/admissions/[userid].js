@@ -75,8 +75,8 @@ class Admissions extends React.Component {
 
             <h4>Student Information</h4>
             <StudentInfo student={data} />
-            <h4>Payment History</h4>
-            <PaymentInfo transactions={data?.transactions}/>
+            {/* <h4>Payment History</h4>
+            <PaymentInfo transactions={data?.transactions}/> */}
             <h4>Test Results</h4>
             <ResultInfo results={data?.usertests}/>
           </Col>
