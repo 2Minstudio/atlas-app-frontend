@@ -25,7 +25,7 @@ class Test extends React.Component {
       answers: {},
       testId: 1,
       started: new Date(),
-      is_allowed: "",
+      is_allowed: null,
     };
     this.handleCheckbox = this.handleCheckbox.bind(this);
   }
@@ -85,7 +85,7 @@ class Test extends React.Component {
     });
     this.setState({ is_submited: true });
     Router.push("/congratulations");
-    console.log("Triggered ", answers, '"/congratulations"');
+    // console.log("Triggered ", answers, '"/congratulations"');
   };
 
   triggerSubmit = (event) => {
@@ -101,7 +101,7 @@ class Test extends React.Component {
           <main className={styles.main}>
             <div className="container-fluid bg-light p-5">
               <div className="container  rounded rounded-10">
-                {is_allowed ? (
+                {is_allowed === true && (
                   <Form>
                     <div className="row bg-white rounded-10 align-items-center">
                       <div className="col-12 p-5 ">
@@ -161,7 +161,8 @@ class Test extends React.Component {
                       </div>
                     </div>
                   </Form>
-                ) : (
+                )}
+                {is_allowed === false && (
                   <Alert>You already completed this test</Alert>
                 )}
               </div>
