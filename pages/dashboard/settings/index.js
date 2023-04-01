@@ -1,4 +1,4 @@
-import { Image } from "react-bootstrap";
+import { Image, Form } from "react-bootstrap";
 import Layout from "../../../components/layout/index";
 import styles from "../../../styles/Home.module.css";
 import Router, { withRouter } from "next/router";
@@ -11,6 +11,7 @@ import Features from "../../../components/freatures";
 import Menu from "../../../components/menu/studentLeft";
 import SupportContact from "../../../components/common/supportContact";
 import CommunityBox from "../../../components/common/communitybox";
+import Profile from "../../../components/form/profile";
 
 class Settings extends React.Component {
   state = {
@@ -55,11 +56,9 @@ class Settings extends React.Component {
                   </div>
                   <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
                     <div className="row d-flex justify-content-start align-items-start pb-3">
-                      <h4>Welcome {user?.first_name}</h4>
+                      <h4>Profile Settings</h4>
                     </div>
-                    <h3>User Settings - Coming soon</h3>
-
-                    <CommunityBox></CommunityBox>
+                    {user?.first_name && <Profile user={user}/>}
                   </div>
                 </div>
               </div>

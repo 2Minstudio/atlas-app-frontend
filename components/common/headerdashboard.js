@@ -31,7 +31,7 @@ class Headerdashboard extends React.Component {
 
     return (
       <>
-        <header class=" header bg-grey p-0">
+        <header className=" header bg-grey p-0">
           <div className="container pt-5">
             <div className="d-flex">
               <div className="col col-md-3 col-lg-2 ps-2">

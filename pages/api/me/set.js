@@ -3,10 +3,28 @@ import cookie from "cookie";
 
 export default async function handler(req, res) {
   let state = false;
-
   const {
-    body: { token },
+    cookies: { atlastoken: token },
+    body: {
+      id,
+      first_name,
+      last_name,
+      email,
+      phone_number,
+      password,
+      confirm_password,
+      change_password,
+      change_email,
+    },
   } = req;
+
+  const data = { first_name, last_name, phone_number };
+  if (change_email) {
+    data["email"] = email;
+  }
+  if (change_password) {
+    data["password"] = password;
+  }
 
   if (!token) {
     return res
@@ -14,11 +32,18 @@ export default async function handler(req, res) {
       .json({ state: state, data: ["Your token missing!"] });
   }
 
+  if (confirm_password != password){
+        return res
+          .status(400)
+          .json({ state: state, data: {confirm_password:'Confirm password doesn\'t match password '} });
+  }
+
   let resp = {};
-  const url = `${process.env.API_URL}/api/user/`;
+  const url = `${process.env.API_URL}/api/user/${id}/`;
 
   await axios({
-    method: "get",
+    method: "patch",
+    data: data,
     url: url,
     headers: {
       Authorization: `Token ${token}`,
@@ -28,10 +53,18 @@ export default async function handler(req, res) {
     .then((response) => {
       // console.log(response, "userbytoken response");
       const {
-        data: { id, first_name, groups, is_eligible },
+        data: { id, first_name, last_name, email, phone_number },
       } = response;
       state = true;
-      resp = { user: { id, first_name, groups, is_eligible } };
+      resp = {
+        user: {
+          id,
+          first_name,
+          last_name,
+          email,
+          phone_number,
+        },
+      };
     })
     .catch((error) => {
       // handle error

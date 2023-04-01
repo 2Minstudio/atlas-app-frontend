@@ -91,7 +91,7 @@ const getUser = async (token) => {
   };
 
   return axios
-    .post("/api/userbytoken", {
+    .post("/api/me/", {
       token: token,
     })
     .then((response) => {
@@ -114,6 +114,22 @@ const getUser = async (token) => {
     });
 };
 
+const updateUser = async (data) => {
+  
+  return axios
+    .post("/api/me/set", data)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      // handle error
+      const {
+        response: { data },
+      } = error;
+      return data;
+    });
+};
 const resendCode = async (email) => {
   const url = `/api/resendcode/`;
   const data = {
@@ -218,7 +234,7 @@ const checkUserIsAllowed = async (testid, userid) => {
     .post("/api/test/check_eligible", { testid, userid })
     .then((response) => {
       const { data } = response;
-      
+
       return data;
     })
     .catch((error) => {
@@ -242,4 +258,5 @@ export {
   getUserTest,
   submitTest,
   checkUserIsAllowed,
+  updateUser
 };
