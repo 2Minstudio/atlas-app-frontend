@@ -66,19 +66,19 @@ class DashboardCoursePreview extends React.Component {
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-grey">
-              <div className="container pb-5">
+              <div className="container pb-5 g-0">
                 <div className="row g-0 ">
                   <div className="col col-md-3 col-lg-2">
                     <Menu />
                     <SupportContact />
                   </div>
 
-                  <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
+                  <div className="col-12 col-sm-12 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
                     <div className="row">
-                      <p className="pb-4">&nbsp;</p>
-                      <div className="col-4">
+                      
+                      <div className="col-4 pb-4">
                         <div className="card border-0">
-                          <div className="card-body p-0 dash-min-h-400">
+                          <div className="card-body p-0">
                             {data?.image && (
                               <Image
                                 src={data?.image}
@@ -122,7 +122,7 @@ class DashboardCoursePreview extends React.Component {
 
                     <div className="row">
                       <ModuleList mode="preview" data={data?.modules} />
-                      <div className="col col-md-6 col-lg-5">
+                      <div className="col-12 col-md-6 col-lg-5 mt-5 mt-md-0">
                         <h3 className="text-success text-center"> </h3>
                         <div className="card rounded-25 p-2">
                           <div className="d-flex align-items-center justify-content-center py-3">
@@ -214,18 +214,18 @@ class DashboardCoursePreview extends React.Component {
                           </small>
                         </h5>
                       </div>
-                      <div className="col d-flex justify-content-end">
+                      <div className="col text-end d-grid gap-2 d-md-block">
                         {data?.id && (
-                          <Link
-                            disabled
+                          <button
+                            
                             scroll={false}
                             href="#"
-                            className="btn btn-success rounded-pill p-3 me-3 btn-disabled"
+                            className="btn btn-success rounded-pill py-3 me-md-2"
                           >
                             Buy Now
-                          </Link>
+                          </button>
                         )}
-                        <button className="btn btn-outline-success rounded-pill p-3">
+                        <button className="btn btn-outline-success rounded-pill py-3">
                           Enquire Now
                         </button>
                       </div>

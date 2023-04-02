@@ -22,11 +22,11 @@ function MenuBar(props) {
     <>
       <Navbar key={"lg"} bg="light" expand={"lg"} className="header pb-1">
         <Container className="d-flex d-flex justify-content-between align-items-center mb-4 border p-3 border-opacity-10 rounded-pill shadow-sm bg-white">
-          <Navbar.Brand href="#">
+          <Navbar.Brand className="ps-3" href="#">
             <Logo />{" "}
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
-          <Navbar.Offcanvas
+          <Navbar.Toggle className="me-3" aria-controls={`offcanvasNavbar-expand-lg`} />
+          <Navbar.Offcanvas 
             id={`offcanvasNavbar-expand-lg`}
             aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
             placement="end"

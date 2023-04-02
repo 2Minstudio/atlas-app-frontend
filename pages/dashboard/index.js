@@ -57,7 +57,7 @@ class Dashboard extends React.Component {
                       <h4 className="pt-4 ps-4">Welcome {user?.first_name}</h4>
                     </div>
                     {data?.results?.map((item, i) => (
-                      <div key={`item-${i}`} className="row">
+                      <div key={`item-${i}`} className="row  d-flex align-items-sm-start  justify-content-center align-items-center">
                         <div className="col-12 col-md-5 p-4">
                           <div className="card border-0 greyGrad rounded-25">
                             <div className="card-body p-0 img-fluid">
@@ -92,7 +92,7 @@ class Dashboard extends React.Component {
                                 {item?.image && (
                                 <Image
                                   src={item?.image}
-                                  className="rounded-25 img-fluid"
+                                  className="rounded-25 img-fluid mx-auto d-block"
                                   alt="Study Image"
                                   height="420"
                                   width="400"
@@ -107,7 +107,7 @@ class Dashboard extends React.Component {
                             </div>
                           </div>
                         </div>
-                        <div className="col-7">
+                        <div className="col-md-7 col-12">
                           <div className="row bg-light rounded-25 px-3 py-4 d-flex justify-content-center d-none d-lg-block">
                             <Features
                               features={[
@@ -131,7 +131,7 @@ class Dashboard extends React.Component {
                             />
                           </div>
 
-                          <div className="row align-items-center mt-5 ps-4">
+                          <div className="row align-items-center mt-5 ps-2">
                             <div className="col">
                               <h5>
                                 INR {item.cost}
@@ -150,13 +150,13 @@ class Dashboard extends React.Component {
                                 </Link>
                               </h6>
                             </div>
-                            <div className="col text-end">
+                            <div className="col text-end pe-3">
                               <Link type="button" href="#" legacyBehavior>
-                                <button className="col-12 col-lg-12 col-xl-10 btn btn-lg btn-success rounded-pill mb-3">
+                                <button className="col-12 col-lg-12 col-xl-10 btn btn-success rounded-pill mb-3 py-2 py-sm-3">
                                   Buy Now
                                 </button>
                               </Link>
-                              <button className="col-12  col-lg-12 col-xl-10 btn btn-lg btn-outline-success rounded-pill ">
+                              <button className="col-12  col-lg-12 col-xl-10 btn btn-outline-success rounded-pill py-2 py-sm-3 ">
                                 Enquire Now
                               </button>
                             </div>
@@ -170,7 +170,11 @@ class Dashboard extends React.Component {
                             <div className="col-6 col-md-8 col-lg-6 text-center"></div>
                           </div>
                         </div>
+                        <div className="row">
+                          <div className="col">
                         <hr class="border border-success border-1 my-5 opacity-50"></hr>
+                        </div>
+                        </div>
                       </div>
                     ))}
 
