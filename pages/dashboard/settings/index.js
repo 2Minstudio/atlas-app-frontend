@@ -47,13 +47,13 @@ class Settings extends React.Component {
         <div className={styles}>
           <main className={styles.main}>
             <div className="container-fluid bg-grey">
-              <div className="container pb-5">
+              <div className="container g-0 pb-5">
                 <div className="row g-0 ">
                   <div className="col col-md-3 col-lg-2">
                     <Menu />
                     <SupportContact />
                   </div>
-                  <div className="col col-sm-10 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
+                  <div className="col col-sm-12 col-md-9 col-lg-10 bg-white rounded-bottom-25 p-sm-3 p-md-4 p-lg-5 ">
                     <div className="row d-flex justify-content-start align-items-start pb-3">
                       <h4>Welcome {user?.first_name}</h4>
                     </div>
