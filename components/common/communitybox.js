@@ -20,13 +20,13 @@ function CommunityBox({ type }) {
     <>
       <div className="row">
         <div className="col">
-          <h5 className="pt-5 ps-4">Community</h5>
+          <h5 className="pt-3 ps-4">Community</h5>
         </div>
-        <div className="col-1 btn">
+        <div className="col-1 btn pe-5">
           <h3 className="text-success text-center"> ... </h3>
         </div>
       </div>
-      <div className="row ps-4">
+      <div className="row ps-4 pb-4 pb-sm-0">
         <div className="col mt-4">
           <button className="btn btn-success rounded-pill p-3 me-3 mb-2">
             Ask A Question

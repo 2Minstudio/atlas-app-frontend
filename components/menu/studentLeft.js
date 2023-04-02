@@ -13,9 +13,7 @@ function Menu(props) {
         <Nav.Link className="list-group-item" href="/dashboard/progress">
           Progress
         </Nav.Link>
-        <Nav.Link className="list-group-item" href="/dashboard/community">
-          Community
-        </Nav.Link>
+        
         <Nav.Link className="list-group-item" href="/dashboard/settings">
           Settings
         </Nav.Link>
