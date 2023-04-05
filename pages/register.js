@@ -11,6 +11,7 @@ import { withCookies } from "react-cookie";
 class Register extends React.Component {
   state = {
     error: {},
+    submited: false,
   };
 
   componentDidMount() {
@@ -24,6 +25,7 @@ class Register extends React.Component {
   handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
+    this.setState({ submited: true });
     const {
       target: { agree, first_name, email, phone_number, password },
     } = event;
@@ -62,7 +64,7 @@ class Register extends React.Component {
         // console.log("error", key, result.data[key][0]);
         error[key] = result.data[key];
       });
-      this.setState({ error: error });
+      this.setState({ error: error, submited: false });
     } else {
       this.props.router.push(`/verify?email=${encodeURI(email.value)}`);
     }
@@ -70,7 +72,7 @@ class Register extends React.Component {
   };
 
   render() {
-    const { error } = this.state;
+    const { error, submited } = this.state;
     return (
       <Layout type="guest">
         <div className={styles}>
@@ -180,9 +182,9 @@ class Register extends React.Component {
                             <button
                               type="submit"
                               className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle my-5"
+                              disabled={submited}
                             >
-                              {" "}
-                              Signup
+                              {submited ? "Please wait..." : "Signup"}
                             </button>
 
                             <p className="small-text-14 mt-0">

@@ -9,10 +9,12 @@ import { isLoggedin, isClientLoggedin } from "../helpers/helper";
 import Alert from "react-bootstrap/Alert";
 import { withCookies } from "react-cookie";
 import { config } from "../config/config";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 class Login extends React.Component {
   state = {
     error: {},
+    submited: false,
   };
 
   componentDidMount() {
@@ -25,7 +27,7 @@ class Login extends React.Component {
   handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
-
+    this.setState({ submited: true });
     // Get data from the form.
     const data = {
       email: event.target.email.value,
@@ -48,7 +50,7 @@ class Login extends React.Component {
       Object.keys(result.data).map((key) => {
         error[key] = result.data[key];
       });
-      this.setState({ error: error });
+      this.setState({ error: error, submited: false });
     } else {
       // console.log(result, "result from login");
       const {
@@ -66,7 +68,7 @@ class Login extends React.Component {
   };
 
   render() {
-    const { error } = this.state;
+    const { error, submited } = this.state;
     return (
       <Layout type="guest">
         <div className={styles}>
@@ -163,9 +165,9 @@ class Login extends React.Component {
                             <button
                               type="submit"
                               className="btn btn-success rounded-pill mt-5 col-8 col-sm-5 col-md-6 col-lg-5 align-middle mt-5 mb-3"
+                              disabled={submited}
                             >
-                              {" "}
-                              Signin
+                              {submited ? "Please wait..." : "Signin"}
                             </button>
 
                             <p className="small-text-14 mt-0">

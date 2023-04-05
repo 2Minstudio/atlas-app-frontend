@@ -117,7 +117,7 @@ class TestQuestions extends React.Component {
   render() {
     const { user, data, modelshow, editId, deleteId, test, questionid } =
       this.state;
-    const paths = { "admin/admissions/tests/": "Tests", "#": test?.name };
+    const paths = { "/admin/admissions/tests/": "Tests", "#": test?.name };
     return (
       <LayoutAdminDashboard user={user} paths={paths}>
         <ConfirmBox
