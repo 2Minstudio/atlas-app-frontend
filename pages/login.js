@@ -84,7 +84,7 @@ class Login extends React.Component {
                         {error &&
                           Object.keys(error).map((err) => {
                             return (
-                              ["email", "password"].indexOf(err) > 0 && (
+                              ["email", "password"].indexOf(err) < 0 && (
                                 <>
                                   <Alert
                                     variant="danger"
