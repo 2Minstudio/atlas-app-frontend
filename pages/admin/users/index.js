@@ -148,6 +148,7 @@ class Users extends React.Component {
               onclick: this.deleteConfirm,
               variant: "success",
               key: "id",
+              rule: { groups: { condition: "!=", value: "4" } },
             },
           ]}
         />

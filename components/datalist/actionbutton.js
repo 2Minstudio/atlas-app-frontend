@@ -3,6 +3,22 @@ import { Button } from "react-bootstrap";
 import Link from "next/link";
 
 function ActionButton(btn, row) {
+  // console.log(btn, "btn", row);
+  let show = true;
+  if (btn?.rule) {
+    show = false;
+    Object.keys(btn.rule).map((k) => {
+      console.log(k, row[k]);
+      if (row[k].length > 0) {
+        show = eval(
+          `${row[k]} ${btn.rule[k]["condition"]} ${btn.rule[k]["value"]}`
+        );
+      } else {
+        show = true;
+      }
+    });
+  }
+  if (!show) return <></>;
   if (btn?.type == "link" && btn?.link) {
     let link = btn?.link;
     if (btn.replacetokens)
