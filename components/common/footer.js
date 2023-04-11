@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import styles from "../../styles/Home.module.css";
 export default function Footer() {
+  const year  = new Date().getFullYear();
   return (
     <footer className={styles.footer}>
       <div className="container p-5 mt-5">
@@ -105,7 +106,7 @@ export default function Footer() {
         </div>
         <div className="row pt-1 g-0">
               <span className="small-text-14 text-center text-md-start">
-                Copyright © 2022. All rights reserved. Made in India
+                Copyright © {year}. All rights reserved. Made in India
               </span>
               </div>
       </div>
