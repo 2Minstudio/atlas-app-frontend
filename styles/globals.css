@@ -2673,7 +2673,9 @@ textarea.form-control-sm {
 textarea.form-control-lg {
   min-height: calc(1.5em + 1rem + 2px);
 }
-
+.cursor-pointer {
+  cursor: pointer;
+}
 .form-control-color {
   max-width: 3rem;
   height: auto;

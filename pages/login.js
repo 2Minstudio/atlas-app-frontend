@@ -12,19 +12,38 @@ import { config } from "../config/config";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 
 class Login extends React.Component {
-  state = {
-    error: {},
-    submited: false,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      error: {},
+      submited: false,
+      email: "",
+      // password: "",
+      remember_me: 0,
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  }
 
   componentDidMount() {
     const token = isClientLoggedin(this.props);
     if (token) {
       Router.push("/course/welcome");
     }
+
+    const remember_me = localStorage.getItem("remember_me");
+    const email = remember_me ? localStorage.getItem("email") : "";
+    // const password = remember_me ? localStorage.getItem("password") : "";
+
+    this.setState({ remember_me, email, password });
   }
 
-  handleSubmit = async (event) => {
+  _handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
     this.setState({ submited: true });
@@ -33,6 +52,16 @@ class Login extends React.Component {
       email: event.target.email.value,
       password: event.target.password.value,
     };
+    const remember_me = event.target.remember_me.checked;
+    if (remember_me) {
+      localStorage.setItem("email", data.email);
+      localStorage.setItem("remember_me", "1");
+      // localStorage.setItem("password", data.password);
+    } else {
+      localStorage.setItem("email", "");
+      localStorage.setItem("remember_me", "");
+      // localStorage.setItem("password", "");
+    }
 
     // Form the request for sending data to the server.
     const options = {
@@ -66,9 +95,15 @@ class Login extends React.Component {
       this.props.router.push(redirectPath);
     }
   };
+  get handleSubmit() {
+    return this._handleSubmit;
+  }
+  set handleSubmit(value) {
+    this._handleSubmit = value;
+  }
 
   render() {
-    const { error, submited } = this.state;
+    const { error, submited, email, remember_me } = this.state;
     return (
       <Layout type="guest">
         <div className={styles}>
@@ -112,6 +147,8 @@ class Login extends React.Component {
                               id="email"
                               placeholder="Email"
                               required
+                              value={email}
+                              onChange={this.handleChange}
                             ></input>
                             {error?.email && (
                               <Alert variant="danger" className="error alert">
@@ -127,6 +164,7 @@ class Login extends React.Component {
                               id="password"
                               placeholder="Password"
                               required
+                              onChange={this.handleChange}
                             ></input>
                             {error?.password && (
                               <Alert variant="danger" className="error alert">
@@ -141,15 +179,18 @@ class Login extends React.Component {
                                 <input
                                   className="form-check-input"
                                   type="checkbox"
-                                  value=""
+                                  value="1"
                                   id="flexCheckDefault"
+                                  name="remember_me"
                                 ></input>
-                                <label
-                                  className="form-check-label"
-                                  htmlFor="flexCheckDefault"
-                                >
-                                  <a href="#">Remember me</a>
-                                </label>
+                                <a href="#">
+                                  <label
+                                    className="form-check-label cursor-pointer"
+                                    htmlFor="flexCheckDefault"
+                                  >
+                                    Remember me
+                                  </label>
+                                </a>
                               </div>
                               <div className="col text-end">
                                 <p>
