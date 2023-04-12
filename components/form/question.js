@@ -31,6 +31,7 @@ class QuestionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.readOptions = this.readOptions.bind(this);
     this.setError = this.setError.bind(this);
+    this.questionformref = React.createRef();
   }
 
   readOptions(data) {
@@ -53,27 +54,32 @@ class QuestionForm extends React.Component {
     this.setState({ submited: true });
     // event.preventDefault();
     // event.stopPropagation();
-
-    if (id) {
-      await updateQuestion(this.state).then((resp) => {
-        const { status, data } = resp;
-        if (status) {
-          this.setState({ showSuccess: true });
-        } else {
-          this.setState({ errors: data });
-          console.log(data, "error");
-        }
-      });
-    } else {
-      await createQuestion(this.state).then((resp) => {
-        const { status, data } = resp;
-        if (status) {
-          this.setState({ showSuccess: true });
-        } else {
-          this.setState({ errors: data });
-          console.log(data, "error");
-        }
-      });
+    // add validation here.
+    const { options } = this.state;
+    console.log("options", options.length);
+    const state = this.questionformref.current.validateOptions();
+    if (state) {
+      if (id) {
+        await updateQuestion(this.state).then((resp) => {
+          const { status, data } = resp;
+          if (status) {
+            this.setState({ showSuccess: true });
+          } else {
+            this.setState({ errors: data });
+            console.log(data, "error");
+          }
+        });
+      } else {
+        await createQuestion(this.state).then((resp) => {
+          const { status, data } = resp;
+          if (status) {
+            this.setState({ showSuccess: true });
+          } else {
+            this.setState({ errors: data });
+            console.log(data, "error");
+          }
+        });
+      }
     }
     this.setState({ submited: false });
   }
@@ -169,13 +175,18 @@ class QuestionForm extends React.Component {
             )}
           </Form.Group>
           <AnswerOptions
+            ref={this.questionformref}
             callback={this.readOptions}
             options={options}
             type={question_type}
             seterror={this.setError}
           />
-          {errors?.options && (
-            <Alert variant={"danger"}>{errors.options}</Alert>
+          {errors?.options?.length > 0 && (
+            <Alert variant={"danger"}>
+              {errors.options.map((i) => (
+                <div>{i}</div>
+              ))}
+            </Alert>
           )}
           <Form.Group className="mb-3 mt-4">
             <Row className="d-flex align-items-center justify-content-center">

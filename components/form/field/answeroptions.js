@@ -51,19 +51,40 @@ class AnswerOptions extends React.Component {
     const { callback, type, seterror } = this.props;
     const { options } = this.state;
     const errors = [];
+    this.setState({ errors }, () => {
+      seterror(errors);
+    });
     const emptys = options.filter((o) => o.value === "");
-    const multi_answers = options.filter((o) => o.is_answer === true);
-    errors["multi_answers"] = type == "1" && multi_answers.length > 0;
-    errors["emptys"] = emptys.length > 0;
-    console.log(errors);
-    if (errors["multi_answers"] || errors["emptys"])
+    const answers = options.filter((o) => o.is_answer === true);
+    const is_multi_answers = type == "1" && answers.length > 1;
+    const is_emptys = emptys.length > 0;
+    console.log(answers);
+    if (
+      is_multi_answers ||
+      is_emptys ||
+      options.length == 0 ||
+      answers.length == 0
+    ) {
+      if (options.length == 0 || is_emptys) {
+        errors.push("Answer options should not contain empty.");
+      }
+      if (is_multi_answers) {
+        errors.push(
+          "Single Select choosed but multiple options are marked as answer."
+        );
+      }
+      if (answers.length == 0) {
+        errors.push("Atlest one answer should be valid answer.");
+      }
       this.setState({ errors }, () => {
         seterror(errors);
       });
-    else {
-      this.setState({ errors:[] }, () => {
+      return false;
+    } else {
+      this.setState({ errors: [] }, () => {
         callback(options);
       });
+      return true;
     }
   };
 
@@ -101,7 +122,6 @@ class AnswerOptions extends React.Component {
       type !== 0 && (
         <Form.Group className="mb-3">
           <Form.Label>Options </Form.Label>
-          {errors}
           {options &&
             options.length > 0 &&
             options?.map((v, i) => {
@@ -109,7 +129,9 @@ class AnswerOptions extends React.Component {
               return (
                 <>
                   <Row md={4} className={`g-4 mb-3 answeroption-${i}`}>
-                    <Col xs={1} md={1}>{inc}</Col>
+                    <Col xs={1} md={1}>
+                      {inc}
+                    </Col>
                     <Col xs={5} sm={5} md={3}>
                       <Form.Control
                         type="text"
@@ -118,7 +140,7 @@ class AnswerOptions extends React.Component {
                         onChange={this.handleChange}
                       />
                     </Col>
-                    <Col xs={5} sm={5} md={4} >
+                    <Col xs={5} sm={5} md={4}>
                       <Form.Check
                         type="checkbox"
                         name={`is_answer-${i}`}
@@ -145,12 +167,15 @@ class AnswerOptions extends React.Component {
                 </>
               );
             })}
-          <Button className="mt-4" variant="outline-success mx-auto d-block" onClick={this.addNew}>
+          <Button
+            className="mt-4"
+            variant="outline-success mx-auto d-block"
+            onClick={this.addNew}
+          >
             Add New
           </Button>
           <hr className="text-success"></hr>
         </Form.Group>
-        
       )
     );
   }

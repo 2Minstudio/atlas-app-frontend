@@ -19,13 +19,19 @@ import ConfirmBox from "../../../../components/modal/confirm";
 import DataList from "../../../../components/datalist";
 
 class TestQuestions extends React.Component {
-  state = {
-    user: {},
-    deleteId: null,
-    modelshow: false,
-    editId: null,
-    testid: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+      deleteId: null,
+      modelshow: false,
+      editId: null,
+      testid: null,
+    };
+  
+    
+  }
+  
 
   loadData = async () => {
     const { testid } = this.state;
