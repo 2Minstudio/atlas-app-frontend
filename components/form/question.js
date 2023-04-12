@@ -183,8 +183,8 @@ class QuestionForm extends React.Component {
           />
           {errors?.options?.length > 0 && (
             <Alert variant={"danger"}>
-              {errors.options.map((i) => (
-                <div>{i}</div>
+              {errors.options.map((i,n) => (
+                <div key={`e-${n}`}>{i}</div>
               ))}
             </Alert>
           )}
