@@ -9,6 +9,7 @@ import { isClientLoggedin, getUser } from "../../../helpers/helper";
 import { getAdmissions, sendAction } from "../../../helpers/admissions";
 import DataPagination from "../../../components/datalist/pagination";
 import Dropdown from "react-bootstrap/Dropdown";
+import AutoHideAlert from "../../../components/common/autoHideAlert";
 
 class Admissions extends React.Component {
   state = {};
@@ -40,10 +41,11 @@ class Admissions extends React.Component {
     //type = retry, reminder, invite, payment
     const resp = await sendAction(id, type);
     console.log(resp);
+    this.setState({ showSuccess: resp?.state });
   };
 
   render() {
-    const { user, data } = this.state;
+    const { user, data, showSuccess } = this.state;
     return (
       <LayoutAdminDashboard user={user}>
         <Row>
@@ -51,6 +53,9 @@ class Admissions extends React.Component {
             <h2>Admissions</h2>
           </Col>
         </Row>
+        {showSuccess && (
+          <AutoHideAlert message={`Notification sentsuccessfully!`} onClose={()=>this.setState({showSuccess:false})} />
+        )}
         {data && (
           <>
             <Table className="table-hover" responsive="sm">
@@ -69,7 +74,7 @@ class Admissions extends React.Component {
                 {data?.results?.map((d) => {
                   // const tlen = d?.transactions.length;
                   const last_transaction = d?.transactions[0];
-                  console.log("last_transaction", d, last_transaction);
+                  // console.log("last_transaction", d, last_transaction);
                   const retry = d?.retry_enabled;
                   const is_paid = last_transaction?.status == "success";
                   // const elen = last_transaction?.user_exam.length;
