@@ -21,7 +21,7 @@ class StopWatch extends React.Component {
   }
 
   Timer = ({ hours, minutes, seconds }) => {
-    console.log(hours, minutes, seconds);
+    // console.log(hours, minutes, seconds);
 
     return (
       <div className="timer">
@@ -36,7 +36,7 @@ class StopWatch extends React.Component {
   render() {
     const { counter } = this.state;
     const { callback } = this.props;
-    console.log(counter, "counter");
+    // console.log(counter, "counter");
     if (counter)
       return (
         <div className="stop-watch">
